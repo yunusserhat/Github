@@ -22,8 +22,8 @@ feature:
 - icon: python
   icon_pack: fab
   name: Python
-- icon: database
-  icon_pack: fab
+- icon: fa-database
+  icon_pack: fas
   name: Big Data
 
 # Uncomment to use emoji icons.
