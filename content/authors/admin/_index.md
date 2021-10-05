@@ -5,10 +5,12 @@ avatar_filename: avatar.jpg
 bio: My research interests include environmental criminology, electronic
   monitoring, geographic information systems, and data mining.
 interests:
-  - Environmental Criminology
+  - Criminology
   - Electronic Monitoring
-  - Geographic Information Systems
-  - Data Mining.
+  - R
+  - Python
+  - Data Mining
+  - Big Data
 social:
 - icon: envelope
   icon_pack: fas
@@ -59,4 +61,4 @@ I am a research assistant in the Vocational School of Social Sciences at Marmara
 
 My research interests include environmental criminology, electronic monitoring, geographic information systems, and data mining.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}CV{{< /staticref >}}.
