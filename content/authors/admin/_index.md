@@ -12,7 +12,7 @@ interests:
 social:
 - icon: envelope
   icon_pack: fas
-  link: '#contact'  # For a direct email link, use "mailto:yunus.serhat@marmara.edu.tr".
+  link: '#contact'
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/yunusserhat
@@ -21,7 +21,7 @@ social:
   link: https://scholar.google.com.tr/citations?user=2FSN2voAAAAJ&hl
 - icon: github
   icon_pack: fab
-  link: https://github.com/bicakciyu
+  link: https://github.com/yunusserhat
 - icon: instagram
   icon_pack: fab
   link: https://www.instagram.com/yunusserhat/
@@ -37,10 +37,6 @@ social:
 - icon: researchgate
   icon_pack: ai
   link: https://www.researchgate.net/profile/Yunus_Bicakci
-    
-    
-    
-    
 organizations:
   - name: Marmara University
     url: https://www.marmara.edu.tr/
