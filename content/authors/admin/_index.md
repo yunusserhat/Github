@@ -18,19 +18,19 @@ social:
     icon: twitter
     icon_pack: fab
     label: Follow me on Twitter
-    link: https://twitter.com/GeorgeCushen
+    link: https://twitter.com/yunusserhat
   - icon: graduation-cap
     icon_pack: fas
-    link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+    link: https://scholar.google.com.tr/citations?user=2FSN2voAAAAJ&hl
   - icon: github
     icon_pack: fab
-    link: https://github.com/gcushen
+    link: https://github.com/yunusserhat
   - icon: linkedin
     icon_pack: fab
-    link: https://www.linkedin.com/
+    link: https://www.linkedin.com/in/yunus-serhat-bi%C3%A7ak%C3%A7i-60365825/
 organizations:
-  - name: Stanford University
-    url: https://www.stanford.edu/
+  - name: Marmara University
+    url: https://www.marmara.edu.tr/
 education:
   courses:
     - course: PhD in Artificial Intelligence
