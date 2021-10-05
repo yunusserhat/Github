@@ -1,8 +1,8 @@
 ---
 date: "2021-01-24"
 linkTitle: Data Science
-summary: An example of using Wowchemy's Book layout for publishing online courses.
-title: "\U0001F4CA Learn Data Science"
+summary: Ofis programlarının ders içeriği
+title: "\U0001F4CA Ofis Programları (in Turkish)"
 type: book
 ---
 
@@ -10,32 +10,27 @@ type: book
 
 {{< toc hide_on="xl" >}}
 
-## What you will learn
+## Dersin Kazanımları
 
-- Fundamental {{<hl>}}Python programming skills{{</hl>}}
-- {{<hl>}}Statistical concepts{{</hl>}} and how to apply them in practice
-- Gain experience with the {{<hl>}}Scikit{{</hl>}}, including data visualization with {{<hl>}}Plotly{{</hl>}} and data wrangling with {{<hl>}}Pandas{{</hl>}}
+- Günlük işlemler ve makale, tez gibi uzun süreli kullanım olabilecek yazı işlemlerini yapılabilecek Microsoft Word yazılımı ile yazı işlemlerinde yetkinlik.
+- Hesaplama ve karmaşık tablolardan Microsoft Excel uygulaması yardımıyla analiz gerçekleştirme ve verileri anlayabilme, grafik oluşturma ve diğer yetinklikler.
+- Hem okul yaşantısında hem de iş hayatında sunum için gerekli bilgiyi Microsoft Powerpoint uygulaması ile kazanımı.
+- Ofis ortamında ve iş yaşamında gerekli olan günlük kullanımda işe yarar sağlayacak programların temel düzeyde kullanımı.
 
-## Program overview
+## Dersin Açıklaması
 
-The demand for skilled data science practitioners is rapidly growing. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi.
+Ofis programları dersi ile, yönetici asistan adayları hem iş hayatlarında hem de günlük yaşantılarında sıkça kullanacakları yazı, hesaplama, eposta ve sunum yazılımları hakkında temel düzeyde bilgi edinerek sorunların üstesinden gelebilecek seviyeye gelecektir. 
 
-## Courses in this program
+## Dersin Kaynakları
 
-{{< list_children >}}
+- Foulkes, Linda. “Learn Microsoft Office 2019 A comprehensive guide to getting started with Word, PowerPoint, Excel, Access, and Outlook”. Packt Publications, 2020.
+- Haftalık verilecek olan okumalar (makaleler, kitap bölümleri ve diğer okumalar).
+- Haftalık gerçekleştirilen sunumlar.
+- Öğrencilerin gerçekleştirdikleri sunumlar.
 
-## Meet your instructor
+
+## Öğretim Elemanı
 
 {{< mention "admin" >}}
 
-## FAQs
-
-{{< spoiler text="Are there prerequisites?" >}}
-There are no prerequisites for the first course.
-{{< /spoiler >}}
-
-{{< spoiler text="How often do the courses run?" >}}
-Continuously, at your own pace.
-{{< /spoiler >}}
-
-{{< cta cta_text="Begin the course" cta_link="python" >}}
+{{< cta cta_text="Derslere Geri Dön" cta_link="courses" >}}
