@@ -16,7 +16,7 @@ social:
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/yunusserhat
-- icon: google-scholar
+- icon: ai-google-scholar
   icon_pack: ai
   link: https://scholar.google.com.tr/citations?user=2FSN2voAAAAJ&hl
 - icon: github
@@ -31,10 +31,10 @@ social:
 - icon: orcid
   icon_pack: fab
   link: https://orcid.org/0000-0002-7288-9959
-- icon: academia
+- icon: ai-academia
   icon_pack: ai
   link: https://marmara.academia.edu/YunusSerhatBicakci
-- icon: researchgate
+- icon: ai-researchgate
   icon_pack: ai
   link: https://www.researchgate.net/profile/Yunus_Bicakci
 organizations:
