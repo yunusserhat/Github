@@ -7,10 +7,10 @@ bio: My research interests include environmental criminology, electronic
 interests:
   - Criminology
   - Electronic Monitoring
-  - R
-  - Python
-  - Data Mining
+  - R & Python
   - Big Data
+  - Data Mining
+
 social:
 - icon: envelope
   icon_pack: fas
