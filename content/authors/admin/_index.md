@@ -5,9 +5,10 @@ avatar_filename: foto.jpg
 bio: My research interests include environmental criminology, electronic
   monitoring, geographic information systems, and data mining.
 interests:
-  - Artificial Intelligence
-  - Computational Linguistics
-  - Information Retrieval
+  - Environmental Criminology
+  - Electronic Monitoring
+  - Geographic Information Systems
+  - Data Mining.
 social:
   - icon: envelope
     icon_pack: fas
