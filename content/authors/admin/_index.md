@@ -55,7 +55,7 @@ education:
     - course: BSc in Business Administration
       institution: Anadolu University
       year: 2011
-email: ""
+email: yunus.serhat@marmara.edu.tr
 superuser: true
 highlight_name: true
 ---
