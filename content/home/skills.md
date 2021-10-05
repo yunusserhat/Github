@@ -22,7 +22,7 @@ feature:
 - icon: python
   icon_pack: fab
   name: Python
-- icon: fa-database
+- icon: database
   icon_pack: fas
   name: Big Data
 
