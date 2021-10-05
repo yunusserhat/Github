@@ -10,24 +10,37 @@ interests:
   - Geographic Information Systems
   - Data Mining.
 social:
-  - icon: envelope
-    icon_pack: fas
-    link: /#contact
-  - display:
-      header: true
-    icon: twitter
-    icon_pack: fab
-    label: Follow me on Twitter
-    link: https://twitter.com/yunusserhat
-  - icon: graduation-cap
-    icon_pack: fas
-    link: https://scholar.google.com.tr/citations?user=2FSN2voAAAAJ&hl
-  - icon: github
-    icon_pack: fab
-    link: https://github.com/yunusserhat
-  - icon: linkedin
-    icon_pack: fab
-    link: https://www.linkedin.com/in/yunus-serhat-bi%C3%A7ak%C3%A7i-60365825/
+- icon: envelope
+  icon_pack: fas
+  link: '#contact'  # For a direct email link, use "mailto:yunus.serhat@marmara.edu.tr".
+- icon: twitter
+  icon_pack: fab
+  link: https://twitter.com/yunusserhat
+- icon: google-scholar
+  icon_pack: ai
+  link: https://scholar.google.com.tr/citations?user=2FSN2voAAAAJ&hl
+- icon: github
+  icon_pack: fab
+  link: https://github.com/bicakciyu
+- icon: instagram
+  icon_pack: fab
+  link: https://www.instagram.com/yunusserhat/
+- icon: linkedin
+  icon_pack: fab
+  link: https://www.linkedin.com/in/yunus-serhat-bi%C3%A7ak%C3%A7i-60365825/
+- icon: orcid
+  icon_pack: fab
+  link: https://orcid.org/0000-0002-7288-9959
+- icon: academia
+  icon_pack: ai
+  link: https://marmara.academia.edu/YunusSerhatBicakci
+- icon: researchgate
+  icon_pack: ai
+  link: https://www.researchgate.net/profile/Yunus_Bicakci
+    
+    
+    
+    
 organizations:
   - name: Marmara University
     url: https://www.marmara.edu.tr/
