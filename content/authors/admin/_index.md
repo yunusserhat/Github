@@ -1,7 +1,7 @@
 ---
 title: Yunus Serhat Bıçakçı
 role: Research Assistant
-avatar_filename: foto.jpg
+avatar_filename: avatar.jpg
 bio: My research interests include environmental criminology, electronic
   monitoring, geographic information systems, and data mining.
 interests:
