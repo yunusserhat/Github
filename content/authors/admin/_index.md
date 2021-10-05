@@ -33,15 +33,15 @@ organizations:
     url: https://www.marmara.edu.tr/
 education:
   courses:
-    - course: PhD in Artificial Intelligence
-      institution: Stanford University
-      year: 2012
-    - course: MEng in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2009
-    - course: BSc in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2008
+    - course: PhD in Geographical Information Technologies
+      institution: Istanbul Technical University
+      year: 2021
+    - course: MSc in Management Information Systems
+      institution: Sakarya University
+      year: 2013
+    - course: BSc in Business Administration
+      institution: Anadolu University
+      year: 2011
 email: ""
 superuser: true
 highlight_name: true
