@@ -3,12 +3,10 @@ date: "2021-01-24"
 linkTitle: Data Science
 summary: Ofis programlarının ders içeriği
 title: "\U0001F4CA Ofis Programları (in Turkish)"
-type: book
 ---
 
 {{< figure src="featured.jpg" >}}
 
-{{< toc hide_on="xl" >}}
 
 ## Dersin Kazanımları
 
@@ -32,5 +30,3 @@ Ofis programları dersi ile, yönetici asistan adayları hem iş hayatlarında h
 ## Öğretim Elemanı
 
 {{< mention "admin" >}}
-
-{{< cta cta_text="Derslere Geri Dön" cta_link="courses" >}}
