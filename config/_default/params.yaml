@@ -144,3 +144,5 @@ cms:
 icon:
   pack:
     ai: true
+
+showFooter: false
