@@ -18,12 +18,10 @@ content:
   
   # Email form provider
   form:
-    provider: formspree
-    formspree:
-      id: yunus.serhat@marmara.edu.tr
+    provider: netlify
     netlify:
       # Enable CAPTCHA challenge to reduce spam?
-      captcha: false
+      captcha: true
   
 design:
   columns: '2'
