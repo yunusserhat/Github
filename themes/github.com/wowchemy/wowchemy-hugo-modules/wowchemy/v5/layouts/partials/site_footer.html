@@ -13,7 +13,7 @@
   {{ end }}
 
   {{ if or (site.GetPage "/terms.md") (site.GetPage "/privacy.md") }}
-  <p class="powered-by">
+  <p class="powered-by"> © 2021 Yunus Serhat Bıçakçı
     {{ with site.GetPage "/privacy.md" }}
       {{ printf "<a href=\"%s\">%s</a>" .RelPermalink .Title | safeHTML }}
     {{ end }}
@@ -25,7 +25,7 @@
   {{ end }}
 
   {{ with site.Copyright }}
-  <p class="powered-by">
+  <p class="powered-by"> © 2021 Yunus Serhat Bıçakçı
     {{ replace . "{year}" now.Year | markdownify }}
   </p>
   {{ end }}
@@ -37,14 +37,13 @@
     {{ $is_sponsor := site.Params.i_am_a_sponsor | default false }}
     {{ $hide_published_with_footer := site.Params.power_ups.hide_published_with | default true }}
     {{ if not (and $is_sponsor $hide_published_with_footer) }}
-      {{ $default := "Published with {wowchemy} — the free, {repo_link}open source{/repo_link} website builder that empowers creators." }}
+      {{ $default := "Published with {wowchemy}" }}
       {{ $i18n_published_with := i18n "published_with" | default $default }}
       {{ if not (findRE "{wowchemy}" $i18n_published_with) }}
         {{ warnf "Please attribute Wowchemy using `{wowchemy}` in the `published_with` text." }}
         {{ $i18n_published_with = $default }}
       {{ end }}
-      {{ $i18n_published_with = replace $i18n_published_with "{wowchemy}" "<a href=\"https://wowchemy.com/?utm_campaign=poweredby\" target=\"_blank\" rel=\"noopener\">Wowchemy</a>" | safeHTML }}
-      {{ $i18n_published_with = replace $i18n_published_with "{repo_link}" "<a href=\"https://github.com/wowchemy/wowchemy-hugo-modules\" target=\"_blank\" rel=\"noopener\">" | safeHTML }}
+      {{ $i18n_published_with = replace $i18n_published_with "{wowchemy}" "<a href=\"https://wowchemy.com/" target=\"_blank\" rel=\"noopener\">Wowchemy</a>" | safeHTML }}
       {{ $i18n_published_with = replace $i18n_published_with "{/repo_link}" "</a>" | safeHTML }}
       {{ $i18n_published_with | markdownify | emojify }}
     {{ end }}
