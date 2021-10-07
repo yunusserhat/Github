@@ -7,5 +7,6 @@ authors:
   - Çağdaş Caz
   - admin
   - Fatma Firuzan Nakipoğlu
-date: 2021-10-07T10:02:25.411Z
+date: '2019-10-21'
+lastmod: 2021-10-07T10:02:25.411Z
 ---
