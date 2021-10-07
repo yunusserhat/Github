@@ -5,7 +5,7 @@ publication_types:
   - "2"
 authors:
   - Çağdaş Caz
-  - @admin
+  - admin
   - Fatma Firuzan Nakipoğlu
 publication: Gümüşhane Üniversitesi Sosyal Bilimler Enstitüsü Elektronik Dergisi
 draft: false

@@ -3,7 +3,7 @@ title: Location-Based Analyses for Electronic Monitoring of Parolees
 publication_types:
   - "2"
 authors:
-  - Yunus Serhat Bicakci
+  - admin
   - Dursun Zafer Seker
   - Hande Demirel
 doi: https://doi.org/10.3390/ijgi9050296

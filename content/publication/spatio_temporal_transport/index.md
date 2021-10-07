@@ -3,7 +3,7 @@ title: Spatio-Temporal Analyses to Estimate Speed Information for Transport Fore
 publication_types:
   - "2"
 authors:
-  - Yunus Serhat Bicakci
+  - admin
   - Beytullah Sarica
   - Mete Ercan Pakdil
   - Batuhan Yazırlı
