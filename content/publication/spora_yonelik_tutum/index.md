@@ -1,6 +1,6 @@
 ---
-title: "Spora Yönelik Tutum İle Yaşam Doyumu Arasındaki İlişki: Marmara
-  Üniversitesi Sosyal Bilimler Meslek Yüksekokulu Öğrencileri Örneği"
+title: "Spora Yonelik Tutum ile Yasam Doyumu Arasındaki Iliski: Marmara
+  Universitesi Sosyal Bilimler Meslek Yuksekokulu Oğrencileri Orneği"
 publication_types:
   - "2"
 authors:
