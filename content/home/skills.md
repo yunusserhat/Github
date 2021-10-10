@@ -24,7 +24,7 @@ feature:
   name: Python
 - icon: database
   icon_pack: fas
-  name: Big Data
+  name: Data Mining
 
 # Uncomment to use emoji icons.
 #- icon: ':smile:'
