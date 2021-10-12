@@ -19,9 +19,11 @@ Ofis programları dersi ile, yönetici asistan adayları hem iş hayatlarında h
 
 ## Dersin Kaynakları
 
-- Foulkes, Linda. “Learn Microsoft Office 2019 A comprehensive guide to getting started with Word, PowerPoint, Excel, Access, and Outlook”. Packt Publications, 2020.
+- Linda Foulkes. “Learn Microsoft Office 2019 A comprehensive guide to getting started with Word, PowerPoint, Excel, Access, and Outlook”. Packt Publications, 2020.
+- Peter Weverka. "Office 2019 All-in-One For Dummies". John Wiley & Sons, Inc., 2018. 
+- GitHub (www.github.com)
 - Haftalık verilecek olan okumalar (makaleler, kitap bölümleri ve diğer okumalar).
-- Haftalık gerçekleştirilen sunumlar.
+- Haftalık gerçekleştirilen sunumlar ve ödevler.
 - Öğrencilerin gerçekleştirdikleri sunumlar.
 
 
