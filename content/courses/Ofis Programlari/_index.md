@@ -1,6 +1,6 @@
 ---
 date: "2021-01-24"
-linkTitle: Data Science
+linkTitle: Ofis
 summary: Ofis programlarının ders içeriği
 title: "\U0001F4CA Ofis Programları (in Turkish)"
 ---
