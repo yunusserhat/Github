@@ -34,5 +34,5 @@ Medya okuryazarlığı ile yönetici asistan adayları için yazılı, görsel v
 
 ## Derse İlişkin Dökümanlar 
 
-{{< cta cta_text="Slaytlar" cta_link="https://docs.google.com/presentation/d/1pd0tLNxXUFmDkZQKI6Dm1ihb364M7b2o/edit?usp=sharing&ouid=101808916399037786397&rtpof=true&sd=true" >}}
+{{< cta cta_text="Slayt" cta_link="https://docs.google.com/presentation/d/1pd0tLNxXUFmDkZQKI6Dm1ihb364M7b2o/edit?usp=sharing&ouid=101808916399037786397&rtpof=true&sd=true/"target="_blank" >}}
 
