@@ -5,8 +5,6 @@ summary: Ofis programlarının ders içeriği
 title: "\U0001F4CA Ofis Programları (in Turkish)"
 ---
 
-{{< figure src="featured.jpg" >}}
-
 
 ## Dersin Kazanımları
 
