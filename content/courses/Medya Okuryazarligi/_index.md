@@ -34,7 +34,5 @@ Medya okuryazarlığı ile yönetici asistan adayları için yazılı, görsel v
 
 ## Derse İlişkin Dökümanlar 
 
-cta:
-  label: '**Slayt**'
-  url: https://docs.google.com/presentation/d/1pd0tLNxXUFmDkZQKI6Dm1ihb364M7b2o/edit?usp=sharing&ouid=101808916399037786397&rtpof=true&sd=true
+{{< cta cta_link="https://docs.google.com/presentation/d/1pd0tLNxXUFmDkZQKI6Dm1ihb364M7b2o/edit?usp=sharing&ouid=101808916399037786397&rtpof=true&sd=true" cta_new_tab="true" cta_text="Slayt" >}}
 
