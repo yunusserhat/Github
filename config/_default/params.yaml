@@ -15,8 +15,8 @@ font_size: m
 site_type: Person
 local_business_type: ''
 org_name: ''
-description: ''
-twitter: ''
+description: 'Researcher at Marmara University.'
+twitter: 'yunusserhat'
 
 # Contact (edit or remove options as required)
 
@@ -135,7 +135,7 @@ map:
 marketing:
   google_analytics: ''
   google_tag_manager: ''
-  google_site_verification: ''
+  google_site_verification: 'VwvLOJGCxfWmNknhNa1MtNr7bDFy16zrtDASmJXOMdI'
   baidu_site_verification: ''
   baidu_tongji: ''
 cms:
