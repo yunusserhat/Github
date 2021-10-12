@@ -5,9 +5,6 @@ summary: Medya Okuryazarligi ders içeriği
 title: "\U0001F4CA Medya Okuryazarlığı (in Turkish)"
 ---
 
-{{< figure src="featured.jpg" >}}
-
-
 ## Dersin Kazanımları
 
 - Medya okuryazarlığının önemini kavrama
