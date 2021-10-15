@@ -3,6 +3,7 @@ widget: experience
 widget_id: my-widget-123
 headless: true
 weight: 40
+title: experience
 active: true
 design:
   columns: "2"
@@ -10,3 +11,4 @@ design:
     text_color_light: false
     image_darken: 0
 ---
+deneme
