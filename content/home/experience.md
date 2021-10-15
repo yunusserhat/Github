@@ -25,7 +25,7 @@ experience:
   - title: Research Assistant
     company: Vocational School of Social Sciences, Marmara University
     company_url: 'www.marmara.edu.tr'
-    company_logo: 
+    company_logo: marmara
     location: Istanbul, Turkey
     date_start: '2013-04-01'
     date_end: ''
