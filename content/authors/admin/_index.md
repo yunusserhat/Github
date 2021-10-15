@@ -2,14 +2,15 @@
 title: Yunus Serhat Bıçakçı
 role: Research Assistant
 avatar_filename: avatar.jpg
-bio: My research interests include environmental criminology, electronic
-  monitoring, geographic information systems, and data mining.
+bio: My research interests include criminology, electronic
+  monitoring, information systems, datafication and data mining.
 interests:
-  - Criminology
-  - Electronic Monitoring
-  - R & Python
   - Big Data
   - Data Mining
+  - R & Python
+  - Criminology
+  - Electronic Monitoring
+
 
 social:
 - icon: envelope
@@ -57,8 +58,8 @@ email: yunus.serhat@marmara.edu.tr
 superuser: true
 highlight_name: true
 ---
-I am a research assistant in the Vocational School of Social Sciences at Marmara University.
+I am a research assistant in the Vocational School of Social Sciences at Marmara University in Istanbul.
 
-My research interests include environmental criminology, electronic monitoring, geographic information systems, and data mining.
+My research interests include criminology, electronic monitoring, information systems, datafication and data mining.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}CV{{< /staticref >}}.
