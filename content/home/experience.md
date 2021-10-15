@@ -29,16 +29,20 @@ experience:
     location: Istanbul, Turkey
     date_start: '2013-04-01'
     date_end: ''
-    description:
+    description: |2-
+        Responsibilities include:
+        
+        * Researching
+        * Teaching
         
   - title: Clerk
-    company: Cyber Crimes Bureau, Ministry of Justice
+    company: Cyber Crime Bureau, Ministry of Justice
     company_url: 'www.adalet.gov.tr'
     company_logo: adalet
     location: Bursa, Turkey
     date_start: '2011-06-01'
     date_end: '2013-04-01'
-    description: 
+    description: Under the supervision of the Prosecutor, performed general clerical functions in support of the Bursa Provincial Prosecutor’s Office.
 
 design:
   columns: '2'
