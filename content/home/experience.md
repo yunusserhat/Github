@@ -34,7 +34,7 @@ experience:
   - title: Clerk
     company: Cyber Crimes Bureau, Ministry of Justice
     company_url: 'www.adalet.gov.tr'
-    company_logo: 
+    company_logo: adalet
     location: Bursa, Turkey
     date_start: '2011-06-01'
     date_end: '2013-04-01'
