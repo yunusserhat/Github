@@ -1,5 +1,5 @@
 ---
-title: Yunus Serhat Bıçakçı
+title: Yunus Serhat BICAKCI
 role: Research Assistant
 avatar_filename: avatar.jpg
 bio: My research interests include criminology, electronic
