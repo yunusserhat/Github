@@ -3,7 +3,7 @@ title: Yunus Serhat BICAKCI
 role: Research Assistant
 avatar_filename: avatar.jpg
 bio: My research interests include criminology, electronic
-  monitoring, information systems, datafication and data mining.
+  monitoring, information systems, GIS and data mining.
 interests:
   - Big Data
   - Data Mining
@@ -60,6 +60,6 @@ highlight_name: true
 ---
 I am a research assistant in the Vocational School of Social Sciences at Marmara University in Istanbul.
 
-My research interests include criminology, electronic monitoring, information systems, datafication and data mining.
+My research interests include criminology, electronic monitoring, information systems, GIS and data mining.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}CV{{< /staticref >}}.
