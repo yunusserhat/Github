@@ -58,7 +58,7 @@ Otomatik durumdayken medyanın zamanımızı ve paramızı almasına, alışkanl
 İşte tam da bu sebepten ötürü, farkı yakalayabilmek için medya okuryazarlığı perspektifi kazanmak gereklidir. 
 
 
-{{< cta cta_text="2. Ders" cta_link="ikinci" >}}
+{{< cta cta_text="2. Bölüm" cta_link="ikinci" >}}
 
 
 

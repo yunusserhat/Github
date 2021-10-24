@@ -23,7 +23,7 @@ Medya; haber, eğlence, reklam gibi üç temel grupta içerik üretir. Medya bu 
 
 Medya okuryazarlığı; görsel, işitsel, basılı, vb. medya iletilerine erişebilme; erişilen medyayı, ileti ve ürünleri eleştirel bir bakış açısıyla çözümleyip değerlendirebilmeyi içerir. Kısacası, bireyin çevresindeki medyayı anlayabilme ve gerektiğinde kendi medya iletilerini sağlıklı üretebilme becerileri bütünüdür.
 
-{{< cta cta_text="1. Ders" cta_link="birinci" >}}
+{{< cta cta_text="1. Bölüm" cta_link="birinci" >}}
 
 
 
