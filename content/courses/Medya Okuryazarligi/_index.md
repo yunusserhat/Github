@@ -33,9 +33,7 @@ Medya okuryazarlığı ile yönetici asistan adayları için yazılı, görsel v
 
 ## Dersin Kitabı
 
-##{{< cta cta_link="https://docs.google.com/presentation/d/1pd0tLNxXUFmDkZQKI6Dm1ihb364M7b2o/edit?usp=sharing&ouid=101808916399037786397&rtpof=true&sd=true" cta_new_tab="true" cta_text="Slayt" >}}
 
-##{{< cta cta_link="https://www.medyaokuryazarligi.gov.tr/" cta_new_tab="true" cta_text="RTÜK Medya Okuryazarlığı Websitesi" >}}
 
 {{< cta cta_text="Derse başlayın." cta_link="giris" >}}
 
