@@ -21,15 +21,15 @@ Haber anlayışındaki değişiklikler yeni değil. Mevcut dönüşümleri anlam
 
 Haber edinme arzusu, çok öncelere dayanmaktadır. İnsanlar kendilerini çevreleyen olaylara daima ilgi duymuştur. 
 
-16. yüzyılda gazeteler henüz daha ortada yokken, İtalya'daki bir grup insan bilgi toplayıp müşterilerine haber broşürleri  satmıştı. 
-17. yüzyılda, bu haber broşürleri önce Almanya'da, sonra Avrupa’da günlük gazetelere dönüştü. Bu ilk gazeteler, herhangi bir akışla veya öyküleme yapmadıkları için okuması oldukça zordu. 
+16.yüzyılda gazeteler henüz daha ortada yokken, İtalya'daki bir grup insan bilgi toplayıp müşterilerine haber broşürleri  satmıştı. 
+17.yüzyılda, bu haber broşürleri önce Almanya'da, sonra Avrupa’da günlük gazetelere dönüştü. Bu ilk gazeteler, herhangi bir akışla veya öyküleme yapmadıkları için okuması oldukça zordu. 
 Bu ilk gazetelerin izleyicileri seçkinlerdi - yani, okuyabilen ve bilgi için parasını ödemeyi başarabilen insanlardı. Bu nedenle, bu ilk gazeteciler bilgilerinin doğruluğuyla daha fazla ilgilendiler, bu yüzden onlara daha fazla güvenilirlik sağlamak için gerçeklerini desteklemeye çalıştılar. 
 
 
 
 ## Önemli Haberin Yükselişi ve Düşüşü
 
-19. yüzyılın ortalarında sanayi devriminin yükselişini takiben, insanlar çiftliklerden şehirlere taşınırken nüfus temel bir değişim geçiriyordu. 
+19.yüzyılın ortalarında sanayi devriminin yükselişini takiben, insanlar çiftliklerden şehirlere taşınırken nüfus temel bir değişim geçiriyordu. 
 Sanayi devrimi sonrasında, nüfusta daha büyük bir uluslaşma duygusu geliştiriyordu. Zorunlu eğitim nedeniyle okuryazarlık oranları çok arttı. Bazı girişimciler (Örn; William Randolph Hearst ve Joseph Pulitzer) bunu, büyüyen nüfus merkezlerinde çok büyük tirajlı gazeteler geliştirme şansı olarak görüyorlardı. Ancak bu girişimciler, geniş bir okur kitlesine hitap etmek için, öykülerinde açık siyasi partnerlikten uzaklaşmaları ve herhangi bir okuyucu kitlesini rahatsız etmemek için “objektif” olarak görünmelerini sağlamaları gerektiğini fark etti.
 
 Gazetelerin hızlı bir şekilde büyümesi,  “önemli haberler” çağını başlattı. Bu gazetelerin editörleri, nüfusu haberlere aç olarak görüyordu, ancak en önemlisi hangi haberin önemli olup olmadığıydı. 
