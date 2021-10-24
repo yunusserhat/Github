@@ -1,5 +1,5 @@
 ---
-title: 1. Ders - Nasıl Medya Okuryazar Oluruz?
+title: 1. Bölüm - Nasıl Medya Okuryazar Oluruz?
 date: '2021-01-01'
 type: book
 weight: 30
