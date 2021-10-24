@@ -64,14 +64,14 @@ Televizyon tarihi boyunca gerçeklik programları örnekleri olsa da 2000’li y
 Gerçeklik programlarına ilişkin çok fazla çeşitte programlar gerçekleştirildi. Sevgi, dostluk, para, iş, yeni aile, yatırım alma, yeni ev inşaa etme, gardırop düzenleme, yemek yapma gibi çok fazla çeşit ile normal insanların en iyi şarkıcı, en iyi dansçı, en iyi şef olmak için rekabet ettiği programlardı. 
 
 
--Belgesel Stili - Kamera günlük yaşamda yaşanan her şeyi kayıt altına alır
--Gerçek-Kanuni - Kişilerin kanuni problemlerine ilişkin davranışları kayıt altına alınır
--Gerçeklik Yarışması/Şov Oyunu - Kişiler ödül için her bölümde bir veya daha fazla olacak şekilde elenirler 
--Kendini Geliştirme - İzleyiciler gerçek hayatta yaşayan birisinin gelişimini izlerler
--Sosyal deney - Kişiler anormal durumlarda yaşanan olaylar karşısında hareketleri kayıt altına alınır 
--Gizli Kamera - Kişilerin davranışları bilmeden kayıt altına alınır 
--Doğaüstü Olaylar - İnsanların paranormal güçler içerdiği iddia edilen durumlar ortaya çıkıyor
--Şaka-Kandırma - İnsanlar bir şeylere inandırılır ve tepkileri kaydedilir
+-Belgesel Stili (Kamera günlük yaşamda yaşanan her şeyi kayıt altına alır.)
+-Gerçek-Kanuni (Kişilerin kanuni problemlerine ilişkin davranışları kayıt altına alınır.)
+-Gerçeklik Yarışması/Şov Oyunu (Kişiler ödül için her bölümde bir veya daha fazla olacak şekilde elenirler.)
+-Kendini Geliştirme (İzleyiciler gerçek hayatta yaşayan birisinin gelişimini izlerler.)
+-Sosyal deney (Kişiler anormal durumlarda yaşanan olaylar karşısında hareketleri kayıt altına alınır.)
+-Gizli Kamera (Kişilerin davranışları bilmeden kayıt altına alınır.)
+-Doğaüstü Olaylar (İnsanların paranormal güçler içerdiği iddia edilen durumlar ortaya çıkıyor.)
+-Şaka-Kandırma (İnsanlar bir şeylere inandırılır ve tepkileri kaydedilir.)
 
 ## Medya Okuryazarlığının Önemi
 
