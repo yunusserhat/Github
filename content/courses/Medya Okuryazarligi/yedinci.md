@@ -36,10 +36,12 @@ En temel düzeyde, gerçek hayatta alamadıkları, yapamadıklarını bulmak iç
 Şayet, insanlar gerçek hayatta ihtiyaç duydukları her şeyi gerçekleştirebilseydi, medyada bu mesajları aramak için harcayacakları paraya ve zamana ilişkin motivasyonları olmazdı.
 Mesajları gerçek hayatta almak yerine medyaya gitmelerinin iki nedeni vardır. 
 
-**Birinci neden; **
+**Birinci neden**;
+
 Bu mesajları gerçek hayatta almaları imkansızdır. Örneğin, çoğu insan için, Dünya'nın uzaydan nasıl göründüğünü veya diğer gezegenlerin yüzeylerinin neye benzediğini bilmek mümkün değildir. Osmanlı zamanında padişahın sarayında nasıl bir yaşam olduğunu bilmek, ortaçağ İngiltere’sinde Yuvarlak Masa şövalyesi olmak, Amerikan İç Savaşlarını izlemek mümkün değildir. Bu görüntülere, seslere ve duygulara erişmek için insanlar medyadaki mesajlara erişmelidir.
 
-**İkinci neden; **
+**İkinci neden**;
+
 Bu fikirleri medyadan edinme maliyetlerinin gerçek hayatta gereken maliyetlerden çok daha düşük olmasıdır. 
 Örneğin, Fransa Paris’te bir hafta boyunca seyahat etmek için gereken para çok fazla iken, 1 saatlik bir seyahat programını izlemek çok daha ucuzdur. 
 Televizyonda oturup önemli bir oturumu izlemek, iletişim fakültesine gittikten sonra ana akım gazetede veya televizyonda iş bulmak ve sonrasında moderatör olarak onaylanmak ve oturumu organize etmekten çok daha kolaydır. 
