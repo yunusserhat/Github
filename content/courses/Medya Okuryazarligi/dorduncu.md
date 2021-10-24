@@ -128,7 +128,6 @@ Medya sürekli değişen bilgi ve eğlence gereksinimlerimizi belirlemek için �
 İhtiyaçlarımızın farkında olduğumuzda kitle iletişim araçlarını bu ihtiyaçlarının tamamını karşılamak için bir temel kaynak olarak kullanabiliriz. Ancak, eğer farkında değilsek, kitle iletişim araçları bizi reklam veren şirketlerden gelir elde etmek için kullanabilmektedir. Medya okuryazarlığınızı geliştirerek medya üzerinden kontrol sahibi olarak, kitle iletişim araçlarının ihtiyaçlarımızı sağlamada nasıl birer aracı olacağını anlayabiliriz. Bu bölümde medya kuruluşlarının tarafımıza karşı risklere daha duyarlı ve bilinçli olmanız hedeflenmiştir. 
 
 
-{{< cta cta_text="5. Bölüm" cta_link="besinci" >}}
 
 
 

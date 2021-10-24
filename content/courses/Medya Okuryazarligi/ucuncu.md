@@ -80,7 +80,6 @@ Her gün medya mesajlarıyla karşılaştığımızda, beyinlerimiz filtreleme, 
 
 Bilgi işlemenin çoğu otomatik olarak gerçekleştiğinden, bu işlemeyi düzenleyen zihinsel kodları, çıkarlarımıza uygun olup olmadıklarını belirlemek için periyodik olarak incelememiz gerekir. Medya alışkanlıklarımızı periyodik olarak analiz etmek önemlidir, böylece hangi alışkanlıkların hedeflerimize ulaşmak için çalıştığını ve zamanımızı ve dikkatimizi boşa veya zararlı uygulamalara yönelttiğini tespit edebiliriz. Bu ayrımı açıkça belirledikten sonra, otomatik rutinlerimizi yeniden programlayabiliriz. Böylece otomatik pilota alınan zihinlerimiz binlerce karar verirken, bizi daha akıllı, daha mutlu ve daha üretken yapabilir.
 
-{{< cta cta_text="4. Ders" cta_link="dorduncu" >}}
 
 
 

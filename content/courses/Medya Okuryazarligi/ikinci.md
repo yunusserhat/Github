@@ -78,7 +78,6 @@ Medya okuryazarlığı bir kerede öğrenilen bir şey değildir; bunun yerine, 
 Medya okuryazarlığı üç yapı taşından oluşur: beceriler, bilgi yapıları ve kişisel konum. Beceriler, güçlü bilgi yapıları oluşturmak için medya mesajları için kullandığımız araçtır. Bu işi yapmanın yönü ve dürtüsü ise kişinin konumunda yani kendisinde yatıyor.
 Medya okuryazarlığı yüksek olan insanlar verilen bir mesajda daha fazlasını görebilirler. Bu nedenle, daha yüksek medya okuryazarlığı seviyelerinde olan insanlar daha yüksek anlayışa, kontrole sahiptirler.
 
-{{< cta cta_text="3. Bölüm" cta_link="ucuncu" >}}
 
 
 
