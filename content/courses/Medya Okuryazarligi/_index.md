@@ -1,6 +1,6 @@
 ---
 date: "2021-10-4"
-linkTitle: Medya
+linkTitle: Medya Okuryazarlığı
 summary: Medya Okuryazarligi ders içeriği
 title: "\U0001F5DF Medya Okuryazarlığı (in Turkish)"
 type: book
