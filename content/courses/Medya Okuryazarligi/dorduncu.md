@@ -1,5 +1,5 @@
 ---
-title: 4. Bölüm Endüstri Perspektifi
+title: 4. Bölüm - Endüstri Perspektifi
 date: '2021-01-01'
 type: book
 weight: 60
