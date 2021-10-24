@@ -1,5 +1,5 @@
 ---
-title: Medya Okuryazarlığı Yaklaşımı
+title: 2. Ders - Medya Okuryazarlığı Yaklaşımı
 date: '2021-01-01'
 type: book
 weight: 40
