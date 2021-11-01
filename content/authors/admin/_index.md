@@ -28,7 +28,7 @@ social:
   link: https://www.instagram.com/yunusserhat/
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/in/yunus-serhat-bi%C3%A7ak%C3%A7i-60365825/
+  link: https://www.linkedin.com/in/yunusserhat
 - icon: orcid
   icon_pack: fab
   link: https://orcid.org/0000-0002-7288-9959
