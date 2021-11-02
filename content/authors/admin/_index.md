@@ -56,6 +56,8 @@ email: yunus.serhat@marmara.edu.tr
 superuser: true
 highlight_name: true
 ---
-My name is Yunus Serhat Bıçakçı and I am a research assistant in the Vocational School of Social Sciences at Marmara University in Istanbul. I am a passionate data scientist and programmer, and I enjoy using my skills to contribute to the common good.
+
+I am a Research Assistant in the Vocational School of Social Sciences at the Marmara University in Istanbul, Turkey. My research interests include big data, data mining, criminology and information systems (e.g., GIS). More specifically, I am interested in applying geospatial big data and machine learning to pioneer the new. I am a passionate data scientist and programmer, and I enjoy using my skills to contribute to the common good. 
+
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}CV{{< /staticref >}}.
