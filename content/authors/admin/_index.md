@@ -57,7 +57,9 @@ superuser: true
 highlight_name: true
 ---
 
-I am a Research Assistant in the Vocational School of Social Sciences at the Marmara University in Istanbul, Turkey. My research interests include big data, data mining, criminology and information systems (e.g., GIS). More specifically, I am interested in applying geospatial big data and machine learning to pioneer the new. I am a passionate data scientist and programmer, and I enjoy using my skills to contribute to the common good. 
+I am a passionate data scientist and I am using my skills to solve real-world problems by using machine learning, data mining, and other types of data analytics and data visualization tools such as R, Python, etc.
+
+Currently, I am working as a research assistant at Marmara University in Istanbul, Turkey. My research interests include big data, data mining, criminology and information systems (e.g., GIS).
 
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}CV{{< /staticref >}}.
