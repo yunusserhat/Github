@@ -29,11 +29,7 @@ experience:
     location: Istanbul, Turkey
     date_start: '2013-04-01'
     date_end: ''
-    description: |2-
-        Responsibilities include:
-        
-        * Researching
-        * Teaching
+    description: Responsible for research related to my research interests, also leading group lessons, grading coursework, setting up student projects and aiding in the supervision of the students.
         
   - title: Clerk
     company: Cyber Crime Bureau, Ministry of Justice
@@ -42,7 +38,7 @@ experience:
     location: Bursa, Turkey
     date_start: '2011-06-01'
     date_end: '2013-04-01'
-    description: Under the supervision of the Prosecutor, performed general clerical functions in support of the Bursa Provincial Prosecutor’s Office.
+    description: Under the supervision of the Prosecutor, performed general clerical functions in support of the Bursa Provincial Prosecutor’s Office. 
 
 design:
   columns: '2'
