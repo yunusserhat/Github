@@ -24,7 +24,7 @@ date_format: Jan 2006
 experience:
   - title: Research Assistant
     company: Vocational School of Social Sciences, Marmara University
-    company_url: 'www.marmara.edu.tr'
+    company_url: 'https://sbmyo.marmara.edu.tr'
     company_logo: marmara
     location: Istanbul, Turkey
     date_start: '2013-04-01'
@@ -33,7 +33,7 @@ experience:
         
   - title: Clerk
     company: Cyber Crime Bureau, Ministry of Justice
-    company_url: 'www.adalet.gov.tr'
+    company_url: 'https://www.adalet.gov.tr'
     company_logo: adalet
     location: Bursa, Turkey
     date_start: '2011-06-01'
