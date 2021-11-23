@@ -43,10 +43,10 @@ organizations:
     url: https://www.marmara.edu.tr/
 education:
   courses:
-    - course: PhD in Geographical Information Technologies
+    - course: PhD in Applied Informatics
       institution: Istanbul Technical University
       year: 2021
-    - course: MSc in Management Information Systems
+    - course: MSc in Information Systems
       institution: Sakarya University
       year: 2013
     - course: BSc in Business Administration
