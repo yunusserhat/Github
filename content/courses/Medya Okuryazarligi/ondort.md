@@ -2,7 +2,7 @@
 title: 14. Bölüm - Medya Okuryazarlığını Arttırmada Kendimize ve Diğerlerine Yardım Etmek
 date: '2021-01-01'
 type: book
-weight: 150
+weight: 160
 ---
 
 Diğer kişilere ve toplumlara medya okuryazarlığı stratejilerini güçlendirmek amacıyla yardımcı olabiliriz. Fakat öncelikle kendi medya okuryazarlığı seviyemizi arttırmamız gereklidir. 
