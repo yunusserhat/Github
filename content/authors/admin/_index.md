@@ -59,7 +59,7 @@ highlight_name: true
 
 I am a passionate data scientist and I am using my skills to solve challenging real-world problems by using machine learning, data mining, and other types of data analytics and data visualization tools such as R, Python, etc.
 
-Currently, I am working as a research assistant at Marmara University in Istanbul, Turkey. My research interests include big data, data mining, criminology and information systems (e.g., GIS).
+Currently, I am working as a lecturer at Marmara University in Istanbul, Turkey. My research interests include big data, data mining, criminology and information systems (e.g., GIS).
 
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}CV{{< /staticref >}}.
