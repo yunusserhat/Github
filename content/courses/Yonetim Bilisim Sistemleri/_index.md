@@ -1,5 +1,5 @@
 ---
-date: "2021-10-4"
+date: "2022-10-4"
 linkTitle: Yönetim Bilişim Sistemleri
 summary: Yönetim Bilişim Sistemleri ders içeriği
 title: "\U0001F5DF Yönetim Bilişim Sistemleri (in Turkish)"
