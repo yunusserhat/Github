@@ -55,21 +55,21 @@ Hedeflerinizi gerçekleştirmede olumsuz olarak etkileyen her etmen bir zaman tu
 
 Zaman tuzakları;
 
--Plânsızlık
--Öncelikleri belirleyememek ve sıralayamamak
--Ertelemek / işi yarım bırakma alışkanlığı
--Kendini gereğinden fazla işe adamak
--Acelecilik/sabırsızlık gösterme
--Dikkat dağınıklığı
--Rutin ve gereksiz işler, gereksiz ayrıntılarla uğraşma
--Gereksiz telefonlar
--Kararsızlık
--Dağınık masa ve büro düzeni
--Gereksiz ayrıntılarla uğraşmak 
--Düzensizlik
--Geciktirme
--Beklemeler
--Aksaklıklar
+- Plânsızlık
+- Öncelikleri belirleyememek ve sıralayamamak
+- Ertelemek / işi yarım bırakma alışkanlığı
+- Kendini gereğinden fazla işe adamak
+- Acelecilik/sabırsızlık gösterme
+- Dikkat dağınıklığı
+- Rutin ve gereksiz işler, gereksiz ayrıntılarla uğraşma
+- Gereksiz telefonlar
+- Kararsızlık
+- Dağınık masa ve büro düzeni
+- Gereksiz ayrıntılarla uğraşmak 
+- Düzensizlik
+- Geciktirme
+- Beklemeler
+- Aksaklıklar
 
 
 ## GÜNLÜK AKTİVİTE KAYITLARI
