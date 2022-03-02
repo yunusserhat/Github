@@ -23,18 +23,18 @@ Bilişim sistemleri bilgiler içerir. Bilgiden kastımız, insanlar için anlaml
 Bilginin ve verinin birbirine karışmaması için hemen bir örnek verelim; 
 
 Veri: 
-331 Ariel 15.99
-863 Omo 16.99
-173 Rinso 14.99
-524 Boron 13.99
+- 331 Ariel 15.99
+- 863 Omo 16.99
+- 173 Rinso 14.99
+- 524 Boron 13.99
 
 Bilgi:
-Satış Bölgesi: İstanbul 
-Mağaza: Anadolu Hisarı Şubesi 
-Barkod No: 331 
-Tanım: Ariel Deterjan
-Satış Adedi: 7.156
-Bugüne Kadar Olan Toplam: 114.424,44
+- Satış Bölgesi: İstanbul 
+- Mağaza: Anadolu Hisarı Şubesi 
+- Barkod No: 331 
+- Tanım: Ariel Deterjan
+- Satış Adedi: 7.156
+- Bugüne Kadar Olan Toplam: 114.424,44
 
 
 
@@ -43,14 +43,24 @@ Bugüne Kadar Olan Toplam: 114.424,44
 ## Bilişim Sistemleri Fonksiyonları 
 
 Bilişim sistemlerinin üç ana fonksiyonu vardır. 
-Girdi 
-İşlem
-Çıktı
-Girdi fonksiyonunda, organizasyon içi veya dışından ham veriler toplanır veya alınır. 
-İşlem fonksiyonunda, ham veriler anlamlı hale dönüştürülür. 
-Çıktı fonksiyonunda da, elde edilen bilgiler kullanılacak kişiye veya aktiviteye aktarılır. 
+
+- Girdi 
+- İşlem
+- Çıktı
+
 Bunların yanı sıra bilişim sistemleri geri bildirime ihtiyaç duymaktadır. Bu geri bildirimler de çıktı aşamasından sonra girdi fonksiyonu aşamasının iyileştirilmesinde kullanılır. 
 
+### Girdi 
+
+Bu fonksiyonda, organizasyon içi veya dışından ham veriler toplanır veya alınır. 
+
+### İşlem
+
+Bu fonksiyonda, ham veriler anlamlı hale dönüştürülür. 
+
+### Çıktı 
+
+Bu fonksiyonda da, elde edilen bilgiler kullanılacak kişiye veya aktiviteye aktarılır. 
 
 ## Bilişim Sistemlerinin Boyutları
 
@@ -87,12 +97,12 @@ BT altyapısı, firmanın belirli bilişim sistemlerini üzerine inşa edebilece
 
 ## Bilişim Sistemleri ile ilgili alanlar
 
--Bilgisayar bilimi
--Operasyon Araştırması
--Yönetim Bilimi
--Sosyoloji
--Psikoloji
--Ekonomi
+- Bilgisayar bilimi
+- Operasyon Araştırması
+- Yönetim Bilimi
+- Sosyoloji
+- Psikoloji
+- Ekonomi
 
 ## YBS’de Yenilikler
 

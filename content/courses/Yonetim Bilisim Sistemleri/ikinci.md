@@ -25,10 +25,10 @@ Bir şirketin iş süreçleri, şirketin inovasyon yapmasını veya yaptığı i
 
 İşlevsel Alan 
 
--Üretim
--Satış ve Pazarlama
--Finans ve Muhasebe
--İnsan Kaynakları
+- Üretim
+- Satış ve Pazarlama
+- Finans ve Muhasebe
+- İnsan Kaynakları
 
 İş Süreçleri 
 
@@ -131,11 +131,11 @@ Programcılar ve yazılımcılar, bilgisayarlar için yazılım talimatlarını 
 
 Büyük kurumsal firmaların belli başlı teknolojiden sorumlu yöneticileri vardır. Bunlar;
 
--CIO – Chief Information Officer (Bilişim Müdürü)
--CSO – Chief Security Officer (Güvenlik Sorumlusu)
--CPO – Chief Privacy Officer (Gizlilik Sorumlusu)
--CKO – Chief Knowledge Officer (Araştırma Sorumlusu)
--CDO – Chief Data Officer (Veri Sorumlusu)
+- CIO–-Chief Information Officer (Bilişim Müdürü)
+- CSO–-Chief Security Officer (Güvenlik Sorumlusu)
+- CPO–-Chief Privacy Officer (Gizlilik Sorumlusu)
+- CKO–-Chief Knowledge Officer (Araştırma Sorumlusu)
+- CDO–-Chief Data Officer (Veri Sorumlusu)
 
 
 
