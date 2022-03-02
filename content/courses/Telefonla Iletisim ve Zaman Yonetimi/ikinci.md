@@ -7,9 +7,9 @@ weight: 40
 
 ## HEDEFLER NEDİR?
 
--Etkili zaman yönetimi yapmanın başlangıç noktasıdır. 
--Konsantrasyon sağlamamız için pusuladır. 
--Günlük, haftalık, aylık ve yıllık olarak sizin için neyin önemli olduğunu belirlemektir. 
+- Etkili zaman yönetimi yapmanın başlangıç noktasıdır. 
+- Konsantrasyon sağlamamız için pusuladır. 
+- Günlük, haftalık, aylık ve yıllık olarak sizin için neyin önemli olduğunu belirlemektir. 
 
 
 ## HEDEF BELİRLEMEK NE DEMEKTİR?
@@ -80,28 +80,28 @@ Bir haftanın tamamı için etkinlik kaydı oluşturun. Bu kayıtların sizin ge
 
 Mesela; 
 
-Saat 		Aktivite		          Ayrılan Zaman 			Öncelik 
-07:00		Kahvaltı			          20				          A
-07:20		Evde Oyalanma	        	40				          D
-08:00		İşe Gidiş			          45				          A
-08:45 	E-Mail Kontrolü		      15				          B
-09:00		Telefon Görüşmesi	      10				          C
-09:10 	İnternet Gezinmeleri	  30				          D
+- Saat 		Aktivite		          Ayrılan Zaman 			Öncelik 
+- 07:00		Kahvaltı			          20				          A
+- 07:20		Evde Oyalanma	        	40				          D
+- 08:00		İşe Gidiş			          45				          A
+- 08:45 	E-Mail Kontrolü		      15				          B
+- 09:00		Telefon Görüşmesi	      10				          C
+- 09:10 	İnternet Gezinmeleri	  30				          D
 
 ## AKTİVİTE KAYITLARI
 
 İyi bir aktivite kaydı; 
 
--Her bir aktivitenizi göstermelidir. 
--En ufak (kahve molası, masa toplama) aktiviteleri bile içermelidir. 
--Evrak işleri, internet, telefon, toplantılar, seyahat gibi etkinlikleri kategorik olarak etiketlenmelidir. 
+- Her bir aktivitenizi göstermelidir. 
+- En ufak (kahve molası, masa toplama) aktiviteleri bile içermelidir. 
+- Evrak işleri, internet, telefon, toplantılar, seyahat gibi etkinlikleri kategorik olarak etiketlenmelidir. 
 
 ## ZAMAN KULLANIMINIZI ANALİZ EDİN
 
 Aktivite kayıtlarınızı analiz edin ve şu soruları sorun; 
 
--Hangi tür aktiviteler zamanın çoğunu alıyor? 
--Hangi tür aktiviteler ne zaman ve nerede kümeleniyor? 
+- Hangi tür aktiviteler zamanın çoğunu alıyor? 
+- Hangi tür aktiviteler ne zaman ve nerede kümeleniyor? 
 
 Bu sorulardan sonra zamanınızı hedeflerinize yönelik kullanıp kullanmadığınızı sorgulayın. 
 
@@ -115,29 +115,29 @@ Bir işi daha sonra yapma alışkanlığıdır.
 
 İnsanlar çeşitli nedenlerden dolayı erteleme yapar. Bunlar; 
 
--Hoşunuza gitmeyen veya ilgi çekici olmayan
--Görevi iyi yapamayacağından korkan
--Nereden başlayacağını bilmediklerindendir. 
+- Hoşunuza gitmeyen veya ilgi çekici olmayan
+- Görevi iyi yapamayacağından korkan
+- Nereden başlayacağını bilmediklerindendir. 
 
 Fakat bunların hepsinin bir panzehiri vardır. 
 
 Hoşunuza gitmeyen veya ilgi çekici olmayan işleri ertelemeyi önlemek için; 
 
--Hoşuna giden birisine işi devretmek
--Kendinize sürekli işi bitirebileceğinizi söyleyin
--Görevi tamamladıktan sonra ne kadar iyi hissedeceğinizi düşünün
--Erteleme yapamayacağınız şekilde kendinizi ve takviminizi ayarlayın
+- Hoşuna giden birisine işi devretmek
+- Kendinize sürekli işi bitirebileceğinizi söyleyin
+- Görevi tamamladıktan sonra ne kadar iyi hissedeceğinizi düşünün
+- Erteleme yapamayacağınız şekilde kendinizi ve takviminizi ayarlayın
 
 Görevi iyi yapamayacağından korkmaktan kaynaklanan ertelemeyi önlemek için; 
 
--Görevi tamamlamak için yeterli eğitime ve kaynaklara sahip olmayabilirsiniz. Bunları edinin. 
--Korku kendinize güven eksikliğinden kaynaklanıyorsa, proaktif olun ve işi tamamlamak için planlamayı detaylandırın.
--Göreve devam edin. Faaliyette bulunmak korkuyu gidermeye yardımcı olabilir. 
+- Görevi tamamlamak için yeterli eğitime ve kaynaklara sahip olmayabilirsiniz. Bunları edinin. 
+- Korku kendinize güven eksikliğinden kaynaklanıyorsa, proaktif olun ve işi tamamlamak için planlamayı detaylandırın.
+- Göreve devam edin. Faaliyette bulunmak korkuyu gidermeye yardımcı olabilir. 
 
 Nereden başlayacağını bilmediğinden ötürü ertelemeyi önlemek için; 
 
--Görevin herhangi bir yerinden başla. Muhtemelen ileride bir yolu bulunacaktır. 
--Görevi veya işi bileşenlere böl ve sonra her bir parçayı tamamlamak için görevleri belirt. Daha sonra bu görevleri sıraya koyup ilk görevi yerine getir. 
+- Görevin herhangi bir yerinden başla. Muhtemelen ileride bir yolu bulunacaktır. 
+- Görevi veya işi bileşenlere böl ve sonra her bir parçayı tamamlamak için görevleri belirt. Daha sonra bu görevleri sıraya koyup ilk görevi yerine getir. 
 
 
 
@@ -145,10 +145,10 @@ Nereden başlayacağını bilmediğinden ötürü ertelemeyi önlemek için;
 
 Üstelenebileceğinizden ve kaldırabileceğinizden daha fazla sorumluluk üstlenmek kendinize aşırı yüklenme anlamına gelir. 
 
--Temel sorumluluklarınız ve hedeflerinizi bilin. Bu hedefleri desteklemeyen faaliyetlerde bulunmaktan kaçının 
--Görevi devredebilirsiniz. Her görevi devralmak yerine o görevleri yerine getirmekten sorumlu olan kişilere işleri devredebilirsiniz.
--Her işin yapılması gerektiğini varsaymayın. Gerçekten çok önemli görevlere enerjinizi yoğunlaştırın. 
--İş arkadaşlarınıza, patronunuza veya görevle ilgili kişilere hayır demeyi öğrenin. Sizin için kritik sorumlulukları açıklayın ve ilgisiz bir görevin ana hedefinizi nasıl tehlikeye atacağını onlara gösterin ve makul bir alternatif sunun. 
+- Temel sorumluluklarınız ve hedeflerinizi bilin. Bu hedefleri desteklemeyen faaliyetlerde bulunmaktan kaçının 
+- Görevi devredebilirsiniz. Her görevi devralmak yerine o görevleri yerine getirmekten sorumlu olan kişilere işleri devredebilirsiniz.
+- Her işin yapılması gerektiğini varsaymayın. Gerçekten çok önemli görevlere enerjinizi yoğunlaştırın. 
+- İş arkadaşlarınıza, patronunuza veya görevle ilgili kişilere hayır demeyi öğrenin. Sizin için kritik sorumlulukları açıklayın ve ilgisiz bir görevin ana hedefinizi nasıl tehlikeye atacağını onlara gösterin ve makul bir alternatif sunun. 
 
 
 
@@ -156,17 +156,17 @@ Nereden başlayacağını bilmediğinden ötürü ertelemeyi önlemek için;
 
 Email ile zaman kaybetmemek için;  
 
--Emailleri yalnızca gün içinde kendi atadığınız belli zamanlarda kontrol edin. 
--İşle ilgili olmayan insanlara iş emailinizi değil kişisel emailinizi kullanmasını isteyin.
--Mailleri öncelik sırasına koyun. Acil ve Sonra gibi etiketler ile öncelik durumuna göre mailler ile uğraşın.
--İnsanlara spesifik konu başlıkları yazmasını isteyin. Böyle olduğunda hangi maili ne zaman halledeceğinizi çok rahat etiketleyebilirsiniz. 
--İnsanlara hangi durumlarda mail ile bilgi alıp hangi durumlarda bilgi almak istemediğinizi belirtin.
+- Emailleri yalnızca gün içinde kendi atadığınız belli zamanlarda kontrol edin. 
+- İşle ilgili olmayan insanlara iş emailinizi değil kişisel emailinizi kullanmasını isteyin.
+- Mailleri öncelik sırasına koyun. Acil ve Sonra gibi etiketler ile öncelik durumuna göre mailler ile uğraşın.
+- İnsanlara spesifik konu başlıkları yazmasını isteyin. Böyle olduğunda hangi maili ne zaman halledeceğinizi çok rahat etiketleyebilirsiniz. 
+- İnsanlara hangi durumlarda mail ile bilgi alıp hangi durumlarda bilgi almak istemediğinizi belirtin.
 
 Evrak işleriyle zaman kaybetmemek için;
 
--Eğer bir evrak sizden cevap beklemiyorsa onu atlayın ve iyi bir şekilde dosyalayın. 
--Eğer evrak sizden cevap bekliyorsa, çabucak yanıt verin bunu hemen yapın. Ardından iyi bir şekilde dosyalayın. 
--Eğer cevap veremeyecek kadar meşgul iseniz mümkünse cevap verebilecek birisine devretmeli veya hemen sonra yapılacak işler için oluşturacağınız dosyaya koyabilirsiniz. 
+- Eğer bir evrak sizden cevap beklemiyorsa onu atlayın ve iyi bir şekilde dosyalayın. 
+- Eğer evrak sizden cevap bekliyorsa, çabucak yanıt verin bunu hemen yapın. Ardından iyi bir şekilde dosyalayın. 
+- Eğer cevap veremeyecek kadar meşgul iseniz mümkünse cevap verebilecek birisine devretmeli veya hemen sonra yapılacak işler için oluşturacağınız dosyaya koyabilirsiniz. 
 
 
 
@@ -174,10 +174,10 @@ Evrak işleriyle zaman kaybetmemek için;
 
 Toplantılarda boşa harcanan zamanı azaltmak için; 
 
--Gereksiz görülebilecek toplantıları eleyin veya devre dışı bırakın. 
--Size veya işinize katkısı çok az olan toplantılardan kaçının.
--Bir toplantıya başlamadan önce toplantının gündemini muhakkak isteyin. Böylece o toplantıya katılmayı isteyip istemediğinizi belirleyebilirsiniz. 
--Bir toplantı düzenliyorsanız; belirli gündem takip ettiğinizden ve zaman bağlı kaldığınızdan emin olun. Toplantıya katılanların amaçlarına ulaştıklarından emin olun. 
+- Gereksiz görülebilecek toplantıları eleyin veya devre dışı bırakın. 
+- Size veya işinize katkısı çok az olan toplantılardan kaçının.
+- Bir toplantıya başlamadan önce toplantının gündemini muhakkak isteyin. Böylece o toplantıya katılmayı isteyip istemediğinizi belirleyebilirsiniz. 
+- Bir toplantı düzenliyorsanız; belirli gündem takip ettiğinizden ve zaman bağlı kaldığınızdan emin olun. Toplantıya katılanların amaçlarına ulaştıklarından emin olun. 
 
 
 ## DİKKAT DAĞINIKLIĞI 
@@ -186,10 +186,10 @@ Toplantılarda boşa harcanan zamanı azaltmak için;
 
 Önemli bir konuda çalışırken dikkat dağınıklığını önlemek için; 
 
--İnternet erişimi gerekmeyen iş yaptığınızda interneti tamamen kapatın. Hatta mümkünse sesli mesajları telefon görüşmelerine tercih edin. 
--Masanızdaki gereksiz malzemeleri, gazeteleri, dergileri vb. temizleyin. 
--Ofis kapınız varsa kapatın ve üzerine rahatsız etmeyin ibaresi koyun. 
--Bir iş bitene kadar sadece tek bir işe konsantre olun. İş bitirdikten sonra bir sonraki adıma geçin. 
+- İnternet erişimi gerekmeyen iş yaptığınızda interneti tamamen kapatın. Hatta mümkünse sesli mesajları telefon görüşmelerine tercih edin. 
+- Masanızdaki gereksiz malzemeleri, gazeteleri, dergileri vb. temizleyin. 
+- Ofis kapınız varsa kapatın ve üzerine rahatsız etmeyin ibaresi koyun. 
+- Bir iş bitene kadar sadece tek bir işe konsantre olun. İş bitirdikten sonra bir sonraki adıma geçin. 
 
 
 
@@ -199,10 +199,10 @@ Kendinize program oluşturmak zamanı sistematik kullanmanın en iyi yoludur. Pl
 
 Program oluşturmanın farklı araçları vardır. Bunlar; 
 
--Yapılacaklar Listesi
--Takvimler
--Günlük veya haftalık planlayıcılar 
--Yazılımlar
+- Yapılacaklar Listesi
+- Takvimler
+- Günlük veya haftalık planlayıcılar 
+- Yazılımlar
 
 Şirketiniz size bu tarz araçları sağlayabilir. Size en uygun çalışabileceğiniz aracı bulmak önemlidir. 
 
@@ -212,13 +212,13 @@ Program oluşturmanın farklı araçları vardır. Bunlar;
 
 Programınızı geliştirmek için bazı yönergeler işe yarar olabilir. Bunlar; 
 
--A öncelikli görevleri önce girin. Daha sonra arta kalan zamanlarda B görevlerini koyun. 
--Günün en dikkatli ve enerjik olma eğiliminde olduğunuz saatlerinde buna uygun aktiviteleri planlayın. Rutin yapılacak görevlerinizi enerjinizin düşme eğiliminde olduğu zamanlara koymanız sizin yararınıza olacaktır. 
--Bazı zaman dilimlerini beklenmedik işler ve fırsatlar için bloke etmeniz yapacağınız programda işinizi kolaylaştıracaktır.
--Programınıza ardı ardına toplantı koymaktan kaçının. Her toplantı sonrası elde ettiğiniz bilgileri işlemek ve yönetimsel aksiyon almak için zaman ihtiyacınız olacaktır. 
--Mümkün olabildiğince email, evrak işleri ve telefon gibi aktiviteleri konsolide edin. Mesela; saat 09:00-09:30 ile 16:30-17:00 arasını bu görevlere ayırın. Bu gibi benzer görevleri bir araya getirmek toplam zamanda harcayacağınız zamanı kısaltacaktır. 
--Günler geçtikçe, tamamlayamadığınız öncelikli görevleri programda ilerleyen dönemde yer alan açık saatlere taşıyın ve gerekirse daha düşük öncelikli görevleri elimine edin. 
--Programınızı bilgisayarınızın monitöründe veya masanızda düz bir şekilde görmenizi sağlayacak yere yerleştirin. 
+- A öncelikli görevleri önce girin. Daha sonra arta kalan zamanlarda B görevlerini koyun. 
+- Günün en dikkatli ve enerjik olma eğiliminde olduğunuz saatlerinde buna uygun aktiviteleri planlayın. Rutin yapılacak görevlerinizi enerjinizin düşme eğiliminde olduğu zamanlara koymanız sizin yararınıza olacaktır. 
+- Bazı zaman dilimlerini beklenmedik işler ve fırsatlar için bloke etmeniz yapacağınız programda işinizi kolaylaştıracaktır.
+- Programınıza ardı ardına toplantı koymaktan kaçının. Her toplantı sonrası elde ettiğiniz bilgileri işlemek ve yönetimsel aksiyon almak için zaman ihtiyacınız olacaktır. 
+- Mümkün olabildiğince email, evrak işleri ve telefon gibi aktiviteleri konsolide edin. Mesela; saat 09:00-09:30 ile 16:30-17:00 arasını bu görevlere ayırın. Bu gibi benzer görevleri bir araya getirmek toplam zamanda harcayacağınız zamanı kısaltacaktır. 
+- Günler geçtikçe, tamamlayamadığınız öncelikli görevleri programda ilerleyen dönemde yer alan açık saatlere taşıyın ve gerekirse daha düşük öncelikli görevleri elimine edin. 
+- Programınızı bilgisayarınızın monitöründe veya masanızda düz bir şekilde görmenizi sağlayacak yere yerleştirin. 
 
 {{< youtube _1EabmR1F4I >}}
 

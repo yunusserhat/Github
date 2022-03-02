@@ -18,13 +18,13 @@ Kurumsal bir şirkette yönetici asistanı pozisyonunda çalışan Zeynep, masas
 
 ## NE YAPABİLİRDİNİZ?
 
--Örgütsel Hedeflerin Gözden Geçirilmesi 
--Öncelikli Hedeflerin Belirlenmesi 
--Nerede Zaman Harcanması veya Harcanmamasının Belirlenmesi
--Belirlenen Hedeflerin Yönetilebilir Hedefler Haline Dönüştürmek 
--Belirlenen Hedeflerin Adımlarını Listelemek
--Her Göreve ve Aktiviteye Zaman Tahmini Yapılmalı
--Zaman Kaybettiren Aktivitelerin Önlemeye Çalışılmalı
+- Örgütsel Hedeflerin Gözden Geçirilmesi 
+- Öncelikli Hedeflerin Belirlenmesi 
+- Nerede Zaman Harcanması veya Harcanmamasının Belirlenmesi
+- Belirlenen Hedeflerin Yönetilebilir Hedefler Haline Dönüştürmek 
+- Belirlenen Hedeflerin Adımlarını Listelemek
+- Her Göreve ve Aktiviteye Zaman Tahmini Yapılmalı
+- Zaman Kaybettiren Aktivitelerin Önlemeye Çalışılmalı
 
 
 
@@ -40,15 +40,15 @@ Zamanı istediğiniz sonuçlara ulaşmanızı sağlayacak şekilde organize ve k
 
 ## ZAMAN YÖNETİMİ SİZE NELER KAZANDIRABİLİR?
 
--Zamanınızı nasıl harcadığınızı analiz etmeye ve iyileştirme fırsatlarını oluşturmaya 
--Uzun vadeli koyduğunuz hedeflere ulaşmada kritik yapı taşlarını belirlemede ve onları tanımlamada 
--Zamanlama araçlarını kullanmak suretiyle zamanı verimli bir şekilde planlamaya 
--Boş vakitlerinizi kontrol etmeye
--Tüm bunlar için program oluşturmanızı kazandırabilir. 
--Çalıştığınız şirketin hedeflerini destekleyen faaliyetlere enerjinizi ayırırsınız
--Kullandığınız zaman içerisinde yanlış çalışmaktan kaynaklı olabilecek stres ve hatta tükenmişliklerden kaçınırsınız. 
--Zaman yönetimini iyi yaptığınız takdirde meslektaşlarınıza ve iş arkadaşlarınıza örnek olabilirsiniz 
--İş performansınızı arttırabilirsiniz
+- Zamanınızı nasıl harcadığınızı analiz etmeye ve iyileştirme fırsatlarını oluşturmaya 
+- Uzun vadeli koyduğunuz hedeflere ulaşmada kritik yapı taşlarını belirlemede ve onları tanımlamada 
+- Zamanlama araçlarını kullanmak suretiyle zamanı verimli bir şekilde planlamaya 
+- Boş vakitlerinizi kontrol etmeye
+- Tüm bunlar için program oluşturmanızı kazandırabilir. 
+- Çalıştığınız şirketin hedeflerini destekleyen faaliyetlere enerjinizi ayırırsınız
+- Kullandığınız zaman içerisinde yanlış çalışmaktan kaynaklı olabilecek stres ve hatta tükenmişliklerden kaçınırsınız. 
+- Zaman yönetimini iyi yaptığınız takdirde meslektaşlarınıza ve iş arkadaşlarınıza örnek olabilirsiniz 
+- İş performansınızı arttırabilirsiniz
 
 
 
