@@ -57,7 +57,7 @@ superuser: true
 highlight_name: true
 ---
 
-I'm a data analyst passionate about Data Science 📊. I am a Strong Advocate for 📜 open source. I am using my skills to solve challenging real-world problems by using machine learning, data mining, and other types of data analytics and data visualization tools such as R, Python, etc.
+I am a researcher passionate about Data Science 📊. I am a Strong Advocate for 📜 open source. I am using my skills to solve challenging real-world problems by using machine learning, data mining, and other types of data analytics and data visualization tools such as R, Python, etc.
 
 Currently, I am working as a lecturer at Marmara University in Istanbul, Turkey. My research interests include big data, data mining, criminology and information systems (e.g., GIS).
 
