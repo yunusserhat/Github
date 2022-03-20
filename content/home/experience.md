@@ -37,8 +37,8 @@ experience:
     company_logo: miuul
     location: Uppsala, Uppsala County, Sweden
     date_start: '2022-03-08'
-    date_end: '2022-06-12'
-    description: PyCharm,  Virtual Environment , CRM Analytics (KPI,  Cohort,  CLTV,  Segmentation) , BG-NBD: Expected Sales Forecasting , Gamma-Gamma:Expected Average Profit , RFM Analysis , Recommendation Systems (ARL,  Collaborative Fil.,  MF) , Measurement Problems (AB Testing,  Sorting) , Rating Product & Sorting Reviews in Amazon Project , Advanced Feature Engineering , Machine Learning , Regression & Classification , Diabetes Classification Project , Demand Forecasting , Time Series Problems , NLP , MS SQL , Big Data , Production Level Data Science. 
+    date_end: ''
+    description: 
 
   - title: Research Assistant
     company: Vocational School of Social Sciences, Marmara University
