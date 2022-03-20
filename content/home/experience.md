@@ -22,13 +22,31 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
+  - title: Lecturer
+    company: Vocational School of Social Sciences, Marmara University
+    company_url: 'https://sbmyo.marmara.edu.tr'
+    company_logo: marmara
+    location: Istanbul, Turkey
+    date_start: '2021-07-01'
+    date_end: ''
+    description: Create lesson plans that cover the foundations of technology, guide students through activities that allow them to apply technological solutions to prepare work life, hold office hours for students to answer questions and provide support.
+    
+  - title: Data Science and Machine Learning Bootcamp Participant
+    company: MIUUL
+    company_url: 'https://www.miuul.com/'
+    company_logo: miuul
+    location: Uppsala, Uppsala County, Sweden
+    date_start: '2022-03-08'
+    date_end: '2022-06-12'
+    description: PyCharm,  Virtual Environment , CRM Analytics (KPI,  Cohort,  CLTV,  Segmentation) , BG-NBD: Expected Sales Forecasting , Gamma-Gamma:Expected Average Profit , RFM Analysis , Recommendation Systems (ARL,  Collaborative Fil.,  MF) , Measurement Problems (AB Testing,  Sorting) , Rating Product & Sorting Reviews in Amazon Project , Advanced Feature Engineering , Machine Learning , Regression & Classification , Diabetes Classification Project , Demand Forecasting , Time Series Problems , NLP , MS SQL , Big Data , Production Level Data Science. 
+
   - title: Research Assistant
     company: Vocational School of Social Sciences, Marmara University
     company_url: 'https://sbmyo.marmara.edu.tr'
     company_logo: marmara
     location: Istanbul, Turkey
     date_start: '2013-04-01'
-    date_end: ''
+    date_end: '2021-07-01'
     description: Responsible for research related to my research interests, also leading group lessons, grading coursework, setting up student projects and aiding in the supervision of the students.
         
   - title: Clerk
