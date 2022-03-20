@@ -19,6 +19,12 @@ feature:
 - icon: problemsolving 
   icon_pack: custom
   name: Problem Solving
+- icon: research 
+  icon_pack: custom
+  name: Research
+- icon: ai 
+  icon_pack: custom
+  name: Artificial Intelligence
 - icon: r-project
   icon_pack: fab
   name: R
