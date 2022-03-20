@@ -1,6 +1,6 @@
 ---
 title: Yunus Serhat BICAKCI
-role: Lecturer
+role: Lecturer | Data Science Researcher | Data Analyst
 avatar_filename: avatar.jpg
 bio: My research interest includes big data, data mining, information systems, criminology. 
 interests:
