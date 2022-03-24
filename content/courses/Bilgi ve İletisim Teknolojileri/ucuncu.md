@@ -1,6 +1,6 @@
 ---
 title: 3. Bölüm - Sosyal ağlar ve sosyal medya
-date: '2021-03-24'
+date: '2022-03-24'
 type: book
 weight: 50
 ---

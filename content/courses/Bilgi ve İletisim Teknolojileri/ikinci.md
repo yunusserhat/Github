@@ -1,6 +1,6 @@
 ---
 title: 2. Bölüm - İnternet teknolojileri
-date: '2021-01-01'
+date: '2022-01-01'
 type: book
 weight: 40
 ---
