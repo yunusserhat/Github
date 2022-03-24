@@ -1,5 +1,5 @@
 ---
-date: "2021-10-4"
+date: "2021-01-24"
 linkTitle: Bilgi ve İletişim Teknolojileri
 summary: Bilgi ve İletişim Teknolojileri ders içeriği
 title: "\U0001F5DF Bilgi ve İletişim Teknolojileri (in Turkish)"
