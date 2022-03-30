@@ -2,7 +2,7 @@
 title: 3. Bölüm - Bilişim Sistemleri, Organizasyonlar ve Strateji
 date: '2022-01-01'
 type: book
-weight: 40
+weight: 50
 ---
 
 Bilişim sistemleri, şirketin veya işletmenin çıkarına hizmet için yöneticiler tarafından oluşturulmaktadır. Bu sistemlerin yeni teknolojilerden yararlanabilmesi için buna açık olması gerekmektedir.  Fakat bazen yeni bilgi teknolojisi (BT) yatırımları nedeniyle ticari firmalarda meydana gelen değişikliklerin bir kısmı öngörülemez ve beklentilerinizi karşılayabilecek veya karşılamayabilecek sonuçlar doğurabilir. 
