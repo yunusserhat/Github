@@ -20,7 +20,6 @@ Bir kayıt bir öğeyi (Entity) tanımlar. Bir öğe ise bir kişi, alan veya bi
 {{< figure src="images/veri_1.jpg" caption="Veri Hiyerarşisi" >}}
 
 
-
 ## Geleneksel Dosya Ortamında Problemler
 
 Birçok organizasyonda veri dosyaları ve sistem; şirket planında olmaksızın bağımsızca büyüme eğilimindedir. Muhasebe, finans, üretim, insan kaynakları, satış ve pazarlama hepsi kendi veri dosyalarını geliştirmektedirler. Geleneksel bilgi işleme yaklaşımı gösterilmiştir.
@@ -122,5 +121,4 @@ Amazon ve diğer bulut bilişim satıcılarının sağladığı hizmetler arası
 Dağıtılmış bir veritabanı, birden çok fiziksel konumda depolanan bir veritabanıdır. Veritabanının parçaları veya kopyaları fiziksel olarak bir yerde saklanır ve diğer kısımlar veya kopyalar başka yerlerde saklanır. Spanner, verileri tüm konumlarında tam olarak senkronize etmek ve verilerin her zaman tutarlı olmasını sağlamak için özel zaman tutma araçlarıyla dünyanın dört bir yanındaki yüzlerce veri merkezindeki milyonlarca makinede bilgi depolamayı mümkün kılar. Google, Google Fotoğraflar, AdWords (Google'ın çevrimiçi reklam sistemi) ve Gmail dahil olmak üzere çeşitli bulut hizmetlerini desteklemek için Spanner'ı kullanıyor ve şu anda bu teknolojiyi küresel bir işletmeyi yürütmek için bu tür yeteneklere ihtiyaç duyabilecek diğer şirketlerin kullanımına sunuyor.
 
 
-{{< youtube 8T3Y1F7d5DU >}}
 
