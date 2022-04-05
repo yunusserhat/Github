@@ -1,5 +1,5 @@
 ---
-title: 6. Bölüm - İşletme Zekasının Temelleri: Veritabanı ve Bilgi Yönetimi 
+title: 6. Bölüm - İşletme Zekasının Temelleri - Veritabanı ve Bilgi Yönetimi 
 date: '2022-01-01'
 type: book
 weight: 80
