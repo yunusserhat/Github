@@ -17,7 +17,7 @@ Bir bilgisayar sistemi verileri bit, bayt, alan, kayıt, dosya ve veri tabanı h
 
 Bir kayıt bir öğeyi (Entity) tanımlar. Bir öğe ise bir kişi, alan veya bilgiye çevrilip saklanabilecek bir olay olabilir. Her bir karakteristik veya belirli bir öğeyi tanımlayan duruma özellik (Attribute) denir. Bu özelliklerin alabileceği belirli değerler öğenin alanlarında görülmektedir.
 
-{{< figure src="images/veri_1.jpg" caption="Veri Hiyerarşisi" >}}
+{{< figure src="images/veri_bir.jpg" caption="Veri Hiyerarşisi" >}}
 
 
 ## Geleneksel Dosya Ortamında Problemler
@@ -81,7 +81,7 @@ Bir veri tabanı yönetim sistemi, tekrar eden aynı değerleri bulunduran dosya
 Bir sonraki sunuda ilişkisel bir veri tabanına örnek verilmiştir. Veri tabanı TEDARİKÇİLER ve PARÇA adlı iki tablodan oluşmaktadır. Her bir tablo satır ve sütun gibi iki boyutta sahiptir. Her bir öğe için veri elemanları farklı alanlarda yer alır. Her bir alan bir öğe için bir özelliğe sahiptir. İlişkisel bir veri tabanındaki alanlar Sütun olarak da adlandırılır. TEDARİKÇİLER öğesi için tedarikçi no, tedarikçi adı, tedarikçi adresi, tedarikçi şehri, tedarikçi ülke ve posta kodu TEDARİKÇİLER tablosunda ayrı birer alanda yer alır. Her bir alan TEDARİKÇİLER öğesinin bir özelliğini gösterir. Her bir ayrı tedarikçiyi gösteren satırlarda yer alır ve Kayıt olarak adlandırılır.
 Bir kaydı çağırmak, güncellemek ve sıralamak için kullanılan alana Anahtar Alan denir. Her bir tablo, bir Birincil Anahtar (Primary Key) olarak adlandırılan bir alana sahiptir. Bu birincil anahtar özgün (unique) olmalı ve tekrarlanan olmamalıdır. TEDARİKÇİLER tablosu için bu alan Tedarikçi No’sudur. PARÇA tablosu için Birincil Anahtar; Parça Numarasıdır. Bir tabloda Birincil Anahtar olan alan bir diğer tabloda da yer alıyorsa o tablodaki adı Yabancı Anahtar (foreign key) olur. PARÇA tablosundaki Tedarikçi No alanı TEDARİKÇİ tablosunun birincil anahtarı olduğundan bu tablodaki adı Yabancı Anahtardır.
 
-{{< figure src="images/veri_2.jpg" caption="İlişkisel Veri Tabanı" >}}
+{{< figure src="images/veri_iki.jpg" caption="İlişkisel Veri Tabanı" >}}
 
 ## Nesneye Yönelik Veri Tabanı Yönetim Sistemi (NYVTYS)
 
