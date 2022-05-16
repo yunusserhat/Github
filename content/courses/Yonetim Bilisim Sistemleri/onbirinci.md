@@ -1,5 +1,5 @@
 ---
-title: 11. Bölüm - E-Ticaret: Dijital Pazarlar, Dijital Ürünler
+title: 11. Bölüm - E-Ticaret Dijital Pazarlar, Dijital Ürünler
 date: '2022-01-01'
 type: book
 weight: 120
