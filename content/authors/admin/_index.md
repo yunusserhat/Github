@@ -63,4 +63,4 @@ I am a researcher passionate about Data Science 📊. I am a Strong Advocate for
 Currently, I am working as a lecturer at Marmara University in Istanbul, Turkey. My research interests include big data, data mining, football, criminology and information systems (e.g., GIS).
 
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}CV{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunus_serhat_bicakci_phd_resume.pdf" "newtab" >}}CV{{< /staticref >}}.
