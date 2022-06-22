@@ -2,10 +2,10 @@
 title: Yunus Serhat BICAKCI
 role: Lecturer | Data Science Researcher | Data Analyst
 avatar_filename: avatar.jpg
-bio: My research interest includes big data, data mining, information systems, football, criminology. 
+bio: My research interest includes big data, data science, information systems, football, criminology. 
 interests:
   - Big Data
-  - Data Mining
+  - Data Science
   - Football
   - Information Systems
   - Criminology
@@ -60,7 +60,7 @@ highlight_name: true
 
 I am a researcher passionate about Data Science 📊. I am a Strong Advocate for 📜 open source. I am using my skills to solve challenging real-world problems by using machine learning, data mining, and other types of data analytics and data visualization tools such as R, Python, etc.
 
-Currently, I am working as a lecturer at Marmara University in Istanbul, Turkey. My research interests include big data, data mining, football, criminology and information systems (e.g., GIS).
+Currently, I am working as a lecturer at Marmara University in Istanbul, Turkey. My research interests include big data, data science, football, criminology and information systems (e.g., GIS).
 
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunus_serhat_bicakci_phd_cv.pdf" "newtab" >}}CV{{< /staticref >}}.
