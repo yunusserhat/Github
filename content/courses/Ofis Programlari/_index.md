@@ -8,8 +8,6 @@ https://meobs.marmara.edu.tr/Ders/ofis-programlari/bsp2007-69548-3819
 
 {{< spoiler text="Click to view them in English" >}}
 
-https://meobs.marmara.edu.tr/Ders/ofis-programlari/bsp2007-69548-3819
-
 ## Objectives of the Course
 
 The purpose of the office programs course; The aim is to reach the basic level of knowledge that can overcome the problems with the applications that executive assistant candidates will use by using cloud technologies independent from the location for the solution of e-mail, word processor, spreadsheets, presentations and other office needs that they frequently encounter both in their business lives and their daily lives.
