@@ -4,10 +4,11 @@ linkTitle: Ofis
 summary: Ofis programlarının ders içeriği
 title: "\U0001F4CA Ofis Programları (in Turkish)"
 ---
+https://meobs.marmara.edu.tr/Ders/ofis-programlari/bsp2007-69548-3819
 
 {{< spoiler text="Click to view them in English" >}}
 
-https://meobs.marmara.edu.tr/Ders/B%C3%BCro%20Y%C3%B6netimi%20ve%20Y%C3%B6netici%20Asistanl%C4%B1%C4%9F%C4%B1/BSP2007-69548-3819
+https://meobs.marmara.edu.tr/Ders/ofis-programlari/bsp2007-69548-3819
 
 ## Objectives of the Course
 
