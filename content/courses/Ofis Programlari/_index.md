@@ -5,8 +5,69 @@ summary: Ofis programlarının ders içeriği
 title: "\U0001F4CA Ofis Programları (in Turkish)"
 ---
 
+{{< spoiler text="Click to view them in English" >}}
 
-## Dersin Amacı
+https://meobs.marmara.edu.tr/Ders/B%C3%BCro%20Y%C3%B6netimi%20ve%20Y%C3%B6netici%20Asistanl%C4%B1%C4%9F%C4%B1/BSP2007-69548-3819
+
+## Objectives of the Course
+
+The purpose of the office programs course; The aim is to reach the basic level of knowledge that can overcome the problems with the applications that executive assistant candidates will use by using cloud technologies independent from the location for the solution of e-mail, word processor, spreadsheets, presentations and other office needs that they frequently encounter both in their business lives and their daily lives.
+
+## Course Contents
+
+To be able to define the programs that can be used in the office and office environment, to benefit from cloud technologies for office programs, and to have a basic understanding of all office programs in the digital environment.
+
+## Planned Learning Activities and Teaching Methods
+
+Applications in the computer lab
+
+## Kaynaklar 
+
+https://workspace.google.com/intl/tr/
+
+https://www.microsoft.com/tr-tr/education/products/office
+
+Readings (website, articles, book chapters, and other readings) will be given weekly. 
+
+Weekly presentations and assignments. 
+
+Presentations made by students.
+
+
+## Weekly Detailed Course Contents
+
+1. Introduction to cloud technologies
+2. Cloud technologies for office programs
+3. Email management
+4. Calendar management
+5. Video and audio conference calls
+6. Creating user groups for the office
+7. Communication methods for user groups
+8. Midterm Exam
+9. Word processors
+10. Operations with word processors
+11. Spreadsheets
+12. Operations with spreadsheets
+13. Operations with spreadsheets
+14. Presentation creation tools and presentation creation
+15. Forms to create a survey
+16. Final Exam
+
+## Assessment
+
+Term (or Year) Learning Activities: %40
+
+End Of Term (or Year) Learning Activities: %60
+
+
+## Name of Lecturer
+
+{{< mention "admin" >}}
+
+{{< /spoiler >}}
+
+
+## Dersin Amacı 
 
 Ofis programları dersi ile, yönetici asistan adayları hem iş hayatlarında hem de günlük yaşantılarında sıkça karşılaştıkları elektronik posta, kelime işlemci, elektronik tablolar, sunular gerçekleştirme ve diğer ofis ihtiyaçlarının çözümü için mekandan bağımsız bulut teknolojilerinden yararlanarak kullanacakları uygulamalar ile sorunların üstesinden gelebilecek temel bilgi seviyesine ulaşılması dersin amacıdır. 
 
@@ -53,6 +114,7 @@ Haftalık gerçekleştirilen sunumlar ve ödevler.
 ## Değerlendirme
 
 Yarıyıl içi sınav ve etkinlikler: %40
+
 Yarıyıl sonu sınav ve ödev: %60
 
 
