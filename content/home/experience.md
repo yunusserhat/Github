@@ -27,7 +27,7 @@ experience:
     company_url: 'https://sbmyo.marmara.edu.tr'
     company_logo: marmara
     location: Istanbul, Turkey
-    date_start: August 2022
+    date_start: 01 Aug 2022
     date_end: ''
     description: Create lesson plans that cover the foundations of technology, guide students through activities that allow them to apply technological solutions to prepare work life, hold office hours for students to answer questions and provide support.
     
@@ -45,7 +45,7 @@ experience:
     company_url: 'https://www.miuul.com/'
     company_logo: miuul
     location: Uppsala, Uppsala County, Sweden
-    date_start: March 2022
+    date_start: Mar 2022
     date_end: June 2022
     description: 
 
@@ -54,8 +54,8 @@ experience:
     company_url: 'https://sbmyo.marmara.edu.tr'
     company_logo: marmara
     location: Istanbul, Turkey
-    date_start: April 2013
-    date_end: August 2022
+    date_start: Apr 2013
+    date_end: Aug 2022
     description: Responsible for research related to my research interests, also leading group lessons, grading coursework, setting up student projects and aiding in the supervision of the students.
         
   - title: Clerk
@@ -64,7 +64,7 @@ experience:
     company_logo: adalet
     location: Bursa, Turkey
     date_start: June 2011
-    date_end: April 2013
+    date_end: Apr 2013
     description: Under the supervision of the Prosecutor, performed general clerical functions in support of the Bursa Provincial Prosecutor’s Office. 
 
 design:
