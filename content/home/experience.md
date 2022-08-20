@@ -22,14 +22,23 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
-  - title: Lecturer
+  - title: Assistant Professor
     company: Vocational School of Social Sciences, Marmara University
     company_url: 'https://sbmyo.marmara.edu.tr'
     company_logo: marmara
     location: Istanbul, Turkey
-    date_start: '2021-07-01'
+    date_start: '2022-08-01'
     date_end: ''
     description: Create lesson plans that cover the foundations of technology, guide students through activities that allow them to apply technological solutions to prepare work life, hold office hours for students to answer questions and provide support.
+    
+    - title: Google Machine Learning Bootcamp Turkey 
+    company: Google
+    company_url: 'https://events.withgoogle.com/google-ml-bootcamp-tr/'
+    company_logo: google
+    location: Virtual
+    date_start: '2022-06-01'
+    date_end: ''
+    description: 
     
   - title: Data Science and Machine Learning Bootcamp Participant
     company: MIUUL
@@ -37,7 +46,7 @@ experience:
     company_logo: miuul
     location: Uppsala, Uppsala County, Sweden
     date_start: '2022-03-08'
-    date_end: ''
+    date_end: '2022-07-01'
     description: 
 
   - title: Research Assistant
@@ -46,7 +55,7 @@ experience:
     company_logo: marmara
     location: Istanbul, Turkey
     date_start: '2013-04-01'
-    date_end: '2021-07-01'
+    date_end: '2022-08-01'
     description: Responsible for research related to my research interests, also leading group lessons, grading coursework, setting up student projects and aiding in the supervision of the students.
         
   - title: Clerk
