@@ -34,7 +34,7 @@ experience:
     - title: Google Machine Learning Bootcamp Turkey 
     company: Google
     company_url: 'https://events.withgoogle.com/google-ml-bootcamp-tr'
-    company_logo: google
+    company_logo: 
     location: Virtual
     date_start: ''
     date_end: ''
