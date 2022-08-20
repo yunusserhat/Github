@@ -58,7 +58,9 @@ superuser: true
 highlight_name: true
 ---
 
-I am an Assistant Professor at the [Department of Bureau Management and Executive Assistantship](http://bys.sbmyo.marmara.edu.tr) at Marmara University. After January 2023, however, I will research criminology, big data, machine learning, natural language processing (NLP), and spatial-temporal prediction as a Postdoctoral Researcher at the [Department of Security and Crime Science](http://www.ucl.ac.uk/jill-dando-institute)at the University College London.
+I am an Assistant Professor at the [Department of Bureau Management and Executive Assistantship](http://bys.sbmyo.marmara.edu.tr) at Marmara University. 
+
+After January 2023, however, I will research criminology, big data, machine learning, natural language processing (NLP), and spatial-temporal prediction as a Postdoctoral Researcher at the [Department of Security and Crime Science](http://www.ucl.ac.uk/jill-dando-institute) at the University College London.
 
 Most of my interests are in data science, big data, AI, information systems (e.g., GIS), and geospatial. My overall research goal is to be able to solve challenging real-world problems by using machine learning, data science, and other types of analytics and visualization tools such as Python, R, and SQL.
 
