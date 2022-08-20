@@ -36,7 +36,7 @@ experience:
     company_url: 'https://events.withgoogle.com/google-ml-bootcamp-tr'
     company_logo: google
     location: Virtual
-    date_start: July 16, 2022
+    date_start: ''
     date_end: ''
     description: 
     
@@ -45,8 +45,8 @@ experience:
     company_url: 'https://www.miuul.com/'
     company_logo: miuul
     location: Uppsala, Uppsala County, Sweden
-    date_start: Mar 01, 2022
-    date_end: June 01, 2022
+    date_start: ''
+    date_end: ''
     description: 
 
   - title: Research Assistant
@@ -54,8 +54,8 @@ experience:
     company_url: 'https://sbmyo.marmara.edu.tr'
     company_logo: marmara
     location: Istanbul, Turkey
-    date_start: Apr 15, 2013
-    date_end: Aug 01, 2022
+    date_start: ''
+    date_end: ''
     description: Responsible for research related to my research interests, also leading group lessons, grading coursework, setting up student projects and aiding in the supervision of the students.
         
   - title: Clerk
@@ -63,8 +63,8 @@ experience:
     company_url: 'https://www.adalet.gov.tr'
     company_logo: adalet
     location: Bursa, Turkey
-    date_start: June 01, 2011
-    date_end: Apr 14, 2013
+    date_start: ''
+    date_end: ''
     description: Under the supervision of the Prosecutor, performed general clerical functions in support of the Bursa Provincial Prosecutor’s Office. 
 
 design:
