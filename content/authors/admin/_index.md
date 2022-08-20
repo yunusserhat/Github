@@ -1,12 +1,12 @@
 ---
 title: Yunus Serhat BICAKCI
-role: Lecturer | Data Science Researcher | Data Analyst
+role: Assistant Professor | Data Science Researcher
 avatar_filename: avatar.jpg
-bio: My research interest includes big data, data science, information systems, football, criminology. 
+bio: My research interest includes data science, big data, artificial intelligence, information systems, criminology. 
 interests:
-  - Big Data
   - Data Science
-  - Football
+  - Big Data
+  - Artificial Intelligence (AI)
   - Information Systems
   - Criminology
 
@@ -58,9 +58,8 @@ superuser: true
 highlight_name: true
 ---
 
-I am a researcher passionate about Data Science 📊. I am a Strong Advocate for 📜 open source. I am using my skills to solve challenging real-world problems by using machine learning, data mining, and other types of data analytics and data visualization tools such as R and Python.
+I am an Assistant Professor at the [Department of Bureau Management and Executive Assistantship](http://bys.sbmyo.marmara.edu.tr) at Marmara University. After January 2023, however, I will research criminology, big data, machine learning, natural language processing (NLP), and spatial-temporal prediction as a Postdoctoral Researcher at the [Department of Security and Crime Science](http://www.ucl.ac.uk/jill-dando-institute)at the University College London.
 
-Currently, I am working as a lecturer at Marmara University in Istanbul, Turkey. My research interests include big data, data science, football, criminology, and information systems (e.g., GIS).
+Most of my interests are in data science, big data, AI, information systems (e.g., GIS), and geospatial. My overall research goal is to be able to solve challenging real-world problems by using machine learning, data science, and other types of analytics and visualization tools such as Python, R, and SQL.
 
-
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunus_serhat_bicakci_phd_cv.pdf" "newtab" >}}CV{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunus_serhat_bicakci_phd_cv.pdf" "newtab" >}}resume{{< /staticref >}}.
