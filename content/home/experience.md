@@ -22,30 +22,21 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
-  - title: Assistant Professor
+  - title: Lecturer
     company: Vocational School of Social Sciences, Marmara University
     company_url: 'https://sbmyo.marmara.edu.tr'
     company_logo: marmara
     location: Istanbul, Turkey
-    date_start: Aug 02, 2022
+    date_start: '2021-07-01'
     date_end: ''
     description: Create lesson plans that cover the foundations of technology, guide students through activities that allow them to apply technological solutions to prepare work life, hold office hours for students to answer questions and provide support.
-    
-    - title: Google Machine Learning Bootcamp Turkey 
-    company: Google
-    company_url: 'https://events.withgoogle.com/google-ml-bootcamp-tr'
-    company_logo: 
-    location: Virtual
-    date_start: ''
-    date_end: ''
-    description: 
     
   - title: Data Science and Machine Learning Bootcamp Participant
     company: MIUUL
     company_url: 'https://www.miuul.com/'
     company_logo: miuul
     location: Uppsala, Uppsala County, Sweden
-    date_start: ''
+    date_start: '2022-03-08'
     date_end: ''
     description: 
 
@@ -54,8 +45,8 @@ experience:
     company_url: 'https://sbmyo.marmara.edu.tr'
     company_logo: marmara
     location: Istanbul, Turkey
-    date_start: ''
-    date_end: ''
+    date_start: '2013-04-01'
+    date_end: '2021-07-01'
     description: Responsible for research related to my research interests, also leading group lessons, grading coursework, setting up student projects and aiding in the supervision of the students.
         
   - title: Clerk
@@ -63,8 +54,8 @@ experience:
     company_url: 'https://www.adalet.gov.tr'
     company_logo: adalet
     location: Bursa, Turkey
-    date_start: ''
-    date_end: ''
+    date_start: '2011-06-01'
+    date_end: '2013-04-01'
     description: Under the supervision of the Prosecutor, performed general clerical functions in support of the Bursa Provincial Prosecutor’s Office. 
 
 design:
