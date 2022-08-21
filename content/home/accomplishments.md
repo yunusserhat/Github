@@ -23,6 +23,16 @@ date_format: Jan 2006
 #   Leave other parameters empty if not required.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 item:
+
+- certificate_url: https://certificate.veribilimiokulu.com/certs/2022-06-19/yunus-serhat-bicakci
+  date_end: "2022-06-19"
+  date_start: 
+  description: ""
+  organization: miuul
+  organization_url: https://www.miuul.com
+  title: 'Data Science and Machine Learning Bootcamp'
+  url: ""
+
 - certificate_url: https://www.datacamp.com/statement-of-accomplishment/course/a5890804269b251625d23e4e101b144e913676c9
   date_end: "2018-05-13"
   date_start: "2018-05-01"
