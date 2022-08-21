@@ -31,11 +31,21 @@ experience:
     date_end: ''
     description: Create lesson plans that cover the foundations of technology, guide students through activities that allow them to apply technological solutions to prepare work life, hold office hours for students to answer questions and provide support.
     
-  - title: Data Science and Machine Learning Bootcamp Participant
+  - title: Google Machine Learning Bootcamp Turkey
+    company: Google Developers
+    company_url: 'https://events.withgoogle.com/google-ml-bootcamp-tr/'
+    company_logo: google
+    location: Virtual
+    date_start: '2022-06-01'
+    date_end: ''
+    description: 
+    
+    
+  - title: Data Science and Machine Learning Bootcamp
     company: MIUUL
     company_url: 'https://www.miuul.com/'
     company_logo: miuul
-    location: Uppsala, Uppsala County, Sweden
+    location: Virtual
     date_start: '2022-03-08'
     date_end: '2022-07-01'
     description: 
