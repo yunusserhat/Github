@@ -37,7 +37,7 @@ experience:
     company_logo: miuul
     location: Uppsala, Uppsala County, Sweden
     date_start: '2022-03-08'
-    date_end: ''
+    date_end: '2022-07-01'
     description: 
 
   - title: Research Assistant
@@ -46,7 +46,7 @@ experience:
     company_logo: marmara
     location: Istanbul, Turkey
     date_start: '2013-04-01'
-    date_end: '2021-07-01'
+    date_end: '2022-08-01'
     description: Responsible for research related to my research interests, also leading group lessons, grading coursework, setting up student projects and aiding in the supervision of the students.
         
   - title: Clerk
