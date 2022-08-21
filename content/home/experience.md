@@ -22,12 +22,12 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
-  - title: Lecturer
+  - title: Assistant Professor
     company: Vocational School of Social Sciences, Marmara University
     company_url: 'https://sbmyo.marmara.edu.tr'
     company_logo: marmara
     location: Istanbul, Turkey
-    date_start: '2021-07-01'
+    date_start: '2022-09-01'
     date_end: ''
     description: Create lesson plans that cover the foundations of technology, guide students through activities that allow them to apply technological solutions to prepare work life, hold office hours for students to answer questions and provide support.
     
