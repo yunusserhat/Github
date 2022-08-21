@@ -26,7 +26,7 @@ item:
 
 - certificate_url: https://certificate.veribilimiokulu.com/certs/2022-06-19/yunus-serhat-bicakci
   date_end: "2022-06-19"
-  date_start: 
+  date_start: "2022-03-01"
   description: ""
   organization: miuul
   organization_url: https://www.miuul.com
