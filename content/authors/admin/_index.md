@@ -64,4 +64,4 @@ After January 2023, however, I will research criminology, big data, machine lear
 
 Most of my interests are in data science, big data, AI, information systems (e.g., GIS), and geospatial. My overall research goal is to be able to solve challenging real-world problems by using machine learning, deep learning, data science, and other types of analytics and visualization tools such as Python, R, and SQL.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunus_serhat_bicakci_phd_cv.pdf" "newtab" >}}resume{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resume{{< /staticref >}}.
