@@ -1,5 +1,5 @@
 ---
-title: Yunus Serhat BICAKCI
+title: Yunus Serhat Bıçakçı
 role: Assistant Professor | Data Science Researcher
 avatar_filename: avatar.jpg
 bio: My research interest includes data science, big data, artificial intelligence, information systems, criminology. 
