@@ -9,6 +9,8 @@ interests:
   - Artificial Intelligence (AI)
   - Information Systems
   - Criminology
+  - Geospatial
+  - Football
 
 
 social:
@@ -62,6 +64,6 @@ I am an Assistant Professor at the [Department of Bureau Management and Executiv
 
 After January 2023, however, I will research criminology, big data, machine learning, natural language processing (NLP), and spatial-temporal prediction as a Postdoctoral Researcher at the [UCL Jill Dando Institute of Security and Crime Science](http://www.ucl.ac.uk/jill-dando-institute) at the University College London.
 
-Most of my interests are in data science, big data, AI, information systems (e.g., GIS), and geospatial. My overall research goal is to be able to solve challenging real-world problems by using machine learning, deep learning, data science, and other types of analytics and visualization tools such as Python, R, and SQL.
+Most of my interests are in data science, big data, AI, information systems, criminology, geospatial and football. My overall research goal is to be able to solve challenging real-world problems by using machine learning, deep learning, data science, and other types of analytics and visualization tools such as Python, R, and SQL.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resume{{< /staticref >}}.
