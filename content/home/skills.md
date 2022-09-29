@@ -33,7 +33,11 @@ feature:
   name: Python
 - icon: database
   icon_pack: fas
-  name: Data Mining
+  name: Data Science
+- icon: futbol
+  icon_pack: fas
+  name: Football
+
 
 # Uncomment to use emoji icons.
 #- icon: ':smile:'
