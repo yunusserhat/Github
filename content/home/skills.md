@@ -33,7 +33,7 @@ feature:
   name: Python
 - icon: database
   icon_pack: fas
-  name: Data Science
+  name: SQL
 - icon: futbol
   icon_pack: fas
   name: Football
