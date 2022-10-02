@@ -116,6 +116,10 @@ Yarıyıl içi sınav ve etkinlikler: %40
 
 Yarıyıl sonu sınav ve ödev: %60
 
+## Sunumlar
+
+https://drive.google.com/drive/folders/1X3BKYb0wb2H9sjfqI2GZw1Z6FjFB7pia?usp=sharing
+
 
 ## Öğretim Elemanı
 
