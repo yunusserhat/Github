@@ -58,6 +58,10 @@ Term (or Year) Learning Activities: %40
 
 End Of Term (or Year) Learning Activities: %60
 
+## Slides
+
+https://drive.google.com/drive/folders/1X3BKYb0wb2H9sjfqI2GZw1Z6FjFB7pia?usp=sharing
+
 
 ## Name of Lecturer
 
