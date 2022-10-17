@@ -27,7 +27,7 @@ experience:
     company_url: 'https://sbmyo.marmara.edu.tr'
     company_logo: marmara
     location: Istanbul, Turkey
-    date_start: '2022-09-01'
+    date_start: '2022-10-01'
     date_end: ''
     description: Create lesson plans that cover the foundations of technology, guide students through activities that allow them to apply technological solutions to prepare work life, hold office hours for students to answer questions and provide support.
     
@@ -56,7 +56,7 @@ experience:
     company_logo: marmara
     location: Istanbul, Turkey
     date_start: '2013-04-01'
-    date_end: '2022-08-01'
+    date_end: '2022-10-01'
     description: Responsible for research related to my research interests, also leading group lessons, grading coursework, setting up student projects and aiding in the supervision of the students.
         
   - title: Clerk
