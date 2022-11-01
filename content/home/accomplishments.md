@@ -24,6 +24,24 @@ date_format: Jan 2006
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 item:
 
+- certificate_url: https://www.credential.net/3816d8ad-9762-43b9-8571-83bba71bea25
+  date_end: "2025-10-30"
+  date_start: "2022-10-30"
+  description: ""
+  organization: TensorFlow
+  organization_url: https://www.tensorflow.org/
+  title: 'TensorFlow Developer Certificate'
+  url: ""
+
+- certificate_url: https://www.coursera.org/account/accomplishments/specialization/certificate/3AGMTGJZBVVK
+  date_end: "2022-09-25"
+  date_start: "2022-07-16"
+  description: ""
+  organization: coursera
+  organization_url: https://www.coursera.org/specializations/deep-learning
+  title: 'DeepLearning.AI Deep Learning Specialization'
+  url: ""
+
 - certificate_url: https://certificate.veribilimiokulu.com/certs/2022-06-19/yunus-serhat-bicakci
   date_end: "2022-06-19"
   date_start: "2022-03-01"
