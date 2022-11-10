@@ -1,28 +1,24 @@
 ---
-title: Example Talk
+title: Machine Learning | Deep Learning | Data Science Söyleşi
 
 event: Wowchemy Conference
-event_url: https://example.org
+event_url: https://www.youtube.com/watch?v=U_EFlL0eIWU
 
-location: Wowchemy HQ
+location: Google DSC Işık University
 address:
-  street: 450 Serra Mall
-  city: Stanford
-  region: CA
-  postcode: '94305'
-  country: United States
+  youtube: https://www.youtube.com/channel/UCXoSow6H8-ZBCHS6cS2eD1A
 
 summary: An example talk using Wowchemy's Markdown slides feature.
 abstract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellusac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam.'
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-date: '2030-06-01T13:00:00Z'
-date_end: '2030-06-01T15:00:00Z'
+date: '2022-11-11T19:00:00Z'
+date_end: '2022-11-11T21:00:00Z'
 all_day: false
 
 # Schedule page publish date (NOT talk date).
-publishDate: '2017-01-01T00:00:00Z'
+publishDate: '2021-11-11T00:00:00Z'
 
 authors: []
 tags: []
@@ -38,7 +34,7 @@ links:
   - icon: twitter
     icon_pack: fab
     name: Follow
-    url: https://twitter.com/georgecushen
+    url: https://twitter.com/yunusserhat
 url_code: ''
 url_pdf: ''
 url_slides: ''
