@@ -41,7 +41,7 @@ Presentations made by students.
 4. Calendar management
 5. Video and audio conference calls
 6. Creating user groups for the office
-7. Communication methods for user groups
+7. Cloud file management
 8. Midterm Exam
 9. Word processors
 10. Operations with word processors
@@ -103,7 +103,7 @@ Haftalık gerçekleştirilen sunumlar ve ödevler.
 4. Takvim yönetimi  
 5. Görüntülü ve sesli konferans görüşmeleri  
 6. Ofis için kullanıcı grupları oluşturma
-7. Kullanıcı grupları için iletişim yöntemleri  
+7. Bulut dosya yönetimi
 8. Vize sınavı
 9. Kelime işlemciler  
 10. Kelime işlemcilerle işlemler  
