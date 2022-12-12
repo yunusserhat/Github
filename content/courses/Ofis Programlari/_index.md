@@ -62,9 +62,7 @@ End Of Term (or Year) Learning Activities: %60
 
 ## Slides & Files 
 
-https://drive.google.com/drive/folders/1X3BKYb0wb2H9sjfqI2GZw1Z6FjFB7pia?usp=sharing
-https://bit.ly/mu_sbmyo_ofis
-
+https://bit.ly/sbmyo_ofis
 
 ## Name of Lecturer
 
@@ -127,8 +125,7 @@ Yarıyıl sonu sınav ve ödev: %60
 
 ## Sunumlar & Dosyalar
 
-https://drive.google.com/drive/folders/1X3BKYb0wb2H9sjfqI2GZw1Z6FjFB7pia?usp=sharing
-https://bit.ly/mu_sbmyo_ofis
+https://bit.ly/sbmyo_ofis
 
 
 ## Öğretim Elemanı
