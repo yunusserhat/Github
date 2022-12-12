@@ -20,11 +20,13 @@ To be able to define the programs that can be used in the office and office envi
 
 Applications in the computer lab
 
-## Kaynaklar 
+## References 
 
 https://workspace.google.com/intl/tr/
 
 https://www.microsoft.com/tr-tr/education/products/office
+
+https://datalab.cc/
 
 Readings (website, articles, book chapters, and other readings) will be given weekly. 
 
@@ -58,9 +60,10 @@ Term (or Year) Learning Activities: %40
 
 End Of Term (or Year) Learning Activities: %60
 
-## Slides
+## Slides & Files 
 
 https://drive.google.com/drive/folders/1X3BKYb0wb2H9sjfqI2GZw1Z6FjFB7pia?usp=sharing
+https://bit.ly/mu_sbmyo_ofis
 
 
 ## Name of Lecturer
@@ -87,6 +90,8 @@ Bilgisayar laboratuvarında uygulamalar
 https://workspace.google.com/intl/tr/
 
 https://www.microsoft.com/tr-tr/education/products/office
+
+https://datalab.cc/
 
 Haftalık verilecek olan okumalar (websitesi, makaleler, kitap bölümleri ve diğer okumalar).
 
@@ -120,9 +125,10 @@ Yarıyıl içi sınav ve etkinlikler: %40
 
 Yarıyıl sonu sınav ve ödev: %60
 
-## Sunumlar
+## Sunumlar & Dosyalar
 
 https://drive.google.com/drive/folders/1X3BKYb0wb2H9sjfqI2GZw1Z6FjFB7pia?usp=sharing
+https://bit.ly/mu_sbmyo_ofis
 
 
 ## Öğretim Elemanı
