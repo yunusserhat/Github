@@ -21,20 +21,20 @@ twitter: 'yunusserhat'
 # Contact (edit or remove options as required)
 
 email: yunus.serhat@marmara.edu.tr , yunusserhat@yunusserhat.com
-phone: +902167774525
+phone: +44 (0)20 3108 3206
 address:
-  street: Orhantepe Mah. Turgut Özal Bulvarı No:21 
-  city: Kartal
-  region: Istanbul
-  postcode: '34865'
-  country: Turkey
-  country_code: TR
+  street: 35 Tavistock Square 
+  city: 
+  region: London
+  postcode: 'WC1H 9EZ'
+  country: United Kingdom
+  country_code: UK
 coordinates:
-  latitude: '40.9057'
-  longitude: '29.1557'
-directions: Block 2 - Office 2004
+  latitude: '51.5249'
+  longitude: '-0.1294'
+directions: 
 office_hours:
-  - 'Monday 10:00 to 13:00'
+  - 'virtual'
 contact_links:
   - icon: twitter
     icon_pack: fab
