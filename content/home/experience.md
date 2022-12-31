@@ -46,7 +46,7 @@ experience:
     company_logo: google
     location: Virtual
     date_start: '2022-06-01'
-    date_end: ''
+    date_end: '2022-12-01'
     description: 
     
     
