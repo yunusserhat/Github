@@ -1,8 +1,8 @@
 ---
 title: Yunus Serhat Bıçakçı
-role: Assistant Professor | Data Science Researcher
+role: PostDoc | Data Science Researcher
 avatar_filename: avatar.jpg
-bio: My research interest includes data science, big data, artificial intelligence, information systems, criminology. 
+bio: My research interest includes data science, big data, artificial intelligence, information systems, criminology, geospatial and football. 
 interests:
   - Data Science
   - Big Data
@@ -42,12 +42,15 @@ social:
   icon_pack: ai
   link: https://www.researchgate.net/profile/Yunus_Bicakci
 organizations:
-  - name: Marmara University
-    url: https://www.marmara.edu.tr/
+  - name: University College London (UCL)
+    url: https://www.ucl.ac.uk/jill-dando-institute/
 education:
   courses:
+    - course: PostDoc in Security and Crime Science
+      institution: University College London (UCL)
+      year: 2024
     - course: PhD in Applied Informatics
-      institution: Istanbul Technical University
+      institution: Istanbul Technical University (ITU)
       year: 2021
     - course: MSc in Information Systems
       institution: Sakarya University
@@ -55,15 +58,13 @@ education:
     - course: BSc in Business Administration
       institution: Anadolu University
       year: 2011
-email: yunus.serhat@marmara.edu.tr
+email: yunusserhat@yunusserhat.com
 superuser: true
 highlight_name: true
 ---
 
-I am an Assistant Professor at the [Department of Bureau Management and Executive Assistantship](http://bys.sbmyo.marmara.edu.tr) at Marmara University. 
+I am a Visiting Postdoctoral Researcher at the [Jill Dando Institute of Security and Crime Science](http://www.ucl.ac.uk/jill-dando-institute) at [University College London](http://www.ucl.ac.uk) and an Assistant Professor at the [Vocational School of Social Sciences](http://sbmyo.marmara.edu.tr) at [Marmara University](http://www.marmara.edu.tr). 
 
-After January 2023, however, I will research criminology, big data, machine learning, natural language processing (NLP), and spatial-temporal prediction as a Postdoctoral Researcher at the [UCL Jill Dando Institute of Security and Crime Science](http://www.ucl.ac.uk/jill-dando-institute) at the University College London.
-
-Most of my interests are in data science, big data, AI, information systems, criminology, geospatial and football. My overall research goal is to be able to solve challenging real-world problems by using machine learning, deep learning, data science, and other types of analytics and visualization tools such as Python, R, and SQL.
+My research focuses on criminology, big data, machine learning, natural language processing, and spatial-temporal predictions. I am particularly interested in data science, big data, artificial intelligence, information systems, criminology, geospatial analysis, and football. My ultimate goal is to use machine learning, deep learning, data science, and various analytics and visualization tools such as Python, R, and SQL to solve challenging real-world problems.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resume{{< /staticref >}}.
