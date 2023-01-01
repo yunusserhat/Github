@@ -1,7 +1,7 @@
 ---
 title: Machine Learning | Deep Learning | Data Science Söyleşi
 
-event: Wowchemy Conference
+event: Machine Learning | Deep Learning | Data Science Söyleşi
 event_url: https://www.youtube.com/watch?v=U_EFlL0eIWU
 
 location: Google DSC Işık University
