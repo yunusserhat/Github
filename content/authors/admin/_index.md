@@ -58,7 +58,7 @@ education:
     - course: BSc in Business Administration
       institution: Anadolu University
       year: 2011
-email: yunusserhat@yunusserhat.com
+email: y.bicakci@ucl.ac.uk
 superuser: true
 highlight_name: true
 ---
