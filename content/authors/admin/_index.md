@@ -43,7 +43,7 @@ social:
   link: https://www.researchgate.net/profile/Yunus_Bicakci
 organizations:
   - name: University College London (UCL)
-    url: https://www.ucl.ac.uk/jill-dando-institute/
+    url: https://iris.ucl.ac.uk/iris/browse/profile?upi=YSBIC20
 education:
   courses:
     - course: PostDoc in Security and Crime Science
