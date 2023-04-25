@@ -1,0 +1,4 @@
+author.name,date,text,geo.coordinates.coordinates,geo.geo.bbox,geo.name,hate_pred,emotion_pred,longitude,latitude
+Supkey,2022-10-31 18:54:03+00:00,I’ve been sentenced to death for slaying these basic bitches too hard!💁🏻‍♂️🔪 @ London Eye https://t.co/iblaiWCISd,"[-0.11951923, 51.50312204]","[-0.15191, 51.410792, -0.078902, 51.509887]",Lambeth,sexism,anger,-0.11951923,51.50312204
+Kareem Medhat,2022-11-05 18:14:05+00:00,"Resting b*tch faces @ London, United Kingdom https://t.co/Q59YTpZbvK","[-0.1094, 51.5141]","[-0.112442, 51.5068, -0.0733794, 51.522161]",City of London,sexism,anger,-0.1094,51.5141
+Shane,2022-11-13 13:26:52+00:00,"Twat 😏#Spaniel #CockerSpaniel @ London, United Kingdom https://t.co/J4aA9Hxb08","[-0.1094, 51.5141]","[-0.112442, 51.5068, -0.0733794, 51.522161]",City of London,sexism,anger,-0.1094,51.5141
