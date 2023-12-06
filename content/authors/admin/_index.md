@@ -67,4 +67,4 @@ I am a Visiting Postdoctoral Researcher at the [Jill Dando Institute of Security
 
 My research focuses on criminology, big data, machine learning, natural language processing, and spatial-temporal predictions. I am particularly interested in data science, big data, artificial intelligence, information systems, criminology, geospatial analysis, and football. My ultimate goal is to use machine learning, deep learning, data science, and various analytics and visualization tools such as Python, R, and SQL to solve challenging real-world problems.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resume{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunusserhatbicakci_phd_cv.pdf" "newtab" >}}Curriculum Vitae{{< /staticref >}} or {{< staticref "uploads/resume.pdf" "newtab" >}}resume{{< /staticref >}}.
