@@ -34,9 +34,6 @@ feature:
 - icon: database
   icon_pack: fas
   name: SQL
-- icon: futbol
-  icon_pack: fas
-  name: Football
 
 
 # Uncomment to use emoji icons.
