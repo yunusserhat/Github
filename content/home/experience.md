@@ -38,7 +38,7 @@ experience:
     company_logo: ucl
     location: London, UK
     date_start: '2023-01-01'
-    date_end: ''
+    date_end: '2024-05-05'
     description: 
     
   - title: Assistant Professor
