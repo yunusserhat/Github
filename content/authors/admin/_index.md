@@ -41,8 +41,8 @@ social:
   icon_pack: ai
   link: https://www.researchgate.net/profile/Yunus_Bicakci
 organizations:
-  - name: University College London (UCL)
-    url: https://iris.ucl.ac.uk/iris/browse/profile?upi=YSBIC20
+  - name: University of Glasgow 
+    url: https://www.gla.ac.uk/schools/ges/staff/yunusserhatbicakci
 education:
   courses:
     - course: PostDoc in Security and Crime Science
@@ -64,4 +64,4 @@ highlight_name: true
 
 As a researcher with a PhD, I specialise in leveraging big data, machine learning, deep learning, and computer vision to address complex challenges across various domains. My work is driven by the transformative potential of data science and AI, particularly Large Language Models (LLMs) and Multimodal Large Language Models (MLLMs), to develop innovative solutions. Proficient in Python, R, and SQL, I also have a strong interest in Geographic Information Systems (GIS) for spatial analysis. Currently, I am focused on integrating geoinformation and computer vision with LLMs and MLLMs to push the boundaries of AI capabilities.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunusserhatbicakci_phd_cv.pdf" "newtab" >}}Curriculum Vitae{{< /staticref >}} or {{< staticref "uploads/resume.pdf" "newtab" >}}resume{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunusserhatbicakci_phd_cv.pdf" "newtab" >}}Curriculum Vitae{{< /staticref >}}.
