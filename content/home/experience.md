@@ -22,6 +22,16 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
+  - title: Research Associate 
+    company: Geospatial Data Science Group, University of Glasgow
+    company_url: 'https://www.gla.ac.uk/'
+    company_logo: glasgow
+    location: Glasgow, UK
+    date_start: '2024-06-06'
+    date_end: ''
+    description: 
+
+
   - title: Postdoctoral Researcher
     company: Jill Dando Institute of Security and Crime Science, UCL
     company_url: 'https://www.ucl.ac.uk/jill-dando-institute/'
@@ -29,7 +39,7 @@ experience:
     location: London, UK
     date_start: '2023-01-01'
     date_end: ''
-    description: Conduct independent research and contribute to the advancement of knowledge in the field. This may involve designing and conducting experiments, analyzing data, writing and publishing research papers, and presenting findings at conferences and seminars.
+    description: 
     
   - title: Assistant Professor
     company: Vocational School of Social Sciences, Marmara University
@@ -38,26 +48,8 @@ experience:
     location: Istanbul, Turkey
     date_start: '2022-10-01'
     date_end: ''
-    description: Create lesson plans that cover the foundations of technology, guide students through activities that allow them to apply technological solutions to prepare work life, hold office hours for students to answer questions and provide support.
-    
-  - title: Google Machine Learning Bootcamp Turkey
-    company: Google Developers
-    company_url: 'https://events.withgoogle.com/google-ml-bootcamp-tr/'
-    company_logo: google
-    location: Virtual
-    date_start: '2022-06-01'
-    date_end: '2022-12-01'
     description: 
     
-    
-  - title: Data Science and Machine Learning Bootcamp
-    company: MIUUL
-    company_url: 'https://www.miuul.com/'
-    company_logo: miuul
-    location: Virtual
-    date_start: '2022-03-08'
-    date_end: '2022-07-01'
-    description: 
         
 
 design:
