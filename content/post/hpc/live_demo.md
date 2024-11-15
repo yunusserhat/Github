@@ -106,6 +106,10 @@ These basic Linux commands will help you navigate and manage files in your clust
   ```bash
   rm <file-name>
   ```
+  or
+  ```bash
+  rm -rf <folder-name>
+  ```
 
 - **View File Contents**:
   ```bash
@@ -152,3 +156,70 @@ srun --partition=gpu --gres=gpu:1 --mem=64GB --cpus-per-task=8 --pty bash
 ```
 
 This document should guide you through the demo and help your audience follow along with each step.
+
+## 6. Slurm Commands and Job Scheduling Basics
+
+### Common Slurm Parameters
+Slurm parameters allow you to specify your resource requests. Below are the most commonly used ones:
+
+| Example Parameter              | Description                                                                 |
+|--------------------------------|-----------------------------------------------------------------------------|
+| `--job-name="Test-Job-1"`      | Specify a name for the job.                                                 |
+| `--nodes=2`                    | Number of servers to run the job on. Use only for parallel processing.      |
+| `--cpus-per-task=8`            | Number of CPUs per process. Useful for multithreaded jobs.                 |
+| `--gres=gpu:1`                 | Number of GPUs to request.                                                 |
+| `--mem=16G`                    | Amount of memory per node. Default is megabytes unless a suffix is used.   |
+| `--partition=gpu`              | Specify the partition to use (e.g., `cpu`, `gpu`).                         |
+| `--time=00-01:00:00`           | Total runtime limit for the job.                                           |
+| `--mail-user=<email>`          | Email address for notifications (e.g., job start, end, failure).           |
+| `--mail-type=BEGIN,END,FAIL`   | Types of notifications to send.                                            |
+
+### Interactive Jobs
+Interactive jobs allow you to debug submission scripts, install software, or prepare environments. Use interactive jobs sparingly and for short durations.
+
+Example command:
+```bash
+srun --job-name="Interactive-Job" --partition=gpu --gres=gpu:1 --mem=16G --time=02:00:00 --pty bash
+```
+
+### Batch Jobs
+Batch jobs are the recommended way to run jobs on the HPC cluster. Below is an example of a submission script (`job_example.sh`):
+
+```bash
+#!/bin/bash
+#SBATCH --job-name="Test-Job-1"
+#SBATCH --partition=gpu
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=16G
+#SBATCH --time=00-05:00:00
+#SBATCH --mail-user=firstname.lastname@glasgow.ac.uk
+#SBATCH --mail-type=BEGIN,END,FAIL
+
+module load python
+cd ~/work/calculations/pythonscripts
+python myPythonCalcs.py
+```
+
+Submit the job:
+```bash
+sbatch job_example.sh
+```
+
+### Monitoring Jobs
+Once your job is submitted, you can monitor it using the following commands:
+
+- **View All Jobs**:
+  ```bash
+  squeue
+  ```
+
+- **View Your Jobs**:
+  ```bash
+  squeue -u <your-username>
+  ```
+
+- **Cancel Your Jobs**:
+  ```bash
+  scancel <your-jobid>
+  ```
