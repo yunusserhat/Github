@@ -34,7 +34,7 @@ experience:
 
   - title: Affiliate Research Software Engineering Scientist
     company: Geospatial Data Science Group, University of Glasgow
-    company_url: 'https://www.gla.ac.uk/'
+    company_url: 'https://gdsglasgow.github.io/'
     company_logo: glasgow
     location: Glasgow, UK
     date_start: '2024-06-06'
