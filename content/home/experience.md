@@ -22,7 +22,17 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
-  - title: Research Associate 
+
+  - title: Assistant Professor
+    company: Vocational School of Social Sciences, Marmara University
+    company_url: 'https://sbmyo.marmara.edu.tr'
+    company_logo: marmara
+    location: Istanbul, Turkey
+    date_start: '2025-01-01'
+    date_end: ''
+    description: 
+
+  - title: Affiliate Research Software Engineering Scientist
     company: Geospatial Data Science Group, University of Glasgow
     company_url: 'https://www.gla.ac.uk/'
     company_logo: glasgow
@@ -30,7 +40,6 @@ experience:
     date_start: '2024-06-06'
     date_end: ''
     description: 
-
 
   - title: Postdoctoral Researcher
     company: Jill Dando Institute of Security and Crime Science, UCL
@@ -41,14 +50,7 @@ experience:
     date_end: '2024-05-05'
     description: 
     
-  - title: Assistant Professor
-    company: Vocational School of Social Sciences, Marmara University
-    company_url: 'https://sbmyo.marmara.edu.tr'
-    company_logo: marmara
-    location: Istanbul, Turkey
-    date_start: '2022-10-01'
-    date_end: ''
-    description: 
+
     
         
 

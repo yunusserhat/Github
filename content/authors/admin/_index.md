@@ -2,7 +2,7 @@
 title: Yunus Serhat Bıçakçı
 role: Researcher
 avatar_filename: avatar.jpg
-bio: My research interest includes data science, big data, artificial intelligence, information systems, criminology, geospatial and football. 
+bio: My research interest includes data science, big data, artificial intelligence, criminology, geospatial, GeoAI and multimodal large language models. 
 interests:
   - Data Science
   - Big Data
@@ -41,13 +41,12 @@ social:
   icon_pack: ai
   link: https://www.researchgate.net/profile/Yunus_Bicakci
 organizations:
+  - name: Marmara University
+    url: https://avesis.marmara.edu.tr/yunus.serhat
   - name: University of Glasgow 
     url: https://www.gla.ac.uk/schools/ges/staff/yunusserhatbicakci
 education:
   courses:
-    - course: PostDoc in Security and Crime Science
-      institution: University College London (UCL)
-      year: 2024
     - course: PhD in Applied Informatics
       institution: Istanbul Technical University (ITU)
       year: 2021
