@@ -33,3 +33,4 @@ type: book
 {{< cta cta_text="📊 Zaman Yönetimi" cta_link="https://docs.google.com/presentation/d/1oOV3OqdjYxUU0KwZchPqGmie65YAW8kC/edit?usp=sharing&ouid=101808916399037786397&rtpof=true&sd=true" >}}  
 {{< cta cta_text="📞 Telefonla İletişim" cta_link="https://docs.google.com/presentation/d/1oPsd6d9mgBJLEACs_3bG5mW3Za6EYrdG/edit?usp=sharing&ouid=101808916399037786397&rtpof=true&sd=true" >}}
 
+Not: Dersin sunuları haftalık olarak güncellenebilir. 
