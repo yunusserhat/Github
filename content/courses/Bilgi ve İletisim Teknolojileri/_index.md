@@ -25,9 +25,10 @@ Bilgi ve İletişim Teknolojileri dersinin temel amacı; yönetici asistan adayl
 
 ## Dersin Kitabı
 
-
-
 {{< cta cta_text="Derse başlayın." cta_link="giris" >}}
 
+## Dersin Sunusu
 
+{{< cta cta_text="📊 BT Sunu" cta_link="https://docs.google.com/presentation/d/1rFygBb6SAbXa6zYU4vhrmgBBrXhKlVl8/edit?usp=sharing&ouid=101808916399037786397&rtpof=true&sd=true" >}} 
 
+Not: Dersin sunusu haftalık olarak güncellenebilir. 
