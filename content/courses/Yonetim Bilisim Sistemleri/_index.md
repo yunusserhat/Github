@@ -33,8 +33,13 @@ Medya okuryazarlığı ile yönetici asistan adayları için yazılı, görsel v
 
 {{< mention "admin" >}}
 
-
 {{< cta cta_text="Derse başlayın." cta_link="giris" >}}
+
+## Dersin Sunusu
+
+{{< cta cta_text="📊 YBS Sunu" cta_link="https://docs.google.com/presentation/d/1x7yvJwgLzGx2X158u3ba0OGammjwMqas/edit?usp=sharing&ouid=101808916399037786397&rtpof=true&sd=true" >}}  
+
+Not: Dersin sunusu haftalık olarak güncellenebilir. 
 
 
 
