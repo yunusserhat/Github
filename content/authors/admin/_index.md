@@ -61,6 +61,6 @@ superuser: true
 highlight_name: true
 ---
 
-As a researcher with a PhD, I specialise in leveraging big data, machine learning, deep learning, and computer vision to address complex challenges across various domains. My work is driven by the transformative potential of data science and AI, particularly Large Language Models (LLMs) and Multimodal Large Language Models (MLLMs), to develop innovative solutions. Proficient in Python, R, and SQL, I also have a strong interest in Geographic Information Systems (GIS) for spatial analysis. Currently, I am focused on integrating geoinformation and computer vision with LLMs and MLLMs to push the boundaries of AI capabilities.
+As a researcher with a PhD, I specialise in leveraging big data, machine learning, deep learning, and geospatial analytics to solve complex real-world problems. My expertise includes spatial and spatiotemporal analyses, remote sensing through satellite imagery, and the integration of geographic information systems with advanced artificial intelligence models. I have practical experience with cloud platforms and am proficient in data analysis and deep learning frameworks. Recently, my research has expanded into Vision-based Large Language Models and Multimodal AI, exploring innovative solutions at the intersection of AI and geospatial data science.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunusserhatbicakci_phd_cv.pdf" "newtab" >}}resume{{< /staticref >}}.
