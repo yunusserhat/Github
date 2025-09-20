@@ -61,6 +61,6 @@ superuser: true
 highlight_name: true
 ---
 
-As a researcher with a PhD, I specialise in leveraging big data, machine learning, deep learning, and geospatial analytics to solve complex real-world problems. My expertise includes spatial and spatiotemporal analyses, remote sensing through satellite imagery, and the integration of geographic information systems with advanced artificial intelligence models. I have practical experience with cloud platforms and am proficient in data analysis and deep learning frameworks. Recently, my research has expanded into Vision-based Large Language Models and Multimodal AI, exploring innovative solutions at the intersection of AI and geospatial data science.
+Researcher and AI Engineer with a PhD in Applied Informatics, specialising in developing scalable AI solutions by leveraging Large Language Models, Vision-Language Models and Retrieval-Augmented Generation for solving complex multimodal problems. Experienced in designing innovative workflows that combine vision and language understanding with downstream tasks. Demonstrated expertise in semantic segmentation and object detection, particularly within geospatial and remote sensing domains. Proven track record in building production-ready inference pipelines and interactive AI tools using cloud infrastructure.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunusserhatbicakci_phd_cv.pdf" "newtab" >}}resume{{< /staticref >}}.
