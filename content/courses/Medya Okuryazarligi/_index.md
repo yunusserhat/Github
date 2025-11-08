@@ -31,9 +31,11 @@ Medya okuryazarlığı ile yönetici asistan adayları için yazılı, görsel v
 
 {{< mention "admin" >}}
 
+## Sunumlar & Dosyalar
+
+[https://bit.ly/sbmyo_ofis](https://bit.ly/medya_okuryazarligi)
+
 ## Dersin Kitabı
-
-
 
 {{< cta cta_text="Derse başlayın." cta_link="giris" >}}
 
