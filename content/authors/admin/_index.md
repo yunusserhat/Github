@@ -56,6 +56,8 @@ education:
     - course: BSc in Business Administration
       institution: Anadolu University
       year: 2011
+    - course: BSc in Engineering
+    - institution: Ankara University
 email: yunusserhat@yunusserhat.com
 superuser: true
 highlight_name: true
