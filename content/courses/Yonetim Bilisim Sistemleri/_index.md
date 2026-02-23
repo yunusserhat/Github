@@ -23,7 +23,7 @@ Medya okuryazarlığı ile yönetici asistan adayları için yazılı, görsel v
 
 ## Dersin Kaynakları
 
-- Management Information Systems Managing the Digital Firm (Kenneth C. Laudon, Jane P. Laudon).
+- Management Information Systems Managing the Digital Firm 18E (Kenneth C. Laudon, Jane P. Laudon, Carol G. Traver).
 - İşletme Bilgi Sistemleri (Öğr.Gör.Dr. Şenay Lezki, Yrd.Doç.Dr. Sinan AYDIN, Yrd.Doç.Dr. Özlem OKTAL, Prof.Dr. M. Necdet TİMUR, Prof.Dr. Saime ÖNCE, Editör Prof.Dr. Hasan DURUCASU).
 - Haftalık verilecek olan okumalar (makaleler, kitap bölümleri ve diğer okumalar).
 - Haftalık gerçekleştirilen sunumlar.
@@ -37,7 +37,7 @@ Medya okuryazarlığı ile yönetici asistan adayları için yazılı, görsel v
 
 ## Dersin Sunusu
 
-{{< cta cta_text="📊 YBS Sunu" cta_link="https://docs.google.com/presentation/d/1x7yvJwgLzGx2X158u3ba0OGammjwMqas/edit?usp=sharing&ouid=101808916399037786397&rtpof=true&sd=true" >}}  
+{{< cta cta_text="📊 YBS Sunu" cta_link="https://docs.google.com/presentation/d/1epTBMRYBwfwy_XY7jl1Gik4k5Q1stm8c-bHwK2zgpcI/edit?usp=sharing" >}}  
 
 Not: Dersin sunusu haftalık olarak güncellenebilir. 
 
