@@ -10,8 +10,6 @@
 {{- $projectCount := len hugo.Data.projects.projects -}}
 {{- $talkCount := add (len hugo.Data.talks.conference) (len hugo.Data.talks.invited) -}}
 {{- $awardCount := len hugo.Data.awards.awards -}}
-{{- $primaryResearchLabel := replaceRE ` Artificial Intelligence \(GeoAI\)$` " AI" (index hugo.Data.research.areas 0).name -}}
-{{- $secondaryResearchLabel := (index hugo.Data.research.areas 1).name -}}
 {{- $banner := delimit .Site.Params.greetingBanner "\n" -}}
 {{- $terminalPrompt := "" -}}
 {{- with .Site.Params.prompt.core -}}
@@ -43,16 +41,14 @@
     <div class="site-telemetry">
       <div
         class="system-status"
-        aria-label="Website {{ .Site.Params.status.label }} status: {{ .Site.Params.status.value }}. This describes the website system, not personal availability."
+        aria-label="Website status: {{ .Site.Params.status.value }}. This describes the website system, not personal availability."
         title="Website system status — not personal availability"
       >
         <span class="status-dot" aria-hidden="true"></span>
-        <span>SITE {{ .Site.Params.status.label }}: <strong>{{ .Site.Params.status.value }}</strong></span>
+        <span>{{ .Site.Params.status.label }}: <strong>{{ .Site.Params.status.value }}</strong></span>
       </div>
-      <div class="site-clocks" aria-label="Local times in Istanbul and Glasgow">
-        <span><abbr title="Istanbul">IST</abbr> <time id="clock-istanbul">--:--</time></span>
-        <span aria-hidden="true">/</span>
-        <span><abbr title="Glasgow">GLA</abbr> <time id="clock-glasgow">--:--</time></span>
+      <div class="site-clocks" aria-label="System time">
+        <span>TIME <time id="system-clock">--:--</time></span>
       </div>
     </div>
   </header>
@@ -60,7 +56,11 @@
   <main class="console-layout">
     <section class="terminal-window" aria-labelledby="terminal-title">
       <header class="terminal-titlebar">
-        <span class="window-nodes" aria-hidden="true"><i></i><i></i><i></i></span>
+        <div class="window-controls" aria-label="Terminal controls">
+          <button class="window-control window-control-exit" type="button" data-command="exit" aria-controls="research-terminal" aria-label="Terminate terminal session" title="Exit"></button>
+          <button class="window-control window-control-clear" type="button" data-command="clear" aria-controls="research-terminal" aria-label="Clear terminal" title="Clear"></button>
+          <button class="window-control window-control-help" type="button" data-command="help" aria-controls="research-terminal" aria-label="Show terminal help" title="Help"></button>
+        </div>
         <h2 id="terminal-title" class="terminal-title">{{ .Site.Params.terminalTitle }}</h2>
         <span class="interface-mode">{{ .Site.Params.interfaceMode }}</span>
       </header>
@@ -77,10 +77,8 @@
 
     <aside class="profile-panel" aria-labelledby="profile-name">
       <div class="profile-intro">
-        <p class="profile-kicker">{{ upper $primaryResearchLabel }} / {{ upper $secondaryResearchLabel }}</p>
         <div class="profile-heading">
           <h2 id="profile-name" aria-label="{{ $profile.name }}"><span>{{ $givenName }}</span><span>{{ $familyName }}</span></h2>
-          <span class="profile-degree">{{ $profile.honorific }}</span>
         </div>
         <p class="profile-role">
           {{- range split $profile.tagline " · " }}<span>{{ . }}</span>{{ end -}}
@@ -115,7 +113,9 @@
         <h3 id="profile-links-title">Academic profiles</h3>
         <ul>
           {{- range hugo.Data.profiles.profiles }}
+          {{- if not (in (slice "Marmara University (AVESİS)" "University of Glasgow" "Google Developer Profile") .name) }}
           <li><a href="{{ .url }}" rel="me">{{ .name }}</a></li>
+          {{- end }}
           {{- end }}
         </ul>
       </nav>
@@ -123,7 +123,7 @@
   </main>
 
   <footer class="console-footer">
-    <p><strong>TIP</strong> Type <code>publications</code> or select a command from the profile panel.</p>
+    <p><strong>TIP</strong> Type <code>help</code> or select a command from the profile panel.</p>
     <p class="footer-mode">DATA-DRIVEN ACADEMIC CONSOLE</p>
   </footer>
 </div>
@@ -149,20 +149,14 @@ jQuery(document).ready(function($) {
     const greetingBanner = {{ $banner | jsonify | safeJS }};
 
     var clockLocale = {{ .Site.Language.Locale | jsonify | safeJS }};
-    var clocks = [
-        { element: document.getElementById('clock-istanbul'), timeZone: 'Europe/Istanbul' },
-        { element: document.getElementById('clock-glasgow'), timeZone: 'Europe/London' }
-    ];
+    var systemClock = document.getElementById('system-clock');
     function updateClocks() {
         var now = new Date();
-        clocks.forEach(function(clock) {
-            clock.element.textContent = new Intl.DateTimeFormat(clockLocale, {
-                timeZone: clock.timeZone,
-                hour: '2-digit',
-                minute: '2-digit',
-                hourCycle: 'h23'
-            }).format(now);
-        });
+        systemClock.textContent = new Intl.DateTimeFormat(clockLocale, {
+            hour: '2-digit',
+            minute: '2-digit',
+            hourCycle: 'h23'
+        }).format(now);
     }
     updateClocks();
     window.setInterval(updateClocks, 30000);
@@ -516,6 +510,15 @@ jQuery(document).ready(function($) {
         return t;
     }
 
+    function terminateSession(term) {
+        term.echo('terminating ...');
+        var finish = function() {
+            term.echo('[=============================>] 100% ' + fmt(C.ok, 'OK'));
+        };
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) finish();
+        else window.setTimeout(finish, 550);
+    }
+
     // ---- Terminal ----
 
     var term = $('#research-terminal').terminal(function(command, term) {
@@ -566,7 +569,7 @@ jQuery(document).ready(function($) {
                 term.clear();
                 break;
             case 'exit':
-                term.echo('Session closed, thanks for visiting. The tab can be safely closed.');
+                terminateSession(term);
                 break;
             case 'source':
                 term.echo('\nBuilt with Hugo and the TerminalCV theme.\n');
@@ -656,7 +659,7 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $('.quick-command').on('click', function() {
+    $('.quick-command, .window-control').on('click', function() {
         var command = this.getAttribute('data-command');
         if (!command) return;
         term.exec(command);

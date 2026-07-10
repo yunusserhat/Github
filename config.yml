@@ -25,7 +25,7 @@ params:
   terminalTitle: "console.yunusserhat.com"
   interfaceMode: "RESEARCH MODE"
   status:
-    label: "SYSTEM"
+    label: "STATUS"
     value: "ONLINE"
 
   # ASCII banner shown on load (hidden on narrow screens). Stored as a list
