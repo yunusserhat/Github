@@ -2,18 +2,131 @@
 {{/* Root-level override of themes/terminalcv/layouts/index.html.
      Implements an academic command set (about, positions, research, ...)
      backed by the YAML files under data/. The theme itself is untouched. */}}
+{{- $profile := hugo.Data.profile -}}
+{{- $nameParts := split $profile.name " " -}}
+{{- $givenName := delimit (first (sub (len $nameParts) 1) $nameParts) " " -}}
+{{- $familyName := index (last 1 $nameParts) 0 -}}
+{{- $publicationCount := len hugo.Data.publications.publications -}}
+{{- $projectCount := len hugo.Data.projects.projects -}}
+{{- $talkCount := add (len hugo.Data.talks.conference) (len hugo.Data.talks.invited) -}}
+{{- $awardCount := len hugo.Data.awards.awards -}}
+{{- $primaryResearchLabel := replaceRE ` Artificial Intelligence \(GeoAI\)$` " AI" (index hugo.Data.research.areas 0).name -}}
+{{- $secondaryResearchLabel := (index hugo.Data.research.areas 1).name -}}
+{{- $banner := delimit .Site.Params.greetingBanner "\n" -}}
+{{- $terminalPrompt := "" -}}
+{{- with .Site.Params.prompt.core -}}
+  {{- $terminalPrompt = printf "%s[[;%s;]%s][[;%s;]%s][[;%s;]%s]" $terminalPrompt (.beforeColor | default "grey") .before (.color | default "grey") .text (.afterColor | default "grey") .after -}}
+{{- end -}}
+{{- with .Site.Params.prompt.path -}}
+  {{- $terminalPrompt = printf "%s[[;%s;]%s][[;%s;]%s][[;%s;]%s]" $terminalPrompt (.beforeColor | default "grey") .before (.color | default "grey") (.text | default ":~$") (.afterColor | default "grey") .after -}}
+{{- end -}}
+{{- with .Site.Params.prompt.extra -}}
+  {{- $terminalPrompt = printf "%s[[;%s;]%s]" $terminalPrompt (.color | default "grey") .text -}}
+{{- end -}}
+{{- $postFilenames := slice -}}
+{{- range where .Site.RegularPages "Section" "posts" -}}
+  {{- with .File -}}
+    {{- $postFilenames = $postFilenames | append (path.BaseName .Dir) -}}
+  {{- end -}}
+{{- end -}}
 
-<aside class="sr-summary">
-  <h1>{{ hugo.Data.profile.name }}, {{ hugo.Data.profile.honorific }}</h1>
-  <p>{{ hugo.Data.profile.tagline }} — {{ range $i, $a := hugo.Data.profile.affiliations }}{{ if $i }} · {{ end }}{{ $a.name }}{{ end }}.</p>
-  <p>{{ .Site.Params.description }}</p>
-  <p>This page is an interactive terminal. Type <kbd>help</kbd> to list commands, or use the links below.</p>
-  <ul>
-    <li><a href="{{ hugo.Data.profile.cv.file }}">Curriculum Vitae (PDF)</a></li>
-    <li><a href="mailto:{{ hugo.Data.profile.email }}">Email</a></li>
-    {{ range hugo.Data.profiles.profiles }}<li><a href="{{ .url }}" rel="me">{{ .name }}</a></li>{{ end }}
-  </ul>
-</aside>
+<a class="skip-link" href="#research-terminal">Skip to the research terminal</a>
+
+<div class="page-shell">
+  <header class="site-header" aria-label="Website header">
+    <h1 class="site-brand">
+      <a class="site-label" href="{{ "/" | relURL }}" aria-label="{{ .Site.Params.siteLabel }} home">
+        {{ .Site.Params.siteLabel }}
+      </a>
+    </h1>
+
+    <div class="site-telemetry">
+      <div
+        class="system-status"
+        aria-label="Website {{ .Site.Params.status.label }} status: {{ .Site.Params.status.value }}. This describes the website system, not personal availability."
+        title="Website system status — not personal availability"
+      >
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>SITE {{ .Site.Params.status.label }}: <strong>{{ .Site.Params.status.value }}</strong></span>
+      </div>
+      <div class="site-clocks" aria-label="Local times in Istanbul and Glasgow">
+        <span><abbr title="Istanbul">IST</abbr> <time id="clock-istanbul">--:--</time></span>
+        <span aria-hidden="true">/</span>
+        <span><abbr title="Glasgow">GLA</abbr> <time id="clock-glasgow">--:--</time></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="console-layout">
+    <section class="terminal-window" aria-labelledby="terminal-title">
+      <header class="terminal-titlebar">
+        <span class="window-nodes" aria-hidden="true"><i></i><i></i><i></i></span>
+        <h2 id="terminal-title" class="terminal-title">{{ .Site.Params.terminalTitle }}</h2>
+        <span class="interface-mode">{{ .Site.Params.interfaceMode }}</span>
+      </header>
+      <div
+        id="research-terminal"
+        class="terminal-host"
+        aria-label="Interactive GeoAI research terminal"
+        tabindex="-1"
+      ></div>
+      <noscript>
+        <p class="noscript-message">JavaScript is required for the interactive terminal. Academic profile links remain available in the profile panel.</p>
+      </noscript>
+    </section>
+
+    <aside class="profile-panel" aria-labelledby="profile-name">
+      <div class="profile-intro">
+        <p class="profile-kicker">{{ upper $primaryResearchLabel }} / {{ upper $secondaryResearchLabel }}</p>
+        <div class="profile-heading">
+          <h2 id="profile-name" aria-label="{{ $profile.name }}"><span>{{ $givenName }}</span><span>{{ $familyName }}</span></h2>
+          <span class="profile-degree">{{ $profile.honorific }}</span>
+        </div>
+        <p class="profile-role">
+          {{- range split $profile.tagline " · " }}<span>{{ . }}</span>{{ end -}}
+        </p>
+        <ul class="affiliations" aria-label="Academic affiliations">
+          {{- range $profile.affiliations }}
+          <li><a href="{{ .url }}">{{ .name }}</a></li>
+          {{- end }}
+        </ul>
+      </div>
+
+      <section class="panel-section" aria-labelledby="quick-commands-title">
+        <h3 id="quick-commands-title">Quick commands</h3>
+        <div class="quick-command-grid" role="group" aria-label="Run a command in the research terminal">
+          {{- range (slice "about" "positions" "research" "projects" "publications" "talks" "awards" "education" "cv" "contact") }}
+          <button class="quick-command" type="button" data-command="{{ . }}" aria-controls="research-terminal">{{ . }}</button>
+          {{- end }}
+        </div>
+      </section>
+
+      <section class="panel-section" aria-labelledby="content-stats-title">
+        <h3 id="content-stats-title">Research record</h3>
+        <dl class="stat-grid">
+          <div><dt>Publications</dt><dd>{{ $publicationCount }}</dd></div>
+          <div><dt>Projects</dt><dd>{{ $projectCount }}</dd></div>
+          <div><dt>Talks given</dt><dd>{{ $talkCount }}</dd></div>
+          <div><dt>Awards</dt><dd>{{ $awardCount }}</dd></div>
+        </dl>
+      </section>
+
+      <nav class="panel-section profile-links" aria-labelledby="profile-links-title">
+        <h3 id="profile-links-title">Academic profiles</h3>
+        <ul>
+          {{- range hugo.Data.profiles.profiles }}
+          <li><a href="{{ .url }}" rel="me">{{ .name }}</a></li>
+          {{- end }}
+        </ul>
+      </nav>
+    </aside>
+  </main>
+
+  <footer class="console-footer">
+    <p><strong>TIP</strong> Type <code>publications</code> or select a command from the profile panel.</p>
+    <p class="footer-mode">DATA-DRIVEN ACADEMIC CONSOLE</p>
+  </footer>
+</div>
 
 <script>
 jQuery(document).ready(function($) {
@@ -32,11 +145,27 @@ jQuery(document).ready(function($) {
         profiles:     {{ hugo.Data.profiles     | jsonify | safeJS }}
     };
 
-    var postFilenames = [
-        {{ range where .Site.RegularPages "Section" "posts" }}
-        "{{ with .File }}{{ path.BaseName .Dir }}{{ end }}",
-        {{ end }}
+    var postFilenames = {{ $postFilenames | jsonify | safeJS }};
+    const greetingBanner = {{ $banner | jsonify | safeJS }};
+
+    var clockLocale = {{ .Site.Language.Locale | jsonify | safeJS }};
+    var clocks = [
+        { element: document.getElementById('clock-istanbul'), timeZone: 'Europe/Istanbul' },
+        { element: document.getElementById('clock-glasgow'), timeZone: 'Europe/London' }
     ];
+    function updateClocks() {
+        var now = new Date();
+        clocks.forEach(function(clock) {
+            clock.element.textContent = new Intl.DateTimeFormat(clockLocale, {
+                timeZone: clock.timeZone,
+                hour: '2-digit',
+                minute: '2-digit',
+                hourCycle: 'h23'
+            }).format(now);
+        });
+    }
+    updateClocks();
+    window.setInterval(updateClocks, 30000);
 
     // ---- Palette (restrained, readable) ----
     var C = {
@@ -61,6 +190,12 @@ jQuery(document).ready(function($) {
     }
     function header(text) { return '\n' + fmt(C.head, text, true) + '\n'; }
     function padKey(key, length) { return key + ' '.repeat(Math.max(0, length - key.length)); }
+    function profileUrl(name) {
+        var match = (DATA.profiles.profiles || []).filter(function(profile) {
+            return profile.name === name;
+        })[0];
+        return match ? match.url : '';
+    }
 
     // ---- Section renderers (arrays of echo-able lines) ----
 
@@ -159,7 +294,8 @@ jQuery(document).ready(function($) {
         });
         if (!arg) {
             out.push(fmt(C.meta, "Type 'publications all' for the full list or 'publications <year>' to filter."));
-            out.push(fmt(C.meta, 'Full record: https://scholar.google.com/citations?user=2FSN2voAAAAJ'));
+            var scholarUrl = profileUrl('Google Scholar');
+            if (scholarUrl) out.push(fmt(C.meta, 'Full record: ' + esc(scholarUrl)));
         }
         return out;
     }
@@ -256,7 +392,8 @@ jQuery(document).ready(function($) {
         (p.affiliations || []).forEach(function(a) {
             out.push(padKey(esc(a.name), 10) + '  ' + esc(a.url));
         });
-        out.push(padKey('GitHub', 10) + '  https://github.com/yunusserhat');
+        var githubUrl = profileUrl('GitHub');
+        if (githubUrl) out.push(padKey('GitHub', 10) + '  ' + esc(githubUrl));
         out.push('');
         return out;
     }
@@ -381,7 +518,7 @@ jQuery(document).ready(function($) {
 
     // ---- Terminal ----
 
-    var term = $('body').terminal(function(command, term) {
+    var term = $('#research-terminal').terminal(function(command, term) {
         var parts = command.trim().split(/\s+/);
         var name = (parts[0] || '').toLowerCase();
         var useLess = false;
@@ -432,7 +569,7 @@ jQuery(document).ready(function($) {
                 term.echo('Session closed, thanks for visiting. The tab can be safely closed.');
                 break;
             case 'source':
-                term.echo('\nBuilt with Hugo and the TerminalCV theme:\nhttps://github.com/coolapso/hugo-theme-terminalcv\n');
+                term.echo('\nBuilt with Hugo and the TerminalCV theme.\n');
                 break;
             case '':
                 break;
@@ -447,15 +584,12 @@ jQuery(document).ready(function($) {
         greetings: false,
         onInit: function(term) {
             var p = DATA.profile;
-            var banner = {{ .Site.Params.greetingBanner | jsonify | safeJS }} || [];
             var bannerColor = {{ .Site.Params.greetingBannerColor | jsonify | safeJS }} || '#d97757';
             var wide = (window.innerWidth || 0) >= 640;
 
             term.echo('');
-            if (wide && banner.length) {
-                banner.forEach(function(line) {
-                    term.echo(fmt(bannerColor, escRaw(line), true));
-                });
+            if (wide && greetingBanner) {
+                term.echo(`[[b;${bannerColor};]${greetingBanner}]`);
                 term.echo('');
             }
 
@@ -490,12 +624,17 @@ jQuery(document).ready(function($) {
             term.echo('');
 
             // Old Wowchemy URLs are redirected to /#<command>; honour the hash.
-            var hash = decodeURIComponent((window.location.hash || '').replace(/^#/, '')).toLowerCase();
+            var hash = '';
+            try {
+                hash = decodeURIComponent((window.location.hash || '').replace(/^#/, '')).toLowerCase();
+            } catch (error) {
+                hash = '';
+            }
             if (hash && (renderers[aliases[hash] || hash] || ['publications', 'blog', 'cv'].indexOf(aliases[hash] || hash) !== -1)) {
                 term.exec(aliases[hash] || hash);
             }
         },
-        prompt: '{{ with .Site.Params.prompt }}{{ with .core }}[[;{{ .beforeColor | default "grey" }};]{{ .before }}][[;{{ .color | default "grey" }};]{{ .text }}][[;{{ .afterColor | default "grey" }};]{{ .after }}]{{ end }}{{ with .path }}[[;{{ .beforeColor | default "grey" }};]{{ .before }}][[;{{ .color | default "grey" }};]{{ .text | default ":~$" }}][[;{{ .afterColor | default "grey" }};]{{ .after }}]{{ end }}{{ with .extra }}[[;{{ .color | default "grey" }};]{{ .text }}]{{ end }}{{ end }}',
+        prompt: {{ $terminalPrompt | jsonify | safeJS }},
         autocompleteMenu: true,
         completion: function(string) {
             var command = this.get_command();
@@ -515,6 +654,13 @@ jQuery(document).ready(function($) {
             }
             return args.filter(function(a) { return a.indexOf(string) === 0; });
         }
+    });
+
+    $('.quick-command').on('click', function() {
+        var command = this.getAttribute('data-command');
+        if (!command) return;
+        term.exec(command);
+        term.focus();
     });
 });
 </script>

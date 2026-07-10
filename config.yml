@@ -8,8 +8,10 @@ title: "Yunus Serhat Bıçakçı"
 locale: "en-GB"
 defaultContentLanguage: "en"
 enableRobotsTXT: true
+timeZone: "Europe/Istanbul"
 
 params:
+  author: "Yunus Serhat Bıçakçı"
   description: >-
     Yunus Serhat Bıçakçı, PhD — Assistant Professor at Marmara University and
     Affiliate Research Software Engineering Scientist at the University of
@@ -18,6 +20,13 @@ params:
   ogImage: "images/profile/yunus-serhat-bicakci.jpg"
   twitterHandle: "yunusserhat"
   customCSS: true
+
+  siteLabel: "yunusserhat.com"
+  terminalTitle: "console.yunusserhat.com"
+  interfaceMode: "RESEARCH MODE"
+  status:
+    label: "SYSTEM"
+    value: "ONLINE"
 
   # ASCII banner shown on load (hidden on narrow screens). Stored as a list
   # of strings so leading spaces and backslashes survive YAML parsing.

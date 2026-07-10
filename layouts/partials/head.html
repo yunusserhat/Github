@@ -8,7 +8,7 @@
     {{- $title := cond $isHome .Site.Title (printf "%s · %s" .Title .Site.Title) }}
     <title>{{ $title }}</title>
     <meta name="description" content="{{ .Site.Params.description }}">
-    <meta name="author" content="{{ hugo.Data.profile.name }}">
+    <meta name="author" content="{{ .Site.Params.author | default hugo.Data.profile.name }}">
     <link rel="canonical" href="{{ .Permalink }}" />
 
     <meta property="og:site_name" content="{{ .Site.Title }}" />
@@ -46,12 +46,6 @@
         <link rel="stylesheet" href={{ absURL "style.css" }}>
     {{ end }}
 
-    <style>
-        body {
-            width: 100%;
-            font-size: 18px;
-        }
-    </style>
 {{ with .Site.Params.analytics }}{{ with .code }}
     {{ . }}
 {{ end }}{{ end }}
