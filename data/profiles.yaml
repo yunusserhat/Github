@@ -1,0 +1,25 @@
+# Academic and professional profiles shown by the `profiles` command and
+# used for the JSON-LD sameAs list. Source: old site author page + CV.
+# Instagram (personal) from the old site intentionally not carried over.
+
+profiles:
+  - name: "GitHub"
+    url: "https://github.com/yunusserhat"
+  - name: "Google Scholar"
+    url: "https://scholar.google.com/citations?user=2FSN2voAAAAJ"
+  - name: "ORCID"
+    url: "https://orcid.org/0000-0002-7288-9959"
+  - name: "LinkedIn"
+    url: "https://www.linkedin.com/in/yunusserhat"
+  - name: "ResearchGate"
+    url: "https://www.researchgate.net/profile/Yunus_Bicakci"
+  - name: "Academia.edu"
+    url: "https://marmara.academia.edu/YunusSerhatBicakci"
+  - name: "X (Twitter)"
+    url: "https://twitter.com/yunusserhat"
+  - name: "Marmara University (AVESİS)"
+    url: "https://avesis.marmara.edu.tr/yunus.serhat"
+  - name: "University of Glasgow"
+    url: "https://www.gla.ac.uk/schools/ges/staff/yunusserhatbicakci"
+  - name: "Google Developer Profile"
+    url: "https://g.dev/yunusserhat"

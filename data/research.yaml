@@ -1,0 +1,53 @@
+# Research areas shown by the `research` command. Descriptions are grounded
+# in published work listed in data/publications.yaml and data/projects.yaml.
+
+areas:
+  - name: "Geospatial Artificial Intelligence (GeoAI)"
+    description: >-
+      AI methods for geographic problems, from street-level imagery analysis
+      to GeoAI foundation models with spatial knowledge.
+
+  - name: "Multimodal Learning"
+    description: >-
+      Combining vision and language understanding for downstream tasks such
+      as geolocalization, urban perception and culinary analysis.
+
+  - name: "Vision-Language Models"
+    description: >-
+      Evaluating and applying VLMs (CLIP, SigLIP and modern multimodal LLMs)
+      for classification, retrieval and explanation of visual scenes.
+
+  - name: "Computer Vision"
+    description: >-
+      Semantic segmentation and object detection, including CNN-Transformer
+      ensembles for aerial imagery.
+
+  - name: "Remote Sensing"
+    description: >-
+      Fusion of SAR and multispectral optical data (Sentinel-1/2) and aerial
+      image plus laser data for urban mapping tasks.
+
+  - name: "Spatial Data Science"
+    description: >-
+      Scalable geospatial analysis with open tools and open data, including
+      spatial point pattern testing for aggregated data.
+
+  - name: "Spatio-Temporal Analysis"
+    description: >-
+      Trajectory and mobility analysis, from transport speed estimation to
+      electronic monitoring of parolees.
+
+  - name: "Retrieval-Augmented Generation"
+    description: >-
+      RAG pipelines that ground multimodal large language models for tasks
+      such as street-level geolocalization.
+
+  - name: "Semantic Segmentation"
+    description: >-
+      Architectures and ensembles (U-Net variants, SegFormer, DeepLabV3+,
+      UPerNet) for building and impervious-surface mapping.
+
+  - name: "Responsible and Explainable AI"
+    description: >-
+      Integrity of explanations in vision-language models and ethical use of
+      GeoAI in sensitive domains such as crime analysis.

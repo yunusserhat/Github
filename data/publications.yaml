@@ -1,0 +1,150 @@
+# Publications shown by the `publications` command, reverse chronological.
+# `featured: true` entries appear in the default view; `publications all`
+# lists everything and `publications <year>` filters by year.
+# Sources: April 2026 CV (primary), old site publication pages and BibTeX.
+
+publications:
+  - title: "Towards GeoAI Foundation Models: A Multimodal Learning Framework with Spatial Knowledge"
+    authors: "Meiliu Wu, Qunyin Huang, Anahid Basiri, Yunus Serhat Bıçakçı, Joseph Shingleton"
+    year: "2026"
+    publication: "In: Janowicz, K. et al. (eds), Geography according to ChatGPT, Frontiers in Artificial Intelligence and Applications, IOS Press"
+    publication_short: "Geography according to ChatGPT (IOS Press)"
+    type: "book chapter"
+    status: "forthcoming (accepted)"
+    url: ""
+    featured: true
+
+  - title: "Performance Comparison of Multimodal Vision-Language Models in Classifying Turkish Dishes"
+    authors: "Yunus Serhat Bıçakçı"
+    year: "2026"
+    publication: "Sakarya University Journal of Computer and Information Sciences, 9(1), 119–133"
+    publication_short: "SAUCIS 9(1)"
+    type: "journal article"
+    doi: "10.35377/saucis.1727583"
+    url: "https://doi.org/10.35377/saucis.1727583"
+    featured: true
+
+  - title: "Emergent Spatio-Semantic Structure in Large Language Model Embedding Spaces"
+    authors: "Joseph Shingleton, Yunus Serhat Bıçakçı, Yu Wang, Ana Basiri"
+    year: "2026"
+    publication: "EarthArXiv preprint"
+    publication_short: "EarthArXiv"
+    type: "preprint"
+    doi: "10.31223/X5FQ93"
+    url: "https://doi.org/10.31223/X5FQ93"
+    featured: true
+
+  - title: "Evaluating Explanation Integrity in a Vision Language Model for Urban Perception"
+    authors: "Joseph Shingleton, Yunus Serhat Bıçakçı, Meiliu Wu, Yu Wang, Ana Basiri"
+    year: "2026"
+    publication: "Transactions in GIS (Special Issue: Ethical and Explainable GeoAI)"
+    publication_short: "Transactions in GIS"
+    type: "journal article"
+    status: "under review"
+    url: ""
+    featured: false
+
+  - title: "Hybrid CNN-Transformer Ensemble for Enhanced Tank Detection in Aerial Imagery"
+    authors: "Yunus Serhat Bıçakçı"
+    year: "2026"
+    publication: "Research Square preprint; The Visual Computer, in peer review"
+    publication_short: "Research Square"
+    type: "preprint"
+    doi: "10.21203/rs.3.rs-8771811/v1"
+    url: "https://doi.org/10.21203/rs.3.rs-8771811/v1"
+    featured: true
+
+  - title: "Street-Level Geolocalization Using Multimodal Large Language Models and Retrieval-Augmented Generation"
+    authors: "Yunus Serhat Bıçakçı, Joseph Shingleton, Anahid Basiri"
+    year: "2025"
+    publication: "arXiv:2509.01341 [cs.CV]"
+    publication_short: "arXiv"
+    type: "preprint"
+    doi: "10.48550/arXiv.2509.01341"
+    url: "https://doi.org/10.48550/arXiv.2509.01341"
+    featured: true
+
+  - title: "CNN and Transformer U-Nets in Multiple Sclerosis Lesion Segmentation: A Comparative Assessment"
+    authors: "Beytullah Sarıca, Yunus Serhat Bıçakçı, Dursun Zafer Şeker"
+    year: "2025"
+    publication: "International Journal of Imaging Systems and Technology"
+    publication_short: "IJIST"
+    type: "journal article"
+    doi: "10.1002/ima.70146"
+    url: "https://doi.org/10.1002/ima.70146"
+    featured: true
+
+  - title: "Big Data and Social Media Analytics: Opportunities for Interactive Crime Mapping"
+    authors: "Yunus Serhat Bıçakçı, Alina Ristea, Kate Bowers"
+    year: "2025"
+    publication: "In: Leitner, M. (eds), New Research in Crime Modeling and Mapping Using Geospatial Technologies, Springer, Dordrecht"
+    publication_short: "Springer (book chapter)"
+    type: "book chapter"
+    doi: "10.1007/978-3-031-81580-5_1"
+    url: "https://doi.org/10.1007/978-3-031-81580-5_1"
+    featured: true
+
+  - title: "ATTransUNet: Semantic Segmentation Model for Building Segmentation from Aerial Image and Laser Data"
+    authors: "Yunus Serhat Bıçakçı, Beytullah Sarıca"
+    year: "2023"
+    publication: "Nordic Machine Intelligence, 2(3)"
+    publication_short: "Nordic Machine Intelligence"
+    type: "journal article"
+    doi: "10.5617/nmi.10039"
+    url: "https://doi.org/10.5617/nmi.10039"
+    featured: true
+
+  - title: "Artificial Intelligence Applications in Tourism and Travel Offices"
+    authors: "Yunus Serhat Bıçakçı, Bora Aksu"
+    year: "2022"
+    publication: "In: Semiz Celik, D. (eds), The Reflections of Digital Transformation on Tourism (pp. 139–152), Beta Publishing, Istanbul"
+    publication_short: "Beta Publishing (book chapter)"
+    type: "book chapter"
+    url: ""
+    featured: false
+
+  - title: "Location-Based Analyses for Electronic Monitoring of Parolees"
+    authors: "Yunus Serhat Bıçakçı, Dursun Zafer Şeker, Hande Demirel"
+    year: "2020"
+    publication: "ISPRS International Journal of Geo-Information, 9(5), 296"
+    publication_short: "ISPRS IJGI 9(5)"
+    type: "journal article"
+    doi: "10.3390/ijgi9050296"
+    url: "https://doi.org/10.3390/ijgi9050296"
+    featured: true
+
+  - title: "Spora Yönelik Tutum ile Yaşam Doyumu Arasındaki İlişki: Marmara Üniversitesi Sosyal Bilimler Meslek Yüksekokulu Öğrencileri Örneği (in Turkish)"
+    authors: "Çağdaş Caz, Yunus Serhat Bıçakçı, Fatma Firuzan Nakipoğlu"
+    year: "2019"
+    publication: "Gümüşhane Üniversitesi Sosyal Bilimler Enstitüsü Elektronik Dergisi, 10(3), 484–491"
+    publication_short: "Gümüşhane Üniv. SBE Dergisi 10(3)"
+    type: "journal article"
+    url: "https://dergipark.org.tr/en/download/article-file/838255"
+    featured: false
+
+  - title: "Spatio-Temporal Analyses to Estimate Speed Information for Transport Forecasting and Scenario Testing"
+    authors: "Yunus Serhat Bıçakçı, Beytullah Sarıca, Mete Ercan Pakdil, Batuhan Yazırlı, Hande Demirel"
+    year: "2017"
+    publication: "Fresenius Environmental Bulletin, 26(1), 100–106"
+    publication_short: "Fresenius Environ. Bull. 26(1)"
+    type: "journal article"
+    url: "https://www.researchgate.net/publication/320011808_Spatio-temporal_analyses_to_estimate_speed_information_for_transport_forecasting_and_scenario_testing"
+    featured: false
+
+  - title: "Büro Yönetimi ve Yönetici Asistanlığı Öğrencilerinin Beklentilerinin Belirlenmesi (in Turkish)"
+    authors: "Yunus Serhat Bıçakçı, Fatma Firuzan Nakipoğlu"
+    year: "2017"
+    publication: "VI. UMYOS Proceedings, 503–511"
+    publication_short: "VI. UMYOS"
+    type: "conference paper"
+    url: ""
+    featured: false
+
+  - title: "Elektronik İzleme Teknolojisi ve Türkiye'de Uygulanması (in Turkish)"
+    authors: "Yunus Serhat Bıçakçı, Dursun Zafer Şeker"
+    year: "2015"
+    publication: "Türkiye'de Denetimli Serbestlik 10. Yıl Uluslararası Sempozyumu, 214–218"
+    publication_short: "Denetimli Serbestlik Sempozyumu"
+    type: "conference paper"
+    url: ""
+    featured: false

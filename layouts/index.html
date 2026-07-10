@@ -1,0 +1,521 @@
+{{ define "body" }}
+{{/* Root-level override of themes/terminalcv/layouts/index.html.
+     Implements an academic command set (about, positions, research, ...)
+     backed by the YAML files under data/. The theme itself is untouched. */}}
+
+<aside class="sr-summary">
+  <h1>{{ hugo.Data.profile.name }}, {{ hugo.Data.profile.honorific }}</h1>
+  <p>{{ hugo.Data.profile.tagline }} — {{ range $i, $a := hugo.Data.profile.affiliations }}{{ if $i }} · {{ end }}{{ $a.name }}{{ end }}.</p>
+  <p>{{ .Site.Params.description }}</p>
+  <p>This page is an interactive terminal. Type <kbd>help</kbd> to list commands, or use the links below.</p>
+  <ul>
+    <li><a href="{{ hugo.Data.profile.cv.file }}">Curriculum Vitae (PDF)</a></li>
+    <li><a href="mailto:{{ hugo.Data.profile.email }}">Email</a></li>
+    {{ range hugo.Data.profiles.profiles }}<li><a href="{{ .url }}" rel="me">{{ .name }}</a></li>{{ end }}
+  </ul>
+</aside>
+
+<script>
+jQuery(document).ready(function($) {
+
+    // ---- Data (serialized by Hugo from data/*.yaml; jsonify escapes HTML) ----
+    var DATA = {
+        profile:      {{ hugo.Data.profile      | jsonify | safeJS }},
+        positions:    {{ hugo.Data.positions    | jsonify | safeJS }},
+        research:     {{ hugo.Data.research     | jsonify | safeJS }},
+        projects:     {{ hugo.Data.projects     | jsonify | safeJS }},
+        publications: {{ hugo.Data.publications | jsonify | safeJS }},
+        talks:        {{ hugo.Data.talks        | jsonify | safeJS }},
+        awards:       {{ hugo.Data.awards       | jsonify | safeJS }},
+        education:    {{ hugo.Data.education    | jsonify | safeJS }},
+        skills:       {{ hugo.Data.skills       | jsonify | safeJS }},
+        profiles:     {{ hugo.Data.profiles     | jsonify | safeJS }}
+    };
+
+    var postFilenames = [
+        {{ range where .Site.RegularPages "Section" "posts" }}
+        "{{ with .File }}{{ path.BaseName .Dir }}{{ end }}",
+        {{ end }}
+    ];
+
+    // ---- Palette (restrained, readable) ----
+    var C = {
+        head:  'white',    // section headers
+        title: '#79c0ff',  // entry titles
+        meta:  '#8b949e',  // dates / secondary info
+        ok:    '#7ee787'   // accents
+    };
+
+    // Escape user data so it cannot inject jquery.terminal formatting.
+    function esc(s) {
+        if (s === undefined || s === null) return '';
+        return $.terminal.escape_brackets(String(s)).trim();
+    }
+    // Same, but keeps leading/trailing whitespace (ASCII art, box padding).
+    function escRaw(s) {
+        if (s === undefined || s === null) return '';
+        return $.terminal.escape_brackets(String(s));
+    }
+    function fmt(color, text, bold) {
+        return '[[' + (bold ? 'b' : '') + ';' + color + ';]' + text + ']';
+    }
+    function header(text) { return '\n' + fmt(C.head, text, true) + '\n'; }
+    function padKey(key, length) { return key + ' '.repeat(Math.max(0, length - key.length)); }
+
+    // ---- Section renderers (arrays of echo-able lines) ----
+
+    function rAbout() {
+        var p = DATA.profile;
+        var out = [];
+        out.push('');
+        out.push(fmt(C.head, esc(p.name) + ', ' + esc(p.honorific), true));
+        out.push(fmt(C.ok, esc(p.tagline)));
+        (p.affiliations || []).forEach(function(a) {
+            out.push(esc(a.name) + ' — ' + esc(a.detail));
+        });
+        out.push(fmt(C.meta, esc(p.location)));
+        out.push('');
+        esc(p.about).split('\n\n').forEach(function(par) {
+            out.push(par.replace(/\n/g, ' '));
+            out.push('');
+        });
+        return out;
+    }
+
+    function rPositions() {
+        var out = [header('Positions')];
+        (DATA.positions.positions || []).forEach(function(j) {
+            out.push('---');
+            out.push(fmt(C.title, esc(j.title), true) + (j.status === 'current' ? ' ' + fmt(C.ok, '[current]') : ''));
+            out.push(esc(j.institution) + (j.department ? ' — ' + esc(j.department) : ''));
+            out.push(fmt(C.meta, esc(j.location) + ' · ' + esc(j.start) + ' – ' + (j.end ? esc(j.end) : 'Present')));
+            if (j.description) out.push(esc(j.description));
+            if (j.url) out.push(esc(j.url));
+            out.push('');
+        });
+        return out;
+    }
+
+    function rResearch() {
+        var out = [header('Research areas')];
+        (DATA.research.areas || []).forEach(function(a) {
+            out.push(fmt(C.title, esc(a.name), true));
+            out.push('  ' + esc(a.description));
+            out.push('');
+        });
+        return out;
+    }
+
+    function rProjects() {
+        var out = [header('Projects')];
+        (DATA.projects.projects || []).forEach(function(p) {
+            out.push('---');
+            out.push(fmt(C.title, esc(p.title), true));
+            out.push(fmt(C.meta, esc(p.date) + (p.status ? ' · ' + esc(p.status) : '')));
+            if (p.role) out.push('Role:    ' + esc(p.role));
+            if (p.funding) out.push('Funding: ' + esc(p.funding));
+            if (p.summary) out.push(esc(p.summary));
+            if (p.methods) out.push(esc(p.methods));
+            if (p.link) out.push(esc(p.link));
+            out.push('');
+        });
+        return out;
+    }
+
+    function pubYears() {
+        var years = [];
+        (DATA.publications.publications || []).forEach(function(p) {
+            if (years.indexOf(String(p.year)) === -1) years.push(String(p.year));
+        });
+        return years;
+    }
+
+    function rPublications(arg) {
+        var all = DATA.publications.publications || [];
+        var list, label;
+        if (!arg) {
+            list = all.filter(function(p) { return p.featured; });
+            label = 'Selected publications (' + list.length + ' of ' + all.length + ')';
+        } else if (arg === 'all') {
+            list = all;
+            label = 'All publications (' + all.length + ')';
+        } else {
+            list = all.filter(function(p) { return String(p.year) === arg; });
+            label = 'Publications in ' + esc(arg) + ' (' + list.length + ')';
+        }
+        var out = [header(label)];
+        if (!list.length) {
+            out.push('No publications match. Try: publications all' +
+                     (pubYears().length ? ' — years: ' + pubYears().join(', ') : ''));
+            return out;
+        }
+        list.forEach(function(p) {
+            out.push('---');
+            out.push(fmt(C.meta, '[' + esc(p.year) + ']') + ' ' + fmt(C.title, esc(p.title), true));
+            out.push(esc(p.authors));
+            out.push(esc(p.publication) + (p.status ? ' — ' + esc(p.status) : ''));
+            if (p.url) out.push(esc(p.url));
+            out.push('');
+        });
+        if (!arg) {
+            out.push(fmt(C.meta, "Type 'publications all' for the full list or 'publications <year>' to filter."));
+            out.push(fmt(C.meta, 'Full record: https://scholar.google.com/citations?user=2FSN2voAAAAJ'));
+        }
+        return out;
+    }
+
+    function talkLines(t) {
+        var out = [];
+        out.push('---');
+        out.push(fmt(C.title, esc(t.title), true));
+        if (t.event) out.push(esc(t.event));
+        var meta = [t.location, t.date, t.type].filter(Boolean).map(esc).join(' · ');
+        if (meta) out.push(fmt(C.meta, meta));
+        if (t.description) out.push(esc(t.description));
+        if (t.slides) out.push('Slides: ' + esc(t.slides));
+        if (t.video) out.push('Video:  ' + esc(t.video));
+        if (t.url) out.push(esc(t.url));
+        out.push('');
+        return out;
+    }
+
+    function rTalks() {
+        var out = [header('Conference presentations')];
+        (DATA.talks.conference || []).forEach(function(t) { out = out.concat(talkLines(t)); });
+        out.push(header('Invited talks'));
+        (DATA.talks.invited || []).forEach(function(t) { out = out.concat(talkLines(t)); });
+        out.push(header('Workshops & participation'));
+        (DATA.talks.workshops || []).forEach(function(t) {
+            out.push('- ' + esc(t.title) + fmt(C.meta, ' — ' + [t.location, t.date].filter(Boolean).map(esc).join(', ')));
+            if (t.url) out.push('  ' + esc(t.url));
+        });
+        out.push('');
+        return out;
+    }
+
+    function awardLines(a) {
+        var out = [];
+        out.push('---');
+        out.push(fmt(C.title, esc(a.title), true) + (a.category ? ' ' + fmt(C.meta, '(' + esc(a.category) + ')') : ''));
+        out.push(esc(a.issuer) + (a.date ? fmt(C.meta, ' · ' + esc(a.date)) : ''));
+        if (a.description) out.push(esc(a.description));
+        if (a.url) out.push(esc(a.url));
+        out.push('');
+        return out;
+    }
+
+    function rAwards() {
+        var out = [header('Awards, fellowships & recognition')];
+        (DATA.awards.awards || []).forEach(function(a) { out = out.concat(awardLines(a)); });
+        out.push(header('Certifications'));
+        (DATA.awards.certifications || []).forEach(function(a) { out = out.concat(awardLines(a)); });
+        return out;
+    }
+
+    function rEducation() {
+        var out = [header('Education')];
+        (DATA.education.education || []).forEach(function(e) {
+            out.push('---');
+            out.push(fmt(C.title, esc(e.degree) + ' in ' + esc(e.field), true));
+            out.push(esc(e.institution) + (e.location ? ', ' + esc(e.location) : ''));
+            out.push(fmt(C.meta, esc(e.start) + ' – ' + esc(e.end)));
+            if (e.supervisor) out.push('Supervisor: ' + esc(e.supervisor));
+            if (e.thesis) out.push('Thesis: "' + esc(e.thesis) + '"');
+            if (e.thesis_url) out.push(esc(e.thesis_url));
+            out.push('');
+        });
+        return out;
+    }
+
+    function rSkills() {
+        var out = [header('Technical and research capabilities')];
+        (DATA.skills.categories || []).forEach(function(c) {
+            out.push(fmt(C.title, esc(c.name), true));
+            out.push('  ' + esc(c.items));
+            out.push('');
+        });
+        return out;
+    }
+
+    function rProfiles() {
+        var out = [header('Profiles')];
+        var list = DATA.profiles.profiles || [];
+        var w = Math.max.apply(null, list.map(function(p) { return p.name.length; }));
+        list.forEach(function(p) {
+            out.push(padKey(esc(p.name), w) + '  ' + esc(p.url));
+        });
+        out.push('');
+        return out;
+    }
+
+    function rContact() {
+        var p = DATA.profile;
+        var out = [header('Contact')];
+        out.push(padKey('Email', 10) + '  ' + esc(p.email));
+        out.push(padKey('Website', 10) + '  ' + esc(p.website));
+        (p.affiliations || []).forEach(function(a) {
+            out.push(padKey(esc(a.name), 10) + '  ' + esc(a.url));
+        });
+        out.push(padKey('GitHub', 10) + '  https://github.com/yunusserhat');
+        out.push('');
+        return out;
+    }
+
+    function rCv(term) {
+        var p = DATA.profile;
+        var url = {{ .Site.BaseURL | jsonify | safeJS }}.replace(/\/$/, '') + p.cv.file;
+        term.echo(header(esc(p.cv.label)));
+        term.echo('Download: ' + esc(url));
+        term.echo(fmt(C.meta, 'Opening in a new tab...') + '\n');
+        window.open(p.cv.file, '_blank', 'noopener');
+    }
+
+    // ---- Blog (theme-compatible: posts served from /posts/) ----
+
+    function listPosts(term) {
+        $.ajax({
+            url: "/posts/index.xml",
+            type: 'GET',
+            dataType: 'xml',
+            success: function(xml) {
+                var items = $(xml).find('item');
+                if (!items.length) {
+                    term.echo("\nNo posts yet. Research notes will appear here.\n");
+                    return;
+                }
+                var output = header('Posts') ;
+                items.each(function() {
+                    var title = $(this).find('title').text();
+                    var filename = $(this).find('filename').text();
+                    var pubDate = new Date($(this).find('pubDate').text());
+                    var date = pubDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: '2-digit' });
+                    output += fmt(C.meta, date) + '  ' + fmt(C.title, esc(filename), true) + '  ' + esc(title) + '\n';
+                });
+                output += '\n' + fmt(C.meta, "Read a post with: cat <name>  (e.g. cat " + esc($(items[0]).find('filename').text()) + ")") + '\n';
+                term.echo(output);
+            },
+            error: function() {
+                term.echo("\nNo posts yet. Research notes will appear here.\n");
+            }
+        });
+    }
+
+    function catPost(term, postdir, useLess) {
+        $.ajax({
+            url: "/posts/" + postdir + "/",
+            type: 'GET',
+            success: function(data) {
+                if (useLess) {
+                    var export_data = term.export_view();
+                    term.clear();
+                    term.echo(data, {raw: true});
+                    term.push(function() {}, {
+                        prompt: ':',
+                        keydown: function(e) {
+                            if (e.which === 81) { // q
+                                term.pop();
+                                term.import_view(export_data);
+                                return false;
+                            }
+                        }
+                    });
+                } else {
+                    term.echo(data, {raw: true});
+                }
+            },
+            error: function() {
+                term.echo("Error: could not load post '" + esc(postdir) + "'. Type 'blog' to list posts.");
+            }
+        });
+    }
+
+    // ---- Commands, aliases, help ----
+
+    var commandHelp = {
+        about:        "Academic biography and current focus",
+        positions:    "Current and previous academic positions",
+        research:     "Research areas and methodological interests",
+        projects:     "Selected research and applied AI projects",
+        publications: "Selected papers, preprints and proceedings",
+        talks:        "Conference talks and invited presentations",
+        awards:       "Awards, fellowships and professional recognition",
+        education:    "Academic education",
+        skills:       "Technical and research capabilities",
+        profiles:     "Academic and professional profiles",
+        cv:           "Download the current CV",
+        contact:      "Email and institutional links",
+        blog:         "Research notes and posts",
+        clear:        "Clear the terminal"
+    };
+
+    var aliases = {
+        bio: 'about', whois: 'about',
+        experience: 'positions', work: 'positions',
+        papers: 'publications', pubs: 'publications',
+        events: 'talks',
+        honours: 'awards', honors: 'awards',
+        resume: 'cv',
+        social: 'profiles',
+        posts: 'blog', ls: 'blog'
+    };
+
+    var renderers = {
+        about: rAbout, positions: rPositions, research: rResearch,
+        projects: rProjects, talks: rTalks, awards: rAwards,
+        education: rEducation, skills: rSkills, profiles: rProfiles,
+        contact: rContact
+    };
+
+    function helpText() {
+        var keys = Object.keys(commandHelp);
+        var w = Math.max.apply(null, keys.map(function(k) { return k.length; }));
+        var t = '\n' + fmt(C.head, 'Available commands:', true) + '\n\n';
+        keys.forEach(function(k) {
+            t += '  ' + fmt(C.ok, padKey(k, w)) + '  ' + commandHelp[k] + '\n';
+        });
+        t += '\n' + fmt(C.meta, "publications all | publications <year>  filter the publication list") + '\n';
+        t += fmt(C.meta, "cat <post> / less <post>                read a blog post") + '\n';
+        t += fmt(C.meta, "Aliases: bio, experience, work, papers, pubs, events, honours, resume, social") + '\n';
+        return t;
+    }
+
+    // ---- Terminal ----
+
+    var term = $('body').terminal(function(command, term) {
+        var parts = command.trim().split(/\s+/);
+        var name = (parts[0] || '').toLowerCase();
+        var useLess = false;
+
+        if (name === 'less') {
+            useLess = true;
+            parts.shift();
+            name = (parts[0] || '').toLowerCase();
+            if (!name) { term.echo('less: missing argument'); return; }
+            if (postFilenames.indexOf(name) !== -1) { catPost(term, name, true); return; }
+        }
+        if (aliases[name]) name = aliases[name];
+
+        function output(lines) {
+            if (useLess) {
+                term.less(lines.join('\n').split('\n'));
+            } else {
+                lines.forEach(function(l) { term.echo(l); });
+            }
+        }
+
+        switch (name) {
+            case 'help': case '?':
+                term.echo(helpText());
+                break;
+            case 'publications':
+                output(rPublications((parts[1] || '').toLowerCase()));
+                break;
+            case 'cv':
+                rCv(term);
+                break;
+            case 'blog':
+                listPosts(term);
+                break;
+            case 'cat':
+                if (parts.length < 2) term.echo('Usage: cat <post> — type blog to list posts');
+                else catPost(term, parts[1], false);
+                break;
+            case 'all':
+                output([].concat(rAbout(), rPositions(), rResearch(), rProjects(),
+                                 rPublications('all'), rTalks(), rAwards(),
+                                 rEducation(), rSkills(), rProfiles(), rContact()));
+                break;
+            case 'clear':
+                term.clear();
+                break;
+            case 'exit':
+                term.echo('Session closed, thanks for visiting. The tab can be safely closed.');
+                break;
+            case 'source':
+                term.echo('\nBuilt with Hugo and the TerminalCV theme:\nhttps://github.com/coolapso/hugo-theme-terminalcv\n');
+                break;
+            case '':
+                break;
+            default:
+                if (renderers[name]) {
+                    output(renderers[name]());
+                } else {
+                    term.echo("\nunknown command: " + esc(command) + "\ntype 'help' for a list of available commands\n");
+                }
+        }
+    }, {
+        greetings: false,
+        onInit: function(term) {
+            var p = DATA.profile;
+            var banner = {{ .Site.Params.greetingBanner | jsonify | safeJS }} || [];
+            var bannerColor = {{ .Site.Params.greetingBannerColor | jsonify | safeJS }} || '#d97757';
+            var wide = (window.innerWidth || 0) >= 640;
+
+            term.echo('');
+            if (wide && banner.length) {
+                banner.forEach(function(line) {
+                    term.echo(fmt(bannerColor, escRaw(line), true));
+                });
+                term.echo('');
+            }
+
+            var rows = [
+                { text: '✻ Welcome to yunusserhat.com', color: bannerColor, bold: true },
+                { text: '' },
+                { text: p.name + ', ' + p.honorific, color: C.head, bold: true },
+                { text: p.tagline, color: C.ok },
+                { text: (p.affiliations || []).map(function(a) { return a.name; }).join(' · ') },
+                { text: '' },
+                { text: "Type 'help' to explore.", color: C.meta }
+            ];
+
+            function rowBody(r, width) {
+                var padded = r.text + ' '.repeat(Math.max(0, width - r.text.length));
+                return r.color ? fmt(r.color, escRaw(padded), r.bold) : escRaw(padded);
+            }
+
+            if (wide) {
+                var width = Math.max.apply(null, rows.map(function(r) { return r.text.length; }));
+                term.echo(fmt(C.meta, '╭' + '─'.repeat(width + 2) + '╮'));
+                rows.forEach(function(r) {
+                    term.echo(fmt(C.meta, '│ ') + rowBody(r, width) + fmt(C.meta, ' │'));
+                });
+                term.echo(fmt(C.meta, '╰' + '─'.repeat(width + 2) + '╯'));
+            } else {
+                rows.forEach(function(r) { term.echo(rowBody(r, 0)); });
+            }
+            term.echo('');
+            term.echo('I work on GeoAI, multimodal learning, computer vision,');
+            term.echo('spatial data science and vision-language models.');
+            term.echo('');
+
+            // Old Wowchemy URLs are redirected to /#<command>; honour the hash.
+            var hash = decodeURIComponent((window.location.hash || '').replace(/^#/, '')).toLowerCase();
+            if (hash && (renderers[aliases[hash] || hash] || ['publications', 'blog', 'cv'].indexOf(aliases[hash] || hash) !== -1)) {
+                term.exec(aliases[hash] || hash);
+            }
+        },
+        prompt: '{{ with .Site.Params.prompt }}{{ with .core }}[[;{{ .beforeColor | default "grey" }};]{{ .before }}][[;{{ .color | default "grey" }};]{{ .text }}][[;{{ .afterColor | default "grey" }};]{{ .after }}]{{ end }}{{ with .path }}[[;{{ .beforeColor | default "grey" }};]{{ .before }}][[;{{ .color | default "grey" }};]{{ .text | default ":~$" }}][[;{{ .afterColor | default "grey" }};]{{ .after }}]{{ end }}{{ with .extra }}[[;{{ .color | default "grey" }};]{{ .text }}]{{ end }}{{ end }}',
+        autocompleteMenu: true,
+        completion: function(string) {
+            var command = this.get_command();
+            var parts = command.split(/\s+/);
+            var commandName = (parts[0] || '').toLowerCase();
+
+            if (parts.length === 1) {
+                return Object.keys(commandHelp).concat(['cat', 'less', 'all']).filter(function(cmd) {
+                    return cmd.indexOf(string) === 0;
+                });
+            }
+            var args = [];
+            if (commandName === 'publications' || commandName === 'papers' || commandName === 'pubs') {
+                args = ['all'].concat(pubYears());
+            } else if (commandName === 'cat' || commandName === 'less') {
+                args = postFilenames.concat(commandName === 'less' ? Object.keys(commandHelp) : []);
+            }
+            return args.filter(function(a) { return a.indexOf(string) === 0; });
+        }
+    });
+});
+</script>
+{{ end }}

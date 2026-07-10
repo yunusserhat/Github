@@ -1,0 +1,41 @@
+# Personal profile shown by the `about` and `contact` commands and used
+# for SEO metadata. Sources: archive/wowchemy-site-2026 author page and
+# the April 2026 CV (static/uploads/yunusserhatbicakci_phd_cv.pdf).
+
+name: "Yunus Serhat Bıçakçı"
+honorific: "PhD"
+job_title: "Assistant Professor"
+tagline: "Assistant Professor · Geospatial AI Researcher"
+affiliations:
+  - name: "Marmara University"
+    detail: "Department of Artificial Intelligence and Machine Learning, Faculty of Applied Sciences"
+    url: "https://avesis.marmara.edu.tr/yunus.serhat"
+  - name: "University of Glasgow"
+    detail: "Geospatial Data Science Group, School of Geographical and Earth Sciences (Affiliate)"
+    url: "https://www.gla.ac.uk/schools/ges/staff/yunusserhatbicakci"
+location: "Istanbul, Türkiye · London, UK"
+email: "yunusserhat@gmail.com"
+website: "https://yunusserhat.com"
+
+about: |
+  I am an Assistant Professor in the Department of Artificial Intelligence and
+  Machine Learning at Marmara University, and an Affiliate Research Software
+  Engineering Scientist with the Geospatial Data Science Group at the
+  University of Glasgow. I hold a PhD in Applied Informatics from Istanbul
+  Technical University.
+
+  My research sits at the intersection of geospatial artificial intelligence
+  and multimodal learning. I use vision-language models, retrieval-augmented
+  generation and computer vision to analyse street-level imagery, remote
+  sensing data and the spatio-temporal patterns of cities. Recent work
+  includes street-level geolocalization with multimodal large language
+  models, multimodal semantic segmentation for urban mapping, and evaluating
+  the integrity of explanations produced by vision-language models.
+
+  Before my current roles I was a postdoctoral researcher at UCL's Jill Dando
+  Institute of Security and Crime Science, where I applied natural language
+  processing and geospatial AI to large-scale crime mapping.
+
+cv:
+  file: "/uploads/yunus-serhat-bicakci-cv.pdf"
+  label: "Curriculum Vitae (PDF, updated April 2026)"

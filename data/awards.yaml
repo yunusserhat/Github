@@ -1,0 +1,76 @@
+# Awards, fellowships, competition results and certifications shown by the
+# `awards` command. Sources: April 2026 CV and the old site's
+# content/home/accomplishments.md.
+
+awards:
+  - title: "Global Talent Endorsement"
+    issuer: "The British Academy"
+    date: "2024 – Present"
+    category: "recognition"
+    description: >-
+      Endorsement under the UK Global Talent visa scheme, recognising
+      exceptional promise and facilitating ongoing academic and research
+      work in the UK.
+    url: ""
+
+  - title: "1st Place — ISASeg Multimodal Segmentation Challenge (Phases 1 & 2)"
+    issuer: "IEEE WHISPERS 2025"
+    date: "2025"
+    category: "competition"
+    description: >-
+      Ranked 1st on both phase leaderboards of the impervious surface
+      segmentation challenge using Sentinel-1/2 data fusion.
+    url: "https://www.kaggle.com/competitions/whisper-2025-isa-seg-phase-2/leaderboard"
+
+  - title: "TÜBİTAK Postdoctoral Fellowship"
+    issuer: "Scientific and Technological Research Council of Türkiye (TÜBİTAK)"
+    date: "2023 – 2024"
+    category: "fellowship"
+    description: >-
+      Fellowship supporting postdoctoral research at University College
+      London (GBP 24,600 plus travel expenses).
+    url: ""
+
+  - title: "Google Machine Learning Bootcamp — Certificate of Achievement"
+    issuer: "Google"
+    date: "2022"
+    category: "recognition"
+    description: "Six-month intensive machine learning programme."
+    url: ""
+
+certifications:
+  - title: "Hugging Face Agents Course"
+    issuer: "Hugging Face"
+    date: "June 2025"
+    category: "certification"
+    url: ""
+
+  - title: "TensorFlow Developer Certificate"
+    issuer: "TensorFlow"
+    date: "October 2022 – October 2025"
+    category: "certification"
+    url: "https://www.credential.net/3816d8ad-9762-43b9-8571-83bba71bea25"
+
+  - title: "Deep Learning Specialization"
+    issuer: "DeepLearning.AI / Coursera"
+    date: "2022"
+    category: "certification"
+    url: "https://www.coursera.org/account/accomplishments/specialization/certificate/3AGMTGJZBVVK"
+
+  - title: "Data Science and Machine Learning Bootcamp"
+    issuer: "Miuul / Veri Bilimi Okulu"
+    date: "2022"
+    category: "certification"
+    url: "https://certificate.veribilimiokulu.com/certs/2022-06-19/yunus-serhat-bicakci"
+
+  - title: "NVIDIA: Fundamentals of Deep Learning"
+    issuer: "NVIDIA Deep Learning Institute"
+    date: ""
+    category: "certification"
+    url: ""
+
+  - title: "Intermediate R"
+    issuer: "DataCamp"
+    date: "2018"
+    category: "certification"
+    url: "https://www.datacamp.com/statement-of-accomplishment/course/a5890804269b251625d23e4e101b144e913676c9"

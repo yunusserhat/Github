@@ -1,0 +1,127 @@
+# Talks and presentations shown by the `talks` command.
+# Grouped: conference presentations, invited talks, then workshop
+# participation. Source: April 2026 CV; the Google DSC Işık talk also
+# existed as content/event/gdsc_isik_11nov22 on the old site.
+
+conference:
+  - title: "Mapping the Semantics of the Street: A VLM-Driven Geospatial Analysis in Fatih, Istanbul"
+    event: "1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026)"
+    location: "Ghent, Belgium"
+    date: "3–6 June 2026"
+    type: "oral presentation (accepted)"
+    url: ""
+    description: "With Joseph Shingleton, Yu Wang and Anahid Basiri."
+
+  - title: "Emergent Spatio-Semantic Structure in Large Language Model Embedding Spaces"
+    event: "1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026)"
+    location: "Ghent, Belgium"
+    date: "3–6 June 2026"
+    type: "oral presentation (accepted)"
+    url: ""
+    description: "With Joseph Shingleton, Yu Wang and Ana Basiri."
+
+  - title: "The Invisible City: Not All Streets Are Seen Equally"
+    event: "1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026)"
+    location: "Ghent, Belgium"
+    date: "3–6 June 2026"
+    type: "oral presentation (accepted)"
+    url: ""
+    description: "With Yu Wang, Joseph Shingleton, Ana Basiri and James Ackland."
+
+  - title: "A Graph-Based Community Detection Approach for Identifying the Semantic Neighbourhoods within London's Airbnb Properties"
+    event: "29th AGILE Conference on Geographic Information Science"
+    location: "Tartu, Estonia"
+    date: "16–19 June 2026"
+    type: "short paper (accepted)"
+    url: ""
+    description: "With Joseph Shingleton, Yu Wang, Ana Basiri and Meiliu Wu."
+
+  - title: "Multimodal Semantic Segmentation for Impervious Surface Mapping"
+    event: "15th Workshop on Hyperspectral Image and Signal Processing (WHISPERS 2025)"
+    location: "Bellaterra (Barcelona), Spain"
+    date: "12–14 November 2025"
+    type: "conference presentation"
+    url: ""
+    description: ""
+
+  - title: "From Video to Recipe: Leveraging Vision Language Models for Culinary Analysis"
+    event: "4th International Congress on Food Researches"
+    location: "Sivas, Türkiye"
+    date: "16–18 October 2025"
+    type: "conference presentation"
+    url: ""
+    description: ""
+
+  - title: "Using Big Data, Artificial Intelligence and Cloud Technologies for Interactive Crime Mapping"
+    event: "Stockholm Criminology Symposium"
+    location: "Stockholm, Sweden"
+    date: "2023"
+    type: "conference presentation"
+    url: "https://criminologysymposium.com/download/18.6c9a2446187eb13f6af6f72/1683789803006/SCS%20Program%202023.pdf#page=71"
+    description: "With Alina Ristea and Kate Bowers."
+
+  - title: "Application of Natural Language Processing Techniques for Crime Detection"
+    event: "Environmental Criminology and Crime Analysis (ECCA) 2023"
+    location: ""
+    date: "2023"
+    type: "conference presentation"
+    url: "https://raw.githubusercontent.com/yunusserhat/data/main/data/ECCA_2023_PROGRAM.pdf#page=13"
+    description: "With Alina Ristea and Kate Bowers."
+
+  - title: "Artificial Intelligence Applications for Social Municipality: The Case of Chatbot"
+    event: "International VI. Civil Strategy Symposium"
+    location: "Istanbul, Türkiye"
+    date: "2022"
+    type: "conference presentation"
+    url: "http://spms.sempozyum.marmara.edu.tr/dosya/etkinlik/spms/S%C4%B0V%C4%B0L%20STRATEJ%C4%B0/6.%20SSS%20Bildiri%20Kitab%C4%B1%2010.01.2022.pdf"
+    description: ""
+
+invited:
+  - title: "Machine Learning | Deep Learning | Data Science"
+    event: "Google Developer Student Clubs, Işık University"
+    location: "Online"
+    date: "11 November 2022"
+    type: "invited talk"
+    video: "https://www.youtube.com/watch?v=U_EFlL0eIWU"
+    description: >-
+      Overview of machine learning and data science: supervised and
+      unsupervised learning, deep learning, and real-world applications.
+
+  - title: "TensorFlow Basics"
+    event: "Google Developer Student Clubs, Bandırma University"
+    location: "Online"
+    date: "December 2022"
+    type: "invited talk"
+    video: "https://www.youtube.com/watch?v=tOOyB8Mv93s"
+    description: ""
+
+workshops:
+  - title: "15th International Crime Science Conference"
+    location: "London, UK (online)"
+    date: "10 June 2024"
+    url: "https://www.ucl.ac.uk/engineering/news/2024/mar/15th-international-crime-science-conference-2024"
+
+  - title: "Mobile Phone Data for Mobility Workshop"
+    location: "UK (online)"
+    date: "6–7 December 2023"
+    url: "https://www.eventbrite.co.uk/e/mobile-phone-data-for-mobility-workshop-tickets-763373860767"
+
+  - title: "Spatial Data Science Across Languages (SDSL)"
+    location: "Münster, Germany"
+    date: "18–19 September 2023"
+    url: "https://r-spatial.org/sdsl/"
+
+  - title: "Scottish Crime Data Hackathon"
+    location: "Edinburgh, Scotland (online)"
+    date: "25 July 2023"
+    url: ""
+
+  - title: "2nd Cardiff NLP Summer Workshop"
+    location: "Cardiff, UK"
+    date: "26–27 June 2023"
+    url: "https://www.cardiffnlpworkshop.org/"
+
+  - title: "14th International Crime Science Conference"
+    location: "London, UK (online)"
+    date: "19 June 2023"
+    url: "https://www.ucl.ac.uk/engineering/conference-programme-international-crime-science-conference-2023/"

@@ -1,0 +1,41 @@
+# Academic education shown by the `education` command.
+# Source: April 2026 CV (dates and supervisors) cross-checked against the
+# old site's author page (degree years agree).
+
+education:
+  - degree: "PhD"
+    field: "Applied Informatics — Geographical Information Technologies Program"
+    institution: "Istanbul Technical University"
+    location: "Istanbul, Türkiye"
+    start: "2014"
+    end: "2021"
+    thesis: "Spatio-Temporal Analysis of Applied Electronic Monitoring on Parolees of Mobility: A Case Study in Istanbul"
+    thesis_url: "https://tez.yok.gov.tr/UlusalTezMerkezi/tezDetay.jsp?id=TMM3d5R_2gUCBMlhAXt_SQ&no=kzyjTlpPUSsqpwF1WCvbtg"
+    supervisor: "Prof Dr Dursun Zafer Şeker"
+
+  - degree: "MSc"
+    field: "Information Systems — Management Information Systems Program"
+    institution: "Sakarya University"
+    location: "Sakarya, Türkiye"
+    start: "2011"
+    end: "2013"
+    thesis: ""
+    supervisor: "Prof Dr Orhan Torkul"
+
+  - degree: "BA"
+    field: "Business Administration"
+    institution: "Anadolu University"
+    location: "Eskişehir, Türkiye"
+    start: "2007"
+    end: "2011"
+    thesis: ""
+    supervisor: ""
+
+  - degree: "BSc"
+    field: "Engineering"
+    institution: "Ankara University"
+    location: "Ankara, Türkiye"
+    start: "2007"
+    end: "2011"
+    thesis: ""
+    supervisor: ""

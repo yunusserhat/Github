@@ -1,0 +1,58 @@
+# Academic positions, current first, then reverse chronological.
+# Source: April 2026 CV. Old site (archive/wowchemy-site-2026) agrees on
+# institutions and dates; where they differ the newer CV wins.
+
+positions:
+  - title: "Assistant Professor"
+    institution: "Marmara University"
+    department: "Department of Artificial Intelligence and Machine Learning, Faculty of Applied Sciences"
+    location: "Istanbul, Türkiye"
+    start: "2025"
+    end: ""
+    status: "current"
+    description: >-
+      Teach undergraduate technology courses and continue active research on
+      data science and geospatial AI, with findings published in
+      international journals and presented at international conferences.
+      Serve on academic committees contributing to curriculum development.
+    url: "https://avesis.marmara.edu.tr/yunus.serhat"
+
+  - title: "Research Software Engineering Scientist (Affiliate)"
+    institution: "University of Glasgow"
+    department: "Geospatial Data Science Group, School of Geographical and Earth Sciences"
+    location: "Glasgow, UK"
+    start: "2024"
+    end: ""
+    status: "current"
+    description: >-
+      Initially appointed as Research Associate and subsequently continuing
+      as Affiliate Research Software Engineering Scientist. Contribute to
+      collaborative projects on geospatial data science and multimodal AI,
+      co-author publications and support proposal development and mentoring.
+    url: "https://gdsglasgow.github.io/"
+
+  - title: "Postdoctoral Researcher"
+    institution: "University College London (UCL)"
+    department: "Jill Dando Institute of Security and Crime Science"
+    location: "London, UK"
+    start: "Jan 2023"
+    end: "May 2024"
+    status: "past"
+    description: >-
+      Conducted research on AI-driven crime mapping, developing machine
+      learning models (NLP, geospatial AI, deep learning) for large-scale
+      data analysis, and presented findings at international conferences.
+    url: "https://www.ucl.ac.uk/jill-dando-institute/"
+
+  - title: "Research Assistant"
+    institution: "Marmara University"
+    department: "Faculty of Applied Sciences"
+    location: "Istanbul, Türkiye"
+    start: "2013"
+    end: "2023"
+    status: "past"
+    description: >-
+      Conducted research in geospatial information technology, assisted in
+      the publication of peer-reviewed articles and supported departmental
+      administration. Instructor for vocational school courses from 2021.
+    url: "https://www.marmara.edu.tr"

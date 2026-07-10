@@ -1,0 +1,54 @@
+# Research and applied AI projects shown by the `projects` command.
+# Source: April 2026 CV (Projects and Software & Repositories sections).
+# The old Wowchemy site had no content/project/ entries or project images.
+
+projects:
+  - title: "AI-Based Analysis of Istanbul Street-Level Imagery and Open Dataset Creation"
+    short_title: "istanbul-street-imagery"
+    date: "2026 – 2027"
+    status: "active"
+    role: "Principal Investigator"
+    funding: "Research Universities Support Program (Project 12127, 546,500 TL, 12 months)"
+    summary: >-
+      Large-scale collection of approximately 3 million street-level images
+      across Istanbul from crowdsourced and open platforms (e.g. Mapillary),
+      AI-based analysis of the collected imagery, and publication of both the
+      imagery and derived attributes as an open dataset.
+    methods: >-
+      Four-stage pipeline: data collection and preprocessing, AI-driven
+      analysis, quality assessment against a reference subset, and open
+      public release of the dataset.
+    link: ""
+
+  - title: "Multimodal Semantic Segmentation for Impervious Surface Mapping"
+    short_title: "isaseg-whispers-2025"
+    date: "2025"
+    status: "completed"
+    role: "Solo participant — ranked 1st in both challenge phases"
+    summary: >-
+      Deep learning models for the IEEE WHISPERS 2025 ISASeg Challenge on
+      impervious surface segmentation from Sentinel-1 and Sentinel-2 imagery.
+      Fine-tuned DeepLabV3+, UPerNet, SegFormer and U-Net with ensemble
+      methods, ranking 1st on both Phase 1 (0.8542) and Phase 2 (0.8241)
+      leaderboards through multimodal SAR and optical data fusion.
+    link: "https://www.kaggle.com/competitions/whisper-2025-isa-seg-phase-2/leaderboard"
+
+  - title: "GeoAI-VLM: Geospatial Vision-Language Model Analysis"
+    short_title: "geoai-vlm"
+    date: "2026"
+    status: "active"
+    role: "Author and maintainer"
+    summary: >-
+      Open-source toolkit for analysing geospatial imagery with
+      vision-language models. Archived releases on Zenodo (v0.2.1).
+    link: "https://doi.org/10.5281/zenodo.18169685"
+
+  - title: "sppt: Spatial Point Pattern Test for Aggregated Data (Python)"
+    short_title: "sppt"
+    date: "2026"
+    status: "active"
+    role: "Author and maintainer"
+    summary: >-
+      Python implementation of the spatial point pattern test for aggregated
+      data. Archived releases on Zenodo (v0.1.7).
+    link: "https://doi.org/10.5281/zenodo.18813433"

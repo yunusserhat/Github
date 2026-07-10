@@ -1,0 +1,20 @@
+{{- /* Person structured data built from data/profile.yaml, data/profiles.yaml
+       and data/research.yaml. Only verified fields are emitted. */ -}}
+{{- $p := hugo.Data.profile }}
+{{- $sameAs := slice }}
+{{- range hugo.Data.profiles.profiles }}{{ $sameAs = $sameAs | append .url }}{{ end }}
+{{- $knows := slice }}
+{{- range hugo.Data.research.areas }}{{ $knows = $knows | append .name }}{{ end }}
+{{- $affiliations := slice }}
+{{- range $p.affiliations }}{{ $affiliations = $affiliations | append (dict "@type" "Organization" "name" .name "url" .url) }}{{ end }}
+{{- $ld := dict
+    "@context" "https://schema.org"
+    "@type" "Person"
+    "name" $p.name
+    "jobTitle" $p.job_title
+    "affiliation" $affiliations
+    "url" (.Site.BaseURL | string)
+    "sameAs" $sameAs
+    "knowsAbout" $knows
+}}
+<script type="application/ld+json">{{ $ld | jsonify (dict "indent" "  ") | safeJS }}</script>

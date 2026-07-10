@@ -1,0 +1,95 @@
+/* Custom terminal styling — overrides the theme's static/style.css.
+   Restrained, readable academic look; no glow or CRT effects. */
+
+.terminal {
+    --color: #c9d1d9;
+    --background: #0d1117;
+    --link-color: #79c0ff;
+    --font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "DejaVu Sans Mono", monospace;
+    --animation: terminal-underline;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.cmd {
+    --color: #c9d1d9;
+    --font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "DejaVu Sans Mono", monospace;
+}
+
+body {
+    background: #0d1117;
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "DejaVu Sans Mono", monospace;
+}
+
+/* Links: clearly distinguishable and high contrast on dark background */
+.terminal a,
+.terminal a[href] {
+    color: #79c0ff;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.terminal a:hover,
+.terminal a:focus {
+    color: #a5d6ff;
+    outline: 1px dotted #a5d6ff;
+}
+
+/* Long publication titles and URLs wrap instead of overflowing */
+.terminal .terminal-output > div {
+    overflow-wrap: anywhere;
+}
+
+/* Screen-reader / no-JS summary: visually hidden, still in the
+   accessibility tree and readable by crawlers */
+.sr-summary {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 404 page */
+.notfound {
+    max-width: 40rem;
+    margin: 15vh auto 0;
+    padding: 0 1.5rem;
+    color: #c9d1d9;
+}
+.notfound pre {
+    color: #7ee787;
+    overflow-x: auto;
+}
+.notfound a {
+    color: #79c0ff;
+}
+
+/* Mobile: slightly smaller type, no horizontal overflow */
+@media (max-width: 600px) {
+    body {
+        font-size: 15px;
+    }
+    .terminal {
+        padding: 8px;
+    }
+}
+
+/* Respect reduced-motion preferences: stop cursor blinking */
+@media (prefers-reduced-motion: reduce) {
+    .cmd .cursor.blink,
+    .cmd .cursor {
+        animation: none !important;
+        -webkit-animation: none !important;
+    }
+    .terminal, .cmd {
+        --animation: terminal-none;
+    }
+}

@@ -1,0 +1,28 @@
+# Technical and research capabilities shown by the `skills` command.
+# Categories with short technology lists — no arbitrary percentage bars.
+# Source: April 2026 CV (Skills section) and project/publication evidence.
+
+categories:
+  - name: "GeoAI and GIS"
+    items: "ArcGIS, QGIS, GeoPandas, PostGIS, DuckDB"
+
+  - name: "Machine Learning and Deep Learning"
+    items: "TensorFlow, scikit-learn, model fine-tuning, ensembles, quantisation (AWQ, GPTQ)"
+
+  - name: "Computer Vision"
+    items: "ViT-family models (CLIP, SigLIP, DINO), semantic segmentation, object detection, OpenCV"
+
+  - name: "Multimodal AI and LLMs"
+    items: "Vision-language models, Transformers, vLLM, LMDeploy, Ollama, OpenAI API, MCP, LlamaIndex, LangGraph, FAISS, RAG, evaluation, dataset curation"
+
+  - name: "Remote Sensing"
+    items: "Sentinel-1/2, SAR and multispectral fusion, aerial imagery and laser data"
+
+  - name: "Programming and Data Engineering"
+    items: "Python, R, SQL, NumPy, Pandas, Git"
+
+  - name: "Research Computing and HPC"
+    items: "Linux, Slurm, Conda, GPU batch and interactive jobs"
+
+  - name: "Deployment and Interactive Applications"
+    items: "Docker, CI/CD, model serving, monitoring, Google Cloud Platform, Microsoft Azure"

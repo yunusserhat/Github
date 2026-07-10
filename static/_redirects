@@ -1,0 +1,26 @@
+# Redirects for URLs from the old Wowchemy site (archive/wowchemy-site-2026).
+# The terminal home page executes the command named in the #hash on load,
+# so /#publications really shows the publications list.
+# Specific rules first — Netlify processes top to bottom, first match wins.
+
+# Old CV upload paths (linked from old posts, indexed by search engines)
+/uploads/yunusserhatbicakci_phd_cv.pdf      /uploads/yunus-serhat-bicakci-cv.pdf  301
+/uploads/yunusserhatbicakci_phd_cv.pdf.pdf  /uploads/yunus-serhat-bicakci-cv.pdf  301
+/uploads/yunusserhatbicakci_phd.pdf         /uploads/yunus-serhat-bicakci-cv.pdf  301
+/uploads/resume.pdf                         /uploads/yunus-serhat-bicakci-cv.pdf  301
+
+# Old blog post that was migrated
+/post/hpc/*        /posts/hpc-cluster-guide/  301
+
+# Old section URLs -> terminal commands
+/publication/*     /#publications  301
+/project/*         /#projects      301
+/post/*            /#blog          301
+/talk/*            /#talks         301
+/event/*           /#talks         301
+/author/*          /#about         301
+/authors/*         /#about         301
+/courses/*         /#positions     301
+/tag/*             /#research      301
+/category/*        /#research      301
+/publication-type/* /#publications 301
