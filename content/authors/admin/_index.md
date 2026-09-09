@@ -64,6 +64,6 @@ superuser: true
 highlight_name: true
 ---
 
-Researcher and AI Engineer with a PhD in Applied Informatics, specialising in developing scalable AI solutions by leveraging Large Language Models, Vision-Language Models and Retrieval-Augmented Generation for solving complex multimodal problems. Experienced in designing innovative workflows that combine vision and language understanding with downstream tasks. Demonstrated expertise in semantic segmentation and object detection, particularly within geospatial and remote sensing domains. Proven track record in building production-ready inference pipelines and interactive AI tools using cloud infrastructure.
+Assistant Professor and researcher working in geospatial AI, vision-language models, remote sensing and spatial data science. My research explores how artificial intelligence and geographic information can help us understand environmental and urban questions. I work with colleagues in Türkiye and the UK on research projects, publications and open research software.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunusserhatbicakci_phd_cv.pdf" "newtab" >}}CV{{< /staticref >}}.
