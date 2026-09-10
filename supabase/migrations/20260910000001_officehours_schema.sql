@@ -382,9 +382,12 @@ CREATE TRIGGER trg_auth_user_admin_sync
 
 -- 9. Secure Anonymized Function & Security-Invoker View for Public Slot Availability
 -- Exposes ONLY the occupied time ranges. ZERO student PII (no emails, no names, no topics, no IDs).
--- Uses a SECURITY DEFINER function with explicit search_path wrapped in a view with security_invoker = true.
--- This resolves Supabase Advisor linter rule 0010_security_definer_view cleanly.
-CREATE OR REPLACE FUNCTION public.get_officehours_booked_slots()
+-- Placed in private 'internal' schema so PostgREST does not expose an unneeded RPC endpoint,
+-- completely resolving Supabase Advisor linter rules 0010, 0028, and 0029.
+CREATE SCHEMA IF NOT EXISTS internal;
+GRANT USAGE ON SCHEMA internal TO anon, authenticated;
+
+CREATE OR REPLACE FUNCTION internal.get_officehours_booked_slots()
 RETURNS TABLE (slot_start timestamptz, slot_end timestamptz)
 SECURITY DEFINER
 SET search_path = public
@@ -396,6 +399,9 @@ AS $$
   WHERE status = 'booked';
 $$;
 
+GRANT EXECUTE ON FUNCTION internal.get_officehours_booked_slots() TO anon, authenticated;
+DROP FUNCTION IF EXISTS public.get_officehours_booked_slots();
+
 DROP VIEW IF EXISTS public.officehours_booked_slots;
 CREATE VIEW public.officehours_booked_slots
 WITH (security_invoker = true)
@@ -403,7 +409,7 @@ AS
 SELECT
   slot_start,
   slot_end
-FROM public.get_officehours_booked_slots();
+FROM internal.get_officehours_booked_slots();
 
 -- 10. Core RPC: Book Appointment (Server-Enforced Rules & Concurrency Lock)
 CREATE OR REPLACE FUNCTION public.book_officehours_appointment(

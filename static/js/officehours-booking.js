@@ -544,13 +544,7 @@ import {
       };
       cachedRules = rulesRes.data || [];
       cachedExceptions = exceptionsRes.data || [];
-      let bookedSlots = bookedRes.data || [];
-      if (bookedRes.error || !bookedSlots.length) {
-        const { data: rpcSlots } = await supabase.rpc('get_officehours_booked_slots');
-        if (rpcSlots && rpcSlots.length) {
-          bookedSlots = rpcSlots;
-        }
-      }
+      const bookedSlots = bookedRes.data || [];
 
       // 3. Generate slots for the upcoming 28 days
       renderAvailableSlots(cachedRules, cachedExceptions, bookedSlots, myAppointments || []);
