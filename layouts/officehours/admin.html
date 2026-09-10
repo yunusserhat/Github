@@ -1,0 +1,419 @@
+{{ define "main" }}
+<link rel="stylesheet" href="{{ "css/officehours.css" | relURL }}">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  window.__OFFICEHOURS_CONFIG__ = {
+    supabaseUrl: '{{ getenv "SUPABASE_URL" }}' || window.OFFICEHOURS_SUPABASE_URL || '',
+    supabaseAnonKey: '{{ getenv "SUPABASE_ANON_KEY" }}' || window.OFFICEHOURS_SUPABASE_ANON_KEY || ''
+  };
+</script>
+
+<div class="officehours-wrapper py-4">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-xl-11">
+        
+        <!-- Setup Mode Banner -->
+        <div id="oh-admin-config-warning" class="oh-card oh-alert-warning d-none mb-4" role="alert">
+          <div class="d-flex align-items-start">
+            <div class="oh-alert-icon me-3">
+              <i class="fas fa-tools fa-2x"></i>
+            </div>
+            <div>
+              <h4 class="oh-alert-title mb-1">Supabase Configuration Required</h4>
+              <p class="mb-2 text-muted">
+                To activate the administration panel, please configure your <code>SUPABASE_URL</code> and <code>SUPABASE_ANON_KEY</code> in Netlify or your local environment.
+              </p>
+              <p class="small text-muted mb-0">Follow the setup guide in <code>docs/OFFICEHOURS_SETUP.md</code>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Global Alert Notification -->
+        <div id="oh-admin-alert" class="oh-alert d-none mb-4" role="alert" aria-live="polite">
+          <span id="oh-admin-alert-message"></span>
+          <button type="button" class="btn-close ms-auto" id="oh-btn-admin-close-alert" aria-label="Close"></button>
+        </div>
+
+        <!-- Loading State Indicator -->
+        <div id="oh-admin-loading" class="text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Checking authorization...</span>
+          </div>
+          <p class="text-muted small mt-2">Verifying administrator session...</p>
+        </div>
+
+        <!-- STATE 1: Login Card (when unauthenticated) -->
+        <section id="oh-admin-login-section" class="oh-card mx-auto d-none mb-4" style="max-width: 540px;">
+          <div class="text-center mb-4">
+            <div class="oh-step-indicator mx-auto mb-3">
+              <i class="fas fa-user-shield"></i>
+            </div>
+            <h1 class="h4 mb-1">Administrator Sign In</h1>
+            <p class="text-muted small mb-0">
+              Sign in with your verified administrative email to manage office hours.
+            </p>
+          </div>
+
+          <!-- Email step -->
+          <form id="oh-admin-form-email" novalidate>
+            <div class="mb-3">
+              <label for="oh-admin-input-email" class="form-label fw-bold">Admin Email Address</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                <input
+                  type="email"
+                  class="form-control form-control-lg"
+                  id="oh-admin-input-email"
+                  placeholder="e.g. yunusserhat@marmara.edu.tr"
+                  required
+                  autocomplete="email"
+                >
+              </div>
+              <div class="form-text mt-1">An authentication code will be dispatched to this inbox.</div>
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-lg" id="oh-admin-btn-send-email">
+                <span class="oh-spinner spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true"></span>
+                <span>Send Login Code <i class="fas fa-paper-plane ms-1"></i></span>
+              </button>
+            </div>
+          </form>
+
+          <!-- OTP step -->
+          <form id="oh-admin-form-otp" class="d-none mt-3" novalidate>
+            <div class="text-center mb-3">
+              <span class="small text-muted">Verification code sent to:</span>
+              <div class="fw-bold text-primary" id="oh-admin-otp-target"></div>
+            </div>
+            <div class="mb-3">
+              <label for="oh-admin-input-otp" class="form-label fw-bold d-block text-center">6-Digit Code</label>
+              <input
+                type="text"
+                class="form-control form-control-lg text-center font-monospace oh-otp-input mx-auto"
+                id="oh-admin-input-otp"
+                placeholder="123456"
+                maxlength="8"
+                required
+              >
+            </div>
+            <div class="d-grid gap-2 mb-2">
+              <button type="submit" class="btn btn-primary btn-lg" id="oh-admin-btn-verify-otp">
+                <span class="oh-spinner spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true"></span>
+                <span>Verify &amp; Enter Dashboard</span>
+              </button>
+            </div>
+            <button type="button" class="btn btn-link btn-sm text-muted p-0" id="oh-admin-btn-back-email">
+              &larr; Use a different email
+            </button>
+          </form>
+        </section>
+
+        <!-- STATE 2: Unauthorized Access Banner -->
+        <section id="oh-admin-unauthorized-section" class="oh-card text-center py-5 d-none mb-4">
+          <div class="oh-empty-icon mb-3 text-warning">
+            <i class="fas fa-user-lock fa-4x"></i>
+          </div>
+          <h2 class="h4 mb-2">Unauthorized Access</h2>
+          <p class="text-muted mb-3">
+            Your authenticated account (<strong id="oh-unauth-email"></strong>) is not recognized as an administrator for this office hours system.
+          </p>
+          <div class="oh-code-hint p-3 rounded mx-auto mb-4 text-start small font-monospace" style="max-width: 600px;">
+            To grant access, add your email to the <code>public.officehours_admin_allowlist</code> table in Supabase SQL editor:<br><br>
+            INSERT INTO public.officehours_admin_allowlist (email, notes)<br>
+            VALUES ('your-email', 'Admin Access');
+          </div>
+          <div class="d-flex justify-content-center gap-2">
+            <a href="/officehours/" class="btn btn-outline-secondary">
+              <i class="fas fa-arrow-left me-1"></i> Back to Student Page
+            </a>
+            <button type="button" class="btn btn-danger" id="oh-btn-unauth-signout">
+              <i class="fas fa-sign-out-alt me-1"></i> Sign Out
+            </button>
+          </div>
+        </section>
+
+        <!-- STATE 3: Full Admin Dashboard -->
+        <section id="oh-admin-dashboard" class="d-none">
+          <!-- Top Bar -->
+          <div class="oh-card oh-status-bar mb-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div class="d-flex align-items-center">
+              <div class="oh-admin-badge-icon me-2">
+                <i class="fas fa-user-shield text-primary"></i>
+              </div>
+              <div>
+                <span class="small text-muted d-block">Office Hours Administrator</span>
+                <span class="fw-bold" id="oh-admin-email-display">yunusserhat@marmara.edu.tr</span>
+              </div>
+            </div>
+            <div class="d-flex gap-2">
+              <a href="/officehours/" class="btn btn-sm btn-outline-primary" target="_blank" rel="noopener">
+                <i class="fas fa-external-link-alt me-1"></i> Student View
+              </a>
+              <button class="btn btn-sm btn-outline-secondary" id="oh-admin-btn-signout">
+                <i class="fas fa-sign-out-alt me-1"></i> Sign Out
+              </button>
+            </div>
+          </div>
+
+          <!-- Dashboard Tabs -->
+          <div class="oh-tabs mb-4">
+            <ul class="nav nav-pills oh-nav-pills gap-2" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="tab-btn-appointments" data-tab="appointments" type="button" role="tab">
+                  <i class="fas fa-calendar-check me-1"></i> Appointments
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab-btn-availability" data-tab="availability" type="button" role="tab">
+                  <i class="fas fa-clock me-1"></i> Weekly Availability
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab-btn-exceptions" data-tab="exceptions" type="button" role="tab">
+                  <i class="fas fa-ban me-1"></i> Blocked Dates
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab-btn-settings" data-tab="settings" type="button" role="tab">
+                  <i class="fas fa-sliders-h me-1"></i> Settings &amp; Rules
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- TAB 1: Appointments Management -->
+          <div id="oh-tab-appointments" class="oh-tab-content">
+            <div class="oh-card mb-4">
+              <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                <div>
+                  <h2 class="h5 mb-0">Student Appointments</h2>
+                  <p class="text-muted small mb-0">All times rendered in Europe/Istanbul timezone.</p>
+                </div>
+                <!-- Filter Pills -->
+                <div class="btn-group btn-group-sm" role="group" id="oh-filter-appointments">
+                  <button type="button" class="btn btn-outline-primary active" data-filter="upcoming">Upcoming</button>
+                  <button type="button" class="btn btn-outline-primary" data-filter="past">Past</button>
+                  <button type="button" class="btn btn-outline-primary" data-filter="cancelled">Cancelled</button>
+                  <button type="button" class="btn btn-outline-primary" data-filter="all">All</button>
+                </div>
+              </div>
+
+              <!-- Loading spinner -->
+              <div id="oh-admin-appts-loading" class="text-center py-4">
+                <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+                <span class="ms-2 small text-muted">Loading appointments...</span>
+              </div>
+
+              <!-- Empty state -->
+              <div id="oh-admin-appts-empty" class="text-center py-5 d-none">
+                <i class="far fa-calendar-alt fa-3x text-muted mb-2"></i>
+                <h3 class="h6 text-muted mb-1">No appointments found</h3>
+                <p class="small text-muted mb-0">There are no appointments matching the selected filter.</p>
+              </div>
+
+              <!-- Appointments Table / Cards List -->
+              <div id="oh-admin-appts-list" class="oh-admin-appts-list d-none">
+                <!-- Injected by officehours-admin.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: Weekly Availability Rules -->
+          <div id="oh-tab-availability" class="oh-tab-content d-none">
+            <div class="row">
+              <!-- Left Column: Active Rules List -->
+              <div class="col-12 col-lg-7 mb-4">
+                <div class="oh-card">
+                  <h2 class="h5 mb-1">Current Recurring Schedule</h2>
+                  <p class="text-muted small mb-3">Weekly hours when student appointments may be scheduled.</p>
+                  
+                  <div id="oh-rules-loading" class="text-center py-4">
+                    <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+                  </div>
+
+                  <div id="oh-rules-empty" class="text-center py-4 d-none">
+                    <p class="text-muted small mb-0">No recurring hours configured yet.</p>
+                  </div>
+
+                  <ul class="list-group list-group-flush oh-rules-list d-none" id="oh-rules-list">
+                    <!-- Injected by officehours-admin.js -->
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Right Column: Add Rule Form -->
+              <div class="col-12 col-lg-5 mb-4">
+                <div class="oh-card">
+                  <h3 class="h5 mb-2">Add Recurring Window</h3>
+                  <p class="text-muted small mb-3">Set weekly office hours (e.g. Tuesday 13:00–16:00).</p>
+
+                  <form id="oh-form-add-rule" novalidate>
+                    <div class="mb-3">
+                      <label for="oh-rule-day" class="form-label fw-bold">Day of the Week</label>
+                      <select class="form-select" id="oh-rule-day" required>
+                        <option value="1">Monday</option>
+                        <option value="2" selected>Tuesday</option>
+                        <option value="3">Wednesday</option>
+                        <option value="4">Thursday</option>
+                        <option value="5">Friday</option>
+                        <option value="6">Saturday</option>
+                        <option value="0">Sunday</option>
+                      </select>
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-6">
+                        <label for="oh-rule-start" class="form-label fw-bold">Start Time</label>
+                        <input type="time" class="form-control" id="oh-rule-start" value="13:00" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="oh-rule-end" class="form-label fw-bold">End Time</label>
+                        <input type="time" class="form-control" id="oh-rule-end" value="16:00" required>
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100" id="oh-btn-add-rule">
+                      <i class="fas fa-plus me-1"></i> Add Availability Window
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: Exceptions & Blocked Dates -->
+          <div id="oh-tab-exceptions" class="oh-tab-content d-none">
+            <div class="row">
+              <div class="col-12 col-lg-7 mb-4">
+                <div class="oh-card">
+                  <h2 class="h5 mb-1">Blocked Dates &amp; Holidays</h2>
+                  <p class="text-muted small mb-3">Dates when regular office hours are suspended.</p>
+
+                  <div id="oh-exceptions-loading" class="text-center py-4">
+                    <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+                  </div>
+
+                  <div id="oh-exceptions-empty" class="text-center py-4 d-none">
+                    <p class="text-muted small mb-0">No blocked dates recorded.</p>
+                  </div>
+
+                  <ul class="list-group list-group-flush oh-exceptions-list d-none" id="oh-exceptions-list">
+                    <!-- Injected by officehours-admin.js -->
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-12 col-lg-5 mb-4">
+                <div class="oh-card">
+                  <h3 class="h5 mb-2">Block a Specific Date</h3>
+                  <p class="text-muted small mb-3">Prevent bookings on a holiday or conference day.</p>
+
+                  <form id="oh-form-add-exception" novalidate>
+                    <div class="mb-3">
+                      <label for="oh-exception-date" class="form-label fw-bold">Date to Block</label>
+                      <input type="date" class="form-control" id="oh-exception-date" required>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="oh-exception-reason" class="form-label fw-bold">Reason / Description</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="oh-exception-reason"
+                        placeholder="e.g. Academic Conference, Holiday, Exam Week"
+                        required
+                        maxlength="100"
+                      >
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100" id="oh-btn-add-exception">
+                      <i class="fas fa-ban me-1"></i> Block This Date
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: Global Meeting Settings -->
+          <div id="oh-tab-settings" class="oh-tab-content d-none">
+            <div class="oh-card mb-4" style="max-width: 760px;">
+              <h2 class="h5 mb-1">Booking Rules &amp; Timing Settings</h2>
+              <p class="text-muted small mb-4">Changes take effect immediately on slot generation and validation.</p>
+
+              <form id="oh-form-settings" novalidate>
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="oh-setting-duration" class="form-label fw-bold">Meeting Duration (minutes)</label>
+                    <input type="number" class="form-control" id="oh-setting-duration" min="5" max="120" step="5" required>
+                    <div class="form-text small">Default: 20 minutes</div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="oh-setting-buffer" class="form-label fw-bold">Buffer Between Meetings (minutes)</label>
+                    <input type="number" class="form-control" id="oh-setting-buffer" min="0" max="60" step="5" required>
+                    <div class="form-text small">Default: 10 minutes</div>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="oh-setting-notice" class="form-label fw-bold">Minimum Advance Notice (hours)</label>
+                    <input type="number" class="form-control" id="oh-setting-notice" min="0" max="168" step="1" required>
+                    <div class="form-text small">Default: 24 hours</div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="oh-setting-max-active" class="form-label fw-bold">Max Active Bookings Per Student</label>
+                    <input type="number" class="form-control" id="oh-setting-max-active" min="1" max="10" step="1" required>
+                    <div class="form-text small">Default: 1 concurrent booking</div>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="oh-setting-rolling-days" class="form-label fw-bold">Rolling Limit Window (days)</label>
+                    <input type="number" class="form-control" id="oh-setting-rolling-days" min="1" max="30" step="1" required>
+                    <div class="form-text small">Default: 7 days</div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="oh-setting-rolling-max" class="form-label fw-bold">Max Bookings in Rolling Window</label>
+                    <input type="number" class="form-control" id="oh-setting-rolling-max" min="1" max="10" step="1" required>
+                    <div class="form-text small">Default: 1 appointment per 7 days</div>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                  <div class="col-12 col-md-6">
+                    <label for="oh-setting-sem-start" class="form-label fw-bold">Semester Start Date (Optional)</label>
+                    <input type="date" class="form-control" id="oh-setting-sem-start">
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="oh-setting-sem-end" class="form-label fw-bold">Semester End Date (Optional)</label>
+                    <input type="date" class="form-control" id="oh-setting-sem-end">
+                  </div>
+                </div>
+
+                <div class="form-check form-switch mb-4">
+                  <input class="form-check-input" type="checkbox" id="oh-setting-enabled" checked>
+                  <label class="form-check-label fw-bold" for="oh-setting-enabled">Enable Student Bookings</label>
+                  <div class="text-muted small">When disabled, students will see that office-hour reservations are temporarily paused.</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="oh-btn-save-settings">
+                  <span class="oh-spinner spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true"></span>
+                  <i class="fas fa-save me-1"></i> Save Changes
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="{{ "js/officehours-common.js" | relURL }}"></script>
+<script type="module" src="{{ "js/officehours-admin.js" | relURL }}"></script>
+{{ end }}
