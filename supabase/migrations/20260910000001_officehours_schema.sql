@@ -400,9 +400,11 @@ AS $$
 $$;
 
 GRANT EXECUTE ON FUNCTION internal.get_officehours_booked_slots() TO anon, authenticated;
+
+-- Drop dependent view first, then drop the obsolete public function
+DROP VIEW IF EXISTS public.officehours_booked_slots CASCADE;
 DROP FUNCTION IF EXISTS public.get_officehours_booked_slots();
 
-DROP VIEW IF EXISTS public.officehours_booked_slots;
 CREATE VIEW public.officehours_booked_slots
 WITH (security_invoker = true)
 AS
@@ -410,6 +412,8 @@ SELECT
   slot_start,
   slot_end
 FROM internal.get_officehours_booked_slots();
+
+GRANT SELECT ON public.officehours_booked_slots TO anon, authenticated;
 
 -- 10. Core RPC: Book Appointment (Server-Enforced Rules & Concurrency Lock)
 CREATE OR REPLACE FUNCTION public.book_officehours_appointment(
