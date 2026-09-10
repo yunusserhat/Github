@@ -169,7 +169,10 @@ import {
       auth: {
         persistSession: true,
         autoRefreshToken: true,
-        detectSessionInUrl: true
+        detectSessionInUrl: true,
+        lock: async (name, acquireTimeout, fn) => {
+          return await fn();
+        }
       }
     });
 

@@ -516,6 +516,6 @@
   </div>
 </div>
 
-<script type="module" src="{{ "js/officehours-common.js" | relURL }}"></script>
-<script type="module" src="{{ "js/officehours-admin.js" | relURL }}"></script>
+<script type="module" src="{{ "js/officehours-common.js" | relURL }}?v={{ now.Unix }}"></script>
+<script type="module" src="{{ "js/officehours-admin.js" | relURL }}?v={{ now.Unix }}"></script>
 {{ end }}
