@@ -1,0 +1,12 @@
+{
+  "name": "yunusserhat-officehours",
+  "version": "1.0.0",
+  "description": "Student Office Hours booking system logic and tests for yunusserhat.com",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "author": "Yunus Serhat Bıçakçı",
+  "license": "MIT",
+  "private": true
+}
