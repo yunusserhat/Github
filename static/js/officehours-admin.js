@@ -168,14 +168,24 @@ import {
     elDashboard.classList.add('d-none');
 
     try {
-      const { data: { session } } = await supabase.auth.getSession();
+      const sessionPromise = supabase.auth.getSession();
+      const sessionTimeout = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Session retrieval timed out.')), 7000)
+      );
+      const { data: { session } } = await Promise.race([sessionPromise, sessionTimeout]);
+
       if (!session || !session.user) {
         showLoginView();
         return;
       }
 
-      // Check admin authorization via database function
-      const { data: isAdmin, error: adminErr } = await supabase.rpc('is_admin');
+      // Check admin authorization via database function with timeout
+      const rpcPromise = supabase.rpc('is_admin');
+      const rpcTimeout = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Yetki doğrulaması zaman aşımına uğradı. Lütfen Supabase SQL Editor üzerinden SQL güncellemesini çalıştırın.')), 7000)
+      );
+      const { data: isAdmin, error: adminErr } = await Promise.race([rpcPromise, rpcTimeout]);
+
       if (adminErr || !isAdmin) {
         elUnauthEmail.textContent = session.user.email;
         elUnauthorizedSection.classList.remove('d-none');
@@ -189,7 +199,7 @@ import {
       // Load initial tab data
       switchTab('appointments');
     } catch (err) {
-      showAlert('Authorization check failed: ' + err.message, 'danger');
+      showAlert('Giriş yetkisi kontrol edilirken hata oluştu: ' + (err.message || err), 'danger');
       showLoginView();
     } finally {
       elLoading.classList.add('d-none');

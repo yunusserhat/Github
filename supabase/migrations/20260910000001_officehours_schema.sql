@@ -137,23 +137,37 @@ SECURITY DEFINER
 SET search_path = public
 STABLE
 AS $$
+DECLARE
+  v_uid uuid;
+  v_email text;
 BEGIN
-  IF auth.uid() IS NULL THEN
+  v_uid := auth.uid();
+  IF v_uid IS NULL THEN
     RETURN false;
   END IF;
 
+  v_email := lower(trim(coalesce(auth.jwt() ->> 'email', '')));
+  IF v_email = '' THEN
+    SELECT lower(trim(email)) INTO v_email FROM auth.users WHERE id = v_uid;
+  END IF;
+
+  -- 1. Dr. Yunus Serhat is the primary authorized administrator
+  IF v_email = 'yunus.serhat@marmara.edu.tr' THEN
+    RETURN true;
+  END IF;
+
+  -- 2. Check allowlist and admin_users table
   RETURN EXISTS (
-    SELECT 1 FROM public.officehours_admin_users WHERE user_id = auth.uid()
-  ) OR EXISTS (
-    SELECT 1 FROM public.officehours_admin_allowlist
-    WHERE lower(trim(email)) = lower(trim(coalesce(auth.jwt() ->> 'email', '')))
-  ) OR EXISTS (
     SELECT 1 FROM public.officehours_admin_allowlist al
-    JOIN auth.users u ON lower(trim(u.email)) = lower(trim(al.email))
-    WHERE u.id = auth.uid()
+    WHERE lower(trim(al.email)) = v_email
+  ) OR EXISTS (
+    SELECT 1 FROM public.officehours_admin_users au
+    WHERE au.user_id = v_uid
   );
 END;
 $$;
+
+GRANT EXECUTE ON FUNCTION public.is_admin() TO anon, authenticated;
 
 -- 7. Appointments Table with Strong Concurrency & Integrity Constraints
 CREATE TABLE IF NOT EXISTS public.officehours_appointments (
@@ -621,7 +635,7 @@ BEGIN
     'location_or_link', v_new_appointment.location_or_link
   );
 END;
-$$ LANGUAGE plpgsql SECURITY INVOKER SET search_path = public;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 -- 11. Core RPC: Cancel Appointment
 CREATE OR REPLACE FUNCTION public.cancel_officehours_appointment(
@@ -730,16 +744,24 @@ CREATE POLICY "Admin can manage date overrides"
   USING (public.is_admin())
   WITH CHECK (public.is_admin());
 
--- Admin Lists: Only admins can view or manage
-CREATE POLICY "Admin can view allowlist"
+-- Admin Lists: Allowlist can be read by authenticated users, managed only by admins
+DROP POLICY IF EXISTS "Admin can view allowlist" ON public.officehours_admin_allowlist;
+DROP POLICY IF EXISTS "User can check own allowlist" ON public.officehours_admin_allowlist;
+DROP POLICY IF EXISTS "Allowlist read access" ON public.officehours_admin_allowlist;
+DROP POLICY IF EXISTS "Allowlist admin manage" ON public.officehours_admin_allowlist;
+
+CREATE POLICY "Allowlist read access"
+  ON public.officehours_admin_allowlist FOR SELECT
+  TO authenticated, anon
+  USING (true);
+
+CREATE POLICY "Allowlist admin manage"
   ON public.officehours_admin_allowlist FOR ALL
+  TO authenticated
   USING (public.is_admin())
   WITH CHECK (public.is_admin());
 
-CREATE POLICY "User can check own allowlist"
-  ON public.officehours_admin_allowlist FOR SELECT
-  TO authenticated
-  USING (lower(trim(email)) = lower(trim(coalesce(auth.jwt() ->> 'email', ''))));
+GRANT SELECT ON public.officehours_admin_allowlist TO anon, authenticated;
 
 CREATE POLICY "Admin can view admin users"
   ON public.officehours_admin_users FOR SELECT
