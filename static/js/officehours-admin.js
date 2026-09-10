@@ -241,20 +241,8 @@ import {
           return;
         }
 
-        // Check local rate limit
-        const clientLimit = window.OfficeHoursCommon?.getClientRateLimit
-          ? window.OfficeHoursCommon.getClientRateLimit(email)
-          : null;
-
-        if (clientLimit && clientLimit.isBlocked) {
-          showAlert(
-            `Spam koruması: Kısa süre içinde 2 defa kod istendi. Güvenlik nedeniyle lütfen ${clientLimit.waitSeconds} saniye bekleyin.`,
-            'warning'
-          );
-          startAdminCooldown(clientLimit.waitSeconds);
-          return;
-        }
-
+        // We always query Supabase server RPC as the single authoritative source of truth,
+        // preventing client-side localStorage de-synchronization issues.
         setButtonLoading(elBtnSendEmail, true);
         try {
           // Check & record rate limit on server side
@@ -270,6 +258,11 @@ import {
             showAlert(rlData.reason || `Spam koruması: Lütfen ${waitSec} saniye bekleyin.`, 'warning');
             startAdminCooldown(waitSec);
             return;
+          }
+
+          // If allowed, clear any stale client-side rate limit lock
+          if (window.OfficeHoursCommon?.clearClientRateLimit) {
+            window.OfficeHoursCommon.clearClientRateLimit(email);
           }
 
           const redirectUrl = window.location.origin + window.location.pathname;

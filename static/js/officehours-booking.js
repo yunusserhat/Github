@@ -204,19 +204,8 @@ import {
 
         currentEmailForOtp = validation.email;
 
-        // Check local rate limit block
-        const clientLimit = window.OfficeHoursCommon?.getClientRateLimit
-          ? window.OfficeHoursCommon.getClientRateLimit(currentEmailForOtp)
-          : null;
-
-        if (clientLimit && clientLimit.isBlocked) {
-          showAlert(
-            `Spam koruması: Kısa süre içinde 2 defa kod istendi. Güvenlik nedeniyle lütfen ${clientLimit.waitSeconds} saniye bekleyin.`,
-            'warning'
-          );
-          return;
-        }
-
+        // We always query Supabase server RPC as the single authoritative source of truth,
+        // preventing client-side localStorage de-synchronization issues.
         setButtonLoading(elBtnSubmitEmail, true);
 
         try {
@@ -232,6 +221,11 @@ import {
             }
             showAlert(rlData.reason || `Spam koruması: Lütfen ${waitSec} saniye bekleyin.`, 'warning');
             return;
+          }
+
+          // If allowed, clear any stale client-side rate limit lock
+          if (window.OfficeHoursCommon?.clearClientRateLimit) {
+            window.OfficeHoursCommon.clearClientRateLimit(currentEmailForOtp);
           }
 
           const redirectUrl = window.location.origin + window.location.pathname;
@@ -318,19 +312,6 @@ import {
         if (!currentEmailForOtp) return;
         hideAlert();
 
-        const clientLimit = window.OfficeHoursCommon?.getClientRateLimit
-          ? window.OfficeHoursCommon.getClientRateLimit(currentEmailForOtp)
-          : null;
-
-        if (clientLimit && clientLimit.isBlocked) {
-          showAlert(
-            `Spam koruması: Kısa süre içinde 2 defa kod istendi. Lütfen ${clientLimit.waitSeconds} saniye bekleyin.`,
-            'warning'
-          );
-          startResendCooldown(clientLimit.waitSeconds);
-          return;
-        }
-
         elBtnResendOtp.disabled = true;
 
         try {
@@ -346,6 +327,11 @@ import {
             showAlert(rlData.reason || `Spam koruması: Lütfen ${waitSec} saniye bekleyin.`, 'warning');
             startResendCooldown(waitSec);
             return;
+          }
+
+          // If allowed, clear any stale client-side rate limit lock
+          if (window.OfficeHoursCommon?.clearClientRateLimit) {
+            window.OfficeHoursCommon.clearClientRateLimit(currentEmailForOtp);
           }
 
           const redirectUrl = window.location.origin + window.location.pathname;
