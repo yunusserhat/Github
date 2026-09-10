@@ -191,14 +191,30 @@ CREATE TRIGGER trg_auth_user_domain_check
   BEFORE INSERT OR UPDATE OF email ON auth.users
   FOR EACH ROW EXECUTE FUNCTION public.trg_fn_on_auth_user_created();
 
--- 9. Secure Anonymized View for Public Slot Availability
--- Exposes ONLY the occupied time ranges. ZERO student PII (no emails, no names, no topics, no IDs)
-CREATE OR REPLACE VIEW public.officehours_booked_slots AS
+-- 9. Secure Anonymized Function & Security-Invoker View for Public Slot Availability
+-- Exposes ONLY the occupied time ranges. ZERO student PII (no emails, no names, no topics, no IDs).
+-- Uses a SECURITY DEFINER function with explicit search_path wrapped in a view with security_invoker = true.
+-- This resolves Supabase Advisor linter rule 0010_security_definer_view cleanly.
+CREATE OR REPLACE FUNCTION public.get_officehours_booked_slots()
+RETURNS TABLE (slot_start timestamptz, slot_end timestamptz)
+SECURITY DEFINER
+SET search_path = public
+LANGUAGE sql
+STABLE
+AS $$
+  SELECT slot_start, slot_end
+  FROM public.officehours_appointments
+  WHERE status = 'booked';
+$$;
+
+DROP VIEW IF EXISTS public.officehours_booked_slots;
+CREATE VIEW public.officehours_booked_slots
+WITH (security_invoker = true)
+AS
 SELECT
   slot_start,
   slot_end
-FROM public.officehours_appointments
-WHERE status = 'booked';
+FROM public.get_officehours_booked_slots();
 
 -- 10. Core RPC: Book Appointment (Server-Enforced Rules & Concurrency Lock)
 CREATE OR REPLACE FUNCTION public.book_officehours_appointment(
@@ -493,6 +509,7 @@ GRANT SELECT ON public.officehours_settings TO anon, authenticated;
 GRANT SELECT ON public.officehours_availability_rules TO anon, authenticated;
 GRANT SELECT ON public.officehours_availability_exceptions TO anon, authenticated;
 GRANT SELECT ON public.officehours_booked_slots TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.get_officehours_booked_slots TO anon, authenticated;
 GRANT SELECT, INSERT, UPDATE ON public.officehours_appointments TO authenticated;
 GRANT EXECUTE ON FUNCTION public.book_officehours_appointment TO authenticated;
 GRANT EXECUTE ON FUNCTION public.cancel_officehours_appointment TO authenticated;
