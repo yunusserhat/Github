@@ -12,7 +12,9 @@ import {
   formatIstanbulTimeOnly,
   generateDateCandidateSlots,
   annotateSlotsWithAvailability,
-  evaluateStudentBookingEligibility
+  evaluateStudentBookingEligibility,
+  evaluateEmailRateLimit,
+  formatCountdown
 } from '../static/js/officehours-common.js';
 
 test('Email Domain Allowlist: accepts exactly marun.edu.tr and marmara.edu.tr', () => {
@@ -360,4 +362,82 @@ test('Student Booking Limits: enforces rolling 7-day window limit', () => {
   });
 
   assert.equal(check2.allowed, true);
+});
+
+test('Rate Limiting: 1st email request is immediately permitted', () => {
+  const result = evaluateEmailRateLimit([], 100000);
+  assert.equal(result.allowed, true);
+  assert.equal(result.remainingAttempts, 1);
+  assert.equal(result.waitSeconds, 0);
+  assert.equal(result.willTriggerCooldown, false);
+});
+
+test('Rate Limiting: 2nd email request within 2 minutes is permitted but flags 5-minute cooldown', () => {
+  const t1 = 100000;
+  const t2 = 100000 + 45 * 1000; // 45 seconds later (within 2-minute window)
+  const history = [t1];
+
+  const result = evaluateEmailRateLimit(history, t2);
+  assert.equal(result.allowed, true);
+  assert.equal(result.remainingAttempts, 0);
+  assert.equal(result.waitSeconds, 300);
+  assert.equal(result.willTriggerCooldown, true);
+});
+
+test('Rate Limiting: 3rd email request within 2 minutes is BLOCKED with active cooldown', () => {
+  const t1 = 100000;
+  const t2 = 100000 + 30 * 1000; // 30s after t1
+  const t3 = 100000 + 60 * 1000; // 60s after t1 (30s after t2)
+  const history = [t1, t2];
+
+  const result = evaluateEmailRateLimit(history, t3);
+  assert.equal(result.allowed, false);
+  assert.equal(result.remainingAttempts, 0);
+  // Cooldown is 300s from t2 (130000 + 300000 = 430000). At t3 (160000), remaining is 270s.
+  assert.equal(result.waitSeconds, 270);
+  assert.match(result.reason, /Spam koruması/);
+});
+
+test('Rate Limiting: request after 5-minute cooldown period expires is permitted again', () => {
+  const t1 = 100000;
+  const t2 = 100000 + 30 * 1000; // 130000
+  const history = [t1, t2];
+
+  // Cooldown ends at 130000 + 300000 = 430000.
+  // Test at 431000 (after cooldown):
+  const tAfterCooldown = 431000;
+  const result = evaluateEmailRateLimit(history, tAfterCooldown);
+  assert.equal(result.allowed, true);
+  assert.equal(result.remainingAttempts, 1);
+  assert.equal(result.waitSeconds, 0);
+});
+
+test('Rate Limiting: 2 requests spaced more than 2 minutes apart do NOT trigger cooldown', () => {
+  const t1 = 100000;
+  const history = [t1];
+
+  // 2.5 minutes later (150s later)
+  const t2 = 100000 + 150 * 1000;
+  const result = evaluateEmailRateLimit(history, t2);
+  assert.equal(result.allowed, true);
+  assert.equal(result.remainingAttempts, 1);
+  assert.equal(result.waitSeconds, 0);
+  assert.equal(result.willTriggerCooldown, false);
+});
+
+test('Countdown Formatting: correctly formats MM:SS and seconds', () => {
+  assert.equal(formatCountdown(300), '05:00');
+  assert.equal(formatCountdown(270), '04:30');
+  assert.equal(formatCountdown(65), '01:05');
+  assert.equal(formatCountdown(59), '59s');
+  assert.equal(formatCountdown(5), '5s');
+  assert.equal(formatCountdown(0), '0s');
+});
+
+test('Primary Admin Configuration: single authorized admin is yunus.serhat@marmara.edu.tr', () => {
+  const primaryAdmin = 'yunus.serhat@marmara.edu.tr';
+  const val = parseAndValidateEmail(primaryAdmin);
+  assert.equal(val.valid, true);
+  assert.equal(val.email, 'yunus.serhat@marmara.edu.tr');
+  assert.equal(val.domain, 'marmara.edu.tr');
 });

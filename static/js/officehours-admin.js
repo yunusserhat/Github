@@ -187,6 +187,38 @@ import {
     elFormOtp.classList.add('d-none');
   }
 
+  const AUTHORIZED_ADMIN_EMAIL = 'yunus.serhat@marmara.edu.tr';
+  let adminCooldownTimer = null;
+
+  function startAdminCooldown(seconds) {
+    if (!elBtnSendEmail) return;
+    if (adminCooldownTimer) clearInterval(adminCooldownTimer);
+
+    let remaining = seconds;
+    elBtnSendEmail.disabled = true;
+
+    const updateLabel = () => {
+      const formatted = window.OfficeHoursCommon?.formatCountdown
+        ? window.OfficeHoursCommon.formatCountdown(remaining)
+        : `${remaining}s`;
+      elBtnSendEmail.querySelector('span:last-child').textContent = `Bekleyin (${formatted})`;
+    };
+
+    updateLabel();
+
+    adminCooldownTimer = setInterval(() => {
+      remaining--;
+      if (remaining <= 0) {
+        clearInterval(adminCooldownTimer);
+        adminCooldownTimer = null;
+        elBtnSendEmail.disabled = false;
+        elBtnSendEmail.querySelector('span:last-child').innerHTML = 'Send Login Code <i class="fas fa-paper-plane ms-1"></i>';
+      } else {
+        updateLabel();
+      }
+    }, 1000);
+  }
+
   function bindEvents() {
     if (elBtnCloseAlert) elBtnCloseAlert.addEventListener('click', hideAlert);
 
@@ -196,14 +228,51 @@ import {
         e.preventDefault();
         hideAlert();
         const email = elInputEmail.value.trim().toLowerCase();
-        if (!email) return;
+
+        if (email !== AUTHORIZED_ADMIN_EMAIL) {
+          showAlert('Sadece yetkili yönetici adresi (yunus.serhat@marmara.edu.tr) ile giriş yapılabilir.', 'danger');
+          return;
+        }
+
+        // Check local rate limit
+        const clientLimit = window.OfficeHoursCommon?.getClientRateLimit
+          ? window.OfficeHoursCommon.getClientRateLimit(email)
+          : null;
+
+        if (clientLimit && clientLimit.isBlocked) {
+          showAlert(
+            `Spam koruması: Kısa süre içinde 2 defa kod istendi. Güvenlik nedeniyle lütfen ${clientLimit.waitSeconds} saniye bekleyin.`,
+            'warning'
+          );
+          startAdminCooldown(clientLimit.waitSeconds);
+          return;
+        }
 
         setButtonLoading(elBtnSendEmail, true);
         try {
+          // Check & record rate limit on server side
+          const { data: rlData, error: rlErr } = await supabase.rpc('check_and_record_otp_rate_limit', {
+            p_email: email
+          });
+
+          if (!rlErr && rlData && rlData.allowed === false) {
+            const waitSec = rlData.wait_seconds || 300;
+            if (window.OfficeHoursCommon?.recordClientRateLimit) {
+              window.OfficeHoursCommon.recordClientRateLimit(email, waitSec);
+            }
+            showAlert(rlData.reason || `Spam koruması: Lütfen ${waitSec} saniye bekleyin.`, 'warning');
+            startAdminCooldown(waitSec);
+            return;
+          }
+
           const { error } = await supabase.auth.signInWithOtp({ email });
           if (error) {
             showAlert(error.message, 'danger');
           } else {
+            const waitSec = rlData?.wait_seconds || 0;
+            if (window.OfficeHoursCommon?.recordClientRateLimit) {
+              window.OfficeHoursCommon.recordClientRateLimit(email, waitSec);
+            }
             adminOtpTargetEmail = email;
             elOtpTarget.textContent = email;
             elFormEmail.classList.add('d-none');

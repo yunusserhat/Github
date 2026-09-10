@@ -82,7 +82,18 @@ CREATE TABLE IF NOT EXISTS public.officehours_availability_exceptions (
   created_at timestamptz NOT NULL DEFAULT now()
 );
 
--- 6. Admin Allowlist & Active Admin Roles
+-- 6. Rate Limiting Table to Prevent Email OTP Spam
+CREATE TABLE IF NOT EXISTS public.officehours_email_rate_limits (
+  email text PRIMARY KEY,
+  attempts integer NOT NULL DEFAULT 1,
+  window_start timestamptz NOT NULL DEFAULT now(),
+  blocked_until timestamptz,
+  last_attempt_at timestamptz NOT NULL DEFAULT now()
+);
+
+ALTER TABLE public.officehours_email_rate_limits ENABLE ROW LEVEL SECURITY;
+
+-- 7. Admin Allowlist & Active Admin Roles
 CREATE TABLE IF NOT EXISTS public.officehours_admin_allowlist (
   email text PRIMARY KEY,
   notes text DEFAULT 'Office Hours Administrator',
@@ -156,7 +167,128 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_officehours_active_slot_start
 CREATE INDEX IF NOT EXISTS idx_officehours_student_appointments
   ON public.officehours_appointments (student_id, status, slot_start);
 
--- 8. Supabase Auth Triggers: Prevent Signups/OTPs from Non-Allowlisted Domains & Sync Admins
+-- 8. OTP Rate Limiting Functions (Max 2 requests per 2 minutes, 5-minute cooldown on abuse)
+CREATE OR REPLACE FUNCTION public.get_otp_rate_limit_status(p_email text)
+RETURNS jsonb
+SECURITY DEFINER
+SET search_path = public
+LANGUAGE plpgsql
+AS $$
+DECLARE
+  v_email text;
+  v_record public.officehours_email_rate_limits%ROWTYPE;
+  v_now timestamptz := now();
+  v_wait_seconds integer;
+BEGIN
+  v_email := lower(trim(p_email));
+  IF v_email = '' OR v_email IS NULL THEN
+    RETURN jsonb_build_object('is_blocked', false, 'wait_seconds', 0);
+  END IF;
+
+  SELECT * INTO v_record
+  FROM public.officehours_email_rate_limits
+  WHERE email = v_email;
+
+  IF FOUND AND v_record.blocked_until IS NOT NULL AND v_record.blocked_until > v_now THEN
+    v_wait_seconds := ceil(extract(epoch from (v_record.blocked_until - v_now)));
+    RETURN jsonb_build_object(
+      'is_blocked', true,
+      'wait_seconds', v_wait_seconds,
+      'reason', 'Kısa süre içinde 2 defa kod istendi. Spam ve güvenlik koruması nedeniyle lütfen ' || v_wait_seconds || ' saniye bekleyin.'
+    );
+  END IF;
+
+  RETURN jsonb_build_object('is_blocked', false, 'wait_seconds', 0);
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION public.check_and_record_otp_rate_limit(p_email text)
+RETURNS jsonb
+SECURITY DEFINER
+SET search_path = public
+LANGUAGE plpgsql
+AS $$
+DECLARE
+  v_email text;
+  v_record public.officehours_email_rate_limits%ROWTYPE;
+  v_now timestamptz := now();
+  v_wait_seconds integer;
+BEGIN
+  v_email := lower(trim(p_email));
+
+  IF v_email = '' OR v_email IS NULL THEN
+    RETURN jsonb_build_object('allowed', false, 'reason', 'Geçersiz e-posta adresi.');
+  END IF;
+
+  -- Clean up old rate limits (older than 2 hours)
+  DELETE FROM public.officehours_email_rate_limits
+  WHERE last_attempt_at < (v_now - interval '2 hours');
+
+  SELECT * INTO v_record
+  FROM public.officehours_email_rate_limits
+  WHERE email = v_email;
+
+  IF FOUND THEN
+    -- Check if currently blocked by cooldown
+    IF v_record.blocked_until IS NOT NULL AND v_record.blocked_until > v_now THEN
+      v_wait_seconds := ceil(extract(epoch from (v_record.blocked_until - v_now)));
+      RETURN jsonb_build_object(
+        'allowed', false,
+        'wait_seconds', v_wait_seconds,
+        'remaining_attempts', 0,
+        'reason', 'Kısa süre içinde 2 defa kod istendi. Spam ve güvenlik koruması nedeniyle lütfen ' || v_wait_seconds || ' saniye bekleyin.'
+      );
+    END IF;
+
+    -- If 2-minute sliding window has passed, start fresh window
+    IF v_record.window_start < (v_now - interval '2 minutes') THEN
+      UPDATE public.officehours_email_rate_limits
+      SET attempts = 1,
+          window_start = v_now,
+          blocked_until = NULL,
+          last_attempt_at = v_now
+      WHERE email = v_email;
+
+      RETURN jsonb_build_object('allowed', true, 'remaining_attempts', 1, 'wait_seconds', 0);
+    ELSE
+      -- Within 2-minute window:
+      IF v_record.attempts >= 2 THEN
+        -- Already reached 2 attempts: block and set 5 minutes cooldown
+        v_wait_seconds := 300;
+        UPDATE public.officehours_email_rate_limits
+        SET attempts = v_record.attempts + 1,
+            blocked_until = v_now + interval '5 minutes',
+            last_attempt_at = v_now
+        WHERE email = v_email;
+
+        RETURN jsonb_build_object(
+          'allowed', false,
+          'wait_seconds', v_wait_seconds,
+          'remaining_attempts', 0,
+          'reason', 'Kısa süre içinde 2 defa kod istendi. Spam ve güvenlik koruması nedeniyle 5 dakika boyunca yeni kod gönderilemez.'
+        );
+      ELSE
+        -- 2nd attempt within 2 minutes: ALLOW this request, but initiate 5-minute cooldown for subsequent requests!
+        UPDATE public.officehours_email_rate_limits
+        SET attempts = 2,
+            blocked_until = v_now + interval '5 minutes',
+            last_attempt_at = v_now
+        WHERE email = v_email;
+
+        RETURN jsonb_build_object('allowed', true, 'remaining_attempts', 0, 'wait_seconds', 300);
+      END IF;
+    END IF;
+  ELSE
+    -- First attempt for this email
+    INSERT INTO public.officehours_email_rate_limits (email, attempts, window_start, last_attempt_at, blocked_until)
+    VALUES (v_email, 1, v_now, v_now, NULL);
+
+    RETURN jsonb_build_object('allowed', true, 'remaining_attempts', 1, 'wait_seconds', 0);
+  END IF;
+END;
+$$;
+
+-- 9. Supabase Auth Triggers: Prevent Signups/OTPs from Non-Allowlisted Domains & Sync Admins
 CREATE OR REPLACE FUNCTION public.trg_fn_on_auth_user_created()
 RETURNS trigger
 SECURITY DEFINER
@@ -172,6 +304,14 @@ BEGIN
   END IF;
 
   user_email := lower(trim(NEW.email));
+
+  -- Check if rate limit cooldown is active for this email
+  IF EXISTS (
+    SELECT 1 FROM public.officehours_email_rate_limits
+    WHERE email = user_email AND blocked_until > now()
+  ) THEN
+    RAISE EXCEPTION 'Rate limit exceeded: Spam koruması nedeniyle lütfen bekleyin.';
+  END IF;
 
   -- Check if user is an admin from allowlist
   SELECT EXISTS (
@@ -546,6 +686,8 @@ GRANT SELECT ON public.officehours_availability_rules TO anon, authenticated;
 GRANT SELECT ON public.officehours_availability_exceptions TO anon, authenticated;
 GRANT SELECT ON public.officehours_booked_slots TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION public.get_officehours_booked_slots TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.check_and_record_otp_rate_limit TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.get_otp_rate_limit_status TO anon, authenticated;
 GRANT SELECT, INSERT, UPDATE ON public.officehours_appointments TO authenticated;
 GRANT EXECUTE ON FUNCTION public.book_officehours_appointment TO authenticated;
 GRANT EXECUTE ON FUNCTION public.cancel_officehours_appointment TO authenticated;
@@ -582,12 +724,10 @@ VALUES
   (4, '10:00:00', '12:00:00', true)
 ON CONFLICT DO NOTHING;
 
--- Seed Initial Admin Allowlist
--- Added your exact university email yunus.serhat@marmara.edu.tr
+-- Seed Single Primary Administrator Account (yunus.serhat@marmara.edu.tr)
 INSERT INTO public.officehours_admin_allowlist (email, notes)
 VALUES
-  ('yunus.serhat@marmara.edu.tr', 'Professor Serhat Bicakci - University Email'),
-  ('yunusserhat@marmara.edu.tr', 'Professor Serhat Bicakci - University Email (alias)'),
-  ('yunus.serhat@marun.edu.tr', 'Professor Serhat Bicakci - Marun Email'),
-  ('yunusserhat@yunusserhat.com', 'Professor Serhat Bicakci - Personal Site Email')
-ON CONFLICT (email) DO NOTHING;
+  ('yunus.serhat@marmara.edu.tr', 'Professor Yunus Serhat Bicakci - Primary Administrator')
+ON CONFLICT (email) DO UPDATE SET notes = EXCLUDED.notes;
+
+DELETE FROM public.officehours_admin_allowlist WHERE email <> 'yunus.serhat@marmara.edu.tr';

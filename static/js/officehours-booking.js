@@ -102,6 +102,37 @@ import {
     btn.disabled = isLoading;
   }
 
+  let resendCountdownTimer = null;
+
+  function startResendCooldown(seconds) {
+    if (!elBtnResendOtp) return;
+    if (resendCountdownTimer) clearInterval(resendCountdownTimer);
+
+    let remaining = seconds;
+    elBtnResendOtp.disabled = true;
+
+    const updateLabel = () => {
+      const formatted = window.OfficeHoursCommon?.formatCountdown
+        ? window.OfficeHoursCommon.formatCountdown(remaining)
+        : `${remaining}s`;
+      elBtnResendOtp.textContent = `Yeniden gönder (${formatted})`;
+    };
+
+    updateLabel();
+
+    resendCountdownTimer = setInterval(() => {
+      remaining--;
+      if (remaining <= 0) {
+        clearInterval(resendCountdownTimer);
+        resendCountdownTimer = null;
+        elBtnResendOtp.disabled = false;
+        elBtnResendOtp.textContent = 'Resend code';
+      } else {
+        updateLabel();
+      }
+    }, 1000);
+  }
+
   // Initialization
   async function init() {
     const config = window.__OFFICEHOURS_CONFIG__ || {};
@@ -169,9 +200,37 @@ import {
         }
 
         currentEmailForOtp = validation.email;
+
+        // Check local rate limit block
+        const clientLimit = window.OfficeHoursCommon?.getClientRateLimit
+          ? window.OfficeHoursCommon.getClientRateLimit(currentEmailForOtp)
+          : null;
+
+        if (clientLimit && clientLimit.isBlocked) {
+          showAlert(
+            `Spam koruması: Kısa süre içinde 2 defa kod istendi. Güvenlik nedeniyle lütfen ${clientLimit.waitSeconds} saniye bekleyin.`,
+            'warning'
+          );
+          return;
+        }
+
         setButtonLoading(elBtnSubmitEmail, true);
 
         try {
+          // Check & record rate limit on server side
+          const { data: rlData, error: rlErr } = await supabase.rpc('check_and_record_otp_rate_limit', {
+            p_email: currentEmailForOtp
+          });
+
+          if (!rlErr && rlData && rlData.allowed === false) {
+            const waitSec = rlData.wait_seconds || 300;
+            if (window.OfficeHoursCommon?.recordClientRateLimit) {
+              window.OfficeHoursCommon.recordClientRateLimit(currentEmailForOtp, waitSec);
+            }
+            showAlert(rlData.reason || `Spam koruması: Lütfen ${waitSec} saniye bekleyin.`, 'warning');
+            return;
+          }
+
           const { error } = await supabase.auth.signInWithOtp({
             email: currentEmailForOtp,
             options: { shouldCreateUser: true }
@@ -180,10 +239,16 @@ import {
           if (error) {
             showAlert(error.message || 'Failed to dispatch verification code.', 'danger');
           } else {
+            const waitSec = rlData?.wait_seconds || 0;
+            if (window.OfficeHoursCommon?.recordClientRateLimit) {
+              window.OfficeHoursCommon.recordClientRateLimit(currentEmailForOtp, waitSec);
+            }
             elEmailPanel.classList.add('d-none');
             elOtpRecipient.textContent = currentEmailForOtp;
             elOtpPanel.classList.remove('d-none');
             elInputOtp.focus();
+
+            startResendCooldown(waitSec > 0 ? waitSec : 60);
           }
         } catch (err) {
           showAlert(err.message || 'An unexpected error occurred.', 'danger');
@@ -240,25 +305,61 @@ import {
       });
     }
 
-    // Resend OTP button
+    // Resend OTP button with Rate Limiting & Cooldown Protection
     if (elBtnResendOtp) {
       elBtnResendOtp.addEventListener('click', async () => {
         if (!currentEmailForOtp) return;
+        hideAlert();
+
+        const clientLimit = window.OfficeHoursCommon?.getClientRateLimit
+          ? window.OfficeHoursCommon.getClientRateLimit(currentEmailForOtp)
+          : null;
+
+        if (clientLimit && clientLimit.isBlocked) {
+          showAlert(
+            `Spam koruması: Kısa süre içinde 2 defa kod istendi. Lütfen ${clientLimit.waitSeconds} saniye bekleyin.`,
+            'warning'
+          );
+          startResendCooldown(clientLimit.waitSeconds);
+          return;
+        }
+
         elBtnResendOtp.disabled = true;
+
         try {
+          const { data: rlData, error: rlErr } = await supabase.rpc('check_and_record_otp_rate_limit', {
+            p_email: currentEmailForOtp
+          });
+
+          if (!rlErr && rlData && rlData.allowed === false) {
+            const waitSec = rlData.wait_seconds || 300;
+            if (window.OfficeHoursCommon?.recordClientRateLimit) {
+              window.OfficeHoursCommon.recordClientRateLimit(currentEmailForOtp, waitSec);
+            }
+            showAlert(rlData.reason || `Spam koruması: Lütfen ${waitSec} saniye bekleyin.`, 'warning');
+            startResendCooldown(waitSec);
+            return;
+          }
+
           const { error } = await supabase.auth.signInWithOtp({
             email: currentEmailForOtp,
             options: { shouldCreateUser: true }
           });
+
           if (error) {
             showAlert(error.message, 'danger');
+            startResendCooldown(30);
           } else {
-            showAlert(`A new verification code was sent to ${currentEmailForOtp}`, 'success');
+            const waitSec = rlData?.wait_seconds || 0;
+            if (window.OfficeHoursCommon?.recordClientRateLimit) {
+              window.OfficeHoursCommon.recordClientRateLimit(currentEmailForOtp, waitSec);
+            }
+            showAlert(`Yeni doğrulama kodu gönderildi: ${currentEmailForOtp}`, 'success');
+            startResendCooldown(waitSec > 0 ? waitSec : 60);
           }
-        } finally {
-          setTimeout(() => {
-            elBtnResendOtp.disabled = false;
-          }, 15000);
+        } catch (err) {
+          showAlert(err.message || 'Hata oluştu.', 'danger');
+          startResendCooldown(30);
         }
       });
     }
