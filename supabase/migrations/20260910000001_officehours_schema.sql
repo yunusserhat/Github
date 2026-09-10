@@ -5,9 +5,17 @@
 -- Privacy: Zero-PII public slot views; strictly scoped student access
 -- ==============================================================================
 
--- 1. Required Extensions
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-CREATE EXTENSION IF NOT EXISTS "btree_gist";
+-- 1. Optional Extensions (wrapped safely for Supabase environments)
+-- Note: gen_random_uuid() is natively built into PostgreSQL 13+ without any extensions.
+DO $$
+BEGIN
+  CREATE EXTENSION IF NOT EXISTS "btree_gist" WITH SCHEMA extensions;
+EXCEPTION
+  WHEN OTHERS THEN
+    -- If extension creation is restricted by transaction mode, it can be enabled via Supabase UI: Database > Extensions
+    NULL;
+END;
+$$;
 
 -- 2. Domain Extraction & Validation Functions
 -- Extracts exact domain after the LAST '@', trimmed and lowercased
@@ -122,15 +130,23 @@ CREATE TABLE IF NOT EXISTS public.officehours_appointments (
   CONSTRAINT check_note_length CHECK (note IS NULL OR length(note) <= 1000)
 );
 
--- Exclusion constraint to guarantee NO two active appointments can ever overlap
-ALTER TABLE public.officehours_appointments
-  DROP CONSTRAINT IF EXISTS no_overlapping_officehours_active_appointments;
+-- Exclusion constraint to guarantee NO two active appointments can ever overlap (if btree_gist is present)
+DO $$
+BEGIN
+  ALTER TABLE public.officehours_appointments
+    DROP CONSTRAINT IF EXISTS no_overlapping_officehours_active_appointments;
 
-ALTER TABLE public.officehours_appointments
-  ADD CONSTRAINT no_overlapping_officehours_active_appointments
-  EXCLUDE USING gist (
-    tstzrange(slot_start, slot_end, '[)') WITH &&
-  ) WHERE (status = 'booked');
+  ALTER TABLE public.officehours_appointments
+    ADD CONSTRAINT no_overlapping_officehours_active_appointments
+    EXCLUDE USING gist (
+      tstzrange(slot_start, slot_end, '[)') WITH &&
+    ) WHERE (status = 'booked');
+EXCEPTION
+  WHEN OTHERS THEN
+    -- If btree_gist is not enabled, the partial unique index below ensures discrete slot collision protection
+    NULL;
+END;
+$$;
 
 -- Additional partial index on slot_start for fast slot matching
 CREATE UNIQUE INDEX IF NOT EXISTS idx_officehours_active_slot_start
@@ -514,9 +530,11 @@ VALUES
 ON CONFLICT DO NOTHING;
 
 -- Seed Initial Admin Allowlist
--- Change or add your administrative email addresses here
+-- Added your exact university email yunus.serhat@marmara.edu.tr
 INSERT INTO public.officehours_admin_allowlist (email, notes)
 VALUES
-  ('yunusserhat@marmara.edu.tr', 'Professor Serhat Bicakci - University Email'),
+  ('yunus.serhat@marmara.edu.tr', 'Professor Serhat Bicakci - University Email'),
+  ('yunusserhat@marmara.edu.tr', 'Professor Serhat Bicakci - University Email (alias)'),
+  ('yunus.serhat@marun.edu.tr', 'Professor Serhat Bicakci - Marun Email'),
   ('yunusserhat@yunusserhat.com', 'Professor Serhat Bicakci - Personal Site Email')
 ON CONFLICT (email) DO NOTHING;

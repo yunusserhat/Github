@@ -64,6 +64,7 @@ Subdomains (e.g. `user@cs.marmara.edu.tr`) and suffix lookalikes (e.g. `user@mar
 
 ### C. Promote Your Initial Admin Account
 The schema uses `public.officehours_admin_allowlist`. The migration seeds:
+- `yunus.serhat@marmara.edu.tr`
 - `yunusserhat@marmara.edu.tr`
 - `yunusserhat@yunusserhat.com`
 

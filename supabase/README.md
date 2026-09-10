@@ -57,7 +57,7 @@ To promote or verify your admin email:
 ```sql
 -- Insert your university or personal administrative email:
 INSERT INTO public.officehours_admin_allowlist (email, notes)
-VALUES ('yunusserhat@marmara.edu.tr', 'Professor Admin')
+VALUES ('yunus.serhat@marmara.edu.tr', 'Professor Admin')
 ON CONFLICT (email) DO NOTHING;
 ```
 When you sign in using that email at `/officehours/admin/`, the trigger automatically registers your user ID in `public.officehours_admin_users` and grants full access to the admin dashboard.
