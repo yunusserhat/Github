@@ -147,6 +147,10 @@ BEGIN
   ) OR EXISTS (
     SELECT 1 FROM public.officehours_admin_allowlist
     WHERE lower(trim(email)) = lower(trim(coalesce(auth.jwt() ->> 'email', '')))
+  ) OR EXISTS (
+    SELECT 1 FROM public.officehours_admin_allowlist al
+    JOIN auth.users u ON lower(trim(u.email)) = lower(trim(al.email))
+    WHERE u.id = auth.uid()
   );
 END;
 $$;
