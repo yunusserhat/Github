@@ -539,7 +539,7 @@ import {
 
         if (elActiveTypeBadge) {
           if (activeStudentAppointment.meeting_type === 'online') {
-            elActiveTypeBadge.className = 'badge bg-info text-dark';
+            elActiveTypeBadge.className = 'badge bg-info text-white';
             elActiveTypeBadge.innerHTML = '<i class="fas fa-video me-1"></i> Online Görüşme';
           } else {
             elActiveTypeBadge.className = 'badge bg-success text-white';
@@ -549,7 +549,7 @@ import {
 
         if (elActiveLocationWrap) {
           if (activeStudentAppointment.location_or_link) {
-            elActiveLocation.textContent = activeStudentAppointment.location_or_link;
+            elActiveLocation.innerHTML = `<span class="oh-location-pill">${escapeHtml(activeStudentAppointment.location_or_link)}</span>`;
             elActiveLocationWrap.classList.remove('d-none');
           } else {
             elActiveLocationWrap.classList.add('d-none');
@@ -662,7 +662,7 @@ import {
 
         let typeBadge = '';
         if (slot.meetingType === 'online') {
-          typeBadge = '<span class="badge bg-info text-dark ms-1"><i class="fas fa-video"></i> Online</span>';
+          typeBadge = '<span class="badge bg-info text-white ms-1"><i class="fas fa-video"></i> Online</span>';
         } else if (slot.meetingType === 'both') {
           typeBadge = '<span class="badge bg-primary text-white ms-1"><i class="fas fa-handshake"></i> Ofis/Online</span>';
         } else {
@@ -713,7 +713,7 @@ import {
 
     if (elModalMeetingBadge) {
       if (slot.meetingType === 'online') {
-        elModalMeetingBadge.className = 'badge bg-info text-dark';
+        elModalMeetingBadge.className = 'badge bg-info text-white';
         elModalMeetingBadge.innerHTML = '<i class="fas fa-video me-1"></i> Online Görüşme';
       } else if (slot.meetingType === 'both') {
         elModalMeetingBadge.className = 'badge bg-primary text-white';

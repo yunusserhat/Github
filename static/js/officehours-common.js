@@ -568,7 +568,7 @@ export function formatMeetingTypeLabel(type) {
 export function getMeetingTypeBadge(type) {
   switch (type) {
     case 'online':
-      return '<span class="badge bg-info text-dark"><i class="fas fa-video me-1"></i> Online</span>';
+      return '<span class="badge bg-info text-white"><i class="fas fa-video me-1"></i> Online</span>';
     case 'both':
       return '<span class="badge bg-primary text-white"><i class="fas fa-handshake me-1"></i> Ofis / Online</span>';
     case 'office':

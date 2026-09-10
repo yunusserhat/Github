@@ -207,7 +207,7 @@
                 <div class="btn-group btn-group-sm" role="group" id="oh-filter-meeting-type">
                   <button type="button" class="btn btn-outline-primary active" data-filter="all">Tümü</button>
                   <button type="button" class="btn btn-outline-success" data-filter="office"><i class="fas fa-building me-1"></i> Ofiste</button>
-                  <button type="button" class="btn btn-outline-info text-dark" data-filter="online"><i class="fas fa-video me-1"></i> Online</button>
+                  <button type="button" class="btn btn-outline-info" data-filter="online"><i class="fas fa-video me-1"></i> Online</button>
                 </div>
                 <div class="oh-legend d-flex gap-2 small text-muted ms-1">
                   <span><span class="oh-legend-dot oh-legend-available"></span> Available</span>
@@ -269,13 +269,13 @@
                     </label>
 
                     <input type="radio" class="btn-check" name="oh-modal-choice-type" id="oh-modal-choice-online" value="online" autocomplete="off">
-                    <label class="btn btn-outline-info btn-sm text-dark" for="oh-modal-choice-online">
+                    <label class="btn btn-outline-info btn-sm" for="oh-modal-choice-online">
                       <i class="fas fa-video me-1"></i> Online (Google Meet)
                     </label>
                   </div>
                 </div>
 
-                <div id="oh-modal-location-info" class="p-2 mb-3 rounded bg-light border small text-muted d-none">
+                <div id="oh-modal-location-info" class="p-2 mb-3 rounded oh-detail-box border small d-none">
                   <i class="fas fa-map-marker-alt me-1 text-danger"></i> <span id="oh-modal-location-text"></span>
                 </div>
                 <div class="mb-3">

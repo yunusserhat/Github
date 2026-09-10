@@ -619,7 +619,7 @@ import {
 
       let meetingBadge = '';
       if (appt.meeting_type === 'online') {
-        meetingBadge = '<span class="badge bg-info text-dark ms-1"><i class="fas fa-video me-1"></i> Online</span>';
+        meetingBadge = '<span class="badge bg-info text-white ms-1"><i class="fas fa-video me-1"></i> Online</span>';
       } else {
         meetingBadge = '<span class="badge bg-success text-white ms-1"><i class="fas fa-building me-1"></i> Ofiste</span>';
       }
@@ -648,11 +648,11 @@ import {
               : ''
           }
         </div>
-        <div class="p-2 rounded bg-white dark-bg-alt border">
+        <div class="p-2 rounded oh-detail-box border">
           <div><strong>Konu / Topic:</strong> ${escapeHtml(appt.topic)}</div>
           ${
             appt.location_or_link
-              ? `<div class="small text-muted mt-1"><i class="fas fa-map-marker-alt me-1 text-danger"></i><strong>Konum / Link:</strong> ${escapeHtml(appt.location_or_link)}</div>`
+              ? `<div class="small mt-1"><i class="fas fa-map-marker-alt me-1 text-danger"></i><strong>Konum / Link:</strong> <span class="oh-location-pill ms-1">${escapeHtml(appt.location_or_link)}</span></div>`
               : ''
           }
           ${
@@ -734,7 +734,7 @@ import {
 
       let typeBadge = '';
       if (rule.meeting_type === 'online') {
-        typeBadge = '<span class="badge bg-info text-dark me-2"><i class="fas fa-video me-1"></i> Online</span>';
+        typeBadge = '<span class="badge bg-info text-white me-2"><i class="fas fa-video me-1"></i> Online</span>';
       } else if (rule.meeting_type === 'both') {
         typeBadge = '<span class="badge bg-primary text-white me-2"><i class="fas fa-handshake me-1"></i> Ofis / Online</span>';
       } else {
@@ -742,13 +742,13 @@ import {
       }
 
       const locationText = rule.location_or_link
-        ? `<span class="small text-muted ms-1"><i class="fas fa-map-marker-alt me-1 text-danger"></i>${escapeHtml(rule.location_or_link)}</span>`
+        ? `<span class="oh-location-pill ms-2"><i class="fas fa-map-marker-alt me-1 text-danger"></i>${escapeHtml(rule.location_or_link)}</span>`
         : '';
 
       li.innerHTML = `
         <div>
           <span class="fw-bold text-primary fs-6 me-2">${dowName}</span>
-          <span class="badge bg-light text-dark border font-monospace me-2">${startStr} – ${endStr}</span>
+          <span class="badge oh-time-badge border font-monospace me-2">${startStr} – ${endStr}</span>
           ${typeBadge}
           <span class="badge ${rule.is_active ? 'bg-success' : 'bg-secondary'} me-2">${rule.is_active ? 'Active' : 'Paused'}</span>
           ${locationText}
@@ -826,7 +826,7 @@ import {
 
       let typeBadge = '';
       if (item.meeting_type === 'online') {
-        typeBadge = '<span class="badge bg-info text-dark me-2"><i class="fas fa-video me-1"></i> Online</span>';
+        typeBadge = '<span class="badge bg-info text-white me-2"><i class="fas fa-video me-1"></i> Online</span>';
       } else if (item.meeting_type === 'both') {
         typeBadge = '<span class="badge bg-primary text-white me-2"><i class="fas fa-handshake me-1"></i> Ofis / Online</span>';
       } else {
@@ -834,13 +834,13 @@ import {
       }
 
       const locationText = item.location_or_link
-        ? `<span class="small text-muted ms-1"><i class="fas fa-map-marker-alt me-1 text-danger"></i>${escapeHtml(item.location_or_link)}</span>`
+        ? `<span class="oh-location-pill ms-2"><i class="fas fa-map-marker-alt me-1 text-danger"></i>${escapeHtml(item.location_or_link)}</span>`
         : '';
 
       li.innerHTML = `
         <div>
           <span class="fw-bold fs-6 text-primary me-2"><i class="fas fa-calendar-day me-1"></i> ${item.override_date}</span>
-          <span class="badge bg-light text-dark border font-monospace me-2">${startStr} – ${endStr}</span>
+          <span class="badge oh-time-badge border font-monospace me-2">${startStr} – ${endStr}</span>
           ${typeBadge}
           ${locationText}
         </div>

@@ -28,7 +28,10 @@
 }
 
 /* Dark Theme overrides when Wowchemy body has .dark */
-body.dark {
+body.dark,
+html.dark,
+[data-theme="dark"],
+.dark {
   --oh-primary: #42a5f5;
   --oh-primary-hover: #90caf9;
   --oh-primary-light: rgba(66, 165, 245, 0.15);
@@ -138,6 +141,134 @@ body.dark {
 .form-control:focus, .form-select:focus {
   border-color: var(--oh-primary) !important;
   box-shadow: 0 0 0 0.25rem var(--oh-primary-light) !important;
+}
+
+/* Explicit Dark Mode Overrides for Inputs & Form Elements */
+body.dark .form-control,
+body.dark .form-select,
+body.dark input,
+body.dark select,
+html.dark .form-control,
+html.dark .form-select,
+html.dark input,
+html.dark select,
+.dark .form-control,
+.dark .form-select,
+.dark input,
+.dark select {
+  background-color: #161b22 !important;
+  color: #f0f6fc !important;
+  border-color: #3b4454 !important;
+}
+
+body.dark .form-control:focus,
+html.dark .form-control:focus,
+.dark .form-control:focus {
+  background-color: #161b22 !important;
+  color: #ffffff !important;
+  border-color: var(--oh-primary) !important;
+}
+
+body.dark .form-control::placeholder,
+html.dark .form-control::placeholder,
+.dark .form-control::placeholder {
+  color: #8b949e !important;
+}
+
+body.dark input:-webkit-autofill,
+body.dark input:-webkit-autofill:hover,
+body.dark input:-webkit-autofill:focus,
+html.dark input:-webkit-autofill,
+.dark input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #161b22 inset !important;
+  -webkit-text-fill-color: #f0f6fc !important;
+  caret-color: #f0f6fc !important;
+}
+
+/* Detail Box (for appointment topic & location info) */
+.oh-detail-box {
+  background-color: var(--oh-slot-bg) !important;
+  color: var(--oh-text) !important;
+  border: 1px solid var(--oh-card-border) !important;
+}
+
+body.dark .oh-detail-box,
+html.dark .oh-detail-box,
+.dark .oh-detail-box {
+  background-color: #272f3d !important;
+  color: #f0f6fc !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Location / Room Pill (always readable in both light and dark modes) */
+.oh-location-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  background-color: var(--oh-slot-hover);
+  color: var(--oh-text);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--oh-card-border);
+  word-break: break-word;
+}
+
+body.dark .oh-location-pill,
+html.dark .oh-location-pill,
+.dark .oh-location-pill {
+  background-color: #2c3646 !important;
+  color: #e2e8f0 !important;
+  border-color: #4a5568 !important;
+}
+
+/* Time Badge */
+.oh-time-badge {
+  background-color: var(--oh-slot-bg) !important;
+  color: var(--oh-text) !important;
+  border-color: var(--oh-input-border) !important;
+}
+
+body.dark .oh-time-badge,
+html.dark .oh-time-badge,
+.dark .oh-time-badge {
+  background-color: #272f3d !important;
+  color: #f0f6fc !important;
+  border-color: #3b4454 !important;
+}
+
+/* List group items */
+.list-group-item {
+  background-color: var(--oh-card-bg) !important;
+  color: var(--oh-text) !important;
+  border-color: var(--oh-card-border) !important;
+}
+
+body.dark .list-group-item,
+html.dark .list-group-item,
+.dark .list-group-item {
+  background-color: var(--oh-card-bg) !important;
+  color: #e0e6ed !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Online Button in Dark Mode */
+body.dark .btn-outline-info,
+html.dark .btn-outline-info,
+.dark .btn-outline-info {
+  color: #38bdf8 !important;
+  border-color: #0284c7 !important;
+}
+
+body.dark .btn-outline-info:hover,
+html.dark .btn-outline-info:hover,
+.dark .btn-outline-info:hover,
+body.dark .btn-check:checked + .btn-outline-info,
+html.dark .btn-check:checked + .btn-outline-info,
+.dark .btn-check:checked + .btn-outline-info {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0284c7 !important;
 }
 
 .input-group-text {
