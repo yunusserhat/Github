@@ -18,3 +18,10 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local AI agent & skill directories
+.gemini/
+.agents/
+.claude/
+agent/
+skills-lock.json
