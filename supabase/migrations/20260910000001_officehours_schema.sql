@@ -156,13 +156,21 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_officehours_active_slot_start
 CREATE INDEX IF NOT EXISTS idx_officehours_student_appointments
   ON public.officehours_appointments (student_id, status, slot_start);
 
--- 8. Supabase Auth Trigger: Prevent Signups/OTPs from Non-Allowlisted Domains
+-- 8. Supabase Auth Triggers: Prevent Signups/OTPs from Non-Allowlisted Domains & Sync Admins
 CREATE OR REPLACE FUNCTION public.trg_fn_on_auth_user_created()
-RETURNS trigger AS $$
+RETURNS trigger
+SECURITY DEFINER
+SET search_path = public
+LANGUAGE plpgsql
+AS $$
 DECLARE
   user_email text;
   is_admin_candidate boolean;
 BEGIN
+  IF NEW.email IS NULL THEN
+    RETURN NEW;
+  END IF;
+
   user_email := lower(trim(NEW.email));
 
   -- Check if user is an admin from allowlist
@@ -175,21 +183,49 @@ BEGIN
     RAISE EXCEPTION 'Registration rejected: Email "%" is not authorized. Only @marun.edu.tr and @marmara.edu.tr email addresses may create accounts.', user_email;
   END IF;
 
-  -- If in admin allowlist, automatically record in officehours_admin_users
-  IF is_admin_candidate THEN
+  RETURN NEW;
+END;
+$$;
+
+DROP TRIGGER IF EXISTS trg_auth_user_domain_check ON auth.users;
+CREATE TRIGGER trg_auth_user_domain_check
+  BEFORE INSERT OR UPDATE OF email ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.trg_fn_on_auth_user_created();
+
+-- Automatically sync admin table AFTER user is inserted into auth.users (avoids foreign key conflict)
+CREATE OR REPLACE FUNCTION public.trg_fn_sync_admin_user()
+RETURNS trigger
+SECURITY DEFINER
+SET search_path = public
+LANGUAGE plpgsql
+AS $$
+DECLARE
+  user_email text;
+BEGIN
+  IF NEW.email IS NULL THEN
+    RETURN NEW;
+  END IF;
+
+  user_email := lower(trim(NEW.email));
+
+  IF EXISTS (SELECT 1 FROM public.officehours_admin_allowlist WHERE lower(trim(email)) = user_email) THEN
     INSERT INTO public.officehours_admin_users (user_id, email)
     VALUES (NEW.id, user_email)
     ON CONFLICT (user_id) DO UPDATE SET email = EXCLUDED.email;
   END IF;
 
   RETURN NEW;
+EXCEPTION
+  WHEN OTHERS THEN
+    -- Never block authentication if secondary admin table tracking fails
+    RETURN NEW;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$;
 
-DROP TRIGGER IF EXISTS trg_auth_user_domain_check ON auth.users;
-CREATE TRIGGER trg_auth_user_domain_check
-  BEFORE INSERT OR UPDATE OF email ON auth.users
-  FOR EACH ROW EXECUTE FUNCTION public.trg_fn_on_auth_user_created();
+DROP TRIGGER IF EXISTS trg_auth_user_admin_sync ON auth.users;
+CREATE TRIGGER trg_auth_user_admin_sync
+  AFTER INSERT OR UPDATE OF email ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.trg_fn_sync_admin_user();
 
 -- 9. Secure Anonymized Function & Security-Invoker View for Public Slot Availability
 -- Exposes ONLY the occupied time ranges. ZERO student PII (no emails, no names, no topics, no IDs).
