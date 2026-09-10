@@ -530,6 +530,16 @@ export function recordClientRateLimit(email, waitSeconds = 0) {
   }
 }
 
+export function clearClientRateLimit(email) {
+  if (typeof window === 'undefined' || !window.localStorage || !email) return;
+  try {
+    const key = `${RATE_LIMIT_STORAGE_PREFIX}${email.toLowerCase().trim()}`;
+    localStorage.removeItem(key);
+  } catch {
+    // Ignore storage errors
+  }
+}
+
 export function filterSlotsByMeetingType(slots = [], filterType = 'all') {
   if (!filterType || filterType === 'all') return slots;
   return slots.filter((s) => {
