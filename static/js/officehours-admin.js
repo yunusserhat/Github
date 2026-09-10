@@ -127,7 +127,11 @@ import {
     }
 
     supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey, {
-      auth: { persistSession: true, autoRefreshToken: true }
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true
+      }
     });
 
     bindEvents();
@@ -135,6 +139,9 @@ import {
 
     supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === 'SIGNED_IN' && session?.user) {
+        if (window.location.hash && (window.location.hash.includes('access_token') || window.location.hash.includes('error'))) {
+          window.history.replaceState(null, '', window.location.pathname);
+        }
         await checkSession();
       } else if (event === 'SIGNED_OUT') {
         currentAdminUser = null;
@@ -265,7 +272,13 @@ import {
             return;
           }
 
-          const { error } = await supabase.auth.signInWithOtp({ email });
+          const redirectUrl = window.location.origin + window.location.pathname;
+          const { error } = await supabase.auth.signInWithOtp({
+            email,
+            options: {
+              emailRedirectTo: redirectUrl
+            }
+          });
           if (error) {
             showAlert(error.message, 'danger');
           } else {

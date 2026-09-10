@@ -171,6 +171,9 @@ import {
     // Listen for auth state changes
     supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' && session?.user) {
+        if (window.location.hash && (window.location.hash.includes('access_token') || window.location.hash.includes('error'))) {
+          window.history.replaceState(null, '', window.location.pathname);
+        }
         handleSession(session.user);
       } else if (event === 'SIGNED_OUT') {
         currentUser = null;
@@ -231,9 +234,13 @@ import {
             return;
           }
 
+          const redirectUrl = window.location.origin + window.location.pathname;
           const { error } = await supabase.auth.signInWithOtp({
             email: currentEmailForOtp,
-            options: { shouldCreateUser: true }
+            options: {
+              shouldCreateUser: true,
+              emailRedirectTo: redirectUrl
+            }
           });
 
           if (error) {
@@ -341,9 +348,13 @@ import {
             return;
           }
 
+          const redirectUrl = window.location.origin + window.location.pathname;
           const { error } = await supabase.auth.signInWithOtp({
             email: currentEmailForOtp,
-            options: { shouldCreateUser: true }
+            options: {
+              shouldCreateUser: true,
+              emailRedirectTo: redirectUrl
+            }
           });
 
           if (error) {
