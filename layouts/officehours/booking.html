@@ -1,0 +1,325 @@
+{{ define "main" }}
+<link rel="stylesheet" href="{{ "css/officehours.css" | relURL }}">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  window.__OFFICEHOURS_CONFIG__ = {
+    supabaseUrl: '{{ getenv "SUPABASE_URL" }}' || window.OFFICEHOURS_SUPABASE_URL || '',
+    supabaseAnonKey: '{{ getenv "SUPABASE_ANON_KEY" }}' || window.OFFICEHOURS_SUPABASE_ANON_KEY || ''
+  };
+</script>
+
+<div class="officehours-wrapper py-4">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-9">
+        
+        <!-- Setup Mode Banner (rendered if Supabase credentials are missing) -->
+        <div id="oh-config-warning" class="oh-card oh-alert-warning d-none mb-4" role="alert">
+          <div class="d-flex align-items-start">
+            <div class="oh-alert-icon me-3">
+              <i class="fas fa-tools fa-2x"></i>
+            </div>
+            <div>
+              <h4 class="oh-alert-title mb-1">Configuration Required</h4>
+              <p class="mb-2 text-muted">
+                The office hours booking system is installed, but Supabase environment variables (<code>SUPABASE_URL</code> and <code>SUPABASE_ANON_KEY</code>) have not been detected yet.
+              </p>
+              <div class="oh-code-hint p-2 mb-2 rounded font-monospace small">
+                Netlify: Site settings &gt; Environment variables &gt; Add SUPABASE_URL &amp; SUPABASE_ANON_KEY<br>
+                Local Dev: Create a .env file with your project keys or run with environment variables.
+              </div>
+              <p class="small text-muted mb-0">See <a href="/officehours/admin/" class="text-primary">Admin Guide</a> or <code>supabase/README.md</code> for setup instructions.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Global Status Messages / Alerts -->
+        <div id="oh-global-alert" class="oh-alert d-none mb-4" role="alert" aria-live="polite">
+          <span id="oh-alert-message"></span>
+          <button type="button" class="btn-close ms-auto" id="oh-btn-close-alert" aria-label="Close"></button>
+        </div>
+
+        <!-- Header Card -->
+        <header class="oh-card oh-header-card mb-4 text-center">
+          <div class="oh-badge-chip mx-auto mb-2">
+            <i class="fas fa-university me-1"></i> Academic Office Hours
+          </div>
+          <h1 class="oh-title mb-1">Student Meetings</h1>
+          <p class="oh-subtitle text-muted mb-2">Yunus Serhat Bıçakçı &bull; Marmara University</p>
+          <p class="oh-lead mb-0">
+            Book an appointment during my available office hours. Select an open slot and enter your meeting topic.
+          </p>
+        </header>
+
+        <!-- STEP 1: Authentication Card -->
+        <section id="oh-auth-section" class="oh-card mb-4">
+          <!-- Substep 1A: Email Input -->
+          <div id="oh-email-panel">
+            <div class="text-center mb-4">
+              <div class="oh-step-indicator mx-auto mb-3">
+                <i class="fas fa-envelope-open-text"></i>
+              </div>
+              <h2 class="h4 mb-1">Student Verification</h2>
+              <p class="text-muted small mb-0">
+                To reserve a meeting, please enter your official university email address.
+              </p>
+            </div>
+
+            <form id="oh-form-email" novalidate>
+              <div class="mb-3">
+                <label for="oh-input-email" class="form-label fw-bold">University email</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-at"></i></span>
+                  <input
+                    type="email"
+                    class="form-control form-control-lg"
+                    id="oh-input-email"
+                    placeholder="studentnumber@marun.edu.tr or @marmara.edu.tr"
+                    required
+                    autocomplete="email"
+                    aria-describedby="oh-email-help"
+                  >
+                </div>
+                <div id="oh-email-help" class="form-text mt-2">
+                  <i class="fas fa-shield-alt text-success me-1"></i>
+                  Only verified <strong>@marun.edu.tr</strong> and <strong>@marmara.edu.tr</strong> accounts can book appointments.
+                </div>
+                <div id="oh-email-error" class="invalid-feedback d-none mt-2"></div>
+              </div>
+
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg oh-btn-submit" id="oh-btn-submit-email">
+                  <span class="oh-spinner spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true"></span>
+                  <span>Continue <i class="fas fa-arrow-right ms-1"></i></span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Substep 1B: OTP Verification Entry -->
+          <div id="oh-otp-panel" class="d-none">
+            <div class="text-center mb-4">
+              <div class="oh-step-indicator mx-auto mb-3">
+                <i class="fas fa-key"></i>
+              </div>
+              <h2 class="h4 mb-1">Enter Verification Code</h2>
+              <p class="text-muted small mb-1">
+                We sent a 6-digit confirmation code to:
+              </p>
+              <p class="fw-bold text-primary mb-0" id="oh-otp-recipient-email"></p>
+            </div>
+
+            <form id="oh-form-otp" novalidate>
+              <div class="mb-3">
+                <label for="oh-input-otp" class="form-label fw-bold text-center d-block">6-Digit Code / Token</label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg text-center font-monospace oh-otp-input mx-auto"
+                  id="oh-input-otp"
+                  placeholder="123456"
+                  maxlength="8"
+                  required
+                  autocomplete="one-time-code"
+                >
+                <div id="oh-otp-error" class="invalid-feedback d-none mt-2 text-center"></div>
+              </div>
+
+              <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-primary btn-lg oh-btn-submit" id="oh-btn-submit-otp">
+                  <span class="oh-spinner spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true"></span>
+                  <span>Verify &amp; Continue <i class="fas fa-check ms-1"></i></span>
+                </button>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center small">
+                <button type="button" class="btn btn-link p-0 text-muted" id="oh-btn-change-email">
+                  <i class="fas fa-arrow-left me-1"></i> Use a different email
+                </button>
+                <button type="button" class="btn btn-link p-0 text-primary" id="oh-btn-resend-otp">
+                  Resend code
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Privacy & KVKK Note -->
+          <div class="oh-privacy-note mt-4 pt-3 border-top text-muted small text-center">
+            <i class="fas fa-lock me-1"></i>
+            Privacy Notice: Only your student email and booking topic/note are stored for scheduling purposes. Appointment records are strictly private and never shared publicly.
+          </div>
+        </section>
+
+        <!-- STEP 2: Authenticated Booking Section -->
+        <section id="oh-booking-section" class="d-none">
+          <!-- Student Status Bar -->
+          <div class="oh-card oh-status-bar mb-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div class="d-flex align-items-center">
+              <span class="oh-avatar-dot me-2"></span>
+              <div>
+                <span class="small text-muted d-block">Signed in as:</span>
+                <span class="fw-bold" id="oh-logged-in-email">student@marun.edu.tr</span>
+              </div>
+            </div>
+            <div>
+              <button class="btn btn-sm btn-outline-secondary" id="oh-btn-signout">
+                <i class="fas fa-sign-out-alt me-1"></i> Sign Out
+              </button>
+            </div>
+          </div>
+
+          <!-- Existing Active Appointment Banner (if student already has a future booking) -->
+          <div id="oh-active-booking-card" class="oh-card oh-active-booking mb-4 d-none">
+            <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
+              <div>
+                <span class="badge bg-success mb-2">Upcoming Appointment</span>
+                <h3 class="h5 mb-1" id="oh-active-date-time">Tuesday, 15 September &bull; 13:40–14:00</h3>
+                <p class="mb-1 text-muted small"><i class="fas fa-clock me-1"></i> Timezone: Europe/Istanbul</p>
+                <p class="mb-1"><strong>Topic:</strong> <span id="oh-active-topic">Thesis consultation</span></p>
+                <p class="mb-0 text-muted small" id="oh-active-note-wrap"><strong>Note:</strong> <span id="oh-active-note"></span></p>
+              </div>
+              <div class="mt-2 mt-md-0">
+                <button type="button" class="btn btn-outline-danger btn-sm" id="oh-btn-cancel-active">
+                  <i class="fas fa-times me-1"></i> Cancel Appointment
+                </button>
+              </div>
+            </div>
+            <div class="oh-policy-tip mt-3 pt-2 border-top text-muted small">
+              <i class="fas fa-info-circle me-1"></i>
+              To ensure fair access, each student may hold at most 1 active booking at a time. If you wish to choose a different time slot, please cancel this meeting first.
+            </div>
+          </div>
+
+          <!-- Available Slots Viewer -->
+          <div id="oh-slots-container" class="oh-card mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+              <div>
+                <h2 class="h5 mb-0">Select an Available Slot</h2>
+                <p class="text-muted small mb-0">Times are displayed in Istanbul time (Europe/Istanbul).</p>
+              </div>
+              <div class="oh-legend d-flex gap-3 small text-muted">
+                <span><span class="oh-legend-dot oh-legend-available"></span> Available</span>
+                <span><span class="oh-legend-dot oh-legend-unavailable"></span> Booked / Unavailable</span>
+              </div>
+            </div>
+
+            <!-- Loading Spinner for Slots -->
+            <div id="oh-slots-loading" class="text-center py-5">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading available office hours...</span>
+              </div>
+              <p class="text-muted small mt-2">Checking schedule and availability...</p>
+            </div>
+
+            <!-- Empty State (No slots found) -->
+            <div id="oh-slots-empty" class="text-center py-5 d-none">
+              <div class="oh-empty-icon mb-2 text-muted">
+                <i class="far fa-calendar-times fa-3x"></i>
+              </div>
+              <h3 class="h6 text-muted mb-1">No Available Slots Found</h3>
+              <p class="text-muted small mb-0">
+                There are no open office-hour slots matching the current schedule. Please check back later or contact the instructor.
+              </p>
+            </div>
+
+            <!-- Grouped Date List with Slots -->
+            <div id="oh-slots-list" class="oh-slots-list d-none">
+              <!-- Dynamically populated by officehours-booking.js -->
+            </div>
+          </div>
+
+          <!-- Booking Modal / Form Dialog -->
+          <div id="oh-booking-form-modal" class="oh-modal-backdrop d-none">
+            <div class="oh-modal-card oh-card">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="h5 mb-0">Confirm Office Hours Booking</h3>
+                <button type="button" class="btn-close" id="oh-btn-close-modal" aria-label="Close"></button>
+              </div>
+
+              <div class="oh-slot-summary-box p-3 rounded mb-3">
+                <div class="small text-muted">Selected Meeting Time:</div>
+                <div class="fw-bold text-primary fs-5" id="oh-modal-slot-display">Tuesday, 15 September &bull; 13:40–14:00</div>
+                <div class="small text-muted"><i class="fas fa-globe me-1"></i> Europe/Istanbul (UTC+03:00)</div>
+              </div>
+
+              <form id="oh-form-confirm-booking" novalidate>
+                <div class="mb-3">
+                  <label for="oh-input-topic" class="form-label fw-bold">
+                    Meeting topic <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="oh-input-topic"
+                    placeholder="e.g. Final project questions, thesis proposal, course inquiry"
+                    maxlength="200"
+                    required
+                  >
+                  <div class="form-text small">Briefly state what you would like to discuss (required).</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="oh-input-note" class="form-label fw-bold">
+                    Optional note
+                  </label>
+                  <textarea
+                    class="form-control"
+                    id="oh-input-note"
+                    rows="3"
+                    placeholder="Any specific background details, links, or documents you would like to share in advance (optional)."
+                    maxlength="1000"
+                  ></textarea>
+                </div>
+
+                <div id="oh-modal-error" class="alert alert-danger d-none mb-3 small" role="alert"></div>
+
+                <div class="d-flex justify-content-end gap-2">
+                  <button type="button" class="btn btn-outline-secondary" id="oh-btn-modal-cancel">
+                    Cancel
+                  </button>
+                  <button type="submit" class="btn btn-primary" id="oh-btn-modal-confirm">
+                    <span class="oh-spinner spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true"></span>
+                    <span>Book Meeting <i class="fas fa-check ms-1"></i></span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Booking Confirmation Celebration Screen -->
+          <div id="oh-confirmation-card" class="oh-card text-center py-5 d-none">
+            <div class="oh-success-icon mx-auto mb-3">
+              <i class="fas fa-check-circle fa-4x text-success"></i>
+            </div>
+            <h2 class="h3 text-success mb-2">Your meeting has been booked!</h2>
+            <p class="text-muted mb-3">A confirmation has been recorded under your student account.</p>
+            
+            <div class="oh-slot-summary-box p-3 rounded mx-auto text-start mb-4" style="max-width: 500px;">
+              <div class="mb-2">
+                <span class="text-muted small d-block">Scheduled Time:</span>
+                <span class="fw-bold fs-6 text-primary" id="oh-confirm-datetime">Tuesday, 15 September 2026 &bull; 13:40–14:00</span>
+              </div>
+              <div class="mb-2">
+                <span class="text-muted small d-block">Student Email:</span>
+                <span class="fw-bold" id="oh-confirm-email"></span>
+              </div>
+              <div>
+                <span class="text-muted small d-block">Topic:</span>
+                <span class="fw-bold" id="oh-confirm-topic"></span>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="oh-btn-confirm-done">
+              <i class="fas fa-calendar-check me-1"></i> Done / View My Schedule
+            </button>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="{{ "js/officehours-common.js" | relURL }}"></script>
+<script type="module" src="{{ "js/officehours-booking.js" | relURL }}"></script>
+{{ end }}

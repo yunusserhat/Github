@@ -1,0 +1,470 @@
+/* ==============================================================================
+   Office Hours Booking System - Stylesheet
+   Designed to blend seamlessly with yunusserhat.com (Wowchemy Academic Minimal)
+   Supports Light Mode & Dark Mode (.dark), Glassmorphic cards, Responsive UI
+   ============================================================================== */
+
+:root {
+  --oh-primary: #1565c0;
+  --oh-primary-hover: #0d47a1;
+  --oh-primary-light: rgba(21, 101, 192, 0.08);
+  --oh-primary-border: rgba(21, 101, 192, 0.25);
+  --oh-success: #2e7d32;
+  --oh-success-light: rgba(46, 125, 50, 0.1);
+  --oh-danger: #c62828;
+  --oh-danger-light: rgba(198, 40, 40, 0.1);
+  --oh-warning: #f57f17;
+  --oh-warning-light: rgba(245, 127, 23, 0.1);
+  --oh-card-bg: #ffffff;
+  --oh-card-border: rgba(0, 0, 0, 0.08);
+  --oh-card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+  --oh-text: #2b2b2b;
+  --oh-text-muted: #666666;
+  --oh-slot-bg: #f8f9fa;
+  --oh-slot-hover: #e3f2fd;
+  --oh-input-bg: #ffffff;
+  --oh-input-border: #ced4da;
+  --oh-modal-backdrop: rgba(0, 0, 0, 0.55);
+}
+
+/* Dark Theme overrides when Wowchemy body has .dark */
+body.dark {
+  --oh-primary: #42a5f5;
+  --oh-primary-hover: #90caf9;
+  --oh-primary-light: rgba(66, 165, 245, 0.15);
+  --oh-primary-border: rgba(66, 165, 245, 0.35);
+  --oh-card-bg: #1e2430;
+  --oh-card-border: rgba(255, 255, 255, 0.1);
+  --oh-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --oh-text: #e0e6ed;
+  --oh-text-muted: #9ba7b6;
+  --oh-slot-bg: #272f3d;
+  --oh-slot-hover: #313d50;
+  --oh-input-bg: #161b22;
+  --oh-input-border: #3b4454;
+  --oh-modal-backdrop: rgba(0, 0, 0, 0.75);
+}
+
+/* Wrapper & Global Layout */
+.officehours-wrapper {
+  font-family: inherit;
+  color: var(--oh-text);
+  min-height: 70vh;
+}
+
+/* Glassmorphic & Modern Cards */
+.oh-card {
+  background: var(--oh-card-bg);
+  border: 1px solid var(--oh-card-border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: var(--oh-card-shadow);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.oh-header-card {
+  background: linear-gradient(135deg, var(--oh-card-bg) 0%, var(--oh-primary-light) 100%);
+  border-top: 4px solid var(--oh-primary);
+}
+
+.oh-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.oh-subtitle {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.oh-lead {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--oh-text-muted);
+}
+
+/* Badges & Chips */
+.oh-badge-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: var(--oh-primary-light);
+  color: var(--oh-primary);
+  border: 1px solid var(--oh-primary-border);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.oh-domain-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: var(--oh-primary-light);
+  color: var(--oh-primary);
+  border: 1px solid var(--oh-primary-border);
+}
+
+/* Step Indicators & Icons */
+.oh-step-indicator {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--oh-primary-light);
+  color: var(--oh-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Form Controls & Inputs */
+.form-control, .form-select {
+  background-color: var(--oh-input-bg) !important;
+  color: var(--oh-text) !important;
+  border-color: var(--oh-input-border) !important;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--oh-primary) !important;
+  box-shadow: 0 0 0 0.25rem var(--oh-primary-light) !important;
+}
+
+.input-group-text {
+  background-color: var(--oh-slot-bg);
+  border-color: var(--oh-input-border);
+  color: var(--oh-text-muted);
+  border-radius: 8px 0 0 8px;
+}
+
+.oh-otp-input {
+  letter-spacing: 0.4em;
+  font-size: 1.75rem;
+  font-weight: 700;
+  max-width: 260px;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--oh-primary) !important;
+  border-color: var(--oh-primary) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.65rem 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--oh-primary-hover) !important;
+  border-color: var(--oh-primary-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--oh-primary-light);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline-primary {
+  color: var(--oh-primary) !important;
+  border-color: var(--oh-primary) !important;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--oh-primary) !important;
+  color: #ffffff !important;
+}
+
+/* Status Bar & User Info */
+.oh-status-bar {
+  padding: 1rem 1.5rem;
+  background: var(--oh-card-bg);
+  border-left: 4px solid var(--oh-primary);
+}
+
+.oh-avatar-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--oh-success);
+  display: inline-block;
+  box-shadow: 0 0 0 3px var(--oh-success-light);
+}
+
+/* Active Booking Banner */
+.oh-active-booking {
+  border-left: 4px solid var(--oh-success);
+  background: linear-gradient(135deg, var(--oh-card-bg) 0%, var(--oh-success-light) 100%);
+}
+
+/* Slot List & Time Grid */
+.oh-date-group {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--oh-card-border);
+}
+
+.oh-date-group:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.oh-date-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.oh-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Slot Pill Button */
+.oh-slot-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0.5rem;
+  border-radius: 8px;
+  background: var(--oh-slot-bg);
+  border: 1px solid var(--oh-card-border);
+  color: var(--oh-text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease-in-out;
+  text-decoration: none;
+  user-select: none;
+}
+
+.oh-slot-btn .oh-slot-time {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.oh-slot-btn .oh-slot-status {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 0.2rem;
+  font-weight: 600;
+}
+
+/* Slot States */
+.oh-slot-btn.oh-slot-available {
+  border-color: var(--oh-primary-border);
+  color: var(--oh-primary);
+}
+
+.oh-slot-btn.oh-slot-available:hover {
+  background: var(--oh-primary);
+  color: #ffffff;
+  border-color: var(--oh-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--oh-primary-light);
+}
+
+.oh-slot-btn.oh-slot-available:hover .oh-slot-status {
+  color: #ffffff;
+}
+
+.oh-slot-btn.oh-slot-available .oh-slot-status {
+  color: var(--oh-success);
+}
+
+.oh-slot-btn.oh-slot-booked {
+  opacity: 0.5;
+  background: var(--oh-slot-bg);
+  color: var(--oh-text-muted);
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.oh-slot-btn.oh-slot-booked .oh-slot-status {
+  color: var(--oh-danger);
+  text-decoration: none;
+}
+
+.oh-slot-btn.oh-slot-too-soon {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Legend */
+.oh-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.oh-legend-available {
+  background-color: var(--oh-success);
+}
+
+.oh-legend-unavailable {
+  background-color: var(--oh-text-muted);
+}
+
+/* Modal Dialog */
+.oh-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--oh-modal-backdrop);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  padding: 1rem;
+}
+
+.oh-modal-card {
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: ohModalSlideIn 0.2s ease-out;
+}
+
+@keyframes ohModalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.oh-slot-summary-box {
+  background: var(--oh-slot-bg);
+  border-left: 3px solid var(--oh-primary);
+}
+
+/* Alerts & Notices */
+.oh-alert {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.oh-alert-success {
+  background-color: var(--oh-success-light);
+  color: var(--oh-success);
+  border: 1px solid rgba(46, 125, 50, 0.3);
+}
+
+.oh-alert-danger {
+  background-color: var(--oh-danger-light);
+  color: var(--oh-danger);
+  border: 1px solid rgba(198, 40, 40, 0.3);
+}
+
+.oh-alert-warning {
+  background-color: var(--oh-warning-light);
+  color: var(--oh-warning);
+  border: 1px solid rgba(245, 127, 23, 0.3);
+}
+
+.oh-code-hint {
+  background: var(--oh-slot-bg);
+  border: 1px solid var(--oh-card-border);
+  color: var(--oh-text);
+  line-height: 1.5;
+}
+
+/* Admin Tabs & Navigation */
+.oh-nav-pills .nav-link {
+  color: var(--oh-text-muted);
+  background: var(--oh-card-bg);
+  border: 1px solid var(--oh-card-border);
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.oh-nav-pills .nav-link.active {
+  background: var(--oh-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--oh-primary);
+  box-shadow: 0 4px 12px var(--oh-primary-light);
+}
+
+.oh-nav-pills .nav-link:hover:not(.active) {
+  background: var(--oh-slot-bg);
+  color: var(--oh-text);
+}
+
+/* Admin Appointments Table / Card List */
+.oh-admin-appt-card {
+  border-left: 4px solid var(--oh-primary);
+  margin-bottom: 1rem;
+  padding: 1.25rem;
+  background: var(--oh-slot-bg);
+  border-radius: 8px;
+  transition: transform 0.15s ease;
+}
+
+.oh-admin-appt-card:hover {
+  transform: translateX(3px);
+}
+
+.oh-admin-appt-card.oh-status-cancelled {
+  border-left-color: var(--oh-text-muted);
+  opacity: 0.75;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .oh-card {
+    padding: 1.25rem;
+  }
+  .oh-title {
+    font-size: 1.6rem;
+  }
+  .oh-slots-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  .oh-slot-btn {
+    padding: 0.6rem 0.3rem;
+  }
+  .oh-slot-btn .oh-slot-time {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .oh-slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
