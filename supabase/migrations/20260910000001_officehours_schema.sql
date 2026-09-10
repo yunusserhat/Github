@@ -20,7 +20,11 @@ $$;
 -- 2. Domain Extraction & Validation Functions
 -- Extracts exact domain after the LAST '@', trimmed and lowercased
 CREATE OR REPLACE FUNCTION public.extract_email_domain(email_address text)
-RETURNS text AS $$
+RETURNS text
+LANGUAGE plpgsql
+IMMUTABLE
+SET search_path = public
+AS $$
 DECLARE
   clean_email text;
   at_pos integer;
@@ -35,15 +39,19 @@ BEGIN
   END IF;
   RETURN substring(clean_email from at_pos + 1);
 END;
-$$ LANGUAGE plpgsql IMMUTABLE;
+$$;
 
 -- Explicit domain allowlist: exact match against marun.edu.tr or marmara.edu.tr
 CREATE OR REPLACE FUNCTION public.is_allowed_email_domain(email_address text)
-RETURNS boolean AS $$
+RETURNS boolean
+LANGUAGE plpgsql
+IMMUTABLE
+SET search_path = public
+AS $$
 BEGIN
   RETURN public.extract_email_domain(email_address) IN ('marun.edu.tr', 'marmara.edu.tr');
 END;
-$$ LANGUAGE plpgsql IMMUTABLE;
+$$;
 
 -- 3. Office Hours Settings (Singleton Configuration Table)
 CREATE TABLE IF NOT EXISTS public.officehours_settings (
@@ -108,7 +116,12 @@ CREATE TABLE IF NOT EXISTS public.officehours_admin_users (
 
 -- Check whether current authenticated user is an administrator
 CREATE OR REPLACE FUNCTION public.is_admin()
-RETURNS boolean AS $$
+RETURNS boolean
+LANGUAGE plpgsql
+SECURITY INVOKER
+SET search_path = public
+STABLE
+AS $$
 BEGIN
   IF auth.uid() IS NULL THEN
     RETURN false;
@@ -121,7 +134,7 @@ BEGIN
     WHERE lower(trim(email)) = lower(trim(coalesce(auth.jwt() ->> 'email', '')))
   );
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER STABLE;
+$$;
 
 -- 7. Appointments Table with Strong Concurrency & Integrity Constraints
 CREATE TABLE IF NOT EXISTS public.officehours_appointments (
@@ -535,7 +548,7 @@ BEGIN
     'topic', v_new_appointment.topic
   );
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY INVOKER SET search_path = public;
 
 -- 11. Core RPC: Cancel Appointment
 CREATE OR REPLACE FUNCTION public.cancel_officehours_appointment(
@@ -593,7 +606,7 @@ BEGIN
     'status', CASE WHEN v_is_admin THEN 'cancelled_by_admin' ELSE 'cancelled_by_student' END
   );
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY INVOKER SET search_path = public;
 
 -- 12. Row Level Security (RLS) Configuration
 ALTER TABLE public.officehours_settings ENABLE ROW LEVEL SECURITY;
@@ -639,6 +652,11 @@ CREATE POLICY "Admin can view allowlist"
   USING (public.is_admin())
   WITH CHECK (public.is_admin());
 
+CREATE POLICY "User can check own allowlist"
+  ON public.officehours_admin_allowlist FOR SELECT
+  TO authenticated
+  USING (lower(trim(email)) = lower(trim(coalesce(auth.jwt() ->> 'email', ''))));
+
 CREATE POLICY "Admin can view admin users"
   ON public.officehours_admin_users FOR SELECT
   USING (public.is_admin() OR auth.uid() = user_id);
@@ -647,6 +665,12 @@ CREATE POLICY "Admin can manage admin users"
   ON public.officehours_admin_users FOR ALL
   USING (public.is_admin())
   WITH CHECK (public.is_admin());
+
+-- Rate Limits: Admins can inspect logs (resolves rls_enabled_no_policy warning)
+CREATE POLICY "Admin can view rate limits"
+  ON public.officehours_email_rate_limits FOR SELECT
+  TO authenticated
+  USING (public.is_admin());
 
 -- Appointments:
 -- Students see ONLY their own bookings.
@@ -689,9 +713,20 @@ GRANT EXECUTE ON FUNCTION public.get_officehours_booked_slots TO anon, authentic
 GRANT EXECUTE ON FUNCTION public.check_and_record_otp_rate_limit TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION public.get_otp_rate_limit_status TO anon, authenticated;
 GRANT SELECT, INSERT, UPDATE ON public.officehours_appointments TO authenticated;
-GRANT EXECUTE ON FUNCTION public.book_officehours_appointment TO authenticated;
-GRANT EXECUTE ON FUNCTION public.cancel_officehours_appointment TO authenticated;
-GRANT EXECUTE ON FUNCTION public.is_admin TO anon, authenticated;
+
+-- Strictly revoke trigger functions from public exposure (resolves linter warnings 0028/0029)
+REVOKE EXECUTE ON FUNCTION public.trg_fn_on_auth_user_created() FROM PUBLIC, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.trg_fn_sync_admin_user() FROM PUBLIC, anon, authenticated;
+
+-- Strictly revoke unauthenticated execution from appointment and admin functions (resolves 0028/0029)
+REVOKE EXECUTE ON FUNCTION public.book_officehours_appointment(timestamptz, timestamptz, text, text) FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.book_officehours_appointment(timestamptz, timestamptz, text, text) TO authenticated;
+
+REVOKE EXECUTE ON FUNCTION public.cancel_officehours_appointment(uuid, text) FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.cancel_officehours_appointment(uuid, text) TO authenticated;
+
+REVOKE EXECUTE ON FUNCTION public.is_admin() FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.is_admin() TO authenticated;
 
 -- 14. Initial Seed Data
 INSERT INTO public.officehours_settings (
