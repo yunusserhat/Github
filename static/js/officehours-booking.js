@@ -26,6 +26,10 @@ import {
   let cachedSettings = null;
   let cachedRules = [];
   let cachedExceptions = [];
+  let cachedOverrides = [];
+  let cachedBookedSlots = [];
+  let cachedMyAppointments = [];
+  let activeMeetingTypeFilter = 'all';
 
   // DOM Elements
   const elConfigWarning = document.getElementById('oh-config-warning');
@@ -58,14 +62,22 @@ import {
   const elActiveTopic = document.getElementById('oh-active-topic');
   const elActiveNoteWrap = document.getElementById('oh-active-note-wrap');
   const elActiveNote = document.getElementById('oh-active-note');
+  const elActiveTypeBadge = document.getElementById('oh-active-type-badge');
+  const elActiveLocationWrap = document.getElementById('oh-active-location-wrap');
+  const elActiveLocation = document.getElementById('oh-active-location');
   const elBtnCancelActive = document.getElementById('oh-btn-cancel-active');
 
+  const elFilterMeetingType = document.getElementById('oh-filter-meeting-type');
   const elSlotsLoading = document.getElementById('oh-slots-loading');
   const elSlotsEmpty = document.getElementById('oh-slots-empty');
   const elSlotsList = document.getElementById('oh-slots-list');
 
   const elModal = document.getElementById('oh-booking-form-modal');
   const elModalSlotDisplay = document.getElementById('oh-modal-slot-display');
+  const elModalMeetingBadge = document.getElementById('oh-modal-meeting-badge');
+  const elModalChoiceWrap = document.getElementById('oh-modal-choice-wrap');
+  const elModalLocationInfo = document.getElementById('oh-modal-location-info');
+  const elModalLocationText = document.getElementById('oh-modal-location-text');
   const elFormConfirm = document.getElementById('oh-form-confirm-booking');
   const elInputTopic = document.getElementById('oh-input-topic');
   const elInputNote = document.getElementById('oh-input-note');
@@ -76,6 +88,9 @@ import {
 
   const elConfirmationCard = document.getElementById('oh-confirmation-card');
   const elConfirmDatetime = document.getElementById('oh-confirm-datetime');
+  const elConfirmType = document.getElementById('oh-confirm-type');
+  const elConfirmLocationWrap = document.getElementById('oh-confirm-location-wrap');
+  const elConfirmLocation = document.getElementById('oh-confirm-location');
   const elConfirmEmail = document.getElementById('oh-confirm-email');
   const elConfirmTopic = document.getElementById('oh-confirm-topic');
   const elBtnConfirmDone = document.getElementById('oh-btn-confirm-done');
@@ -387,6 +402,10 @@ import {
           return;
         }
 
+        const chosenType = selectedCandidateSlot.meetingType === 'both'
+          ? (elFormConfirm.querySelector('input[name="oh-modal-choice-type"]:checked')?.value || 'office')
+          : (selectedCandidateSlot.meetingType || 'office');
+
         setButtonLoading(elBtnModalConfirm, true);
         elModalError.classList.add('d-none');
 
@@ -395,7 +414,8 @@ import {
             p_slot_start: selectedCandidateSlot.slotStartIso,
             p_slot_end: selectedCandidateSlot.slotEndIso,
             p_topic: topic,
-            p_note: note
+            p_note: note,
+            p_meeting_type: chosenType
           });
 
           if (error) {
@@ -403,7 +423,7 @@ import {
             elModalError.classList.remove('d-none');
           } else {
             closeModal();
-            showConfirmation(selectedCandidateSlot, topic);
+            showConfirmation(selectedCandidateSlot, topic, data);
             await loadStudentData();
           }
         } catch (err) {
@@ -412,6 +432,18 @@ import {
         } finally {
           setButtonLoading(elBtnModalConfirm, false);
         }
+      });
+    }
+
+    // Meeting type filter pills
+    if (elFilterMeetingType) {
+      elFilterMeetingType.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-filter]');
+        if (!btn) return;
+        elFilterMeetingType.querySelectorAll('button').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeMeetingTypeFilter = btn.getAttribute('data-filter') || 'all';
+        renderAvailableSlots(cachedRules, cachedExceptions, cachedBookedSlots, cachedMyAppointments);
       });
     }
 
@@ -501,6 +533,26 @@ import {
       if (activeStudentAppointment) {
         elActiveDateTime.textContent = `${formatIstanbulDateOnly(activeStudentAppointment.slot_start)} • ${formatIstanbulTimeOnly(activeStudentAppointment.slot_start)}–${formatIstanbulTimeOnly(activeStudentAppointment.slot_end)}`;
         elActiveTopic.textContent = activeStudentAppointment.topic;
+
+        if (elActiveTypeBadge) {
+          if (activeStudentAppointment.meeting_type === 'online') {
+            elActiveTypeBadge.className = 'badge bg-info text-dark';
+            elActiveTypeBadge.innerHTML = '<i class="fas fa-video me-1"></i> Online Görüşme';
+          } else {
+            elActiveTypeBadge.className = 'badge bg-success text-white';
+            elActiveTypeBadge.innerHTML = '<i class="fas fa-building me-1"></i> Ofiste (Yüz Yüze)';
+          }
+        }
+
+        if (elActiveLocationWrap) {
+          if (activeStudentAppointment.location_or_link) {
+            elActiveLocation.textContent = activeStudentAppointment.location_or_link;
+            elActiveLocationWrap.classList.remove('d-none');
+          } else {
+            elActiveLocationWrap.classList.add('d-none');
+          }
+        }
+
         if (activeStudentAppointment.note) {
           elActiveNote.textContent = activeStudentAppointment.note;
           elActiveNoteWrap.classList.remove('d-none');
@@ -512,11 +564,12 @@ import {
         elActiveBookingCard.classList.add('d-none');
       }
 
-      // 2. Fetch system settings, rules, exceptions, and booked slots (anonymized view)
-      const [settingsRes, rulesRes, exceptionsRes, bookedRes] = await Promise.all([
+      // 2. Fetch system settings, rules, exceptions, overrides, and booked slots
+      const [settingsRes, rulesRes, exceptionsRes, overridesRes, bookedRes] = await Promise.all([
         supabase.from('officehours_settings').select('*').single(),
         supabase.from('officehours_availability_rules').select('*').eq('is_active', true),
         supabase.from('officehours_availability_exceptions').select('*').eq('is_blocked', true),
+        supabase.from('officehours_date_overrides').select('*').eq('is_active', true),
         supabase.from('officehours_booked_slots').select('slot_start, slot_end')
       ]);
 
@@ -530,10 +583,12 @@ import {
       };
       cachedRules = rulesRes.data || [];
       cachedExceptions = exceptionsRes.data || [];
-      const bookedSlots = bookedRes.data || [];
+      cachedOverrides = overridesRes.data || [];
+      cachedBookedSlots = bookedRes.data || [];
+      cachedMyAppointments = myAppointments || [];
 
       // 3. Generate slots for the upcoming 28 days
-      renderAvailableSlots(cachedRules, cachedExceptions, bookedSlots, myAppointments || []);
+      renderAvailableSlots(cachedRules, cachedExceptions, cachedBookedSlots, cachedMyAppointments);
     } catch (err) {
       showAlert('Failed to load schedule data: ' + err.message, 'danger');
     } finally {
@@ -559,6 +614,7 @@ import {
         dateStr,
         rules,
         exceptions,
+        dateOverrides: cachedOverrides,
         durationMinutes: duration,
         bufferMinutes: buffer,
         minNoticeHours: minNotice,
@@ -567,7 +623,14 @@ import {
 
       if (!candidateSlots.length) continue;
 
-      const annotatedSlots = annotateSlotsWithAvailability(candidateSlots, bookedSlots);
+      // Filter candidate slots by selected meeting type
+      const filteredCandidates = (window.OfficeHoursCommon?.filterSlotsByMeetingType)
+        ? window.OfficeHoursCommon.filterSlotsByMeetingType(candidateSlots, activeMeetingTypeFilter)
+        : candidateSlots;
+
+      if (!filteredCandidates.length) continue;
+
+      const annotatedSlots = annotateSlotsWithAvailability(filteredCandidates, bookedSlots);
       const openCount = annotatedSlots.filter((s) => s.isAvailable).length;
       totalAvailableSlots += openCount;
 
@@ -578,7 +641,7 @@ import {
       const heading = document.createElement('div');
       heading.className = 'oh-date-heading';
       heading.innerHTML = `
-        <span><i class="far fa-calendar-alt text-primary me-2"></i>${formatIstanbulDateOnly(candidateSlots[0].slotStartIso)}</span>
+        <span><i class="far fa-calendar-alt text-primary me-2"></i>${formatIstanbulDateOnly(filteredCandidates[0].slotStartIso)}</span>
         <span class="badge ${openCount > 0 ? 'bg-primary' : 'bg-secondary'} ms-auto small">
           ${openCount} available
         </span>
@@ -593,13 +656,22 @@ import {
         const slotBtn = document.createElement('button');
         slotBtn.type = 'button';
         slotBtn.className = `oh-slot-btn oh-slot-${slot.status}`;
+
+        let typeBadge = '';
+        if (slot.meetingType === 'online') {
+          typeBadge = '<span class="badge bg-info text-dark ms-1"><i class="fas fa-video"></i> Online</span>';
+        } else if (slot.meetingType === 'both') {
+          typeBadge = '<span class="badge bg-primary text-white ms-1"><i class="fas fa-handshake"></i> Ofis/Online</span>';
+        } else {
+          typeBadge = '<span class="badge bg-success text-white ms-1"><i class="fas fa-building"></i> Ofiste</span>';
+        }
+
         slotBtn.innerHTML = `
           <span class="oh-slot-time">${slot.startTimeStr}</span>
-          <span class="oh-slot-status">${slot.isAvailable ? 'Available' : 'Unavailable'}</span>
+          <span class="oh-slot-status">${slot.isAvailable ? 'Available' : 'Unavailable'} ${typeBadge}</span>
         `;
 
         if (slot.isAvailable) {
-          // Check if student has active booking
           if (activeStudentAppointment) {
             slotBtn.title = 'You already have an active appointment.';
             slotBtn.addEventListener('click', () => {
@@ -635,6 +707,37 @@ import {
     elModalSlotDisplay.textContent = `${formatIstanbulDateOnly(slot.slotStartIso)} • ${slot.startTimeStr}–${slot.endTimeStr}`;
     elInputTopic.value = '';
     elInputNote.value = '';
+
+    if (elModalMeetingBadge) {
+      if (slot.meetingType === 'online') {
+        elModalMeetingBadge.className = 'badge bg-info text-dark';
+        elModalMeetingBadge.innerHTML = '<i class="fas fa-video me-1"></i> Online Görüşme';
+      } else if (slot.meetingType === 'both') {
+        elModalMeetingBadge.className = 'badge bg-primary text-white';
+        elModalMeetingBadge.innerHTML = '<i class="fas fa-handshake me-1"></i> Ofis veya Online Seçimi';
+      } else {
+        elModalMeetingBadge.className = 'badge bg-success text-white';
+        elModalMeetingBadge.innerHTML = '<i class="fas fa-building me-1"></i> Ofiste (Yüz Yüze)';
+      }
+    }
+
+    if (elModalChoiceWrap) {
+      if (slot.meetingType === 'both') {
+        elModalChoiceWrap.classList.remove('d-none');
+      } else {
+        elModalChoiceWrap.classList.add('d-none');
+      }
+    }
+
+    if (elModalLocationInfo && elModalLocationText) {
+      if (slot.locationOrLink) {
+        elModalLocationText.textContent = slot.locationOrLink;
+        elModalLocationInfo.classList.remove('d-none');
+      } else {
+        elModalLocationInfo.classList.add('d-none');
+      }
+    }
+
     elModalError.classList.add('d-none');
     elModal.classList.remove('d-none');
     elInputTopic.focus();
@@ -645,10 +748,26 @@ import {
     selectedCandidateSlot = null;
   }
 
-  function showConfirmation(slot, topic) {
+  function showConfirmation(slot, topic, rpcResult = null) {
     elConfirmDatetime.textContent = `${formatIstanbulDateOnly(slot.slotStartIso)} • ${slot.startTimeStr}–${slot.endTimeStr}`;
     elConfirmEmail.textContent = currentUser.email;
     elConfirmTopic.textContent = topic;
+
+    if (elConfirmType) {
+      const type = rpcResult?.meeting_type || slot.meetingType;
+      elConfirmType.textContent = type === 'online' ? 'Online Görüşme (Google Meet)' : 'Ofiste (Yüz Yüze)';
+    }
+
+    if (elConfirmLocationWrap && elConfirmLocation) {
+      const loc = rpcResult?.location_or_link || slot.locationOrLink;
+      if (loc) {
+        elConfirmLocation.textContent = loc;
+        elConfirmLocationWrap.classList.remove('d-none');
+      } else {
+        elConfirmLocationWrap.classList.add('d-none');
+      }
+    }
+
     elConfirmationCard.classList.remove('d-none');
     elConfirmationCard.scrollIntoView({ behavior: 'smooth' });
   }

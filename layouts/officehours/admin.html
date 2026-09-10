@@ -274,8 +274,34 @@
                       </div>
                     </div>
 
+                    <div class="mb-3">
+                      <label class="form-label fw-bold d-block">Görüşme Türü</label>
+                      <div class="btn-group w-100" role="group">
+                        <input type="radio" class="btn-check" name="oh-rule-meeting-type" id="oh-rule-type-office" value="office" checked autocomplete="off">
+                        <label class="btn btn-outline-success btn-sm" for="oh-rule-type-office">
+                          <i class="fas fa-building me-1"></i> Ofiste
+                        </label>
+
+                        <input type="radio" class="btn-check" name="oh-rule-meeting-type" id="oh-rule-type-online" value="online" autocomplete="off">
+                        <label class="btn btn-outline-info btn-sm text-dark" for="oh-rule-type-online">
+                          <i class="fas fa-video me-1"></i> Online
+                        </label>
+
+                        <input type="radio" class="btn-check" name="oh-rule-meeting-type" id="oh-rule-type-both" value="both" autocomplete="off">
+                        <label class="btn btn-outline-primary btn-sm" for="oh-rule-type-both">
+                          <i class="fas fa-handshake me-1"></i> İkisi de
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="oh-rule-location" class="form-label fw-bold">Ofis Konumu / Online Toplantı Linki</label>
+                      <input type="text" class="form-control form-control-sm" id="oh-rule-location" placeholder="Örn: Mühendislik A-304 veya Meet linki">
+                      <div class="form-text small">Randevu onaylandığında öğrenciye iletilir.</div>
+                    </div>
+
                     <button type="submit" class="btn btn-primary w-100" id="oh-btn-add-rule">
-                      <i class="fas fa-plus me-1"></i> Add Availability Window
+                      <i class="fas fa-plus me-1"></i> Haftalık Müsaitlik Ekle
                     </button>
                   </form>
                 </div>
@@ -283,20 +309,40 @@
             </div>
           </div>
 
-          <!-- TAB 3: Exceptions & Blocked Dates -->
+          <!-- TAB 3: Date Overrides & Blocked Dates -->
           <div id="oh-tab-exceptions" class="oh-tab-content d-none">
             <div class="row">
+              <!-- Left Column: Active Overrides & Blocked Dates List -->
               <div class="col-12 col-lg-7 mb-4">
-                <div class="oh-card">
-                  <h2 class="h5 mb-1">Blocked Dates &amp; Holidays</h2>
-                  <p class="text-muted small mb-3">Dates when regular office hours are suspended.</p>
+                <!-- Section 1: Date-Specific Availability Overrides -->
+                <div class="oh-card mb-4">
+                  <h2 class="h5 mb-1"><i class="fas fa-calendar-day text-primary me-2"></i>Tarihe Özel Ek Müsaitlikler</h2>
+                  <p class="text-muted small mb-3">Haftalık rutininiz dışındaki belirli bir güne özel açtığınız görüşme saatleri.</p>
 
-                  <div id="oh-exceptions-loading" class="text-center py-4">
+                  <div id="oh-overrides-loading" class="text-center py-3">
                     <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
                   </div>
 
-                  <div id="oh-exceptions-empty" class="text-center py-4 d-none">
-                    <p class="text-muted small mb-0">No blocked dates recorded.</p>
+                  <div id="oh-overrides-empty" class="text-center py-3 d-none">
+                    <p class="text-muted small mb-0">Henüz tarihe özel ek bir saat tanımlanmadı.</p>
+                  </div>
+
+                  <ul class="list-group list-group-flush oh-overrides-list d-none" id="oh-overrides-list">
+                    <!-- Injected by officehours-admin.js -->
+                  </ul>
+                </div>
+
+                <!-- Section 2: Blocked Dates & Holidays -->
+                <div class="oh-card">
+                  <h2 class="h5 mb-1"><i class="fas fa-ban text-danger me-2"></i>Kapatılan Günler &amp; Resmi Tatiller</h2>
+                  <p class="text-muted small mb-3">Tüm randevulara kapatılan tatil, sınav veya konferans günleri.</p>
+
+                  <div id="oh-exceptions-loading" class="text-center py-3">
+                    <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+                  </div>
+
+                  <div id="oh-exceptions-empty" class="text-center py-3 d-none">
+                    <p class="text-muted small mb-0">Kapatılmış bir tarih bulunmuyor.</p>
                   </div>
 
                   <ul class="list-group list-group-flush oh-exceptions-list d-none" id="oh-exceptions-list">
@@ -305,31 +351,86 @@
                 </div>
               </div>
 
+              <!-- Right Column: Add Override or Block Date Forms -->
               <div class="col-12 col-lg-5 mb-4">
-                <div class="oh-card">
-                  <h3 class="h5 mb-2">Block a Specific Date</h3>
-                  <p class="text-muted small mb-3">Prevent bookings on a holiday or conference day.</p>
+                <!-- Form 1: Add Date-Specific Custom Availability -->
+                <div class="oh-card mb-4 border-primary">
+                  <h3 class="h5 mb-1 text-primary"><i class="fas fa-calendar-plus me-1"></i> Özel Tarihe Saat Ekle</h3>
+                  <p class="text-muted small mb-3">Belirli bir tarihe Ofis veya Online görüşme saati tanımlayın.</p>
+
+                  <form id="oh-form-add-override" novalidate>
+                    <div class="mb-3">
+                      <label for="oh-override-date" class="form-label fw-bold">Tarih</label>
+                      <input type="date" class="form-control" id="oh-override-date" required>
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-6">
+                        <label for="oh-override-start" class="form-label fw-bold">Başlangıç</label>
+                        <input type="time" class="form-control" id="oh-override-start" value="14:00" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="oh-override-end" class="form-label fw-bold">Bitiş</label>
+                        <input type="time" class="form-control" id="oh-override-end" value="16:00" required>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label fw-bold d-block">Görüşme Türü</label>
+                      <div class="btn-group w-100" role="group">
+                        <input type="radio" class="btn-check" name="oh-override-meeting-type" id="oh-override-type-office" value="office" checked autocomplete="off">
+                        <label class="btn btn-outline-success btn-sm" for="oh-override-type-office">
+                          <i class="fas fa-building me-1"></i> Ofiste
+                        </label>
+
+                        <input type="radio" class="btn-check" name="oh-override-meeting-type" id="oh-override-type-online" value="online" autocomplete="off">
+                        <label class="btn btn-outline-info btn-sm text-dark" for="oh-override-type-online">
+                          <i class="fas fa-video me-1"></i> Online
+                        </label>
+
+                        <input type="radio" class="btn-check" name="oh-override-meeting-type" id="oh-override-type-both" value="both" autocomplete="off">
+                        <label class="btn btn-outline-primary btn-sm" for="oh-override-type-both">
+                          <i class="fas fa-handshake me-1"></i> İkisi de
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="oh-override-location" class="form-label fw-bold">Konum / Meet Linki</label>
+                      <input type="text" class="form-control form-control-sm" id="oh-override-location" placeholder="Örn: Oda A-304 veya Meet linki">
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100" id="oh-btn-add-override">
+                      <i class="fas fa-plus-circle me-1"></i> Bu Tarihe Müsaitlik Aç
+                    </button>
+                  </form>
+                </div>
+
+                <!-- Form 2: Block a Date -->
+                <div class="oh-card border-danger">
+                  <h3 class="h5 mb-1 text-danger"><i class="fas fa-calendar-times me-1"></i> Günü Tamamen Kapat</h3>
+                  <p class="text-muted small mb-3">Tatil, konferans veya izin günlerinde randevuları kapatın.</p>
 
                   <form id="oh-form-add-exception" novalidate>
                     <div class="mb-3">
-                      <label for="oh-exception-date" class="form-label fw-bold">Date to Block</label>
+                      <label for="oh-exception-date" class="form-label fw-bold">Kapatılacak Tarih</label>
                       <input type="date" class="form-control" id="oh-exception-date" required>
                     </div>
 
                     <div class="mb-3">
-                      <label for="oh-exception-reason" class="form-label fw-bold">Reason / Description</label>
+                      <label for="oh-exception-reason" class="form-label fw-bold">Açıklama / Sebep</label>
                       <input
                         type="text"
                         class="form-control"
                         id="oh-exception-reason"
-                        placeholder="Akademik Konferans, Resmi Tatil, Sınav Haftası"
+                        placeholder="Örn: Konferans, Resmi Tatil, İzinli"
                         required
                         maxlength="100"
                       >
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100" id="oh-btn-add-exception">
-                      <i class="fas fa-ban me-1"></i> Block This Date
+                    <button type="submit" class="btn btn-outline-danger w-100" id="oh-btn-add-exception">
+                      <i class="fas fa-ban me-1"></i> Bu Günü Randevuya Kapat
                     </button>
                   </form>
                 </div>

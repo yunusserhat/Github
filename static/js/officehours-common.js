@@ -201,6 +201,7 @@ export function generateDateCandidateSlots({
   dateStr,
   rules = [],
   exceptions = [],
+  dateOverrides = [],
   durationMinutes = 20,
   bufferMinutes = 10,
   minNoticeHours = 24,
@@ -218,18 +219,47 @@ export function generateDateCandidateSlots({
   const sampleTime = new Date(`${dateStr}T12:00:00+03:00`);
   const dayOfWeek = sampleTime.getUTCDay(); // UTC day for 12:00 UTC+3 is same day
 
-  // Find active rules matching this day of week
+  // Date-specific overrides matching this date
+  const matchingOverrides = dateOverrides.filter((o) => o.is_active && o.override_date === dateStr);
+
+  // Active recurring rules matching this day of week
   const matchingRules = rules.filter((r) => r.is_active && r.day_of_week === dayOfWeek);
-  if (!matchingRules.length) {
+
+  const combinedWindows = [];
+
+  // Date overrides take precedence
+  for (const o of matchingOverrides) {
+    combinedWindows.push({
+      start_time: o.start_time,
+      end_time: o.end_time,
+      meeting_type: o.meeting_type || 'office',
+      location_or_link: o.location_or_link || '',
+      isOverride: true
+    });
+  }
+
+  // Then recurring rules
+  for (const r of matchingRules) {
+    combinedWindows.push({
+      start_time: r.start_time,
+      end_time: r.end_time,
+      meeting_type: r.meeting_type || 'office',
+      location_or_link: r.location_or_link || '',
+      isOverride: false
+    });
+  }
+
+  if (!combinedWindows.length) {
     return slots;
   }
 
   const stepMinutes = durationMinutes + bufferMinutes;
   const minNoticeThreshold = new Date(currentTime.getTime() + minNoticeHours * 60 * 60 * 1000);
+  const seenSlotKeys = new Set();
 
-  for (const rule of matchingRules) {
-    const windowStartMin = timeStringToMinutes(rule.start_time);
-    const windowEndMin = timeStringToMinutes(rule.end_time);
+  for (const win of combinedWindows) {
+    const windowStartMin = timeStringToMinutes(win.start_time);
+    const windowEndMin = timeStringToMinutes(win.end_time);
 
     let currentSlotStartMin = windowStartMin;
     while (currentSlotStartMin + durationMinutes <= windowEndMin) {
@@ -237,22 +267,29 @@ export function generateDateCandidateSlots({
 
       const startTimeStr = minutesToTimeString(currentSlotStartMin);
       const endTimeStr = minutesToTimeString(currentSlotEndMin);
+      const slotKey = `${startTimeStr}-${endTimeStr}`;
 
-      const slotStartIso = createIstanbulIsoString(dateStr, startTimeStr);
-      const slotEndIso = createIstanbulIsoString(dateStr, endTimeStr);
+      if (!seenSlotKeys.has(slotKey)) {
+        seenSlotKeys.add(slotKey);
 
-      const slotStartDate = new Date(slotStartIso);
-      const isNoticeEligible = slotStartDate >= minNoticeThreshold;
+        const slotStartIso = createIstanbulIsoString(dateStr, startTimeStr);
+        const slotEndIso = createIstanbulIsoString(dateStr, endTimeStr);
 
-      slots.push({
-        dateStr,
-        startTimeStr,
-        endTimeStr,
-        slotStartIso,
-        slotEndIso,
-        isNoticeEligible,
-        isBlocked: false
-      });
+        const slotStartDate = new Date(slotStartIso);
+        const isNoticeEligible = slotStartDate >= minNoticeThreshold;
+
+        slots.push({
+          dateStr,
+          startTimeStr,
+          endTimeStr,
+          slotStartIso,
+          slotEndIso,
+          meetingType: win.meeting_type || 'office',
+          locationOrLink: win.location_or_link || '',
+          isNoticeEligible,
+          isBlocked: false
+        });
+      }
 
       currentSlotStartMin += stepMinutes;
     }
@@ -493,12 +530,40 @@ export function recordClientRateLimit(email, waitSeconds = 0) {
   }
 }
 
-export function clearClientRateLimit(email) {
-  if (typeof window === 'undefined' || !window.localStorage || !email) return;
-  try {
-    localStorage.removeItem(`${RATE_LIMIT_STORAGE_PREFIX}${email.toLowerCase().trim()}`);
-  } catch {
-    // Ignore
+export function filterSlotsByMeetingType(slots = [], filterType = 'all') {
+  if (!filterType || filterType === 'all') return slots;
+  return slots.filter((s) => {
+    if (filterType === 'office') {
+      return s.meetingType === 'office' || s.meetingType === 'both';
+    }
+    if (filterType === 'online') {
+      return s.meetingType === 'online' || s.meetingType === 'both';
+    }
+    return true;
+  });
+}
+
+export function formatMeetingTypeLabel(type) {
+  switch (type) {
+    case 'online':
+      return 'Online (Çevrim içi)';
+    case 'both':
+      return 'Ofis veya Online (Öğrenci Seçer)';
+    case 'office':
+    default:
+      return 'Yüz Yüze (Ofiste)';
+  }
+}
+
+export function getMeetingTypeBadge(type) {
+  switch (type) {
+    case 'online':
+      return '<span class="badge bg-info text-dark"><i class="fas fa-video me-1"></i> Online</span>';
+    case 'both':
+      return '<span class="badge bg-primary text-white"><i class="fas fa-handshake me-1"></i> Ofis / Online</span>';
+    case 'office':
+    default:
+      return '<span class="badge bg-success text-white"><i class="fas fa-building me-1"></i> Ofiste</span>';
   }
 }
 
@@ -523,7 +588,10 @@ if (typeof window !== 'undefined') {
     formatCountdown,
     getClientRateLimit,
     recordClientRateLimit,
-    clearClientRateLimit
+    clearClientRateLimit,
+    filterSlotsByMeetingType,
+    formatMeetingTypeLabel,
+    getMeetingTypeBadge
   };
 }
 

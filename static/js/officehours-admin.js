@@ -23,6 +23,7 @@ import {
   let cachedAppointments = [];
   let cachedRules = [];
   let cachedExceptions = [];
+  let cachedOverrides = [];
   let cachedSettings = null;
 
   // DOM Elements
@@ -68,8 +69,18 @@ import {
   const elRuleDay = document.getElementById('oh-rule-day');
   const elRuleStart = document.getElementById('oh-rule-start');
   const elRuleEnd = document.getElementById('oh-rule-end');
+  const elRuleLocation = document.getElementById('oh-rule-location');
 
-  // Exceptions Tab
+  // Exceptions & Date Overrides Tab
+  const elOverridesLoading = document.getElementById('oh-overrides-loading');
+  const elOverridesEmpty = document.getElementById('oh-overrides-empty');
+  const elOverridesList = document.getElementById('oh-overrides-list');
+  const elFormAddOverride = document.getElementById('oh-form-add-override');
+  const elOverrideDate = document.getElementById('oh-override-date');
+  const elOverrideStart = document.getElementById('oh-override-start');
+  const elOverrideEnd = document.getElementById('oh-override-end');
+  const elOverrideLocation = document.getElementById('oh-override-location');
+
   const elExceptionsLoading = document.getElementById('oh-exceptions-loading');
   const elExceptionsEmpty = document.getElementById('oh-exceptions-empty');
   const elExceptionsList = document.getElementById('oh-exceptions-list');
@@ -366,15 +377,72 @@ import {
           return;
         }
 
+        const meetingType = elFormAddRule.querySelector('input[name="oh-rule-meeting-type"]:checked')?.value || 'office';
+        const locationOrLink = elRuleLocation?.value?.trim() || '';
+
         try {
           const { error } = await supabase.from('officehours_availability_rules').insert([
-            { day_of_week: dow, start_time: startTime, end_time: endTime, is_active: true }
+            {
+              day_of_week: dow,
+              start_time: startTime,
+              end_time: endTime,
+              meeting_type: meetingType,
+              location_or_link: locationOrLink,
+              is_active: true
+            }
           ]);
           if (error) {
             showAlert(error.message, 'danger');
           } else {
-            showAlert('Availability window added.', 'success');
+            showAlert('Haftalık müsaitlik saati eklendi.', 'success');
+            if (elRuleLocation) elRuleLocation.value = '';
             await loadRules();
+          }
+        } catch (err) {
+          showAlert(err.message, 'danger');
+        }
+      });
+    }
+
+    // Add Date Override Form
+    if (elFormAddOverride) {
+      elFormAddOverride.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        hideAlert();
+        const date = elOverrideDate.value;
+        const startTime = elOverrideStart.value;
+        const endTime = elOverrideEnd.value;
+        const meetingType = elFormAddOverride.querySelector('input[name="oh-override-meeting-type"]:checked')?.value || 'office';
+        const locationOrLink = elOverrideLocation?.value?.trim() || '';
+
+        if (!date) {
+          showAlert('Lütfen bir tarih seçin.', 'danger');
+          return;
+        }
+
+        if (startTime >= endTime) {
+          showAlert('Başlangıç saati bitiş saatinden önce olmalıdır.', 'danger');
+          return;
+        }
+
+        try {
+          const { error } = await supabase.from('officehours_date_overrides').insert([
+            {
+              override_date: date,
+              start_time: startTime,
+              end_time: endTime,
+              meeting_type: meetingType,
+              location_or_link: locationOrLink,
+              is_active: true
+            }
+          ]);
+          if (error) {
+            showAlert(error.message, 'danger');
+          } else {
+            showAlert(`${date} tarihi için özel müsaitlik saati eklendi.`, 'success');
+            elOverrideDate.value = '';
+            if (elOverrideLocation) elOverrideLocation.value = '';
+            await loadOverrides();
           }
         } catch (err) {
           showAlert(err.message, 'danger');
@@ -464,7 +532,10 @@ import {
 
     if (tabName === 'appointments') loadAppointments();
     else if (tabName === 'availability') loadRules();
-    else if (tabName === 'exceptions') loadExceptions();
+    else if (tabName === 'exceptions') {
+      loadOverrides();
+      loadExceptions();
+    }
     else if (tabName === 'settings') loadSettings();
   }
 
@@ -533,14 +604,22 @@ import {
         statusBadge = '<span class="badge bg-danger">Cancelled by Admin</span>';
       }
 
+      let meetingBadge = '';
+      if (appt.meeting_type === 'online') {
+        meetingBadge = '<span class="badge bg-info text-dark ms-1"><i class="fas fa-video me-1"></i> Online</span>';
+      } else {
+        meetingBadge = '<span class="badge bg-success text-white ms-1"><i class="fas fa-building me-1"></i> Ofiste</span>';
+      }
+
       card.innerHTML = `
         <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
           <div>
-            <div class="d-flex align-items-center gap-2 mb-1">
+            <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
               <span class="fw-bold fs-6 text-primary">
                 ${formatIstanbulDateOnly(appt.slot_start)} • ${formatIstanbulTimeOnly(appt.slot_start)}–${formatIstanbulTimeOnly(appt.slot_end)}
               </span>
               ${statusBadge}
+              ${meetingBadge}
             </div>
             <div class="small text-muted mb-2">
               <i class="fas fa-user-graduate me-1"></i>
@@ -557,10 +636,15 @@ import {
           }
         </div>
         <div class="p-2 rounded bg-white dark-bg-alt border">
-          <div><strong>Topic:</strong> ${escapeHtml(appt.topic)}</div>
+          <div><strong>Konu / Topic:</strong> ${escapeHtml(appt.topic)}</div>
+          ${
+            appt.location_or_link
+              ? `<div class="small text-muted mt-1"><i class="fas fa-map-marker-alt me-1 text-danger"></i><strong>Konum / Link:</strong> ${escapeHtml(appt.location_or_link)}</div>`
+              : ''
+          }
           ${
             appt.note
-              ? `<div class="small text-muted mt-1"><strong>Note:</strong> ${escapeHtml(appt.note)}</div>`
+              ? `<div class="small text-muted mt-1"><strong>Not:</strong> ${escapeHtml(appt.note)}</div>`
               : ''
           }
         </div>
@@ -635,11 +719,26 @@ import {
       const startStr = rule.start_time.slice(0, 5);
       const endStr = rule.end_time.slice(0, 5);
 
+      let typeBadge = '';
+      if (rule.meeting_type === 'online') {
+        typeBadge = '<span class="badge bg-info text-dark me-2"><i class="fas fa-video me-1"></i> Online</span>';
+      } else if (rule.meeting_type === 'both') {
+        typeBadge = '<span class="badge bg-primary text-white me-2"><i class="fas fa-handshake me-1"></i> Ofis / Online</span>';
+      } else {
+        typeBadge = '<span class="badge bg-success text-white me-2"><i class="fas fa-building me-1"></i> Ofiste</span>';
+      }
+
+      const locationText = rule.location_or_link
+        ? `<span class="small text-muted ms-1"><i class="fas fa-map-marker-alt me-1 text-danger"></i>${escapeHtml(rule.location_or_link)}</span>`
+        : '';
+
       li.innerHTML = `
         <div>
           <span class="fw-bold text-primary fs-6 me-2">${dowName}</span>
           <span class="badge bg-light text-dark border font-monospace me-2">${startStr} – ${endStr}</span>
-          <span class="badge ${rule.is_active ? 'bg-success' : 'bg-secondary'}">${rule.is_active ? 'Active' : 'Paused'}</span>
+          ${typeBadge}
+          <span class="badge ${rule.is_active ? 'bg-success' : 'bg-secondary'} me-2">${rule.is_active ? 'Active' : 'Paused'}</span>
+          ${locationText}
         </div>
         <div class="btn-group btn-group-sm">
           <button type="button" class="btn btn-outline-secondary btn-toggle-rule">
@@ -670,7 +769,84 @@ import {
     });
   }
 
-  // --- TAB 3: Exceptions & Blocked Dates ---
+  // --- TAB 3: Date Overrides & Blocked Dates ---
+  async function loadOverrides() {
+    if (!elOverridesLoading) return;
+    elOverridesLoading.classList.remove('d-none');
+    if (elOverridesEmpty) elOverridesEmpty.classList.add('d-none');
+    if (elOverridesList) elOverridesList.classList.add('d-none');
+
+    try {
+      const { data, error } = await supabase
+        .from('officehours_date_overrides')
+        .select('*')
+        .order('override_date', { ascending: true })
+        .order('start_time', { ascending: true });
+
+      if (error) throw error;
+      cachedOverrides = data || [];
+      renderOverrides();
+    } catch (err) {
+      showAlert('Özel müsaitlik saatleri yüklenemedi: ' + err.message, 'danger');
+    } finally {
+      if (elOverridesLoading) elOverridesLoading.classList.add('d-none');
+    }
+  }
+
+  function renderOverrides() {
+    if (!elOverridesList) return;
+    elOverridesList.innerHTML = '';
+    if (!cachedOverrides.length) {
+      if (elOverridesEmpty) elOverridesEmpty.classList.remove('d-none');
+      return;
+    }
+
+    if (elOverridesEmpty) elOverridesEmpty.classList.add('d-none');
+    elOverridesList.classList.remove('d-none');
+
+    cachedOverrides.forEach((item) => {
+      const li = document.createElement('li');
+      li.className = 'list-group-item d-flex justify-content-between align-items-center py-3 flex-wrap gap-2';
+
+      const startStr = item.start_time.slice(0, 5);
+      const endStr = item.end_time.slice(0, 5);
+
+      let typeBadge = '';
+      if (item.meeting_type === 'online') {
+        typeBadge = '<span class="badge bg-info text-dark me-2"><i class="fas fa-video me-1"></i> Online</span>';
+      } else if (item.meeting_type === 'both') {
+        typeBadge = '<span class="badge bg-primary text-white me-2"><i class="fas fa-handshake me-1"></i> Ofis / Online</span>';
+      } else {
+        typeBadge = '<span class="badge bg-success text-white me-2"><i class="fas fa-building me-1"></i> Ofiste</span>';
+      }
+
+      const locationText = item.location_or_link
+        ? `<span class="small text-muted ms-1"><i class="fas fa-map-marker-alt me-1 text-danger"></i>${escapeHtml(item.location_or_link)}</span>`
+        : '';
+
+      li.innerHTML = `
+        <div>
+          <span class="fw-bold fs-6 text-primary me-2"><i class="fas fa-calendar-day me-1"></i> ${item.override_date}</span>
+          <span class="badge bg-light text-dark border font-monospace me-2">${startStr} – ${endStr}</span>
+          ${typeBadge}
+          ${locationText}
+        </div>
+        <button type="button" class="btn btn-outline-danger btn-sm btn-delete-override">
+          <i class="fas fa-trash-alt me-1"></i> Sil
+        </button>
+      `;
+
+      li.querySelector('.btn-delete-override').addEventListener('click', async () => {
+        if (confirm(`${item.override_date} (${startStr}–${endStr}) için özel müsaitliği silmek istiyor musunuz?`)) {
+          await supabase.from('officehours_date_overrides').delete().eq('id', item.id);
+          await loadOverrides();
+        }
+      });
+
+      elOverridesList.appendChild(li);
+    });
+  }
+
   async function loadExceptions() {
     elExceptionsLoading.classList.remove('d-none');
     elExceptionsEmpty.classList.add('d-none');

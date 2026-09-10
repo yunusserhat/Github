@@ -76,6 +76,8 @@ CREATE TABLE IF NOT EXISTS public.officehours_availability_rules (
   day_of_week integer NOT NULL CHECK (day_of_week BETWEEN 0 AND 6),
   start_time time NOT NULL,
   end_time time NOT NULL,
+  meeting_type text NOT NULL DEFAULT 'office' CHECK (meeting_type IN ('office', 'online', 'both')),
+  location_or_link text DEFAULT '',
   is_active boolean NOT NULL DEFAULT true,
   created_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT check_valid_time_window CHECK (start_time < end_time)
@@ -88,6 +90,19 @@ CREATE TABLE IF NOT EXISTS public.officehours_availability_exceptions (
   reason text NOT NULL DEFAULT 'Unavailable',
   is_blocked boolean NOT NULL DEFAULT true,
   created_at timestamptz NOT NULL DEFAULT now()
+);
+
+-- 5b. Date-Specific Availability Overrides (Custom dates & hours outside weekly schedule)
+CREATE TABLE IF NOT EXISTS public.officehours_date_overrides (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  override_date date NOT NULL,
+  start_time time NOT NULL,
+  end_time time NOT NULL,
+  meeting_type text NOT NULL DEFAULT 'office' CHECK (meeting_type IN ('office', 'online', 'both')),
+  location_or_link text DEFAULT '',
+  is_active boolean NOT NULL DEFAULT true,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  CONSTRAINT check_valid_override_window CHECK (start_time < end_time)
 );
 
 -- 6. Rate Limiting Table to Prevent Email OTP Spam
@@ -118,7 +133,7 @@ CREATE TABLE IF NOT EXISTS public.officehours_admin_users (
 CREATE OR REPLACE FUNCTION public.is_admin()
 RETURNS boolean
 LANGUAGE plpgsql
-SECURITY INVOKER
+SECURITY DEFINER
 SET search_path = public
 STABLE
 AS $$
@@ -145,6 +160,8 @@ CREATE TABLE IF NOT EXISTS public.officehours_appointments (
   slot_end timestamptz NOT NULL,
   topic text NOT NULL,
   note text DEFAULT '',
+  meeting_type text NOT NULL DEFAULT 'office' CHECK (meeting_type IN ('office', 'online')),
+  location_or_link text DEFAULT '',
   status text NOT NULL DEFAULT 'booked' CHECK (status IN ('booked', 'cancelled_by_student', 'cancelled_by_admin')),
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now(),
@@ -416,11 +433,14 @@ FROM internal.get_officehours_booked_slots();
 GRANT SELECT ON public.officehours_booked_slots TO anon, authenticated;
 
 -- 10. Core RPC: Book Appointment (Server-Enforced Rules & Concurrency Lock)
+DROP FUNCTION IF EXISTS public.book_officehours_appointment(timestamptz, timestamptz, text, text);
+
 CREATE OR REPLACE FUNCTION public.book_officehours_appointment(
   p_slot_start timestamptz,
   p_slot_end timestamptz,
   p_topic text,
-  p_note text DEFAULT ''
+  p_note text DEFAULT '',
+  p_meeting_type text DEFAULT 'office'
 )
 RETURNS jsonb AS $$
 DECLARE
@@ -435,6 +455,9 @@ DECLARE
   v_active_future_count integer;
   v_rolling_count integer;
   v_new_appointment public.officehours_appointments%ROWTYPE;
+  v_allowed_meeting_type text;
+  v_location_or_link text := '';
+  v_requested_type text;
 BEGIN
   -- Verify authentication
   v_student_id := auth.uid();
@@ -445,6 +468,12 @@ BEGIN
   v_student_email := lower(trim(coalesce(auth.jwt() ->> 'email', '')));
   IF NOT public.is_allowed_email_domain(v_student_email) THEN
     RAISE EXCEPTION 'Only verified @marun.edu.tr and @marmara.edu.tr accounts may book appointments.';
+  END IF;
+
+  -- Normalize meeting type
+  v_requested_type := lower(trim(coalesce(p_meeting_type, 'office')));
+  IF v_requested_type NOT IN ('office', 'online') THEN
+    v_requested_type := 'office';
   END IF;
 
   -- Load global settings
@@ -490,15 +519,39 @@ BEGIN
     RAISE EXCEPTION 'The selected date is marked as unavailable.';
   END IF;
 
-  -- Check availability rules for this day of week
-  IF NOT EXISTS (
-    SELECT 1 FROM public.officehours_availability_rules
+  -- 1. Check if there is a specific date override for this time slot
+  SELECT meeting_type, coalesce(location_or_link, '')
+  INTO v_allowed_meeting_type, v_location_or_link
+  FROM public.officehours_date_overrides
+  WHERE override_date = v_slot_date
+    AND is_active = true
+    AND start_time <= v_slot_start_time
+    AND end_time >= v_slot_end_time
+  ORDER BY start_time ASC
+  LIMIT 1;
+
+  -- 2. If no date override, check regular weekly recurring rules
+  IF v_allowed_meeting_type IS NULL THEN
+    SELECT meeting_type, coalesce(location_or_link, '')
+    INTO v_allowed_meeting_type, v_location_or_link
+    FROM public.officehours_availability_rules
     WHERE day_of_week = v_dow
       AND is_active = true
       AND start_time <= v_slot_start_time
       AND end_time >= v_slot_end_time
-  ) THEN
+    ORDER BY start_time ASC
+    LIMIT 1;
+  END IF;
+
+  IF v_allowed_meeting_type IS NULL THEN
     RAISE EXCEPTION 'The requested time is outside scheduled office hours for this day.';
+  END IF;
+
+  -- Validate meeting type compatibility
+  IF v_allowed_meeting_type = 'office' AND v_requested_type = 'online' THEN
+    RAISE EXCEPTION 'Bu randevu saati sadece okulda/ofiste yüz yüze görüşmeye uygundur.';
+  ELSIF v_allowed_meeting_type = 'online' AND v_requested_type = 'office' THEN
+    RAISE EXCEPTION 'Bu randevu saati sadece online (çevrim içi) görüşmeye uygundur.';
   END IF;
 
   -- Check limit: Maximum active future bookings per student
@@ -533,6 +586,8 @@ BEGIN
       slot_end,
       topic,
       note,
+      meeting_type,
+      location_or_link,
       status
     )
     VALUES (
@@ -542,6 +597,8 @@ BEGIN
       p_slot_end,
       trim(p_topic),
       trim(coalesce(p_note, '')),
+      v_requested_type,
+      v_location_or_link,
       'booked'
     )
     RETURNING * INTO v_new_appointment;
@@ -555,7 +612,9 @@ BEGIN
     'appointment_id', v_new_appointment.id,
     'slot_start', v_new_appointment.slot_start,
     'slot_end', v_new_appointment.slot_end,
-    'topic', v_new_appointment.topic
+    'topic', v_new_appointment.topic,
+    'meeting_type', v_new_appointment.meeting_type,
+    'location_or_link', v_new_appointment.location_or_link
   );
 END;
 $$ LANGUAGE plpgsql SECURITY INVOKER SET search_path = public;
@@ -622,6 +681,7 @@ $$ LANGUAGE plpgsql SECURITY INVOKER SET search_path = public;
 ALTER TABLE public.officehours_settings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.officehours_availability_rules ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.officehours_availability_exceptions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.officehours_date_overrides ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.officehours_admin_allowlist ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.officehours_admin_users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.officehours_appointments ENABLE ROW LEVEL SECURITY;
@@ -653,6 +713,16 @@ CREATE POLICY "Public can view exceptions"
 
 CREATE POLICY "Admin can manage exceptions"
   ON public.officehours_availability_exceptions FOR ALL
+  USING (public.is_admin())
+  WITH CHECK (public.is_admin());
+
+-- Date Overrides: Anyone can view active date overrides; admin can manage all
+CREATE POLICY "Public can view active date overrides"
+  ON public.officehours_date_overrides FOR SELECT
+  USING (is_active = true OR public.is_admin());
+
+CREATE POLICY "Admin can manage date overrides"
+  ON public.officehours_date_overrides FOR ALL
   USING (public.is_admin())
   WITH CHECK (public.is_admin());
 
@@ -718,9 +788,12 @@ CREATE POLICY "Students cancel own future appointment"
 GRANT SELECT ON public.officehours_settings TO anon, authenticated;
 GRANT SELECT ON public.officehours_availability_rules TO anon, authenticated;
 GRANT SELECT ON public.officehours_availability_exceptions TO anon, authenticated;
+GRANT SELECT ON public.officehours_date_overrides TO anon, authenticated;
+GRANT ALL ON public.officehours_date_overrides TO authenticated;
+GRANT ALL ON public.officehours_availability_rules TO authenticated;
+GRANT ALL ON public.officehours_availability_exceptions TO authenticated;
 GRANT SELECT ON public.officehours_booked_slots TO anon, authenticated;
-GRANT EXECUTE ON FUNCTION public.get_officehours_booked_slots TO anon, authenticated;
-GRANT EXECUTE ON FUNCTION public.check_and_record_otp_rate_limit TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.check_and_record_otp_rate_limit TO anon;
 GRANT EXECUTE ON FUNCTION public.get_otp_rate_limit_status TO anon, authenticated;
 GRANT SELECT, INSERT, UPDATE ON public.officehours_appointments TO authenticated;
 
@@ -728,9 +801,9 @@ GRANT SELECT, INSERT, UPDATE ON public.officehours_appointments TO authenticated
 REVOKE EXECUTE ON FUNCTION public.trg_fn_on_auth_user_created() FROM PUBLIC, anon, authenticated;
 REVOKE EXECUTE ON FUNCTION public.trg_fn_sync_admin_user() FROM PUBLIC, anon, authenticated;
 
--- Strictly revoke unauthenticated execution from appointment and admin functions (resolves 0028/0029)
-REVOKE EXECUTE ON FUNCTION public.book_officehours_appointment(timestamptz, timestamptz, text, text) FROM PUBLIC, anon;
-GRANT EXECUTE ON FUNCTION public.book_officehours_appointment(timestamptz, timestamptz, text, text) TO authenticated;
+-- Strictly revoke unauthenticated execution from appointment and admin functions
+REVOKE EXECUTE ON FUNCTION public.book_officehours_appointment(timestamptz, timestamptz, text, text, text) FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.book_officehours_appointment(timestamptz, timestamptz, text, text, text) TO authenticated;
 
 REVOKE EXECUTE ON FUNCTION public.cancel_officehours_appointment(uuid, text) FROM PUBLIC, anon;
 GRANT EXECUTE ON FUNCTION public.cancel_officehours_appointment(uuid, text) TO authenticated;

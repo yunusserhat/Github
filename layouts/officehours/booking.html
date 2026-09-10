@@ -171,10 +171,16 @@
           <div id="oh-active-booking-card" class="oh-card oh-active-booking mb-4 d-none">
             <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
               <div>
-                <span class="badge bg-success mb-2">Upcoming Appointment</span>
+                <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
+                  <span class="badge bg-success">Upcoming Appointment</span>
+                  <span id="oh-active-type-badge"></span>
+                </div>
                 <h3 class="h5 mb-1" id="oh-active-date-time">Tuesday, 15 September &bull; 13:40–14:00</h3>
                 <p class="mb-1 text-muted small"><i class="fas fa-clock me-1"></i> Timezone: Europe/Istanbul</p>
                 <p class="mb-1"><strong>Topic:</strong> <span id="oh-active-topic">Thesis consultation</span></p>
+                <p class="mb-1 text-muted small d-none" id="oh-active-location-wrap">
+                  <i class="fas fa-map-marker-alt me-1 text-danger"></i> <strong>Konum / Link:</strong> <span id="oh-active-location"></span>
+                </p>
                 <p class="mb-0 text-muted small" id="oh-active-note-wrap"><strong>Note:</strong> <span id="oh-active-note"></span></p>
               </div>
               <div class="mt-2 mt-md-0">
@@ -196,9 +202,17 @@
                 <h2 class="h5 mb-0">Select an Available Slot</h2>
                 <p class="text-muted small mb-0">Times are displayed in Istanbul time (Europe/Istanbul).</p>
               </div>
-              <div class="oh-legend d-flex gap-3 small text-muted">
-                <span><span class="oh-legend-dot oh-legend-available"></span> Available</span>
-                <span><span class="oh-legend-dot oh-legend-unavailable"></span> Booked / Unavailable</span>
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <!-- Filter by Meeting Type -->
+                <div class="btn-group btn-group-sm" role="group" id="oh-filter-meeting-type">
+                  <button type="button" class="btn btn-outline-primary active" data-filter="all">Tümü</button>
+                  <button type="button" class="btn btn-outline-success" data-filter="office"><i class="fas fa-building me-1"></i> Ofiste</button>
+                  <button type="button" class="btn btn-outline-info text-dark" data-filter="online"><i class="fas fa-video me-1"></i> Online</button>
+                </div>
+                <div class="oh-legend d-flex gap-2 small text-muted ms-1">
+                  <span><span class="oh-legend-dot oh-legend-available"></span> Available</span>
+                  <span><span class="oh-legend-dot oh-legend-unavailable"></span> Booked</span>
+                </div>
               </div>
             </div>
 
@@ -238,10 +252,32 @@
               <div class="oh-slot-summary-box p-3 rounded mb-3">
                 <div class="small text-muted">Selected Meeting Time:</div>
                 <div class="fw-bold text-primary fs-5" id="oh-modal-slot-display">Tuesday, 15 September &bull; 13:40–14:00</div>
-                <div class="small text-muted"><i class="fas fa-globe me-1"></i> Europe/Istanbul (UTC+03:00)</div>
+                <div class="d-flex align-items-center gap-2 mt-1 flex-wrap">
+                  <span id="oh-modal-meeting-badge"></span>
+                  <span class="small text-muted"><i class="fas fa-globe me-1"></i> Europe/Istanbul (UTC+03:00)</span>
+                </div>
               </div>
 
               <form id="oh-form-confirm-booking" novalidate>
+                <!-- Meeting Type Option (shown if slot is 'both') -->
+                <div class="mb-3 d-none" id="oh-modal-choice-wrap">
+                  <label class="form-label fw-bold d-block">Görüşme Tercihiniz</label>
+                  <div class="btn-group w-100" role="group">
+                    <input type="radio" class="btn-check" name="oh-modal-choice-type" id="oh-modal-choice-office" value="office" checked autocomplete="off">
+                    <label class="btn btn-outline-success btn-sm" for="oh-modal-choice-office">
+                      <i class="fas fa-building me-1"></i> Ofiste (Yüz Yüze)
+                    </label>
+
+                    <input type="radio" class="btn-check" name="oh-modal-choice-type" id="oh-modal-choice-online" value="online" autocomplete="off">
+                    <label class="btn btn-outline-info btn-sm text-dark" for="oh-modal-choice-online">
+                      <i class="fas fa-video me-1"></i> Online (Google Meet)
+                    </label>
+                  </div>
+                </div>
+
+                <div id="oh-modal-location-info" class="p-2 mb-3 rounded bg-light border small text-muted d-none">
+                  <i class="fas fa-map-marker-alt me-1 text-danger"></i> <span id="oh-modal-location-text"></span>
+                </div>
                 <div class="mb-3">
                   <label for="oh-input-topic" class="form-label fw-bold">
                     Meeting topic <span class="text-danger">*</span>
@@ -297,6 +333,14 @@
               <div class="mb-2">
                 <span class="text-muted small d-block">Scheduled Time:</span>
                 <span class="fw-bold fs-6 text-primary" id="oh-confirm-datetime">Tuesday, 15 September 2026 &bull; 13:40–14:00</span>
+              </div>
+              <div class="mb-2">
+                <span class="text-muted small d-block">Görüşme Şekli:</span>
+                <span class="fw-bold" id="oh-confirm-type">Ofiste</span>
+              </div>
+              <div class="mb-2 d-none" id="oh-confirm-location-wrap">
+                <span class="text-muted small d-block">Konum / Online Link:</span>
+                <span class="text-primary font-monospace small" id="oh-confirm-location"></span>
               </div>
               <div class="mb-2">
                 <span class="text-muted small d-block">Student Email:</span>

@@ -14,7 +14,10 @@ import {
   annotateSlotsWithAvailability,
   evaluateStudentBookingEligibility,
   evaluateEmailRateLimit,
-  formatCountdown
+  formatCountdown,
+  filterSlotsByMeetingType,
+  formatMeetingTypeLabel,
+  getMeetingTypeBadge
 } from '../static/js/officehours-common.js';
 
 test('Email Domain Allowlist: accepts exactly marun.edu.tr and marmara.edu.tr', () => {
@@ -441,3 +444,85 @@ test('Primary Admin Configuration: single authorized admin is yunus.serhat@marma
   assert.equal(val.email, 'yunus.serhat@marmara.edu.tr');
   assert.equal(val.domain, 'marmara.edu.tr');
 });
+
+test('Meeting Types & Date Overrides: generates slots with meeting types and locations', () => {
+  // Tuesday 13:00 to 14:00 with meeting_type = 'office'
+  const rules = [
+    {
+      day_of_week: 2,
+      start_time: '13:00:00',
+      end_time: '14:00:00',
+      meeting_type: 'office',
+      location_or_link: 'Marmara Univ. Göztepe Kampüsü Mühendislik Binası Oda 302',
+      is_active: true
+    }
+  ];
+
+  // Specific date override for 2026-09-15: 16:00 to 17:00 Online
+  const dateOverrides = [
+    {
+      override_date: '2026-09-15',
+      start_time: '16:00:00',
+      end_time: '17:00:00',
+      meeting_type: 'online',
+      location_or_link: 'https://meet.google.com/abc-defg-hij',
+      is_active: true
+    }
+  ];
+
+  const slots = generateDateCandidateSlots({
+    dateStr: '2026-09-15',
+    rules,
+    dateOverrides,
+    exceptions: [],
+    durationMinutes: 20,
+    bufferMinutes: 10,
+    minNoticeHours: 24,
+    currentTime: new Date('2026-09-01T00:00:00Z')
+  });
+
+  // Date override gives 16:00-16:20 and 16:30-16:50 (2 slots)
+  // Weekly rule gives 13:00-13:20 and 13:30-13:50 (2 slots)
+  // Total 4 slots
+  assert.equal(slots.length, 4);
+
+  const onlineSlots = slots.filter((s) => s.meetingType === 'online');
+  assert.equal(onlineSlots.length, 2);
+  assert.equal(onlineSlots[0].startTimeStr, '16:00');
+  assert.equal(onlineSlots[0].locationOrLink, 'https://meet.google.com/abc-defg-hij');
+
+  const officeSlots = slots.filter((s) => s.meetingType === 'office');
+  assert.equal(officeSlots.length, 2);
+  assert.equal(officeSlots[0].startTimeStr, '13:00');
+  assert.equal(officeSlots[0].locationOrLink, 'Marmara Univ. Göztepe Kampüsü Mühendislik Binası Oda 302');
+});
+
+test('Meeting Type Filtering: filterSlotsByMeetingType correctly filters office and online slots', () => {
+  const mockSlots = [
+    { id: 1, startTimeStr: '10:00', meetingType: 'office' },
+    { id: 2, startTimeStr: '11:00', meetingType: 'online' },
+    { id: 3, startTimeStr: '12:00', meetingType: 'both' }
+  ];
+
+  const allFiltered = filterSlotsByMeetingType(mockSlots, 'all');
+  assert.equal(allFiltered.length, 3);
+
+  const officeFiltered = filterSlotsByMeetingType(mockSlots, 'office');
+  assert.equal(officeFiltered.length, 2);
+  assert.deepEqual(officeFiltered.map((s) => s.id), [1, 3]);
+
+  const onlineFiltered = filterSlotsByMeetingType(mockSlots, 'online');
+  assert.equal(onlineFiltered.length, 2);
+  assert.deepEqual(onlineFiltered.map((s) => s.id), [2, 3]);
+});
+
+test('Meeting Type Formatting: labels and badges', () => {
+  assert.match(formatMeetingTypeLabel('office'), /Yüz Yüze/);
+  assert.match(formatMeetingTypeLabel('online'), /Online/);
+  assert.match(formatMeetingTypeLabel('both'), /Ofis veya Online/);
+
+  assert.match(getMeetingTypeBadge('office'), /bg-success/);
+  assert.match(getMeetingTypeBadge('online'), /bg-info/);
+  assert.match(getMeetingTypeBadge('both'), /bg-primary/);
+});
+
