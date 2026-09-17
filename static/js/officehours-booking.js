@@ -11,11 +11,22 @@ import {
   getIstanbulDateString,
   generateDateCandidateSlots,
   annotateSlotsWithAvailability,
-  evaluateStudentBookingEligibility
+  evaluateStudentBookingEligibility,
+  escapeHtml
 } from './officehours-common.js';
 
 (function () {
   'use strict';
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
 
   // State
   let supabase = null;

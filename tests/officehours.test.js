@@ -17,7 +17,8 @@ import {
   formatCountdown,
   filterSlotsByMeetingType,
   formatMeetingTypeLabel,
-  getMeetingTypeBadge
+  getMeetingTypeBadge,
+  escapeHtml
 } from '../static/js/officehours-common.js';
 
 test('Email Domain Allowlist: accepts exactly marun.edu.tr and marmara.edu.tr', () => {
@@ -525,4 +526,15 @@ test('Meeting Type Formatting: labels and badges', () => {
   assert.match(getMeetingTypeBadge('online'), /bg-info/);
   assert.match(getMeetingTypeBadge('both'), /bg-primary/);
 });
+
+test('HTML Sanitization: escapeHtml properly neutralizes HTML tags and special chars', () => {
+  assert.equal(escapeHtml(''), '');
+  assert.equal(escapeHtml(null), '');
+  assert.equal(escapeHtml(undefined), '');
+  assert.equal(escapeHtml('Normal text'), 'Normal text');
+  assert.equal(escapeHtml('Mehmet Genç Külliyesi Oda: 1010'), 'Mehmet Genç Külliyesi Oda: 1010');
+  assert.equal(escapeHtml('<script>alert("xss")</script>'), '&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;');
+  assert.equal(escapeHtml("O'Reilly & Sons <tag>"), 'O&#39;Reilly &amp; Sons &lt;tag&gt;');
+});
+
 

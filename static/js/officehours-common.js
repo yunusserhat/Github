@@ -577,12 +577,23 @@ export function getMeetingTypeBadge(type) {
   }
 }
 
+export function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 // Attach to window if running in browser
 if (typeof window !== 'undefined') {
   window.OfficeHoursCommon = {
     ALLOWED_EMAIL_DOMAINS,
     DEFAULT_SETTINGS,
     RATE_LIMIT_RULES,
+    escapeHtml,
     parseAndValidateEmail,
     timeStringToMinutes,
     minutesToTimeString,
