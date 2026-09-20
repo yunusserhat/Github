@@ -37,8 +37,8 @@ social:
   icon_pack: ai
   link: https://www.researchgate.net/profile/Yunus_Bicakci
 organizations:
-  - name: Marmara University
-    url: https://avesis.marmara.edu.tr/yunus.serhat
+  - name: Marmara University (GeoAI Research Group Lead)
+    url: https://avesis.marmara.edu.tr/researchteamsite/geoai
   - name: University of Glasgow 
     url: https://www.gla.ac.uk/schools/ges/staff/yunusserhatbicakci
 education:
@@ -60,6 +60,6 @@ superuser: true
 highlight_name: true
 ---
 
-Dr. Yunus Serhat Bıçakçı is an Assistant Professor in the Department of Artificial Intelligence and Machine Learning at Marmara University and an Affiliate Research Software Engineering Scientist in the Geospatial Data Science Group at the University of Glasgow. His research explores how multimodal artificial intelligence, vision-language models, and geographic information science intersect to tackle environmental, urban, and criminology challenges. He previously conducted postdoctoral research at UCL's Jill Dando Institute of Security and Crime Science and actively develops open-source scientific software for geospatial research.
+Dr. Yunus Serhat Bıçakçı is an Assistant Professor in the Department of Artificial Intelligence and Machine Learning at Marmara University, where he leads the [GeoAI Research Group](https://avesis.marmara.edu.tr/researchteamsite/geoai). He is also an Affiliate Research Software Engineering Scientist in the Geospatial Data Science Group at the University of Glasgow. His research explores how multimodal artificial intelligence, vision-language models, and geographic information science intersect to tackle environmental, urban, and criminology challenges. He previously conducted postdoctoral research at UCL's Jill Dando Institute of Security and Crime Science and actively develops open-source scientific software for geospatial research.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunusserhatbicakci_phd_cv.pdf" "newtab" >}}CV{{< /staticref >}}.

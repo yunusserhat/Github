@@ -31,7 +31,7 @@ experience:
     date_start: '2025-01-01'
     date_end: ''
     description: |2-
-      Department of Artificial Intelligence and Machine Learning. Research and teaching in GeoAI, multimodal vision-language models, spatial data science, and urban analytics.
+      Department of Artificial Intelligence and Machine Learning. Founder and lead of the [GeoAI Research Group](https://avesis.marmara.edu.tr/researchteamsite/geoai). Research and teaching in GeoAI, multimodal vision-language models, spatial data science, street-level analytics, and remote sensing.
 
   - title: Affiliate Research Software Engineering Scientist
     company: Geospatial Data Science Group, University of Glasgow

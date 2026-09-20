@@ -9,8 +9,8 @@ headless: true
 # Order that this section appears on the page.
 weight: 50
 
-title: 'Honors & Awards'
-subtitle: 'Selected academic honors and research recognitions'
+title: 'Honors & Academic Leadership'
+subtitle: 'Selected academic honors, international committee chairs, and recognitions'
 
 # Date format
 #   Refer to https://wowchemy.com/docs/customization/#date-format
@@ -18,6 +18,16 @@ date_format: Jan 2006
 
 # Accomplishments / Honors.
 item:
+
+- certificate_url: ""
+  date_end: "2027-09-01"
+  date_start: "2026-01-01"
+  description: |2-
+    Serving as International Committee Chair for GIScience 2027, the flagship international conference on Geographic Information Science.
+  organization: GIScience 2027
+  organization_url: https://giscience.org/
+  title: 'International Committee Chair'
+  url: ""
 
 - certificate_url: ""
   date_end: ""
