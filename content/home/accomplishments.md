@@ -9,57 +9,26 @@ headless: true
 # Order that this section appears on the page.
 weight: 50
 
-# Note: `&shy;` is used to add a 'soft' hyphen in a long heading.
-title: 'Accomplish&shy;ments'
-subtitle:
+title: 'Honors & Awards'
+subtitle: 'Selected academic honors and research recognitions'
 
 # Date format
 #   Refer to https://wowchemy.com/docs/customization/#date-format
 date_format: Jan 2006
 
-# Accomplishments.
-#   Add/remove as many `item` blocks below as you like.
-#   `title`, `organization`, and `date_start` are the required parameters.
-#   Leave other parameters empty if not required.
-#   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
+# Accomplishments / Honors.
 item:
 
-- certificate_url: https://www.credential.net/3816d8ad-9762-43b9-8571-83bba71bea25
-  date_end: "2025-10-30"
-  date_start: "2022-10-30"
-  description: ""
-  organization: TensorFlow
-  organization_url: https://www.tensorflow.org/
-  title: 'TensorFlow Developer Certificate'
-  url: ""
-
-- certificate_url: https://www.coursera.org/account/accomplishments/specialization/certificate/3AGMTGJZBVVK
-  date_end: "2022-09-25"
-  date_start: "2022-07-16"
-  description: ""
-  organization: coursera
-  organization_url: https://www.coursera.org/specializations/deep-learning
-  title: 'DeepLearning.AI Deep Learning Specialization'
-  url: ""
-
-- certificate_url: https://certificate.veribilimiokulu.com/certs/2022-06-19/yunus-serhat-bicakci
-  date_end: "2022-06-19"
-  date_start: "2022-03-01"
-  description: ""
-  organization: miuul
-  organization_url: https://www.miuul.com
-  title: 'Data Science and Machine Learning Bootcamp'
-  url: ""
-
-- certificate_url: https://www.datacamp.com/statement-of-accomplishment/course/a5890804269b251625d23e4e101b144e913676c9
-  date_end: "2018-05-13"
-  date_start: "2018-05-01"
-  description: ""
-  organization: DataCamp
-  organization_url: https://www.datacamp.com
-  title: 'Intermediate R'
-  url: ""
+- certificate_url: ""
+  date_end: ""
+  date_start: "2026-06-01"
+  description: |2-
+    Awarded for the research paper *"A Graph-Based Community Detection Approach for Identifying the Semantic Neighbourhoods within London's Airbnb Properties"* presented at the 29th AGILE Conference on Geographic Information Science in Tartu, Estonia.
+  organization: AGILE (Association of Geographic Information Laboratories in Europe)
+  organization_url: https://agile-online.org/
+  title: 'Best Short Paper Award'
+  url: "https://doi.org/10.5194/agile-giss-7-41-2026"
 
 design:
-  columns: '2' 
+  columns: '2'
 ---

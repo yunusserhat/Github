@@ -1,15 +1,14 @@
 ---
 title: Yunus Serhat Bıçakçı
-role: Researcher
+role: Assistant Professor
 avatar_filename: avatar.jpg
-bio: My research interest includes data science, big data, artificial intelligence, criminology, geospatial, GeoAI and multimodal large language models. 
+bio: Assistant Professor specializing in GeoAI, Multimodal Vision-Language Models, and Spatial Data Science.
 interests:
-  - Artificial Intelligence (AI)
-  - Vision-Language Models
-  - Data Science
-  - Big Data
+  - GeoAI & Geospatial Intelligence
+  - Vision-Language Models (VLMs) & Multimodal AI
+  - Spatial Data Science & Urban Semantics
+  - Remote Sensing & Street-Level Analytics
   - Environmental Criminology
-  - GeoAI
 
 
 social:
@@ -25,18 +24,15 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/yunusserhat
-- icon: instagram
-  icon_pack: fab
-  link: https://www.instagram.com/yunusserhat/
+- icon: brain
+  icon_pack: fas
+  link: https://huggingface.co/yunusserhat
 - icon: linkedin
   icon_pack: fab
   link: https://www.linkedin.com/in/yunusserhat
 - icon: orcid
   icon_pack: fab
   link: https://orcid.org/0000-0002-7288-9959
-- icon: academia
-  icon_pack: ai
-  link: https://marmara.academia.edu/YunusSerhatBicakci
 - icon: researchgate
   icon_pack: ai
   link: https://www.researchgate.net/profile/Yunus_Bicakci
@@ -64,6 +60,6 @@ superuser: true
 highlight_name: true
 ---
 
-Assistant Professor and researcher working in geospatial AI, vision-language models, remote sensing and spatial data science. My research explores how artificial intelligence and geographic information can help us understand environmental and urban questions. I work with colleagues in Türkiye and the UK on research projects, publications and open research software.
+Dr. Yunus Serhat Bıçakçı is an Assistant Professor in the Department of Artificial Intelligence and Machine Learning at Marmara University and an Affiliate Research Software Engineering Scientist in the Geospatial Data Science Group at the University of Glasgow. His research explores how multimodal artificial intelligence, vision-language models, and geographic information science intersect to tackle environmental, urban, and criminology challenges. He previously conducted postdoctoral research at UCL's Jill Dando Institute of Security and Crime Science and actively develops open-source scientific software for geospatial research.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/yunusserhatbicakci_phd_cv.pdf" "newtab" >}}CV{{< /staticref >}}.
