@@ -25,9 +25,9 @@ item:
   description: |2-
     Serving as International Committee Chair for GIScience 2027, the flagship international conference on Geographic Information Science.
   organization: GIScience 2027
-  organization_url: https://giscience.org/
+  organization_url: https://giscience2027.org/
   title: 'International Committee Chair'
-  url: ""
+  url: "https://giscience2027.org/"
 
 - certificate_url: ""
   date_end: ""
