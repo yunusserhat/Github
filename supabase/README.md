@@ -72,9 +72,32 @@ In your Netlify Dashboard (**Site configuration** > **Environment variables**), 
 | :--- | :--- | :--- |
 | `SUPABASE_URL` | Public API URL | Found in Supabase **Project Settings** > **API** > `Project URL` |
 | `SUPABASE_ANON_KEY` | Public Anon/Publishable API Key | Found in Supabase **Project Settings** > **API** > `Project API keys` > `anon / public` |
+| `RESEND_API_KEY` | Resend API Key | Generated in Resend Dashboard (**API Keys** > `Create API Key`) |
+| `ADMIN_EMAIL` | Professor notification target email | e.g. `yunus.serhat@marmara.edu.tr` |
+| `FROM_EMAIL` | Sender address shown on emails | e.g. `Dr. Yunus Serhat Bıçakçı <ofis@yunusserhat.com>` (or `onboarding@resend.dev` for initial tests) |
 
 > [!WARNING]
-> **NEVER** add `service_role` keys or database passwords to Netlify client-facing environment variables or commit them to git.
+> **NEVER** add `service_role` keys or database passwords to Netlify client-facing environment variables or commit them to git. `RESEND_API_KEY` is kept secure inside Netlify serverless functions and is never exposed to browser clients.
+
+---
+
+## Automatic Email Notifications Setup (Supabase Webhook)
+
+Whenever a student books or cancels an appointment, Supabase triggers the Netlify serverless function at `/.netlify/functions/notify-appointment`.
+
+### Step-by-Step Webhook Configuration in Supabase:
+1. In your **Supabase Dashboard**, navigate to **Database** > **Webhooks** (or **Integrations** > **Webhooks**).
+2. Click **Create a new webhook** (or **Enable Webhooks** if first time).
+3. Fill in the following fields:
+   - **Name**: `notify-officehours-appointment`
+   - **Table**: `public.officehours_appointments`
+   - **Events**: Check both `Insert` (for new bookings) and `Update` (for cancellations).
+   - **Type of Webhook**: `HTTP Request`
+   - **Method**: `POST`
+   - **URL**: `https://yunusserhat.com/.netlify/functions/notify-appointment`
+   - **HTTP Headers**:
+     - `Content-Type`: `application/json`
+4. Click **Create webhook**.
 
 ---
 
