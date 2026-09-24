@@ -1,0 +1,394 @@
+{{- define "main" -}}
+
+<div class="courses-portal-wrapper">
+  <div class="container py-4">
+    
+    <!-- Portal Hero Header -->
+    <header class="courses-hero">
+      <div class="courses-hero-pill">
+        <span class="hero-dot"></span> Marmara Üniversitesi • Akademik Eğitim Portalı
+      </div>
+      <h1 class="courses-hero-title">Ders Kataloğu & Ders İzlenceleri</h1>
+      <p class="courses-hero-subtitle">
+        Sosyal Bilimler Meslek Yüksekokulu ve Uygulamalı Bilimler Fakültesi ders izlenceleri, haftalık müfredat planları, kitaplar ve uygulama materyalleri.
+      </p>
+    </header>
+
+    <!-- Toolbar: Faculty Filters & Live Search -->
+    <div class="courses-toolbar-container">
+      <div class="courses-filter-tabs" role="tablist" aria-label="Birim Filtreleme">
+        <button type="button" class="course-filter-btn active" data-filter="all" id="filter-all">
+          <span class="btn-emoji">🌟</span>
+          <span class="btn-label">Tümü</span>
+          <span class="filter-count" id="count-all">4</span>
+        </button>
+        <button type="button" class="course-filter-btn" data-filter="sbmyo" id="filter-sbmyo">
+          <span class="btn-emoji">🏢</span>
+          <span class="btn-label">SBMYO - Sosyal Bilimler MYO</span>
+          <span class="filter-count" id="count-sbmyo">2</span>
+        </button>
+        <button type="button" class="course-filter-btn" data-filter="ubf" id="filter-ubf">
+          <span class="btn-emoji">🎓</span>
+          <span class="btn-label">UBF - Uygulamalı Bilimler Fakültesi</span>
+          <span class="filter-count" id="count-ubf">2</span>
+        </button>
+      </div>
+
+      <div class="courses-search-wrapper">
+        <div class="search-input-group">
+          <i class="fas fa-search search-icon" aria-hidden="true"></i>
+          <input 
+            type="search" 
+            id="course-live-search" 
+            class="course-search-field" 
+            placeholder="Ders kodu (YZM2005, BSP, ILT...) veya ders adı yazın..." 
+            aria-label="Ders Arama"
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <button type="button" id="clear-search-btn" class="clear-btn" aria-label="Aramayı Temizle" style="display: none;">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status & Results Counter -->
+    <div class="courses-status-row">
+      <div class="courses-counter" id="courses-counter-display">
+        <span class="counter-number">4</span> aktif ders listeleniyor
+      </div>
+      <div class="courses-faculty-legend">
+        <span class="legend-chip chip-sbmyo"><span class="chip-color"></span> SBMYO (Meslek Yüksekokulu)</span>
+        <span class="legend-chip chip-ubf"><span class="chip-color"></span> UBF (Uygulamalı Bilimler Fak.)</span>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="no-courses-found" class="courses-empty-alert" style="display: none;">
+      <div class="empty-icon-box">🔍</div>
+      <h3 class="empty-title">Aradığınız kriterlere uygun ders bulunamadı</h3>
+      <p class="empty-desc">Farklı bir ders kodu veya anahtar kelime deneyebilir ya da filtreleri temizleyebilirsiniz.</p>
+      <button type="button" id="reset-courses-btn" class="btn-reset-filters">
+        <i class="fas fa-sync-alt mr-1"></i> Tüm Dersleri Göster
+      </button>
+    </div>
+
+    <!-- Active Courses Grid -->
+    {{ $active_courses := where .Pages "Params.archived" "!=" true }}
+    <div class="courses-cards-grid" id="active-courses-grid">
+      {{ range $active_courses.ByWeight }}
+        {{ $codes := .Params.course_codes | default slice }}
+        {{ $codes_str := delimit $codes " " }}
+        {{ $faculty := lower (.Params.faculty | default "sbmyo") }}
+        {{ $is_multi := gt (len $codes) 1 }}
+        
+        <article 
+          class="course-card faculty-card-{{ $faculty }}" 
+          data-faculty="{{ $faculty }}" 
+          data-codes="{{ $codes_str | lower }}" 
+          data-title="{{ .Title | lower }}"
+          data-department="{{ .Params.department | default "" | lower }}"
+          data-summary="{{ .Params.summary | default "" | lower }}"
+        >
+          <!-- Card Header & Badges -->
+          <div class="course-card-header">
+            <div class="header-badges">
+              <span class="faculty-tag tag-{{ $faculty }}">
+                {{ if eq $faculty "ubf" }}🎓 UBF{{ else }}🏢 SBMYO{{ end }}
+              </span>
+              {{ with .Params.term }}
+              <span class="term-tag">
+                <i class="far fa-calendar-alt"></i> {{ . }}
+              </span>
+              {{ end }}
+            </div>
+
+            {{ if $is_multi }}
+            <span class="multi-code-tag" title="Üç farklı program için ortak müfredat ve eş zamanlı laboratuvar uygulaması">
+              <i class="fas fa-layer-group"></i> Çapraz Kodlu
+            </span>
+            {{ end }}
+          </div>
+
+          <!-- Course Codes Pill Row -->
+          <div class="course-codes-container">
+            <span class="codes-label">Ders Kodu:</span>
+            <div class="codes-pill-group">
+              {{ range $code := $codes }}
+                <span class="code-badge">{{ $code }}</span>
+              {{ end }}
+            </div>
+          </div>
+
+          <!-- Course Title -->
+          <h2 class="course-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h2>
+
+          <!-- Department -->
+          <div class="course-dept">
+            <i class="fas fa-graduation-cap"></i> {{ .Params.department }}
+          </div>
+
+          <!-- Summary / Description -->
+          <p class="course-summary">
+            {{ .Params.summary }}
+          </p>
+
+          {{ if $is_multi }}
+          <div class="course-multi-notice">
+            <i class="fas fa-info-circle"></i>
+            <span><strong>Birleşik Ders:</strong> <code>BSP2007.1</code>, <code>BYS2011.1</code> ve <code>OTV1007.1</code> kodlu dersler aynı saatlerde, ortak laboratuvar ve tek müfredatla işlenmektedir.</span>
+          </div>
+          {{ end }}
+
+          <!-- Card Actions -->
+          <div class="course-card-footer">
+            <a href="{{ .RelPermalink }}" class="btn-action-primary">
+              <span class="btn-text">📖 Ders İçeriği & Haftalık Konular</span>
+              <i class="fas fa-chevron-right"></i>
+            </a>
+            {{ with .Params.slides_url }}
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="btn-action-secondary" title="Ders Slaytlarını Yeni Sekmede Aç">
+              <i class="fas fa-external-link-alt"></i> Slaytlar
+            </a>
+            {{ end }}
+          </div>
+        </article>
+      {{ end }}
+    </div>
+
+    <!-- Archived Courses Section -->
+    {{ $archived_courses := where .Pages "Params.archived" true }}
+    {{ if gt (len $archived_courses) 0 }}
+    <section class="archived-section" id="archived-courses-container">
+      <div class="archived-section-header">
+        <div class="archived-header-text">
+          <h2 class="archived-heading">
+            <span class="archived-icon">🏛️</span> Arşiv / Geçmiş Dönem Dersleri
+          </h2>
+          <p class="archived-subheading">
+            Önceki akademik yıllarda verilmiş ve referans amacıyla erişime açık tutulan dersler.
+          </p>
+        </div>
+        <span class="archived-counter-badge">{{ len $archived_courses }} Ders</span>
+      </div>
+
+      <div class="archived-cards-grid">
+        {{ range $archived_courses.ByWeight }}
+          {{ $codes := .Params.course_codes | default slice }}
+          <div 
+            class="archived-single-card"
+            data-codes="{{ delimit $codes " " | lower }}"
+            data-title="{{ .Title | lower }}"
+            data-summary="{{ .Params.summary | default "" | lower }}"
+          >
+            <div class="archived-card-top">
+              <span class="archived-status-pill">Arşiv</span>
+              {{ with index $codes 0 }}
+              <span class="archived-code-pill">{{ . }}</span>
+              {{ end }}
+              {{ with .Params.term }}
+              <span class="archived-term-text">{{ . }}</span>
+              {{ end }}
+            </div>
+            <h3 class="archived-course-title">
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h3>
+            <p class="archived-course-summary">{{ .Params.summary }}</p>
+            <div class="archived-card-bottom">
+              <a href="{{ .RelPermalink }}" class="archived-link-btn">
+                <span>Ders İzlencesi ve Bölümleri</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+
+  </div>
+</div>
+
+<!-- Live Search and Filter Logic Script -->
+<script>
+(function() {
+  function initCourseFilters() {
+    const filterButtons = document.querySelectorAll('.course-filter-btn');
+    const searchInput = document.getElementById('course-live-search');
+    const clearBtn = document.getElementById('clear-search-btn');
+    const resetBtn = document.getElementById('reset-courses-btn');
+    const courseCards = document.querySelectorAll('#active-courses-grid .course-card');
+    const archivedCards = document.querySelectorAll('.archived-cards-grid .archived-single-card');
+    const counterDisplay = document.getElementById('courses-counter-display');
+    const emptyState = document.getElementById('no-courses-found');
+    const activeGrid = document.getElementById('active-courses-grid');
+    const archivedContainer = document.getElementById('archived-courses-container');
+
+    if (!filterButtons.length || !searchInput) return;
+
+    let activeFilter = 'all';
+
+    function normalizeTurkish(text) {
+      if (!text) return '';
+      return text
+        .toLocaleLowerCase('tr-TR')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ı/g, 'i')
+        .replace(/ğ/g, 'g')
+        .replace(/ü/g, 'u')
+        .replace(/ş/g, 's')
+        .replace(/ö/g, 'o')
+        .replace(/ç/g, 'c')
+        .trim();
+    }
+
+    function applyFilters() {
+      const rawQuery = searchInput.value;
+      const normalizedQuery = normalizeTurkish(rawQuery);
+      
+      if (clearBtn) {
+        clearBtn.style.display = rawQuery.length > 0 ? 'block' : 'none';
+      }
+
+      let visibleActiveCount = 0;
+
+      courseCards.forEach(card => {
+        const cardFaculty = card.getAttribute('data-faculty') || '';
+        const cardCodes = normalizeTurkish(card.getAttribute('data-codes') || '');
+        const cardTitle = normalizeTurkish(card.getAttribute('data-title') || '');
+        const cardDept = normalizeTurkish(card.getAttribute('data-department') || '');
+        const cardSummary = normalizeTurkish(card.getAttribute('data-summary') || '');
+
+        const matchesFaculty = (activeFilter === 'all') || (cardFaculty === activeFilter);
+        
+        let matchesQuery = true;
+        if (normalizedQuery.length > 0) {
+          matchesQuery = cardCodes.includes(normalizedQuery) ||
+                         cardTitle.includes(normalizedQuery) ||
+                         cardDept.includes(normalizedQuery) ||
+                         cardSummary.includes(normalizedQuery);
+        }
+
+        if (matchesFaculty && matchesQuery) {
+          card.style.display = '';
+          visibleActiveCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Also filter archived cards if searching
+      if (archivedCards.length) {
+        let visibleArchivedCount = 0;
+        archivedCards.forEach(card => {
+          const cardCodes = normalizeTurkish(card.getAttribute('data-codes') || '');
+          const cardTitle = normalizeTurkish(card.getAttribute('data-title') || '');
+          const cardSummary = normalizeTurkish(card.getAttribute('data-summary') || '');
+
+          let matchesQuery = true;
+          if (normalizedQuery.length > 0) {
+            matchesQuery = cardCodes.includes(normalizedQuery) ||
+                           cardTitle.includes(normalizedQuery) ||
+                           cardSummary.includes(normalizedQuery);
+          }
+
+          if (matchesQuery && (activeFilter === 'all' || activeFilter === 'sbmyo')) {
+            card.style.display = '';
+            visibleArchivedCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (archivedContainer) {
+          archivedContainer.style.display = (visibleArchivedCount > 0) ? '' : 'none';
+        }
+      }
+
+      // Update counter
+      if (counterDisplay) {
+        if (visibleActiveCount === 0) {
+          counterDisplay.innerHTML = '<span class="counter-number">0</span> ders bulundu';
+        } else {
+          counterDisplay.innerHTML = '<span class="counter-number">' + visibleActiveCount + '</span> aktif ders listeleniyor';
+        }
+      }
+
+      // Empty state
+      if (emptyState && activeGrid) {
+        if (visibleActiveCount === 0) {
+          emptyState.style.display = 'block';
+          activeGrid.style.display = 'none';
+        } else {
+          emptyState.style.display = 'none';
+          activeGrid.style.display = '';
+        }
+      }
+    }
+
+    // Filter button clicks
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        activeFilter = this.getAttribute('data-filter') || 'all';
+        applyFilters();
+      });
+    });
+
+    // Search input
+    searchInput.addEventListener('input', applyFilters);
+
+    // Clear search button
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        searchInput.focus();
+        applyFilters();
+      });
+    }
+
+    // Reset button
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        activeFilter = 'all';
+        filterButtons.forEach(b => {
+          if (b.getAttribute('data-filter') === 'all') {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+        applyFilters();
+      });
+    }
+
+    // Count badges initial calculation
+    let totalSbmyo = 0;
+    let totalUbf = 0;
+    courseCards.forEach(c => {
+      const f = c.getAttribute('data-faculty');
+      if (f === 'sbmyo') totalSbmyo++;
+      if (f === 'ubf') totalUbf++;
+    });
+    const countAllEl = document.getElementById('count-all');
+    const countSbmyoEl = document.getElementById('count-sbmyo');
+    const countUbfEl = document.getElementById('count-ubf');
+    if (countAllEl) countAllEl.textContent = courseCards.length;
+    if (countSbmyoEl) countSbmyoEl.textContent = totalSbmyo;
+    if (countUbfEl) countUbfEl.textContent = totalUbf;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCourseFilters);
+  } else {
+    initCourseFilters();
+  }
+})();
+</script>
+
+{{- end -}}

@@ -1,10 +1,5 @@
 ---
-header:
-  caption: ""
-  image: ""
-title: Courses
-type: page
-view: 2
+title: "Dersler & Ders İzlenceleri"
+linkTitle: "Courses"
+summary: "Marmara Üniversitesi Lisans ve Ön Lisans Ders İzlenceleri, Haftalık Müfredat ve Eğitim Materyalleri"
 ---
-
-I teach the following courses:

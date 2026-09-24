@@ -1,0 +1,42 @@
+{{/* Table Shortcode for modern Hugo. */}}
+{{ $src := .Get "path" }}
+{{ $delimiter := .Get "delimiter" | default "," }}
+{{ $useHeaderRow := .Get "header" | default true }}
+{{ $caption := .Get "caption" }}
+
+{{ $rows := slice }}
+{{ if $src }}
+  {{ $is_remote := strings.HasPrefix $src "http" }}
+  {{ if $is_remote }}
+    {{ with resources.GetRemote $src }}
+      {{ $rows = .Content | transform.Unmarshal (dict "delimiter" $delimiter) }}
+    {{ end }}
+  {{ else }}
+    {{ $fullPath := path.Join "content" (default "" $.Page.File.Dir) $src }}
+    {{ if os.FileExists $fullPath }}
+      {{ $rows = os.ReadFile $fullPath | transform.Unmarshal (dict "delimiter" $delimiter) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<table>
+  {{ if and $useHeaderRow (gt (len $rows) 0) }}
+    {{ $headerRow := index $rows 0 }}
+    {{ $rows = after 1 $rows }}
+    <tr> {{ range $headerRow }} <th>{{ . | markdownify | emojify }}</th> {{ end }} </tr>
+  {{ end }}
+  {{ range $rows }}
+    <tr>
+      {{ range . }}
+        {{ if (findRE "^\\d+$" (string .)) }}
+          <td data-table-dtype="number">{{ . }}</td>
+        {{ else }}
+          <td data-table-dtype="text">{{ . | markdownify | emojify }}</td>
+        {{ end }}
+      {{ end }}
+    </tr>
+  {{ end }}
+  {{ if $caption }}
+    <caption>{{ $caption | markdownify | emojify }}</caption>
+  {{ end }}
+</table>
