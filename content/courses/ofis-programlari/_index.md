@@ -4,9 +4,9 @@ linkTitle: "Ofis Programları"
 summary: "Bulut tabanlı modern ofis araçları, ileri elektronik tablo ve veri analizi, veri tabanlı form ve dokümantasyon uygulamaları."
 type: book
 course_codes:
-  - "BSP2007.1"
-  - "BYS2011.1"
-  - "OTV1007.1"
+  - "BSP2007"
+  - "BYS2011"
+  - "OTV1007"
 faculty: "SBMYO"
 faculty_name: "Marmara Üniversitesi Sosyal Bilimler Meslek Yüksekokulu"
 department: "Büro Yönetimi ve Yönetici Asistanlığı & Ofis Teknolojileri ve Veri Yönetimi"

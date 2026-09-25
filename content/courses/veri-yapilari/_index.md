@@ -4,7 +4,7 @@ linkTitle: "Veri Yapıları"
 summary: "Algoritmik analiz (Big O), temel ve doğrusal olmayan veri yapıları (bağlı listeler, yığınlar, kuyruklar, ağaçlar, heap'ler, hash tabloları ve graflar)."
 type: book
 course_codes:
-  - "YZM2005.1"
+  - "YZM2005"
 faculty: "UBF"
 faculty_name: "Marmara Üniversitesi Uygulamalı Bilimler Fakültesi"
 department: "Yapay Zeka ve Makine Öğrenmesi"

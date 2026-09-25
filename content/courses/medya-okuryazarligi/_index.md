@@ -4,7 +4,9 @@ linkTitle: "Medya Okuryazarlığı"
 summary: "Kitle iletişim araçları, dezenformasyon, yeni medya dinamikleri ve dijital çağda eleştirel analiz becerileri."
 type: book
 course_codes:
-  - "ILT2005.1"
+  - "ILT2005"
+  - "BYS2020"
+  - "OTV2029"
 faculty: "SBMYO"
 faculty_name: "Marmara Üniversitesi Sosyal Bilimler Meslek Yüksekokulu"
 department: "Ofis Teknolojileri ve Veri Yönetimi"
