@@ -9,9 +9,10 @@ course_codes:
   - "OTV2029"
 faculty: "SBMYO"
 faculty_name: "Marmara Üniversitesi Sosyal Bilimler Meslek Yüksekokulu"
-department: "Ofis Teknolojileri ve Veri Yönetimi"
+department: "Büro Yönetimi ve Yönetici Asistanlığı & Ofis Teknolojileri ve Veri Yönetimi"
 term: "Güz"
 archived: false
+multi_notice: "<strong>Birleşik Ders:</strong> <code>ILT2005</code>, <code>BYS2020</code> ve <code>OTV2029</code> kodlu dersler aynı saatlerde ve tek müfredatla işlenmektedir."
 slides_url: "https://bit.ly/medya_okuryazarligi"
 weight: 20
 date: "2026-09-01"
@@ -20,14 +21,16 @@ aliases:
   - "/courses/Medya%20Okuryazarligi/"
 ---
 
-## 📌 Ders Künyesi ve Bilgileri
+## 📌 Ders Künyesi ve Çapraz Kod Bilgisi
+
+> ℹ️ **Birleşik / Çapraz Kodlu Ders Notu:** Bu ders, Büro Yönetimi ve Yönetici Asistanlığı ile Ofis Teknolojileri ve Veri Yönetimi programlarında (`ILT2005`, `BYS2020` ve `OTV2029`) ortak saatlerde ve tek müfredatla yürütülmektedir. Tüm ders kodları için müfredat, sınavlar ve materyaller ortaktır.
 
 | Özellik | Detay |
 | :--- | :--- |
 | **Ders Adı** | Medya Okuryazarlığı |
-| **Ders Kodu** | `ILT2005.1` |
+| **Ders Kodları** | `ILT2005` • `BYS2020` • `OTV2029` |
 | **Akademik Birim** | Sosyal Bilimler Meslek Yüksekokulu (SBMYO) |
-| **Bölüm / Program** | Ofis Teknolojileri ve Veri Yönetimi |
+| **Bölümler / Programlar** | Büro Yönetimi ve Yönetici Asistanlığı • Ofis Teknolojileri ve Veri Yönetimi |
 | **Dönem** | Güz Dönemi |
 | **Ders Türü** | Zorunlu / Mesleki Seçmeli |
 | **Öğretim Elemanı** | {{< mention "admin" >}} |

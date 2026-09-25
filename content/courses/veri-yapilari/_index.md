@@ -19,7 +19,7 @@ date: "2026-09-01"
 | Özellik | Detay |
 | :--- | :--- |
 | **Ders Adı** | Veri Yapıları (Data Structures) |
-| **Ders Kodu** | `YZM2005.1` |
+| **Ders Kodu** | `YZM2005` |
 | **Akademik Birim** | Uygulamalı Bilimler Fakültesi (UBF) |
 | **Bölüm** | Yapay Zeka ve Makine Öğrenmesi Bölümü |
 | **Dönem** | Güz Dönemi |

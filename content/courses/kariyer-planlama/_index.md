@@ -11,6 +11,7 @@ faculty_name: "Marmara Üniversitesi Uygulamalı Bilimler Fakültesi"
 department: "Yapay Zeka ve Makine Öğrenmesi"
 term: "Güz / Bahar"
 archived: false
+multi_notice: false
 weight: 40
 date: "2026-09-01"
 ---
@@ -20,7 +21,7 @@ date: "2026-09-01"
 | Özellik | Detay |
 | :--- | :--- |
 | **Ders Adı** | Kariyer Planlama |
-| **Ders Kodu** | `KPD1001` / `YZM2053.1` (Tüm 1. Sınıf Programları) |
+| **Ders Kodu** | `KPD1001` / `YZM2053` (Tüm 1. Sınıf Programları) |
 | **Akademik Birim** | Uygulamalı Bilimler Fakültesi (UBF) |
 | **Bölüm** | Yapay Zeka ve Makine Öğrenmesi Bölümü (Tüm Bölümler İçin Uyarlanabilir) |
 | **Dönem** | Güz / Bahar Dönemi |

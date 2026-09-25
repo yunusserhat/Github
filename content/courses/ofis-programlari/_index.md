@@ -12,6 +12,7 @@ faculty_name: "Marmara Üniversitesi Sosyal Bilimler Meslek Yüksekokulu"
 department: "Büro Yönetimi ve Yönetici Asistanlığı & Ofis Teknolojileri ve Veri Yönetimi"
 term: "Güz"
 archived: false
+multi_notice: "<strong>Birleşik Ders:</strong> <code>BSP2007</code>, <code>BYS2011</code> ve <code>OTV1007</code> kodlu dersler aynı saatlerde, ortak laboratuvar ve tek müfredatla işlenmektedir."
 slides_url: "https://bit.ly/sbmyo_ofis"
 weight: 10
 date: "2026-09-01"
@@ -27,7 +28,7 @@ aliases:
 | Özellik | Detay |
 | :--- | :--- |
 | **Ders Adı** | Ofis Programları ve Veri Tabanlı Uygulamalar |
-| **Ders Kodları** | `BSP2007.1` • `BYS2011.1` • `OTV1007.1` |
+| **Ders Kodları** | `BSP2007` • `BYS2011` • `OTV1007` |
 | **Akademik Birim** | Sosyal Bilimler Meslek Yüksekokulu (SBMYO) |
 | **Bölümler** | Büro Yönetimi ve Yönetici Asistanlığı • Ofis Teknolojileri ve Veri Yönetimi |
 | **Dönem** | Güz Dönemi |

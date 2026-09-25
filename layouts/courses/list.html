@@ -104,8 +104,8 @@
               {{ end }}
             </div>
 
-            {{ if $is_multi }}
-            <span class="multi-code-tag" title="Üç farklı program için ortak müfredat ve eş zamanlı laboratuvar uygulaması">
+            {{ if and $is_multi (ne .Params.multi_notice false) }}
+            <span class="multi-code-tag" title="{{ with .Params.multi_tag_title }}{{ . }}{{ else }}Farklı programlar için ortak müfredat ve eş zamanlı ders uygulaması{{ end }}">
               <i class="fas fa-layer-group"></i> Çapraz Kodlu
             </span>
             {{ end }}
@@ -137,10 +137,22 @@
           </p>
 
           {{ if $is_multi }}
+          {{ if ne .Params.multi_notice false }}
           <div class="course-multi-notice">
             <i class="fas fa-info-circle"></i>
-            <span><strong>Birleşik Ders:</strong> <code>BSP2007.1</code>, <code>BYS2011.1</code> ve <code>OTV1007.1</code> kodlu dersler aynı saatlerde, ortak laboratuvar ve tek müfredatla işlenmektedir.</span>
+            <span>
+              {{ with .Params.multi_notice }}
+                {{ . | safeHTML }}
+              {{ else }}
+                <strong>Birleşik Ders:</strong> 
+                {{ $len := len $codes }}
+                {{ $last_idx := sub $len 1 }}
+                {{ $second_last_idx := sub $len 2 }}
+                {{ range $idx, $code := $codes }}<code>{{ $code }}</code>{{ if lt $idx $second_last_idx }}, {{ else if eq $idx $second_last_idx }} ve {{ end }}{{ end }} kodlu dersler aynı saatlerde, ortak program ve tek müfredatla işlenmektedir.
+              {{ end }}
+            </span>
           </div>
+          {{ end }}
           {{ end }}
 
           <!-- Card Actions -->
