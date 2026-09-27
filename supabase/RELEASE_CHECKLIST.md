@@ -34,7 +34,7 @@ The current function ignores the header, so setting it now is safe; the new func
 - [ ] Generate a long random secret (for example `openssl rand -base64 48`). Never put it in the repository, Hugo config, or browser code.
 - [ ] Netlify → **Site configuration → Environment variables**: set `OFFICEHOURS_WEBHOOK_SECRET` with the **Functions** scope, alongside `RESEND_API_KEY`.
 - [ ] Supabase → **Database → Webhooks** → the `officehours_appointments` webhook (`INSERT` and `UPDATE`):
-  - URL: `https://www.yunusserhat.com/.netlify/functions/notify-appointment`. The apex `https://yunusserhat.com/...` answers POST requests with a redirect, which webhook requests do not follow.
+  - URL: `https://www.yunusserhat.com/.netlify/functions/notify-appointment`. The apex `https://yunusserhat.com/...` answers with a 308 redirect to `www`; pointing the webhook at `www` directly keeps delivery (and the secret header) from depending on redirect handling.
   - Header `x-officehours-webhook-secret` set to the same secret.
 - [ ] Re-run preflight query 8: the URL is the `www` address, the header name is present, and `webhook_secret_sha256` equals `printf %s "$OFFICEHOURS_WEBHOOK_SECRET" | sha256sum` computed from the Netlify value.
 
