@@ -1,10 +1,12 @@
 {{ define "main" }}
 <link rel="stylesheet" href="{{ "css/officehours.css" | relURL }}">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Pinned supabase-js release; update the version and integrity hash together. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js" integrity="sha384-Rj26LVGvoeRVR6+mwQmFfcR3QOBEwT+ZmuCWpuiqeTzJpCs0ER4ITAWGb4Hiy3Ok" crossorigin="anonymous"></script>
 <script>
   window.__OFFICEHOURS_CONFIG__ = {
     supabaseUrl: '{{ getenv "SUPABASE_URL" }}' || window.OFFICEHOURS_SUPABASE_URL || '',
-    supabaseAnonKey: '{{ getenv "SUPABASE_ANON_KEY" }}' || window.OFFICEHOURS_SUPABASE_ANON_KEY || ''
+    supabaseAnonKey: '{{ getenv "SUPABASE_ANON_KEY" }}' || window.OFFICEHOURS_SUPABASE_ANON_KEY || '',
+    captchaSiteKey: '{{ getenv "OFFICEHOURS_TURNSTILE_SITE_KEY" }}'
   };
 </script>
 
@@ -13,22 +15,15 @@
     <div class="row justify-content-center">
       <div class="col-12 col-lg-10 col-xl-9">
         
-        <!-- Setup Mode Banner (rendered if Supabase credentials are missing) -->
+        <!-- Shown when booking configuration is unavailable. -->
         <div id="oh-config-warning" class="oh-card oh-alert-warning d-none mb-4" role="alert">
           <div class="d-flex align-items-start">
             <div class="oh-alert-icon me-3">
               <i class="fas fa-tools fa-2x"></i>
             </div>
             <div>
-              <h4 class="oh-alert-title mb-1">Configuration Required</h4>
-              <p class="mb-2 text-muted">
-                The office hours booking system is installed, but Supabase environment variables (<code>SUPABASE_URL</code> and <code>SUPABASE_ANON_KEY</code>) have not been detected yet.
-              </p>
-              <div class="oh-code-hint p-2 mb-2 rounded font-monospace small">
-                Netlify: Site settings &gt; Environment variables &gt; Add SUPABASE_URL &amp; SUPABASE_ANON_KEY<br>
-                Local Dev: Create a .env file with your project keys or run with environment variables.
-              </div>
-              <p class="small text-muted mb-0">See <a href="/officehours/admin/" class="text-primary">Admin Guide</a> or <code>supabase/README.md</code> for setup instructions.</p>
+              <h4 class="oh-alert-title mb-1">Booking is temporarily unavailable</h4>
+              <p class="mb-0 text-muted">Please try again later or contact the instructor.</p>
             </div>
           </div>
         </div>
@@ -142,10 +137,13 @@
             </form>
           </div>
 
-          <!-- Privacy & KVKK Note -->
+          <!-- Security check; rendered only when a Turnstile site key is configured. -->
+          <div id="oh-captcha" class="oh-captcha d-none mt-3"></div>
+
+          <!-- Booking privacy summary -->
           <div class="oh-privacy-note mt-4 pt-3 border-top text-muted small text-center">
             <i class="fas fa-lock me-1"></i>
-            Privacy Notice: Only your student email and booking topic/note are stored for scheduling purposes. Appointment records are strictly private and never shared publicly.
+            Your verified email, appointment details, topic, and optional note are used to manage bookings and send notifications. See the <a href="/privacy/">Privacy Policy</a>.
           </div>
         </section>
 
@@ -243,9 +241,9 @@
 
           <!-- Booking Modal / Form Dialog -->
           <div id="oh-booking-form-modal" class="oh-modal-backdrop d-none">
-            <div class="oh-modal-card oh-card">
+            <div class="oh-modal-card oh-card" role="dialog" aria-modal="true" aria-labelledby="oh-modal-title" aria-describedby="oh-modal-slot-display" tabindex="-1">
               <div class="d-flex justify-content-between align-items-center mb-3">
-                <h3 class="h5 mb-0">Confirm Office Hours Booking</h3>
+                <h3 class="h5 mb-0" id="oh-modal-title">Confirm Office Hours Booking</h3>
                 <button type="button" class="btn-close" id="oh-btn-close-modal" aria-label="Close"></button>
               </div>
 
@@ -364,6 +362,5 @@
   </div>
 </div>
 
-<script type="module" src="{{ "js/officehours-common.js" | relURL }}?v={{ now.Unix }}"></script>
 <script type="module" src="{{ "js/officehours-booking.js" | relURL }}?v={{ now.Unix }}"></script>
 {{ end }}

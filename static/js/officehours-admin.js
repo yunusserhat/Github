@@ -7,8 +7,14 @@
 import {
   formatIstanbulDateTime,
   formatIstanbulDateOnly,
-  formatIstanbulTimeOnly
+  formatIstanbulTimeOnly,
+  getAuthRateLimitWaitSeconds,
+  isCaptchaError,
+  buildEmailOtpRequest,
+  formatCountdown,
+  clearLegacyRateLimitRecords
 } from './officehours-common.js';
+import { createCaptchaGate } from './officehours-captcha.js';
 
 (function () {
   'use strict';
@@ -25,6 +31,7 @@ import {
   let cachedExceptions = [];
   let cachedOverrides = [];
   let cachedSettings = null;
+  let captcha = createCaptchaGate();
 
   // DOM Elements
   const elConfigWarning = document.getElementById('oh-admin-config-warning');
@@ -40,6 +47,7 @@ import {
   const elFormEmail = document.getElementById('oh-admin-form-email');
   const elInputEmail = document.getElementById('oh-admin-input-email');
   const elBtnSendEmail = document.getElementById('oh-admin-btn-send-email');
+  const elCaptcha = document.getElementById('oh-admin-captcha');
   const elFormOtp = document.getElementById('oh-admin-form-otp');
   const elInputOtp = document.getElementById('oh-admin-input-otp');
   const elBtnVerifyOtp = document.getElementById('oh-admin-btn-verify-otp');
@@ -141,22 +149,23 @@ import {
       auth: {
         persistSession: true,
         autoRefreshToken: true,
-        detectSessionInUrl: true,
-        lock: async (name, acquireTimeout, fn) => {
-          return await fn();
-        }
+        detectSessionInUrl: true
       }
     });
+
+    clearLegacyRateLimitRecords();
+    captcha = createCaptchaGate({ siteKey: config.captchaSiteKey, container: elCaptcha, action: 'officehours-admin-otp' });
 
     bindEvents();
     await checkSession();
 
-    supabase.auth.onAuthStateChange(async (event, session) => {
+    supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' && session?.user) {
         if (window.location.hash && (window.location.hash.includes('access_token') || window.location.hash.includes('error'))) {
           window.history.replaceState(null, '', window.location.pathname);
         }
-        await checkSession();
+        // Run API work after the auth callback releases Supabase's session lock.
+        setTimeout(() => { void checkSession(); }, 0);
       } else if (event === 'SIGNED_OUT') {
         currentAdminUser = null;
         showLoginView();
@@ -229,10 +238,7 @@ import {
     elBtnSendEmail.disabled = true;
 
     const updateLabel = () => {
-      const formatted = window.OfficeHoursCommon?.formatCountdown
-        ? window.OfficeHoursCommon.formatCountdown(remaining)
-        : `${remaining}s`;
-      elBtnSendEmail.querySelector('span:last-child').textContent = `Bekleyin (${formatted})`;
+      elBtnSendEmail.querySelector('span:last-child').textContent = `Bekleyin (${formatCountdown(remaining)})`;
     };
 
     updateLabel();
@@ -265,52 +271,47 @@ import {
           return;
         }
 
-        // We always query Supabase server RPC as the single authoritative source of truth,
-        // preventing client-side localStorage de-synchronization issues.
+        if (captcha.enabled && !captcha.getToken()) {
+          showAlert('Güvenlik doğrulamasını tamamlayıp tekrar deneyin.', 'warning');
+          return;
+        }
+
+        // Supabase Auth enforces sending limits (and CAPTCHA when enabled).
         setButtonLoading(elBtnSendEmail, true);
+        let cooldownSeconds = 0;
         try {
-          // Check & record rate limit on server side
-          const { data: rlData, error: rlErr } = await supabase.rpc('check_and_record_otp_rate_limit', {
-            p_email: email
+          const request = buildEmailOtpRequest(email, {
+            redirectTo: window.location.origin + window.location.pathname,
+            captchaToken: captcha.getToken()
           });
-
-          if (!rlErr && rlData && rlData.allowed === false) {
-            const waitSec = rlData.wait_seconds || 300;
-            if (window.OfficeHoursCommon?.recordClientRateLimit) {
-              window.OfficeHoursCommon.recordClientRateLimit(email, waitSec);
-            }
-            showAlert(rlData.reason || `Spam koruması: Lütfen ${waitSec} saniye bekleyin.`, 'warning');
-            startAdminCooldown(waitSec);
-            return;
+          let error;
+          try {
+            ({ error } = await supabase.auth.signInWithOtp(request));
+          } finally {
+            captcha.reset();
           }
 
-          // If allowed, clear any stale client-side rate limit lock
-          if (window.OfficeHoursCommon?.clearClientRateLimit) {
-            window.OfficeHoursCommon.clearClientRateLimit(email);
-          }
-
-          const redirectUrl = window.location.origin + window.location.pathname;
-          const { error } = await supabase.auth.signInWithOtp({
-            email,
-            options: {
-              emailRedirectTo: redirectUrl
-            }
-          });
           if (error) {
-            showAlert(error.message, 'danger');
-          } else {
-            const waitSec = rlData?.wait_seconds || 0;
-            if (window.OfficeHoursCommon?.recordClientRateLimit) {
-              window.OfficeHoursCommon.recordClientRateLimit(email, waitSec);
+            cooldownSeconds = getAuthRateLimitWaitSeconds(error) || 0;
+            if (cooldownSeconds) {
+              showAlert(`Çok fazla kod istendi. Lütfen ${formatCountdown(cooldownSeconds)} bekleyin.`, 'warning');
+            } else if (isCaptchaError(error)) {
+              showAlert('Güvenlik doğrulaması başarısız oldu veya süresi doldu. Lütfen tekrar deneyin.', 'danger');
+            } else {
+              showAlert(error.message, 'danger');
             }
+          } else {
             adminOtpTargetEmail = email;
             elOtpTarget.textContent = email;
             elFormEmail.classList.add('d-none');
             elFormOtp.classList.remove('d-none');
             elInputOtp.focus();
           }
+        } catch (err) {
+          showAlert(err.message || 'Kod gönderilemedi.', 'danger');
         } finally {
           setButtonLoading(elBtnSendEmail, false);
+          if (cooldownSeconds) startAdminCooldown(cooldownSeconds);
         }
       });
     }
@@ -636,8 +637,8 @@ import {
             </div>
             <div class="small text-muted mb-2">
               <i class="fas fa-user-graduate me-1"></i>
-              <strong>${appt.student_email}</strong>
-              <span class="oh-domain-badge ms-1">@${domain}</span>
+              <strong>${escapeHtml(appt.student_email)}</strong>
+              <span class="oh-domain-badge ms-1">@${escapeHtml(domain)}</span>
             </div>
           </div>
           ${

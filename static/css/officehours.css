@@ -599,3 +599,9 @@ html.dark .btn-check:checked + .btn-outline-info,
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Turnstile security check (shown only when configured) */
+.oh-captcha {
+  display: flex;
+  justify-content: center;
+}

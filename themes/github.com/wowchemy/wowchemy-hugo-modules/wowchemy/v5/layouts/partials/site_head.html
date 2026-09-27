@@ -1,4 +1,6 @@
 <head>
+  {{ $page_locale := site.Language.Locale | default "en-US" }}
+  {{ if eq .Section "courses" }}{{ $page_locale = "tr-TR" }}{{ end }}
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -55,7 +57,7 @@
   {{ range .Translations }}
     <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
   {{ end }}
-  <link rel="alternate" hreflang="{{ site.LanguageCode | default "en-us" }}" href="{{ .Permalink }}" />
+  <link rel="alternate" hreflang="{{ $page_locale }}" href="{{ .Permalink }}" />
 
   {{ partial "functions/parse_theme" . }}
 
@@ -276,7 +278,7 @@
     <meta property="og:image" content="{{ . }}" />
     <meta property="twitter:image" content="{{ . }}" />
   {{- end -}}
-  <meta property="og:locale" content="{{ site.LanguageCode | default "en-us" }}" />
+  <meta property="og:locale" content="{{ replace $page_locale "-" "_" }}" />
   {{ if .IsPage }}
     {{ if not .PublishDate.IsZero }}
       <meta

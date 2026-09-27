@@ -58,7 +58,7 @@ http: Web sitelerinin bulunduğu sunucu bilgisayar ile kullanıcı bilgisayarlar
 
 
 İkili sistem: 10101100.11011001.10101000.11101110 
-IP adres: 172.217.168.238
+IP adres: 172.217.168.238
 Domain: google.com 
 
 “General Packet Radio Servis” GPRS
@@ -85,7 +85,7 @@ ve daha genis bant veri aktarımı (100 Mbps)
 1994 – 110 Ülke – 10.000 Ağ – 3.000.000 Bilgisayar – 25.000.000 Kişi 
 1995 – HTML ve WWW – 60 milyon kişi 
 
-## Türkiye’deİnternet’in gelişim süreci
+## Türkiye’de İnternet’in gelişim süreci
 
 1986 – TÜVEKA (Türkiye Üniversiteler ve Araştırma Kurumları Ağı) 
 1987 – EARN ve BITNET 
@@ -160,7 +160,6 @@ EDGE
 Wi-Fi 
 WAP
 GPS
-
 
 
 

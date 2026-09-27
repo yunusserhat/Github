@@ -25,6 +25,8 @@ tags: []
 
 # Is this a featured talk? (true/false)
 featured: false
+image:
+  alt_text: "Video still of Duygu Yaren Yenice and Yunus Serhat Bıçakçı discussing machine learning and data science."
 
 links:
   - icon: twitter

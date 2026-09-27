@@ -71,4 +71,4 @@ Kariyer Planlama Dersi'nin en somut çıktılarından biri de ulusal istihdam ek
 - [ ] [yetenekkapisi.org](https://www.yetenekkapisi.org/) üzerinde öğrenci hesabı aktive edildi mi?
 - [ ] Sol menüden 1. Hafta ders notu incelendi mi?
 
-{{< cta cta_text="🚀 1. Haftaya Geç: İlk Durak Kariyer Merkezi" cta_link="hafta-01" >}}
+{{< cta cta_text="🚀 1. Haftaya Geç: İlk Durak Kariyer Merkezi" cta_link="/courses/kariyer-planlama/hafta-01/" >}}

@@ -35,7 +35,7 @@ Ağ üzerinden başka ağlara (internet gibi) bağlanılmak istenirse? Router ad
 
 
 
-## Büyük Şirketlerde Ağlar
+## Büyük Şirketlerde Ağlar
 
 Ağlar küçük işletmeler için uygun olabilir. Büyük ve farklı yerlerde birimleri bulunan ve binlerce çalışanı olan şirketler için? Bir şirket büyüdükçe, yüzlerce küçük yerel ağlara sahip olur. Bu ağlar kurumsal genişlikte altyapı içinde birbirine bağlanır. Büyük bir işletmenin ağ altyapısı, kurumsal ağlara, diğer yerel alan ağlarına bağlanabilen çok sayıda yerel alan ağlarından oluşur. Çok sayıda güçlü sunucular kurumsal Web sayfalarının, kurumsal intranetin ve ekstranetin sürdürülmesini sağlar. Bu sunucuların bir kısmı satın alma, sipariş girişi, finansal işlemler, satış işlemleri, arka ofis uygulamalarını destekleyen diğer büyük bilgisayarlara bağlantılar sağlar.
 Bir sonraki sunuda büyük karmaşık kurumsal genişlikte bir ağ gösterilmiştir. İşletmenin ağ yapısı; mobil satış gücünün cep telefonlarını; çalışanların kablosuz alan ağlarını kullanarak şirket Web sitesine bağlanmalarını ve yöneticilerin dünya çapında video konferansları yapmalarını destekler.
@@ -84,7 +84,7 @@ TCP/IP; en önemlileri TCP ve IP olarak adlandırılan uygun protokoller kullan�
 TCP/IP protokollerini kullanan iki bilgisayar farklı donanım ve yazılımlara sahip olsalar bile iletişim kurabilirler. Veri bir bilgisayardan diğerine yukarıdan aşağıya doğru, uygulama katmanından ağ arayüz katmanına kadar bu dört katmandan geçerek karşıdaki aygıta ulaşır. Veriler alıcı bilgisayara ulaştıktan sonra bu katmanları aşağıdan yukarı doğru geçer ve alıcı bilgisayarın kullanacağı bir formatta yeniden birleştirilir. Eğer alıcı bilgisayar, hasarlı bir paket bulursa gönderici bilgisayardan bu paketin tekrar gönderilmesini ister.
 
 
-## İLETİŞİM AĞLARISinyaller: Dijital ve Analog
+## İLETİŞİM AĞLARI Sinyaller: Dijital ve Analog
 
 İletişim ağlarındaki en önemli ayrım, analog ve dijital sinyaller arasındadır. Bir mesajın iletilmesinde iki yol vardır, Analog ve dijital sinyaller. 
 Analog sinyaller klasik telefon bağlantılarındaki sesli iletişimde olduğu gibi iletişim kanalı üzerinden sürekli bir dalga şeklinde ilerler. Sabit telefonlar, kişisel bilgisayarların ses çıkış aygıtları, kulaklıklar, bir analog aygıttır.
@@ -92,7 +92,7 @@ Dijital sinyaller ise kesikli, ikili dalga formundadır. Dijital sinyaller bilgi
 
 
 
-## Ağ TürleriYerel Alan Ağları
+## Ağ Türleri Yerel Alan Ağları
 
 Bir yerel alan ağı (Local Area Network: LAN); 500 metre yarıçaplı bir alanda bilgisayarların veya dijital aygıtların birbirleri ile bağlantı kurmaları için düzenlenir. Yerel alan ağları küçük bir ofisteki bilgisayarları veya yakın birkaç binadaki tüm bilgisayarları birbirlerine bağlar. Okul, askeri alan gibi bir coğrafik alandaki birbiriyle bağlı yerel alan ağları, Kampüs Alan Ağını oluşturur. Yerel alan ağları uzaklardaki geniş alan ağlarına ve dünya üzerindeki diğer ağlara da internet yoluyla bağlanabilir.
 Bir bilgisayar; kullanıcıların ağdaki hesaplama kapasitesini paylaşmak için erişim sağlayan ve veri dosyaları ile program yazılımlarını içeren ağ dosyaları sunucusu olarak tahsis edilmiştir. Bu sunucu kimin hangi sırada erişim sağlayacağını belirler. Router (yönlendirici), yerel ağı diğer ağlar ile veri paylaşımını sağlaması için diğer ağlara ve internete bağlar. Genel ağ işletim sistemi yazılımları, Windows, Linux ve NetWare’dir. Her ağ işletim sistemi varsayılan ağ protokolü olarak TCP/IP’yi destekler.
@@ -107,7 +107,7 @@ Halka topolojisinde bilgisayarlar kapalı bir döngü içinde bulunur. Bilgi hat
 
 
 
-## Ağ TürleriMetropol ve Geniş Alan Ağları
+## Ağ Türleri Metropol ve Geniş Alan Ağları
 
 Geniş alan ağları (Wide Area Network: WAN); çok geniş coğrafik alanlara, bölgelere, ülkelere, kıtalara ve tüm dünyaya yayılan ağlardır. En güçlü ve evrensel geniş alan ağı internet’tir. Bilgisayarlar; telefon şebekeleri, özel kablo TV şebekesi, kiralık hatlar veya uydu üzerinden sağlanan genel bir ağ üzerinden geniş alan ağına bağlanır. Metropol alan ağları; kampus veya bir metropol alanına yayılmış olan büyük bir bilgisayar ağıdır. Geniş alan ve yerel alan ağı arasında bir yapıdadır.
 

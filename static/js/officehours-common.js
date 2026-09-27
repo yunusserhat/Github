@@ -389,88 +389,55 @@ export function evaluateStudentBookingEligibility({
   return { allowed: true };
 }
 
-export const RATE_LIMIT_RULES = Object.freeze({
-  maxRequestsInWindow: 2,
-  windowSeconds: 120, // 2 minutes (120 seconds)
-  cooldownSeconds: 300, // 5 minutes (300 seconds)
-  minResendIntervalSeconds: 60 // 60 seconds
-});
+/**
+ * Supabase Auth's default minimum interval between two emails to the same
+ * address (Authentication > Rate Limits). Used only to pace the resend button;
+ * the limit itself is enforced by Supabase Auth.
+ */
+export const OTP_RESEND_INTERVAL_SECONDS = 60;
+
+const AUTH_RATE_LIMIT_CODES = Object.freeze(['over_email_send_rate_limit', 'over_request_rate_limit']);
 
 /**
- * Pure evaluation function for email OTP rate limits.
- * Enforces:
- * 1. Maximum 2 requests within any 2-minute (120s) sliding window.
- * 2. If 2 requests are made within 2 minutes, locks down for 5 minutes (300s cooldown).
- * 3. During cooldown, any further request is rejected with remaining wait time.
- * 4. Resets to fresh window if 2 minutes pass without reaching 2 requests.
+ * Returns how long to wait after a Supabase Auth rate-limit error, or null for
+ * any other error. Per-address limits report "...after N seconds."; project or
+ * IP limits carry no interval, so the fallback is used.
  *
- * @param {number[]} history - Array of timestamps (milliseconds) of previous requests.
- * @param {Date|number} [currentTime=new Date()]
- * @returns {{ allowed: boolean, remainingAttempts: number, waitSeconds: number, willTriggerCooldown?: boolean, reason?: string }}
+ * @param {{ status?: number, code?: string, message?: string } | null | undefined} error
+ * @param {number} [fallbackSeconds=OTP_RESEND_INTERVAL_SECONDS]
+ * @returns {number | null}
  */
-export function evaluateEmailRateLimit(history = [], currentTime = new Date()) {
-  const nowMs = typeof currentTime === 'number' ? currentTime : new Date(currentTime).getTime();
-  const sorted = [...history].filter((ts) => typeof ts === 'number' && !isNaN(ts)).sort((a, b) => a - b);
+export function getAuthRateLimitWaitSeconds(error, fallbackSeconds = OTP_RESEND_INTERVAL_SECONDS) {
+  if (!error) return null;
+  if (error.status !== 429 && !AUTH_RATE_LIMIT_CODES.includes(error.code)) return null;
 
-  if (sorted.length === 0) {
-    return {
-      allowed: true,
-      remainingAttempts: 1,
-      waitSeconds: 0,
-      willTriggerCooldown: false
-    };
-  }
+  const match = /after\s+(\d+)\s+seconds?/i.exec(String(error.message || ''));
+  const seconds = match ? Number(match[1]) : fallbackSeconds;
+  return Math.max(1, seconds);
+}
 
-  const windowMs = RATE_LIMIT_RULES.windowSeconds * 1000;
-  const cooldownMs = RATE_LIMIT_RULES.cooldownSeconds * 1000;
+/**
+ * @param {{ code?: string, message?: string } | null | undefined} error
+ * @returns {boolean} true when Supabase Auth rejected the CAPTCHA token.
+ */
+export function isCaptchaError(error) {
+  if (!error) return false;
+  return error.code === 'captcha_failed' || /captcha/i.test(String(error.message || ''));
+}
 
-  // Check if any cooldown was triggered by two requests within 2 minutes:
-  for (let i = sorted.length - 1; i >= 1; i--) {
-    const secondReq = sorted[i];
-    const firstReq = sorted[i - 1];
-
-    if (secondReq - firstReq <= windowMs) {
-      const cooldownEnd = secondReq + cooldownMs;
-      if (nowMs < cooldownEnd) {
-        const remainingSeconds = Math.ceil((cooldownEnd - nowMs) / 1000);
-        return {
-          allowed: false,
-          remainingAttempts: 0,
-          waitSeconds: remainingSeconds,
-          reason: `Spam koruması: Kısa süre içinde 2 defa kod istendi. Lütfen ${remainingSeconds} saniye bekleyin.`
-        };
-      }
-      break;
-    }
-  }
-
-  // Check sliding window of 2 minutes from now:
-  const recentInWindow = sorted.filter((ts) => nowMs - ts < windowMs);
-
-  if (recentInWindow.length >= RATE_LIMIT_RULES.maxRequestsInWindow) {
-    return {
-      allowed: false,
-      remainingAttempts: 0,
-      waitSeconds: RATE_LIMIT_RULES.cooldownSeconds,
-      reason: 'Spam koruması: Kısa süre içinde 2 defa kod istendi. 5 dakika boyunca yeni kod gönderilemez.'
-    };
-  }
-
-  if (recentInWindow.length === 1) {
-    return {
-      allowed: true,
-      remainingAttempts: 0,
-      waitSeconds: RATE_LIMIT_RULES.cooldownSeconds,
-      willTriggerCooldown: true
-    };
-  }
-
-  return {
-    allowed: true,
-    remainingAttempts: 1,
-    waitSeconds: 0,
-    willTriggerCooldown: false
-  };
+/**
+ * Builds the argument for supabase.auth.signInWithOtp(). The CAPTCHA token is
+ * included only when one was issued, so the call is unchanged while CAPTCHA
+ * protection is disabled.
+ *
+ * @param {string} email
+ * @param {{ redirectTo?: string, captchaToken?: string, shouldCreateUser?: boolean }} [options]
+ */
+export function buildEmailOtpRequest(email, { redirectTo, captchaToken, shouldCreateUser = true } = {}) {
+  const options = { shouldCreateUser };
+  if (redirectTo) options.emailRedirectTo = redirectTo;
+  if (captchaToken) options.captchaToken = captchaToken;
+  return { email, options };
 }
 
 /**
@@ -488,55 +455,28 @@ export function formatCountdown(totalSeconds) {
   return `${seconds}s`;
 }
 
-const RATE_LIMIT_STORAGE_PREFIX = 'oh_rate_limit_';
+const LEGACY_RATE_LIMIT_STORAGE_PREFIX = 'oh_rate_limit_';
 
-export function getClientRateLimit(email) {
-  if (typeof window === 'undefined' || !window.localStorage || !email) return null;
+/**
+ * Removes the email-keyed records that earlier versions kept in localStorage
+ * for a client-side OTP limiter. Returns the number of records removed.
+ *
+ * @param {Storage} [storage] defaults to window.localStorage
+ * @returns {number}
+ */
+export function clearLegacyRateLimitRecords(storage) {
   try {
-    const raw = localStorage.getItem(`${RATE_LIMIT_STORAGE_PREFIX}${email.toLowerCase().trim()}`);
-    if (!raw) return null;
-    const data = JSON.parse(raw);
-    const now = Date.now();
-    if (data.blockedUntil && data.blockedUntil > now) {
-      const waitSeconds = Math.ceil((data.blockedUntil - now) / 1000);
-      return { isBlocked: true, waitSeconds, blockedUntil: data.blockedUntil, history: data.history || [] };
+    const target = storage ?? (typeof window !== 'undefined' ? window.localStorage : undefined);
+    if (!target) return 0;
+    const keys = [];
+    for (let i = 0; i < target.length; i++) {
+      const key = target.key(i);
+      if (key && key.startsWith(LEGACY_RATE_LIMIT_STORAGE_PREFIX)) keys.push(key);
     }
-    return { isBlocked: false, waitSeconds: 0, history: data.history || [] };
+    keys.forEach((key) => target.removeItem(key));
+    return keys.length;
   } catch {
-    return null;
-  }
-}
-
-export function recordClientRateLimit(email, waitSeconds = 0) {
-  if (typeof window === 'undefined' || !window.localStorage || !email) return;
-  try {
-    const key = `${RATE_LIMIT_STORAGE_PREFIX}${email.toLowerCase().trim()}`;
-    const now = Date.now();
-    const existing = getClientRateLimit(email);
-    const history = (existing?.history || []).filter((ts) => now - ts < 3600000);
-    history.push(now);
-
-    const blockedUntil = waitSeconds > 0 ? now + waitSeconds * 1000 : null;
-    localStorage.setItem(
-      key,
-      JSON.stringify({
-        history,
-        blockedUntil,
-        lastAttemptAt: now
-      })
-    );
-  } catch {
-    // Ignore storage quota errors
-  }
-}
-
-export function clearClientRateLimit(email) {
-  if (typeof window === 'undefined' || !window.localStorage || !email) return;
-  try {
-    const key = `${RATE_LIMIT_STORAGE_PREFIX}${email.toLowerCase().trim()}`;
-    localStorage.removeItem(key);
-  } catch {
-    // Ignore storage errors
+    return 0;
   }
 }
 
@@ -592,7 +532,7 @@ if (typeof window !== 'undefined') {
   window.OfficeHoursCommon = {
     ALLOWED_EMAIL_DOMAINS,
     DEFAULT_SETTINGS,
-    RATE_LIMIT_RULES,
+    OTP_RESEND_INTERVAL_SECONDS,
     escapeHtml,
     parseAndValidateEmail,
     timeStringToMinutes,
@@ -605,11 +545,11 @@ if (typeof window !== 'undefined') {
     generateDateCandidateSlots,
     annotateSlotsWithAvailability,
     evaluateStudentBookingEligibility,
-    evaluateEmailRateLimit,
+    getAuthRateLimitWaitSeconds,
+    isCaptchaError,
+    buildEmailOtpRequest,
     formatCountdown,
-    getClientRateLimit,
-    recordClientRateLimit,
-    clearClientRateLimit,
+    clearLegacyRateLimitRecords,
     filterSlotsByMeetingType,
     formatMeetingTypeLabel,
     getMeetingTypeBadge

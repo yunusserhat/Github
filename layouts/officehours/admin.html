@@ -1,10 +1,12 @@
 {{ define "main" }}
 <link rel="stylesheet" href="{{ "css/officehours.css" | relURL }}">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Pinned supabase-js release; update the version and integrity hash together. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js" integrity="sha384-Rj26LVGvoeRVR6+mwQmFfcR3QOBEwT+ZmuCWpuiqeTzJpCs0ER4ITAWGb4Hiy3Ok" crossorigin="anonymous"></script>
 <script>
   window.__OFFICEHOURS_CONFIG__ = {
     supabaseUrl: '{{ getenv "SUPABASE_URL" }}' || window.OFFICEHOURS_SUPABASE_URL || '',
-    supabaseAnonKey: '{{ getenv "SUPABASE_ANON_KEY" }}' || window.OFFICEHOURS_SUPABASE_ANON_KEY || ''
+    supabaseAnonKey: '{{ getenv "SUPABASE_ANON_KEY" }}' || window.OFFICEHOURS_SUPABASE_ANON_KEY || '',
+    captchaSiteKey: '{{ getenv "OFFICEHOURS_TURNSTILE_SITE_KEY" }}'
   };
 </script>
 
@@ -80,6 +82,8 @@
               </button>
             </div>
           </form>
+          <!-- Security check; rendered only when a Turnstile site key is configured. -->
+          <div id="oh-admin-captcha" class="oh-captcha d-none mt-3"></div>
 
           <!-- OTP step -->
           <form id="oh-admin-form-otp" class="d-none mt-3" novalidate>

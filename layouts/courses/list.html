@@ -16,19 +16,19 @@
 
     <!-- Toolbar: Faculty Filters & Live Search -->
     <div class="courses-toolbar-container">
-      <div class="courses-filter-tabs" role="tablist" aria-label="Birim Filtreleme">
-        <button type="button" class="course-filter-btn active" data-filter="all" id="filter-all">
-          <span class="btn-emoji">🌟</span>
+      <div class="courses-filter-tabs" role="group" aria-label="Birim Filtreleme">
+        <button type="button" class="course-filter-btn active" data-filter="all" id="filter-all" aria-pressed="true">
+          <span class="btn-emoji" aria-hidden="true">🌟</span>
           <span class="btn-label">Tümü</span>
           <span class="filter-count" id="count-all">4</span>
         </button>
-        <button type="button" class="course-filter-btn" data-filter="sbmyo" id="filter-sbmyo">
-          <span class="btn-emoji">🏢</span>
+        <button type="button" class="course-filter-btn" data-filter="sbmyo" id="filter-sbmyo" aria-pressed="false">
+          <span class="btn-emoji" aria-hidden="true">🏢</span>
           <span class="btn-label">SBMYO - Sosyal Bilimler MYO</span>
           <span class="filter-count" id="count-sbmyo">2</span>
         </button>
-        <button type="button" class="course-filter-btn" data-filter="ubf" id="filter-ubf">
-          <span class="btn-emoji">🎓</span>
+        <button type="button" class="course-filter-btn" data-filter="ubf" id="filter-ubf" aria-pressed="false">
+          <span class="btn-emoji" aria-hidden="true">🎓</span>
           <span class="btn-label">UBF - Uygulamalı Bilimler Fakültesi</span>
           <span class="filter-count" id="count-ubf">2</span>
         </button>
@@ -43,11 +43,13 @@
             class="course-search-field" 
             placeholder="Ders kodu (YZM2005, BSP, ILT...) veya ders adı yazın..." 
             aria-label="Ders Arama"
+            aria-controls="active-courses-grid"
+            aria-describedby="courses-counter-display"
             autocomplete="off"
             spellcheck="false"
           >
           <button type="button" id="clear-search-btn" class="clear-btn" aria-label="Aramayı Temizle" style="display: none;">
-            <i class="fas fa-times"></i>
+            <i class="fas fa-times" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -55,7 +57,7 @@
 
     <!-- Status & Results Counter -->
     <div class="courses-status-row">
-      <div class="courses-counter" id="courses-counter-display">
+      <div class="courses-counter" id="courses-counter-display" role="status" aria-live="polite" aria-atomic="true">
         <span class="counter-number">4</span> aktif ders listeleniyor
       </div>
       <div class="courses-faculty-legend">
@@ -66,11 +68,11 @@
 
     <!-- Empty State -->
     <div id="no-courses-found" class="courses-empty-alert" style="display: none;">
-      <div class="empty-icon-box">🔍</div>
+      <div class="empty-icon-box" aria-hidden="true">🔍</div>
       <h3 class="empty-title">Aradığınız kriterlere uygun ders bulunamadı</h3>
       <p class="empty-desc">Farklı bir ders kodu veya anahtar kelime deneyebilir ya da filtreleri temizleyebilirsiniz.</p>
       <button type="button" id="reset-courses-btn" class="btn-reset-filters">
-        <i class="fas fa-sync-alt mr-1"></i> Tüm Dersleri Göster
+        <i class="fas fa-sync-alt mr-1" aria-hidden="true"></i> Tüm Dersleri Göster
       </button>
     </div>
 
@@ -159,11 +161,11 @@
           <div class="course-card-footer">
             <a href="{{ .RelPermalink }}" class="btn-action-primary">
               <span class="btn-text">📖 Ders İçeriği & Haftalık Konular</span>
-              <i class="fas fa-chevron-right"></i>
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
             </a>
             {{ with .Params.slides_url }}
             <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="btn-action-secondary" title="Ders Slaytlarını Yeni Sekmede Aç">
-              <i class="fas fa-external-link-alt"></i> Slaytlar
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Slaytlar
             </a>
             {{ end }}
           </div>
@@ -178,7 +180,7 @@
       <div class="archived-section-header">
         <div class="archived-header-text">
           <h2 class="archived-heading">
-            <span class="archived-icon">🏛️</span> Arşiv / Geçmiş Dönem Dersleri
+            <span class="archived-icon" aria-hidden="true">🏛️</span> Arşiv / Geçmiş Dönem Dersleri
           </h2>
           <p class="archived-subheading">
             Önceki akademik yıllarda verilmiş ve referans amacıyla erişime açık tutulan dersler.
@@ -212,7 +214,7 @@
             <div class="archived-card-bottom">
               <a href="{{ .RelPermalink }}" class="archived-link-btn">
                 <span>Ders İzlencesi ve Bölümleri</span>
-                <i class="fas fa-arrow-right"></i>
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
               </a>
             </div>
           </div>
@@ -344,8 +346,11 @@
     // Filter button clicks
     filterButtons.forEach(btn => {
       btn.addEventListener('click', function() {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
+        filterButtons.forEach(b => {
+          const selected = b === this;
+          b.classList.toggle('active', selected);
+          b.setAttribute('aria-pressed', selected ? 'true' : 'false');
+        });
         activeFilter = this.getAttribute('data-filter') || 'all';
         applyFilters();
       });
@@ -371,8 +376,10 @@
         filterButtons.forEach(b => {
           if (b.getAttribute('data-filter') === 'all') {
             b.classList.add('active');
+            b.setAttribute('aria-pressed', 'true');
           } else {
             b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
           }
         });
         applyFilters();

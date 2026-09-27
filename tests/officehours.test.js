@@ -13,7 +13,11 @@ import {
   generateDateCandidateSlots,
   annotateSlotsWithAvailability,
   evaluateStudentBookingEligibility,
-  evaluateEmailRateLimit,
+  OTP_RESEND_INTERVAL_SECONDS,
+  getAuthRateLimitWaitSeconds,
+  isCaptchaError,
+  buildEmailOtpRequest,
+  clearLegacyRateLimitRecords,
   formatCountdown,
   filterSlotsByMeetingType,
   formatMeetingTypeLabel,
@@ -368,65 +372,62 @@ test('Student Booking Limits: enforces rolling 7-day window limit', () => {
   assert.equal(check2.allowed, true);
 });
 
-test('Rate Limiting: 1st email request is immediately permitted', () => {
-  const result = evaluateEmailRateLimit([], 100000);
-  assert.equal(result.allowed, true);
-  assert.equal(result.remainingAttempts, 1);
-  assert.equal(result.waitSeconds, 0);
-  assert.equal(result.willTriggerCooldown, false);
+test('OTP limits: per-address wait comes from the Supabase Auth 429 message', () => {
+  const error = {
+    status: 429,
+    code: 'over_email_send_rate_limit',
+    message: 'For security purposes, you can only request this after 42 seconds.'
+  };
+  assert.equal(getAuthRateLimitWaitSeconds(error), 42);
 });
 
-test('Rate Limiting: 2nd email request within 2 minutes is permitted but flags 5-minute cooldown', () => {
-  const t1 = 100000;
-  const t2 = 100000 + 45 * 1000; // 45 seconds later (within 2-minute window)
-  const history = [t1];
-
-  const result = evaluateEmailRateLimit(history, t2);
-  assert.equal(result.allowed, true);
-  assert.equal(result.remainingAttempts, 0);
-  assert.equal(result.waitSeconds, 300);
-  assert.equal(result.willTriggerCooldown, true);
+test('OTP limits: project and IP limits without an interval use the fallback', () => {
+  assert.equal(
+    getAuthRateLimitWaitSeconds({ status: 429, code: 'over_email_send_rate_limit', message: 'Email rate limit exceeded' }),
+    OTP_RESEND_INTERVAL_SECONDS
+  );
+  assert.equal(getAuthRateLimitWaitSeconds({ code: 'over_request_rate_limit', message: 'Request rate limit reached' }, 90), 90);
 });
 
-test('Rate Limiting: 3rd email request within 2 minutes is BLOCKED with active cooldown', () => {
-  const t1 = 100000;
-  const t2 = 100000 + 30 * 1000; // 30s after t1
-  const t3 = 100000 + 60 * 1000; // 60s after t1 (30s after t2)
-  const history = [t1, t2];
-
-  const result = evaluateEmailRateLimit(history, t3);
-  assert.equal(result.allowed, false);
-  assert.equal(result.remainingAttempts, 0);
-  // Cooldown is 300s from t2 (130000 + 300000 = 430000). At t3 (160000), remaining is 270s.
-  assert.equal(result.waitSeconds, 270);
-  assert.match(result.reason, /Spam koruması/);
+test('OTP limits: non-rate-limit errors and success yield no wait', () => {
+  assert.equal(getAuthRateLimitWaitSeconds(null), null);
+  assert.equal(getAuthRateLimitWaitSeconds({ status: 400, code: 'captcha_failed', message: 'captcha protection: request disallowed' }), null);
+  assert.equal(getAuthRateLimitWaitSeconds({ status: 422, message: 'Signups not allowed for otp' }), null);
 });
 
-test('Rate Limiting: request after 5-minute cooldown period expires is permitted again', () => {
-  const t1 = 100000;
-  const t2 = 100000 + 30 * 1000; // 130000
-  const history = [t1, t2];
-
-  // Cooldown ends at 130000 + 300000 = 430000.
-  // Test at 431000 (after cooldown):
-  const tAfterCooldown = 431000;
-  const result = evaluateEmailRateLimit(history, tAfterCooldown);
-  assert.equal(result.allowed, true);
-  assert.equal(result.remainingAttempts, 1);
-  assert.equal(result.waitSeconds, 0);
+test('OTP limits: CAPTCHA rejections are recognised', () => {
+  assert.equal(isCaptchaError({ status: 400, code: 'captcha_failed', message: 'captcha protection: request disallowed (timeout-or-duplicate)' }), true);
+  assert.equal(isCaptchaError({ status: 429, code: 'over_email_send_rate_limit', message: 'Email rate limit exceeded' }), false);
+  assert.equal(isCaptchaError(undefined), false);
 });
 
-test('Rate Limiting: 2 requests spaced more than 2 minutes apart do NOT trigger cooldown', () => {
-  const t1 = 100000;
-  const history = [t1];
+test('OTP request: CAPTCHA token is sent only when one was issued', () => {
+  const without = buildEmailOtpRequest('150119001@marun.edu.tr', { redirectTo: 'https://www.yunusserhat.com/officehours/' });
+  assert.deepEqual(without, {
+    email: '150119001@marun.edu.tr',
+    options: { shouldCreateUser: true, emailRedirectTo: 'https://www.yunusserhat.com/officehours/' }
+  });
+  assert.equal('captchaToken' in without.options, false);
 
-  // 2.5 minutes later (150s later)
-  const t2 = 100000 + 150 * 1000;
-  const result = evaluateEmailRateLimit(history, t2);
-  assert.equal(result.allowed, true);
-  assert.equal(result.remainingAttempts, 1);
-  assert.equal(result.waitSeconds, 0);
-  assert.equal(result.willTriggerCooldown, false);
+  const withToken = buildEmailOtpRequest('150119001@marun.edu.tr', { captchaToken: 'token-123' });
+  assert.equal(withToken.options.captchaToken, 'token-123');
+  assert.equal(buildEmailOtpRequest('a@marun.edu.tr', { captchaToken: '' }).options.captchaToken, undefined);
+});
+
+test('OTP storage: removes email-keyed records left by the retired client limiter', () => {
+  const entries = new Map([
+    ['oh_rate_limit_150119001@marun.edu.tr', '{"history":[1]}'],
+    ['oh_rate_limit_other@marmara.edu.tr', '{}'],
+    ['sb-project-auth-token', 'keep']
+  ]);
+  const storage = {
+    get length() { return entries.size; },
+    key: (i) => [...entries.keys()][i] ?? null,
+    removeItem: (key) => entries.delete(key)
+  };
+  assert.equal(clearLegacyRateLimitRecords(storage), 2);
+  assert.deepEqual([...entries.keys()], ['sb-project-auth-token']);
+  assert.equal(clearLegacyRateLimitRecords({ get length() { throw new Error('blocked'); } }), 0);
 });
 
 test('Countdown Formatting: correctly formats MM:SS and seconds', () => {

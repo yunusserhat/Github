@@ -150,7 +150,7 @@ Bilgi teknolojileri projelerinin değerlendirilmesi için temel sermaye bütçel
 • Yatırımın iç geri dönüş oranı
 Sermaye bütçeleme metotları işletme içine veya dışına doğru nakit akışlarının ölçülmesine dayanır. Sermaye projeleri işletme içine veya dışına doğru nakit akışları oluşturur. Bilgi sistemleri projeleri için yatırım harcamaları, donanım, yazılım ve iş gücü için işletme dışına doğru bir nakit akışını gerektirir. Devam eden yıllarda, yatırımın geri dönüşünden gelen iç nakit akışı tarafından dengelenebilecek olan ilave nakit çıkışları da olabilir. İç nakit akışı; satışların arttırılması (daha kaliteli, daha güzel ürünlerin oluşturulması, pazar payı arttırılması) ile veya maliyetlerin düşürülmesi ile elde edilir. İç nakit akışı ile dış nakit akışı arasındaki fark, yatırımın finansal değerinin hesaplanmasında kullanılır. Nakit akışları belirlendikten sonra bir kaç alternatif metot ile farklı projeler arasında karşılaştırma yapmak mümkün olur.
 
-# PROJE RİSK YÖNETİMİ
+# PROJE RİSK YÖNETİMİ
 ##Proje Riskleri Boyutu
 
 Sistemler; boyutları, karmaşıklık düzeyleri, organizasyonel ve teknik bileşenleri bakımından önemli ölçüde farklıdır. Bazı sistem geliştirme projeleri diğer sistemlerden daha fazla risk taşıdığından gecikmeleri ve problem yaratmaları olasıdır. Proje risk düzeyi, projenin boyutundan, proje yapısından, proje takımından ve bilgi sistemleri görevlilerinin teknik uzmanlık seviyelerinden etkilenir.
@@ -231,7 +231,6 @@ Sistem analizlerinin ve tasarım faaliyetlerinin, organizasyonel analizleri de i
 Proje yönetiminin birçok yönünü otomatikleştiren ticari yazılım araçları proje yönetim sürecini kolaylaştırmaktadır. Proje yönetim yazılımları genellikle görevlerin başlangıç ve bitiş zamanlarını belirleme, görevler için kaynakları tahsis etme, görevleri tanımlama ve görevlerin sıralamasını yapma, süreçleri izleme, görevleri ve faaliyetleri değiştirme gibi kolaylıklar sunar. Birçok yazılım GANTT ve PERT şemalarını otomatikleştirmiştir.
 Bu araçlardan bazıları, dağınık çalışma grupları ve kurumsal fonksiyonları, çok büyük projeleri yönetmek için büyük ve karmaşık programlardır. Bu üst düzey araçlar, karmaşık ilişkileri, çok sayıda görev ve faaliyetleri yönetebilir.
 Microsoft Project, günümüzde proje yönetiminde yaygın olarak kullanılmaya başlanmıştır. Bu yazılım, PC tabanlı olup kritik yol analizi, kaynak tahsisi, proje izleme ve durum raporu oluşturma, GANTT ve PERT şemaları oluşturma yeteneğine sahiptir. Yazılımın Proje Rehberi yol göstericisi, kullanıcılarına proje tanımlama, görev listeleme, zaman sınırı oluşturma, çalışanları ve maliyetleri belirleme gibi konularda yardım eder. Microsoft Project Yazılımı şimdi farklı konumlardaki büyük kurumsal projeleri yönetmeye yardım eden bir sunucu bileşenine sahip Kurumsal Proje Yönetim Çözümleri sürümünü çıkarmıştır.
-
 
 
 

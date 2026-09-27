@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-{{- $language_code := site.LanguageCode | default "en-us" -}}
-<html lang="{{$language_code}}" {{ if in site.Data.i18n.rtl.rtl $language_code }}dir="rtl"{{end}}>
+{{- $language_code := site.Language.Locale | default "en-US" -}}
+{{- if eq .Section "courses" -}}
+  {{- $language_code = "tr" -}}
+{{- end -}}
+<html lang="{{$language_code}}" {{ if in hugo.Data.i18n.rtl.rtl $language_code }}dir="rtl"{{end}}>
 
 {{ partial "site_head" . }}
 
 {{ $show_navbar := site.Params.main_menu.enable | default true }}
 {{- $highlight_active_link := site.Params.main_menu.highlight_active_link | default true -}}
 <body id="top" data-spy="scroll" {{ if $show_navbar }}data-offset="70"{{end}} data-target="{{ if or .IsHome (eq .Type "widget_page") | and $highlight_active_link }}#navbar-main{{else}}#TableOfContents{{end}}" class="page-wrapper {{with .Params.design.css_class}}{{.}}{{end}} {{ if not (.Scratch.Get "light") }}dark{{end}} {{ if not $show_navbar }}no-navbar{{end}}" {{with .File}}data-wc-page-id="{{.UniqueID}}"{{end}} {{with .Params.design.css_style}}style="{{. | safeCSS}}"{{end}}>
+  <a class="sr-only sr-only-focusable skip-link" href="#main-content">{{ if eq .Section "courses" }}Ana içeriğe geç{{ else }}Skip to main content{{ end }}</a>
 
   {{/* Initialise Wowchemy. */}}
-  {{ $js_license := printf "/*! Wowchemy v%s | https://wowchemy.com/ */\n" site.Data.wowchemy.version }}
+  {{ $js_license := printf "/*! Wowchemy v%s | https://wowchemy.com/ */\n" hugo.Data.wowchemy.version }}
   {{ $js_license := $js_license | printf "%s/*! Copyright 2016-present George Cushen (https://georgecushen.com/) */\n" }}
   {{ $js_license := $js_license | printf "%s/*! License: https://github.com/wowchemy/wowchemy-hugo-modules/blob/main/LICENSE.md */\n" }}
   {{ $js_bundle_head := $js_license | resources.FromString "js/bundle-head.js" }}
@@ -34,9 +38,10 @@
     {{ partial "navbar" . }}
   </div>
 
-  <div class="page-body">
+  {{ $has_nested_main := eq .Type "book" }}
+  {{ if $has_nested_main }}<div{{ else }}<main{{ end }} id="main-content" class="page-body" tabindex="-1">
     {{ block "main" . }}{{ end }}
-  </div>
+  {{ if $has_nested_main }}</div>{{ else }}</main>{{ end }}
 
   <div class="page-footer">
     {{/* Docs and Updates layouts include the site footer in a different location. */}}

@@ -4,7 +4,8 @@
   "description": "Student Office Hours booking system logic and tests for yunusserhat.com",
   "type": "module",
   "scripts": {
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "test:db": "bash scripts/test-db.sh"
   },
   "author": "Yunus Serhat Bıçakçı",
   "license": "MIT",

@@ -4,7 +4,7 @@
   functions = "netlify/functions"
 
 [build.environment]
-  HUGO_VERSION = "0.87.0"
+  HUGO_VERSION = "0.166.0"
   HUGO_ENABLEGITINFO = "true"
   NODE_VERSION = "22"
 

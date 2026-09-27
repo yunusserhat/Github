@@ -24,14 +24,11 @@ email: yunusserhat@yunusserhat.com
 phone: 
 address:
   street: 
-  city: 
-  region: London
+  city: Istanbul
+  region:
   postcode: 
-  country: United Kingdom
-  country_code: UK
-coordinates:
-  latitude: '51.5249'
-  longitude: '-0.1294'
+  country: Türkiye
+  country_code: TR
 directions: 
 office_hours:
   - 'virtual'
@@ -56,7 +53,7 @@ main_menu:
 
 date_format: 'Jan 2, 2006'
 time_format: '3:04 PM'
-address_format: en-us
+address_format: en-ca
 
 # Site features
 

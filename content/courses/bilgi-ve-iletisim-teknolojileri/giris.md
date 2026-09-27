@@ -11,9 +11,7 @@ weight: 20
 
 ## Temel Kavramlar
 
-Bu oukğudunuz clmüe alsnıda alnmaısz dieğl.
-Oukamya dveam eçtikte dhaa kaoly.
-
+Bu okuduğunuz cümle aslında anlamsız değil. Okumaya devam ettikçe okumak daha kolaylaşır.
 
 
 

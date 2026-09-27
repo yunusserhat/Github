@@ -7,7 +7,7 @@ authors:
   - Joseph Shingleton
   - Yu Wang
   - Anahid Basiri
-doi: "https://doi.org/10.5281/zenodo.19390648"
+doi: "10.5281/zenodo.19390648"
 publication: "1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026)"
 publication_short: "GeoAI 2026"
 abstract: "Investigating the physical and functional character of urban streetscapes requires fine-grained, scalable analysis of visual information. This study deploys Vision-Language Models (VLMs) over a comprehensive street-level image repository across the historical district of Fatih, Istanbul. We present a methodology for extracting multi-attribute urban semantics, evaluating visual decay, and mapping environmental vibrancy, contributing foundational datasets for urban planning and GeoAI applications."

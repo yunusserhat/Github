@@ -13,7 +13,9 @@
   Referrer-Policy: strict-origin-when-cross-origin
   {{with $csp_policy}}Content-Security-Policy{{if $csp_report_only}}-Report-Only{{end}}: {{replaceRE "(\\s\\s+)" " " (trim . " ")}}{{end}}
   {{with $permissions_policy}}Permissions-Policy: {{replaceRE "(\\s\\s+)" " " (trim . " ")}}{{end}}
-/index.webmanifest
+/manifest.webmanifest
   Content-Type: application/manifest+json
+/officehours/admin/*
+  X-Robots-Tag: noindex
 /index.xml
   Content-Type: application/rss+xml

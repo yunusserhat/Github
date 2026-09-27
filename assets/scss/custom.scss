@@ -130,7 +130,6 @@ body.dark {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  outline: none;
   white-space: nowrap;
 }
 
@@ -164,6 +163,25 @@ body.dark .course-filter-btn.active {
 .course-filter-btn.active .filter-count {
   background: rgba(255, 255, 255, 0.25);
   color: #ffffff;
+}
+
+.course-filter-btn:focus-visible,
+.course-search-field:focus-visible,
+.clear-btn:focus-visible,
+.btn-reset-filters:focus-visible,
+.course-card a:focus-visible,
+.archived-single-card a:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+body.dark .course-filter-btn:focus-visible,
+body.dark .course-search-field:focus-visible,
+body.dark .clear-btn:focus-visible,
+body.dark .btn-reset-filters:focus-visible,
+body.dark .course-card a:focus-visible,
+body.dark .archived-single-card a:focus-visible {
+  outline-color: #93c5fd;
 }
 
 /* Search Box */
@@ -274,15 +292,22 @@ body.dark .course-filter-btn.active {
 /* 3. Courses Grid */
 .courses-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   margin-bottom: 3.5rem;
+}
+
+@media (min-width: 576px) {
+  .courses-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
 }
 
 /* Course Card */
 .course-card {
   display: flex;
   flex-direction: column;
+  min-width: 0;
   background: var(--course-card-bg);
   border: 1px solid var(--course-card-border);
   border-radius: 1.1rem;
@@ -312,12 +337,15 @@ body.dark .course-filter-btn.active {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
 .header-badges {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
@@ -610,11 +638,18 @@ body.dark .course-multi-notice code {
 
 .archived-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: 1.25rem;
 }
 
+@media (min-width: 576px) {
+  .archived-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
 .archived-single-card {
+  min-width: 0;
   background: var(--course-card-bg);
   border: 1px solid var(--course-card-border);
   border-radius: 0.85rem;
@@ -701,4 +736,32 @@ body.dark .archived-status-pill {
 
 .archived-link-btn:hover {
   gap: 0.55rem;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2000;
+  padding: 0.65rem 1rem;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: #1e40af;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+
+body.dark .skip-link:focus {
+  background: #1e293b;
+  color: #bfdbfe;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .courses-portal-wrapper *,
+  .courses-portal-wrapper *::before,
+  .courses-portal-wrapper *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

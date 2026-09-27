@@ -11,9 +11,14 @@ import {
   getIstanbulDateString,
   generateDateCandidateSlots,
   annotateSlotsWithAvailability,
-  evaluateStudentBookingEligibility,
-  escapeHtml
+  OTP_RESEND_INTERVAL_SECONDS,
+  getAuthRateLimitWaitSeconds,
+  isCaptchaError,
+  buildEmailOtpRequest,
+  formatCountdown,
+  clearLegacyRateLimitRecords
 } from './officehours-common.js';
+import { createCaptchaGate } from './officehours-captcha.js';
 
 (function () {
   'use strict';
@@ -41,6 +46,9 @@ import {
   let cachedBookedSlots = [];
   let cachedMyAppointments = [];
   let activeMeetingTypeFilter = 'all';
+  let modalFocusOrigin = null;
+  let bookingPending = false;
+  let captcha = createCaptchaGate();
 
   // DOM Elements
   const elConfigWarning = document.getElementById('oh-config-warning');
@@ -55,6 +63,7 @@ import {
   const elEmailError = document.getElementById('oh-email-error');
   const elBtnSubmitEmail = document.getElementById('oh-btn-submit-email');
 
+  const elCaptcha = document.getElementById('oh-captcha');
   const elOtpPanel = document.getElementById('oh-otp-panel');
   const elFormOtp = document.getElementById('oh-form-otp');
   const elInputOtp = document.getElementById('oh-input-otp');
@@ -138,10 +147,7 @@ import {
     elBtnResendOtp.disabled = true;
 
     const updateLabel = () => {
-      const formatted = window.OfficeHoursCommon?.formatCountdown
-        ? window.OfficeHoursCommon.formatCountdown(remaining)
-        : `${remaining}s`;
-      elBtnResendOtp.textContent = `Yeniden gönder (${formatted})`;
+      elBtnResendOtp.textContent = `Yeniden gönder (${formatCountdown(remaining)})`;
     };
 
     updateLabel();
@@ -157,6 +163,45 @@ import {
         updateLabel();
       }
     }, 1000);
+  }
+
+  const CAPTCHA_PENDING = 'captcha_pending';
+
+  // Supabase Auth enforces sending limits and, when enabled, CAPTCHA. These
+  // helpers only translate its responses into messages and a resend countdown.
+  async function requestOtp(email) {
+    if (captcha.enabled && !captcha.getToken()) {
+      return {
+        error: {
+          code: CAPTCHA_PENDING,
+          message: 'Please complete the security check below, then try again.'
+        }
+      };
+    }
+
+    const request = buildEmailOtpRequest(email, {
+      redirectTo: window.location.origin + window.location.pathname,
+      captchaToken: captcha.getToken()
+    });
+    try {
+      return await supabase.auth.signInWithOtp(request);
+    } finally {
+      captcha.reset();
+    }
+  }
+
+  function describeOtpError(error) {
+    const waitSeconds = getAuthRateLimitWaitSeconds(error);
+    if (waitSeconds !== null) {
+      return {
+        waitSeconds,
+        message: `Too many code requests. Please wait ${formatCountdown(waitSeconds)} before requesting another code.`
+      };
+    }
+    if (error.code !== CAPTCHA_PENDING && isCaptchaError(error)) {
+      return { waitSeconds: 0, message: 'The security check failed or expired. Please complete it again and retry.' };
+    }
+    return { waitSeconds: 0, message: error.message || 'Failed to send the verification code.' };
   }
 
   // Initialization
@@ -180,17 +225,18 @@ import {
       auth: {
         persistSession: true,
         autoRefreshToken: true,
-        detectSessionInUrl: true,
-        lock: async (name, acquireTimeout, fn) => {
-          return await fn();
-        }
+        detectSessionInUrl: true
       }
     });
+
+    clearLegacyRateLimitRecords();
+    captcha = createCaptchaGate({ siteKey: config.captchaSiteKey, container: elCaptcha });
 
     bindEvents();
 
     // Check existing session
-    const { data: { session } } = await supabase.auth.getSession();
+    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    if (sessionError) showAlert(sessionError.message || 'Unable to load your session.', 'danger');
     if (session && session.user) {
       handleSession(session.user);
     } else {
@@ -203,7 +249,8 @@ import {
         if (window.location.hash && (window.location.hash.includes('access_token') || window.location.hash.includes('error'))) {
           window.history.replaceState(null, '', window.location.pathname);
         }
-        handleSession(session.user);
+        // Supabase API calls inside an auth callback can deadlock its session lock.
+        setTimeout(() => { void handleSession(session.user); }, 0);
       } else if (event === 'SIGNED_OUT') {
         currentUser = null;
         showAuthSection();
@@ -232,54 +279,22 @@ import {
         }
 
         currentEmailForOtp = validation.email;
-
-        // We always query Supabase server RPC as the single authoritative source of truth,
-        // preventing client-side localStorage de-synchronization issues.
         setButtonLoading(elBtnSubmitEmail, true);
 
         try {
-          // Check & record rate limit on server side
-          const { data: rlData, error: rlErr } = await supabase.rpc('check_and_record_otp_rate_limit', {
-            p_email: currentEmailForOtp
-          });
+          const { error } = await requestOtp(currentEmailForOtp);
 
-          if (!rlErr && rlData && rlData.allowed === false) {
-            const waitSec = rlData.wait_seconds || 300;
-            if (window.OfficeHoursCommon?.recordClientRateLimit) {
-              window.OfficeHoursCommon.recordClientRateLimit(currentEmailForOtp, waitSec);
-            }
-            showAlert(rlData.reason || `Spam koruması: Lütfen ${waitSec} saniye bekleyin.`, 'warning');
+          if (error) {
+            const { message, waitSeconds } = describeOtpError(error);
+            showAlert(message, waitSeconds || error.code === CAPTCHA_PENDING ? 'warning' : 'danger');
             return;
           }
 
-          // If allowed, clear any stale client-side rate limit lock
-          if (window.OfficeHoursCommon?.clearClientRateLimit) {
-            window.OfficeHoursCommon.clearClientRateLimit(currentEmailForOtp);
-          }
-
-          const redirectUrl = window.location.origin + window.location.pathname;
-          const { error } = await supabase.auth.signInWithOtp({
-            email: currentEmailForOtp,
-            options: {
-              shouldCreateUser: true,
-              emailRedirectTo: redirectUrl
-            }
-          });
-
-          if (error) {
-            showAlert(error.message || 'Failed to dispatch verification code.', 'danger');
-          } else {
-            const waitSec = rlData?.wait_seconds || 0;
-            if (window.OfficeHoursCommon?.recordClientRateLimit) {
-              window.OfficeHoursCommon.recordClientRateLimit(currentEmailForOtp, waitSec);
-            }
-            elEmailPanel.classList.add('d-none');
-            elOtpRecipient.textContent = currentEmailForOtp;
-            elOtpPanel.classList.remove('d-none');
-            elInputOtp.focus();
-
-            startResendCooldown(waitSec > 0 ? waitSec : 60);
-          }
+          elEmailPanel.classList.add('d-none');
+          elOtpRecipient.textContent = currentEmailForOtp;
+          elOtpPanel.classList.remove('d-none');
+          elInputOtp.focus();
+          startResendCooldown(OTP_RESEND_INTERVAL_SECONDS);
         } catch (err) {
           showAlert(err.message || 'An unexpected error occurred.', 'danger');
         } finally {
@@ -335,7 +350,7 @@ import {
       });
     }
 
-    // Resend OTP button with Rate Limiting & Cooldown Protection
+    // Resend OTP button; Supabase Auth decides whether another email may be sent.
     if (elBtnResendOtp) {
       elBtnResendOtp.addEventListener('click', async () => {
         if (!currentEmailForOtp) return;
@@ -344,44 +359,18 @@ import {
         elBtnResendOtp.disabled = true;
 
         try {
-          const { data: rlData, error: rlErr } = await supabase.rpc('check_and_record_otp_rate_limit', {
-            p_email: currentEmailForOtp
-          });
+          const { error } = await requestOtp(currentEmailForOtp);
 
-          if (!rlErr && rlData && rlData.allowed === false) {
-            const waitSec = rlData.wait_seconds || 300;
-            if (window.OfficeHoursCommon?.recordClientRateLimit) {
-              window.OfficeHoursCommon.recordClientRateLimit(currentEmailForOtp, waitSec);
-            }
-            showAlert(rlData.reason || `Spam koruması: Lütfen ${waitSec} saniye bekleyin.`, 'warning');
-            startResendCooldown(waitSec);
-            return;
-          }
-
-          // If allowed, clear any stale client-side rate limit lock
-          if (window.OfficeHoursCommon?.clearClientRateLimit) {
-            window.OfficeHoursCommon.clearClientRateLimit(currentEmailForOtp);
-          }
-
-          const redirectUrl = window.location.origin + window.location.pathname;
-          const { error } = await supabase.auth.signInWithOtp({
-            email: currentEmailForOtp,
-            options: {
-              shouldCreateUser: true,
-              emailRedirectTo: redirectUrl
-            }
-          });
-
-          if (error) {
-            showAlert(error.message, 'danger');
-            startResendCooldown(30);
-          } else {
-            const waitSec = rlData?.wait_seconds || 0;
-            if (window.OfficeHoursCommon?.recordClientRateLimit) {
-              window.OfficeHoursCommon.recordClientRateLimit(currentEmailForOtp, waitSec);
-            }
+          if (!error) {
             showAlert(`Yeni doğrulama kodu gönderildi: ${currentEmailForOtp}`, 'success');
-            startResendCooldown(waitSec > 0 ? waitSec : 60);
+            startResendCooldown(OTP_RESEND_INTERVAL_SECONDS);
+          } else if (error.code === CAPTCHA_PENDING) {
+            showAlert(error.message, 'warning');
+            elBtnResendOtp.disabled = false;
+          } else {
+            const { message, waitSeconds } = describeOtpError(error);
+            showAlert(message, waitSeconds ? 'warning' : 'danger');
+            startResendCooldown(waitSeconds || 30);
           }
         } catch (err) {
           showAlert(err.message || 'Hata oluştu.', 'danger');
@@ -398,15 +387,17 @@ import {
     }
 
     // Modal close buttons
-    if (elBtnCloseModal) elBtnCloseModal.addEventListener('click', closeModal);
-    if (elBtnModalCancel) elBtnModalCancel.addEventListener('click', closeModal);
+    if (elBtnCloseModal) elBtnCloseModal.addEventListener('click', () => closeModal());
+    if (elBtnModalCancel) elBtnModalCancel.addEventListener('click', () => closeModal());
+    if (elModal) elModal.addEventListener('keydown', handleModalKeydown);
 
     // Confirm booking form
     if (elFormConfirm) {
       elFormConfirm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        if (!selectedCandidateSlot) return;
+        if (!selectedCandidateSlot || bookingPending) return;
 
+        const bookedSlot = selectedCandidateSlot;
         const topic = elInputTopic.value.trim();
         const note = elInputNote.value.trim();
 
@@ -416,17 +407,20 @@ import {
           return;
         }
 
-        const chosenType = selectedCandidateSlot.meetingType === 'both'
+        const chosenType = bookedSlot.meetingType === 'both'
           ? (elFormConfirm.querySelector('input[name="oh-modal-choice-type"]:checked')?.value || 'office')
-          : (selectedCandidateSlot.meetingType || 'office');
+          : (bookedSlot.meetingType || 'office');
 
+        bookingPending = true;
         setButtonLoading(elBtnModalConfirm, true);
+        elBtnCloseModal.disabled = true;
+        elBtnModalCancel.disabled = true;
         elModalError.classList.add('d-none');
 
         try {
           const { data, error } = await supabase.rpc('book_officehours_appointment', {
-            p_slot_start: selectedCandidateSlot.slotStartIso,
-            p_slot_end: selectedCandidateSlot.slotEndIso,
+            p_slot_start: bookedSlot.slotStartIso,
+            p_slot_end: bookedSlot.slotEndIso,
             p_topic: topic,
             p_note: note,
             p_meeting_type: chosenType
@@ -436,15 +430,19 @@ import {
             elModalError.textContent = error.message || 'Unable to complete reservation.';
             elModalError.classList.remove('d-none');
           } else {
-            closeModal();
-            showConfirmation(selectedCandidateSlot, topic, data);
+            bookingPending = false;
+            closeModal({ restoreFocus: false });
+            showConfirmation(bookedSlot, topic, data);
             await loadStudentData();
           }
         } catch (err) {
           elModalError.textContent = err.message || 'An unexpected error occurred.';
           elModalError.classList.remove('d-none');
         } finally {
+          bookingPending = false;
           setButtonLoading(elBtnModalConfirm, false);
+          elBtnCloseModal.disabled = false;
+          elBtnModalCancel.disabled = false;
         }
       });
     }
@@ -533,10 +531,11 @@ import {
 
     try {
       // 1. Fetch student's own appointments
-      const { data: myAppointments } = await supabase
+      const { data: myAppointments, error: appointmentsError } = await supabase
         .from('officehours_appointments')
         .select('*')
         .order('slot_start', { ascending: true });
+      if (appointmentsError) throw appointmentsError;
 
       const now = new Date();
       activeStudentAppointment = (myAppointments || []).find(
@@ -581,11 +580,14 @@ import {
       // 2. Fetch system settings, rules, exceptions, overrides, and booked slots
       const [settingsRes, rulesRes, exceptionsRes, overridesRes, bookedRes] = await Promise.all([
         supabase.from('officehours_settings').select('*').single(),
-        supabase.from('officehours_availability_rules').select('*').eq('is_active', true),
-        supabase.from('officehours_availability_exceptions').select('*').eq('is_blocked', true),
-        supabase.from('officehours_date_overrides').select('*').eq('is_active', true),
+        supabase.from('officehours_public_availability_rules').select('*').eq('is_active', true),
+        supabase.from('officehours_public_availability_exceptions').select('*').eq('is_blocked', true),
+        supabase.from('officehours_public_date_overrides').select('*').eq('is_active', true),
         supabase.from('officehours_booked_slots').select('slot_start, slot_end')
       ]);
+      for (const response of [settingsRes, rulesRes, exceptionsRes, overridesRes, bookedRes]) {
+        if (response.error) throw response.error;
+      }
 
       cachedSettings = settingsRes.data || {
         meeting_duration_minutes: 20,
@@ -717,6 +719,7 @@ import {
   }
 
   function openBookingModal(slot) {
+    modalFocusOrigin = document.activeElement;
     selectedCandidateSlot = slot;
     elModalSlotDisplay.textContent = `${formatIstanbulDateOnly(slot.slotStartIso)} • ${slot.startTimeStr}–${slot.endTimeStr}`;
     elInputTopic.value = '';
@@ -757,9 +760,34 @@ import {
     elInputTopic.focus();
   }
 
-  function closeModal() {
+  function handleModalKeydown(event) {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeModal();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+
+    const focusable = [...elModal.querySelectorAll('button:not([disabled]), input:not([disabled]), textarea:not([disabled])')]
+      .filter((element) => element.getClientRects().length > 0);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  function closeModal({ restoreFocus = true } = {}) {
+    if (bookingPending) return;
     elModal.classList.add('d-none');
     selectedCandidateSlot = null;
+    if (restoreFocus && modalFocusOrigin?.isConnected) modalFocusOrigin.focus();
+    modalFocusOrigin = null;
   }
 
   function showConfirmation(slot, topic, rpcResult = null) {
@@ -784,6 +812,7 @@ import {
 
     elConfirmationCard.classList.remove('d-none');
     elConfirmationCard.scrollIntoView({ behavior: 'smooth' });
+    elBtnConfirmDone.focus();
   }
 
   // Run on DOM ready

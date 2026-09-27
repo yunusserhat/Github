@@ -26,3 +26,6 @@ yarn-error.log*
 .claude/
 agent/
 skills-lock.json
+
+# Local modernization recovery notes
+.site-modernization-progress.md

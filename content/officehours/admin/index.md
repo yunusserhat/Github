@@ -7,4 +7,6 @@ layout: "admin"
 commentable: false
 editable: false
 share: false
+sitemap:
+  disable: true
 ---

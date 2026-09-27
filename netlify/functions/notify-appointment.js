@@ -1,3 +1,5 @@
+import { createHash, timingSafeEqual } from 'node:crypto';
+
 /**
  * Netlify Serverless Function: Office Hours Email Notifications
  * 
@@ -14,7 +16,7 @@ const RESEND_API_URL = 'https://api.resend.com/emails';
 // Configuration defaults (can be overridden via Netlify Environment Variables)
 const DEFAULT_ADMIN_EMAIL = 'yunus.serhat@marmara.edu.tr';
 const DEFAULT_FROM_EMAIL = 'Dr. Yunus Serhat Bıçakçı <ofis@yunusserhat.com>';
-const SITE_URL = 'https://yunusserhat.com';
+const SITE_URL = 'https://www.yunusserhat.com';
 
 /**
  * Format ISO datetime into Europe/Istanbul Turkish readable format.
@@ -247,6 +249,9 @@ function renderStudentBookingEmail(record) {
  */
 function renderCancellationEmail(record, isForAdmin) {
   const { dateFormatted, timeRange } = formatAppointmentTimes(record.slot_start, record.slot_end);
+  const adminMessage = record.status === 'cancelled_by_admin'
+    ? 'Randevu yönetici tarafından iptal edildi:'
+    : `Öğrenci <strong>${escapeHtml(record.student_email)}</strong> randevusunu iptal etti:`;
 
   return `
 <!DOCTYPE html>
@@ -262,7 +267,7 @@ function renderCancellationEmail(record, isForAdmin) {
     </tr>
     <tr>
       <td style="padding:32px;">
-        <p style="margin-top:0;font-size:15px;color:#334155;">${isForAdmin ? `Öğrenci <strong>${escapeHtml(record.student_email)}</strong> randevusunu iptal etti:` : 'Aşağıdaki ofis saati randevusu iptal edilmiştir:'}</p>
+        <p style="margin-top:0;font-size:15px;color:#334155;">${isForAdmin ? adminMessage : 'Aşağıdaki ofis saati randevusu iptal edilmiştir:'}</p>
         
         <table width="100%" cellpadding="0" cellspacing="0" style="background:#fff1f2;border:1px solid #fecdd3;border-radius:8px;margin:20px 0;">
           <tr>
@@ -291,12 +296,13 @@ function renderCancellationEmail(record, isForAdmin) {
 /**
  * Dispatch an email via Resend API
  */
-async function sendResendEmail({ apiKey, from, to, subject, html }) {
+async function sendResendEmail({ apiKey, from, to, subject, html, idempotencyKey }) {
   const response = await fetch(RESEND_API_URL, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Idempotency-Key': idempotencyKey
     },
     body: JSON.stringify({ from, to, subject, html })
   });
@@ -308,18 +314,32 @@ async function sendResendEmail({ apiKey, from, to, subject, html }) {
   return data;
 }
 
-/**
- * Main Handler
- * Works with Netlify Functions v1 and v2, and Supabase Database Webhook payloads.
- */
+function hasValidWebhookSecret(headers, expectedSecret) {
+  const suppliedSecret = Object.entries(headers || {})
+    .find(([name]) => name.toLowerCase() === 'x-officehours-webhook-secret')?.[1];
+  if (typeof suppliedSecret !== 'string' || !suppliedSecret) return false;
+
+  // Hash both values so timingSafeEqual always receives equal-length buffers.
+  const digest = (value) => createHash('sha256').update(value).digest();
+  return timingSafeEqual(digest(suppliedSecret), digest(expectedSecret));
+}
+
+/** Netlify Functions v1 handler for authenticated Supabase Database Webhooks. */
 export const handler = async (event) => {
-  // Only accept POST requests
-  const method = event.httpMethod || (event.request && event.request.method);
-  if (method && method.toUpperCase() !== 'POST') {
+  if (event.httpMethod?.toUpperCase() !== 'POST') {
     return {
       statusCode: 405,
       body: JSON.stringify({ error: 'Method Not Allowed' })
     };
+  }
+
+  const webhookSecret = process.env.OFFICEHOURS_WEBHOOK_SECRET;
+  if (!webhookSecret) {
+    console.error('OFFICEHOURS_WEBHOOK_SECRET environment variable is missing.');
+    return { statusCode: 503, body: JSON.stringify({ error: 'Webhook authentication is not configured.' }) };
+  }
+  if (!hasValidWebhookSecret(event.headers, webhookSecret)) {
+    return { statusCode: 401, body: JSON.stringify({ error: 'Unauthorized' }) };
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -345,18 +365,36 @@ export const handler = async (event) => {
     };
   }
 
-  // Parse Supabase Database Webhook payload:
-  // Can be { type: 'INSERT'|'UPDATE', record: { ... }, old_record: { ... } }
-  // or direct { record: { ... } }
-  const webhookType = body.type || 'INSERT';
-  const record = body.record || body.appointment || body;
-  const oldRecord = body.old_record;
+  // Accept only the configured appointment-table webhook payload.
+  if (body.schema !== 'public' || body.table !== 'officehours_appointments' ||
+      !['INSERT', 'UPDATE'].includes(body.type)) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'Unexpected webhook event' }) };
+  }
 
-  if (!record || !record.student_email || !record.slot_start) {
+  const record = body.record;
+  const oldRecord = body.old_record;
+  const studentEmail = record?.student_email;
+  const slotStart = new Date(record?.slot_start);
+  const slotEnd = new Date(record?.slot_end);
+  if (!record || typeof record.id !== 'string' ||
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(record.id) ||
+      typeof studentEmail !== 'string' ||
+      !/^[^\s@]+@(marun\.edu\.tr|marmara\.edu\.tr)$/i.test(studentEmail) ||
+      typeof record.slot_start !== 'string' || typeof record.slot_end !== 'string' ||
+      !Number.isFinite(slotStart.getTime()) || !Number.isFinite(slotEnd.getTime()) ||
+      slotEnd <= slotStart || typeof record.topic !== 'string' || record.topic.trim().length < 2 ||
+      !['office', 'online'].includes(record.meeting_type)) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: 'Missing required appointment fields (student_email, slot_start)' })
+      body: JSON.stringify({ error: 'Invalid appointment record' })
     };
+  }
+
+  const isBooking = body.type === 'INSERT' && record.status === 'booked';
+  const isCancellation = body.type === 'UPDATE' && oldRecord?.status === 'booked' &&
+    ['cancelled_by_student', 'cancelled_by_admin'].includes(record.status);
+  if (!isBooking && !isCancellation) {
+    return { statusCode: 200, body: JSON.stringify({ success: true, ignored: true }) };
   }
 
   const results = {
@@ -366,8 +404,6 @@ export const handler = async (event) => {
   };
 
   try {
-    const isCancellation = record.status === 'cancelled' || (oldRecord && oldRecord.status === 'booked' && record.status === 'cancelled');
-
     if (isCancellation) {
       // 1. Send Cancellation Email to Admin
       try {
@@ -375,6 +411,7 @@ export const handler = async (event) => {
           apiKey,
           from: fromEmail,
           to: [adminEmail],
+          idempotencyKey: `officehours:${record.status}:${record.id}:admin`,
           subject: `[İPTAL] Ofis Saati Randevusu: ${record.student_email}`,
           html: renderCancellationEmail(record, true)
         });
@@ -389,6 +426,7 @@ export const handler = async (event) => {
           apiKey,
           from: fromEmail,
           to: [record.student_email],
+          idempotencyKey: `officehours:${record.status}:${record.id}:student`,
           subject: `Ofis Saati Randevunuz İptal Edildi - Dr. Yunus Serhat Bıçakçı`,
           html: renderCancellationEmail(record, false)
         });
@@ -397,7 +435,7 @@ export const handler = async (event) => {
         results.errors.push(`Student cancellation email failed: ${err.message}`);
       }
 
-    } else if (record.status === 'booked') {
+    } else if (isBooking) {
       const { dateFormatted, timeRange } = formatAppointmentTimes(record.slot_start, record.slot_end);
 
       // 1. Send Booking Alert Email to Professor (Admin)
@@ -406,6 +444,7 @@ export const handler = async (event) => {
           apiKey,
           from: fromEmail,
           to: [adminEmail],
+          idempotencyKey: `officehours:booked:${record.id}:admin`,
           subject: `📅 Yeni Ofis Saati Randevusu: ${record.student_email} (${dateFormatted} ${timeRange})`,
           html: renderAdminBookingEmail(record)
         });
@@ -420,6 +459,7 @@ export const handler = async (event) => {
           apiKey,
           from: fromEmail,
           to: [record.student_email],
+          idempotencyKey: `officehours:booked:${record.id}:student`,
           subject: `Ofis Saati Randevunuz Onaylandı - Dr. Yunus Serhat Bıçakçı`,
           html: renderStudentBookingEmail(record)
         });
@@ -430,10 +470,10 @@ export const handler = async (event) => {
     }
 
     return {
-      statusCode: 200,
+      statusCode: results.errors.length ? 502 : 200,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        success: true,
+        success: results.errors.length === 0,
         recordId: record.id,
         results
       })

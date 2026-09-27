@@ -5,7 +5,7 @@ publication_types:
 authors:
   - admin
   - Beytullah Sarica
-doi: "https://doi.org/10.5617/nmi.10309"
+doi: "10.5617/nmi.10039"
 publication: "Nordic Machine Intelligence, 2(3)"
 publication_short: "Nordic Machine Intelligence"
 abstract: "Automated extraction and segmentation of building footprints from high-resolution remote sensing imagery and airborne laser scanning (LiDAR) data is fundamental for 3D city modeling and geospatial analysis. We propose ATTransUNet, a novel architecture integrating Attention Gated Networks with Transformer self-attention modules within a U-Net backbone. The model demonstrates superior boundary delineation and robust feature fusion in the MapAI competition benchmark."

@@ -52,7 +52,7 @@ Zamanı istediğiniz sonuçlara ulaşmanızı sağlayacak şekilde organize ve k
 
 
 
-## ANAHTAR FİKİR: DİSİPLİN VE UYGULAMA (PRATİK)
+## ANAHTAR FİKİR: DİSİPLİN VE UYGULAMA (PRATİK)
 
 1-İşiniz için en önemli hedeflerin düşünülmesi. Bu hedeflere ulaşmak için hangi görevleri tamamlamak gerekir. Bu görevler için ne kadar zaman harcıyorsun? Her şeyden önce hedefleri belirlemek için bu soruların sorulması gereklidir. 
 
@@ -61,4 +61,3 @@ Zamanı istediğiniz sonuçlara ulaşmanızı sağlayacak şekilde organize ve k
 3-Hedeflerin neler olduğunu ve zamanı nerelerde harcadığınızı bildikten sonra zamanı planlama şeklinizi geliştirebilir ve değiştirebilirsiniz. 
 
 4-Kendinize zamanlama programı oluşturduktan sonra harekete geçmelisiniz. Ne yaptığınızı izleyin, sorunları tespit edip zamanınızı yönetim stratejilerini gözden geçirin ve sürekli geliştirin.
-

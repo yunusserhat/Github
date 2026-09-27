@@ -208,7 +208,7 @@ Program oluşturmanın farklı araçları vardır. Bunlar;
 
 
 
-## ANAHTAR FİKİR: PROGRAMINIZI GELİŞTİRMEK
+## ANAHTAR FİKİR: PROGRAMINIZI GELİŞTİRMEK
 
 Programınızı geliştirmek için bazı yönergeler işe yarar olabilir. Bunlar; 
 
@@ -221,7 +221,6 @@ Programınızı geliştirmek için bazı yönergeler işe yarar olabilir. Bunlar
 - Programınızı bilgisayarınızın monitöründe veya masanızda düz bir şekilde görmenizi sağlayacak yere yerleştirin. 
 
 {{< youtube _1EabmR1F4I >}}
-
 
 
 

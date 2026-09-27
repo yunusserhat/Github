@@ -6,7 +6,7 @@ authors:
   - admin
   - Joseph Shingleton
   - Anahid Basiri
-doi: "https://doi.org/10.48550/arXiv.2509.01341"
+doi: "10.48550/arXiv.2509.01341"
 publication: "arXiv preprint arXiv:2509.01341"
 publication_short: "arXiv:2509.01341"
 abstract: "Street-level geolocalization is a challenging task requiring the fusion of visual landscape clues with spatial reference data. In this paper, we propose a novel multimodal framework that integrates state-of-the-art Vision-Language Models (VLMs) with Retrieval-Augmented Generation (RAG) to localize street-level imagery. By combining hierarchical spatial indexing and visual semantics, our approach significantly improves localization precision and provides interpretable reasoning traces for geographical predictions."

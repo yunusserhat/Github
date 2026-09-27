@@ -106,7 +106,7 @@ Hem son kullanıcılar hem de bilgi sistemleri uzmanları bilgi sistemlerindeki 
 
 
 
-## İLETİŞİM AĞLARISinyaller: Dijital ve Analog
+## İLETİŞİM AĞLARI Sinyaller: Dijital ve Analog
 
 İletişim ağlarındaki en önemli ayrım, analog ve dijital sinyaller arasındadır. Bir mesajın iletilmesinde iki yol vardır, Analog ve dijital sinyaller. 
 Analog sinyaller klasik telefon bağlantılarındaki sesli iletişimde olduğu gibi iletişim kanalı üzerinden sürekli bir dalga şeklinde ilerler. Sabit telefonlar, kişisel bilgisayarların ses çıkış aygıtları, kulaklıklar, bir analog aygıttır.
@@ -229,5 +229,4 @@ Daha güvenli bir şifreleme formu olan Genel (Açık) Anahtar Şifreleme (Publi
 
 Dijital imza ve dijital sertifikalar yetkilendirmeye yardımcı olan diğer araçlardır. Dijital İmza; göndericinin özel anahtarını kullanılarak şifrelenmiş bir mesajdır. Dijital imza mesajın içeriğinin orijinalliğini doğrulamak için kullanılır.
 Dijital Sertifikalar ise online işlemlerin korunması ve kullanıcının kimliğini doğrulamak için kullanılan veri dosyalarıdır. Bu sertifikayı sağlayan kurumlar o sitenin kimliğini doğrular. VeriSign, IdenTrust, Australia’s KeyPost firmaları bu sertifikaları verir. Dijital Sertifikaların kullanımı gösterilmiştir.
-
 

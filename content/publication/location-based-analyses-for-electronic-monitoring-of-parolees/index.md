@@ -4,9 +4,9 @@ publication_types:
   - "2"
 authors:
   - admin
-  - Dursun Zafer Seker
+  - Dursun Zafer Şeker
   - Hande Demirel
-doi: https://doi.org/10.3390/ijgi9050296
+doi: "10.3390/ijgi9050296"
 publication: ISPRS International Journal of Geo-Information
 abstract: This study analyses the spatio-temporal pattern of parolees using
   electronic monitoring, where the developed spatial framework supports the

@@ -114,7 +114,7 @@ Bu sitelerde, kendiniz ve tanışmak istediğiniz olası kişi hakkında bir ank
 
 
 
-## İşbirlikçi Deneyim – Fikir Paylaşma
+## İşbirlikçi Deneyim – Fikir Paylaşma
 
 Kişilerin fikirlerini paylaşmalarını sağlayan en popüler platform türü «blog»lardır. Bloglar, bireylerin kişisel görüşler gönderdiği ve okuyucuların yanıtlarını gönderdikleri web siteleridir. Genellikle metinsel ögeler, görsel ögeler ve etkileşimli ögelerden oluşurlar. 
 İşbirlikçi deneyimde fikir paylaşımı yapılması amacıyla kurulan ilk blog 1994 yılında yayına girmiştir. 2012’ye gelindiğinde dünya çapında 200 milyondan fazla blog vardı. Şu anda ise bu rakamı kestirmek oldukça güçtür. Ancak sadece üç büyük blog platformu olan Tumblr, Squarspace ve Wordpress üzerinde 440 milyondan fazla blog olduğu görülmektedir. 
@@ -161,6 +161,5 @@ Medya okuryazarlığı için etkileşimli medya platformlarının etkileri neler
 Etkileşimli medya platformları, kullanıcılar için işbirliğine dayalı deneyimlerin yanı sıra çok çeşitli rekabet gücü sunar. Bu platformlar, uyarılma, duygu, beceri geliştirme ve diğer insanlarla anlamlı ve ödüllendirici şekillerde bağlantı kurma gereksinimlerinizi karşılama konusunda deneyimler sağlamak için stratejik olarak araçlar olarak kullanıldığında çok değerli olabilir. 
 Bununla birlikte, bu platformlar kaynaklarınızı tüketerek hayatınıza hükmetmeye başladığında sadece hayal kırıklığı, yanlış deneyimler ve tecrit gibi durumlara döndüğünde çok zararlı olabilirler. 
 Medya okuryazarlığı perspektifi, çeşitli platformların sizin özel ihtiyaçlarınızı ne ölçüde karşıladığı konusunda daha bilinçli ve daha anlamlı değerlendirmeler yapmanın bir yolunu sunmaktadır.
-
 
 

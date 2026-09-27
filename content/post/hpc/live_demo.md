@@ -1,5 +1,13 @@
-
-# HPC Cluster Live Demo Guide
+---
+title: "HPC Cluster Live Demo Guide"
+summary: "A practical guide to setting up Conda and Jupyter, using SSH tunnels, and running interactive or batch jobs with Slurm."
+authors:
+  - admin
+date: "2024-11-15"
+lastmod: "2024-11-15"
+featured: false
+draft: false
+---
 
 ## 1. Setting Up Conda Environment
 
