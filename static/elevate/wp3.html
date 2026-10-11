@@ -27,8 +27,15 @@
   .feat span.not_visible { border-style: dashed; background: transparent; }
   .feat .keyrow { width: 100%; font: 400 0.7rem/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-top: 0.6rem; }
   .ev { min-height: 3.2em; margin-top: 1rem; font: italic 400 1rem/1.45 var(--serif); color: var(--ink-2); }
+  /* on a phone the finished split becomes a 2 x 2 grid of the four views, large enough to see */
+  @media (max-width: 700px) {
+    .panofx .row.grid2 { flex-wrap: wrap; gap: 8px; transform: none; }
+    .panofx .row.grid2 .q { flex: 0 0 calc(50% - 4px); aspect-ratio: 4 / 3; clip-path: none; background: none; }
+    .panofx .row.grid2 .q img { top: 0; height: 100%; opacity: 1; }
+    .panofx .row.grid2 .q .lab { top: 0.5rem; opacity: 1; }
+  }
   @media (max-width: 900px) {
-    .panofx { align-items: flex-start; padding-top: 5rem; }
+    .panofx { align-items: flex-start; padding-top: 6.4rem; }
     .focus { grid-template-columns: 1fr; align-content: start; padding-top: 1rem; gap: 0.8rem; }
     .feat span { font-size: 0.74rem; padding: 0.4rem 0.55rem; }
     .ev { display: none; }
@@ -186,6 +193,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     row.style.setProperty("--cb", `${(19.05 * e1).toFixed(2)}%`);
     row.style.setProperty("--g", (16 * e2).toFixed(1));
     row.style.setProperty("--persp", easeInOut(b3).toFixed(3));
+    row.classList.toggle("grid2", b3 > 0.5);
     document.getElementById("tag360").textContent = p < 0.05 ? "360° panorama, 4000 × 2000 px" : p < 0.6 ? "the band a 90° view sees" : "four 90° views, 768 × 576 px";
   }
   const zoomTo = p => {
