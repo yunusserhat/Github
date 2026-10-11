@@ -1,0 +1,88 @@
+{
+ "SYNTHETIC": true,
+ "model_rows": 4496,
+ "persons": 200,
+ "green_view_mean_sd": [
+  0.2591,
+  0.1083
+ ],
+ "corr_green_view_walk_min": 0.006,
+ "corr_green_view_bike_min": -0.008,
+ "corr_green_view_park_min": 0.127,
+ "halfhours_with_park_stay": 573,
+ "st_dbscan": {
+  "fixes": 165757,
+  "clusters": 881,
+  "stationary_agreement_with_truth": 0.982,
+  "stationary_precision": 0.944,
+  "stationary_recall": 0.983,
+  "agreement_with_stay_rule_3_4": 0.964,
+  "steps_per_30s_in_clusters": 30.47,
+  "steps_per_30s_on_paths": 10.15,
+  "most_active_decile_true_activity": {
+   "park": 1.0
+  },
+  "least_active_decile_true_activity": {
+   "park": 0.881,
+   "stop": 0.119
+  }
+ },
+ "xgboost_shap": {
+  "A_null": {
+   "cv_deviance_explained": 0.473,
+   "mean_abs_shap": {
+    "walk_min": 0.2240000069141388,
+    "bike_min": 0.20499999821186066,
+    "park_min": 0.12639999389648438,
+    "hour": 0.11559999734163284,
+    "weekend": 0.10029999911785126,
+    "x_green_view": 0.048700001090765,
+    "x_street_trees": 0.0364999994635582,
+    "x_beautiful": 0.032499998807907104,
+    "x_safety": 0.025100000202655792,
+    "stratum": 0.017500000074505806,
+    "x_sidewalk": 0.0
+   },
+   "green_view_shap_by_decile": [
+    0.0625,
+    0.049,
+    0.0345,
+    0.0185,
+    -0.0066,
+    -0.0178,
+    0.0034,
+    -0.0476,
+    -0.1023,
+    -0.0772
+   ]
+  },
+  "B_planted": {
+   "cv_deviance_explained": 0.496,
+   "mean_abs_shap": {
+    "walk_min": 0.2282000035047531,
+    "bike_min": 0.19740000367164612,
+    "park_min": 0.13570000231266022,
+    "hour": 0.11620000004768372,
+    "weekend": 0.10329999774694443,
+    "x_green_view": 0.0502999983727932,
+    "x_street_trees": 0.04170000180602074,
+    "x_beautiful": 0.041099999099969864,
+    "x_safety": 0.026100000366568565,
+    "stratum": 0.019899999722838402,
+    "x_sidewalk": 0.0
+   },
+   "green_view_shap_by_decile": [
+    -0.083,
+    -0.0519,
+    -0.0392,
+    -0.0315,
+    -0.0393,
+    -0.0294,
+    0.0166,
+    0.0186,
+    0.0031,
+    0.1236
+   ]
+  }
+ }
+}

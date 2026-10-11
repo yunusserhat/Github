@@ -1,0 +1,39 @@
+{
+ "SYNTHETIC": true,
+ "persons": 200,
+ "person_days": 1400,
+ "valid_days_share": 0.895,
+ "persons_with_4_valid_days": 200,
+ "gps_fixes": 663809,
+ "fix_share_of_epochs": 0.329,
+ "spikes": 1307,
+ "trips_by_mode": {
+  "bike": 3517,
+  "walk": 2256,
+  "bus": 682,
+  "car": 431
+ },
+ "km_by_mode": {
+  "bike": 12081.0,
+  "bus": 4860.0,
+  "car": 3362.0,
+  "walk": 1336.0
+ },
+ "daily_steps_valid_days": {
+  "A": {
+   "mean": 9630,
+   "sd": 4170
+  },
+  "B": {
+   "mean": 9676,
+   "sd": 4235
+  }
+ },
+ "halfhours_with_true_exposure_share": 0.186,
+ "exposure_standardisation": {
+  "mean": 0.2544916478829423,
+  "sd": 0.11426547939066137
+ },
+ "beta_planted": 0.13976194237515863,
+ "seconds": 34
+}

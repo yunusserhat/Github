@@ -1,0 +1,1317 @@
+{
+ "meta": {
+  "model": "Qwen/Qwen3.8-27B-FP8",
+  "retrieval": "EmbeddingGemma 2, 256 d, image+text documents, CPU query",
+  "k": 8,
+  "min_similarity": 0.6,
+  "thinking": "off",
+  "citation_format": "groups like [a, b] split into [a] [b] before checking",
+  "note": "Answers restate model observations of street views; they are not measurements."
+ },
+ "items": [
+  {
+   "question": "Where are benches on the sidewalk under street trees?",
+   "answer": "Benches on the sidewalk under street trees are located in the Weesperzijde-Midden/Zuid, IJselbuurt-Oost, Willibrordusbuurt, Beethovenbuurt, Botteskerkbuurt, Tuindorp Nieuwendam-Oost, Hiltonbuurt, and Oosterpark neighborhoods [recording_2025-06-20_10-43-25_01016_left] [recording_2025-07-14_08-27-06_03099_left] [recording_2025-07-14_08-27-06_00349_right] [recording_2025-07-15_11-16-59_01717_left] [recording_2025-09-09_06-44-43_01366_right] [recording_2025-09-22_12-38-03_00844_right] [recording_2025-07-30_08-35-53_00632_left] [recording_2025-06-20_10-43-25_02857_back].",
+   "refused": false,
+   "reason": "generated from retrieved records",
+   "citations": [
+    "recording_2025-06-20_10-43-25_01016_left",
+    "recording_2025-07-14_08-27-06_03099_left",
+    "recording_2025-07-14_08-27-06_00349_right",
+    "recording_2025-07-15_11-16-59_01717_left",
+    "recording_2025-09-09_06-44-43_01366_right",
+    "recording_2025-09-22_12-38-03_00844_right",
+    "recording_2025-07-30_08-35-53_00632_left",
+    "recording_2025-06-20_10-43-25_02857_back"
+   ],
+   "records": [
+    {
+     "image_id": "recording_2025-06-20_10-43-25_01016_left",
+     "similarity": 0.803,
+     "lat": 52.35283241504282,
+     "lon": 4.910430337953803,
+     "heading_deg": 233.0,
+     "buurt": "Weesperzijde-Midden/Zuid",
+     "observation_text": "Present: sidewalk (medium): paved path visible on the right side of the road; pedestrian crossing (zebra marked): zebra crossing markings visible on the road surface; cycle infrastructure (separated track): red asphalt cycle lane visible on the road; street trees: multiple large trees lining the street and sidewalk area; other greenery: grass verges and vegetation visible along the sidewalk; shade on walkway: dappled shadows from trees covering the sidewalk and road; seating: bench visible on the right side of the sidewalk. Absent: sidewalk gap, sidewalk obstruction, intersection, traffic calming, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-07-14_08-27-06_03099_left",
+     "similarity": 0.803,
+     "lat": 52.34741262270954,
+     "lon": 4.9080008400394,
+     "heading_deg": 335.5,
+     "buurt": "IJselbuurt-Oost",
+     "observation_text": "Present: sidewalk (medium): paved walking surface visible in foreground and midground; sidewalk obstruction (other): parked bicycles visible on left side; street trees: multiple trees visible in midground and background; other greenery: bushes and grass visible in background area; shade on walkway: dappled shadows visible on paved surface from trees; seating: concrete benches visible in midground area; view obstruction: trees and fence partially block view of background area. Absent: sidewalk gap, sidewalk parking, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, street light pole, curb ramp, accessibility barrier, active frontage."
+    },
+    {
+     "image_id": "recording_2025-07-14_08-27-06_00349_right",
+     "similarity": 0.803,
+     "lat": 52.35552720057625,
+     "lon": 4.903675026536487,
+     "heading_deg": 155.4,
+     "buurt": "Willibrordusbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path along the street; sidewalk obstruction (street furniture): bench and trash bin on sidewalk; pedestrian crossing (zebra marked): zebra crossing markings visible in foreground; intersection: street junction visible in background; street trees: large trees lining the sidewalk; other greenery: trees and grass visible in background; shade on walkway: dappled shadows from trees on pavement; seating: bench visible on sidewalk; street light pole: tall pole with lamp visible in foreground; litter: white paper or trash on pavement; active frontage: building windows and entrance visible in background; view obstruction: large trees and pole block view of street. Absent: sidewalk gap, traffic calming, cycle infrastructure, sidewalk parking, accessibility barrier, surface damage. Not visible: curb ramp. Image issues: occlusion."
+    },
+    {
+     "image_id": "recording_2025-07-15_11-16-59_01717_left",
+     "similarity": 0.803,
+     "lat": 52.349109787597044,
+     "lon": 4.882914950823123,
+     "heading_deg": 229.9,
+     "buurt": "Beethovenbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path in foreground with tree shadows; street trees: large trees with thick trunks and leafy canopies visible; other greenery: grass verge and hedges visible in background; shade on walkway: dappled shadows from trees on paved path; seating: wooden bench visible in middle ground; view obstruction: large tree branches and leaves obscure background view. Absent: sidewalk gap, sidewalk obstruction, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, street light pole, sidewalk parking, curb ramp, accessibility barrier, active frontage. Image issues: occlusion, partial view."
+    },
+    {
+     "image_id": "recording_2025-09-09_06-44-43_01366_right",
+     "similarity": 0.802,
+     "lat": 52.35917439725743,
+     "lon": 4.794294089495909,
+     "heading_deg": 351.8,
+     "buurt": "Botteskerkbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path visible in foreground and background; street trees: multiple trees with green leaves visible throughout the scene; other greenery: fallen leaves on ground and grassy areas visible; shade on walkway: dappled shadows from trees on the path; seating: bench visible on the left side of the path; view obstruction: dense trees and foliage block most of the view. Absent: sidewalk gap, sidewalk obstruction, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, street light pole, sidewalk parking, curb ramp, accessibility barrier, active frontage. Image issues: occlusion, partial view."
+    },
+    {
+     "image_id": "recording_2025-09-22_12-38-03_00844_right",
+     "similarity": 0.802,
+     "lat": 52.39149603526581,
+     "lon": 4.942912699478947,
+     "heading_deg": 19.7,
+     "buurt": "Tuindorp Nieuwendam-Oost",
+     "observation_text": "Present: sidewalk (medium): paved path running horizontally across the lower middle of the image; street trees: large mature trees with dense foliage dominate the upper and middle sections of the image; other greenery: grass lawn and low shrubs visible in the foreground and background; shade on walkway: large trees cast significant shadow over the paved path and grass area; seating: blue bench visible on the right side of the paved path; view obstruction: dense tree canopy and foliage obscure most of the background view. Absent: sidewalk gap, sidewalk obstruction, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, street light pole, sidewalk parking, curb ramp, accessibility barrier, active frontage. Image issues: occlusion, partial view."
+    },
+    {
+     "image_id": "recording_2025-07-30_08-35-53_00632_left",
+     "similarity": 0.801,
+     "lat": 52.35092460329979,
+     "lon": 4.877019232044128,
+     "heading_deg": 178.0,
+     "buurt": "Hiltonbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path in foreground with fallen leaves; street trees: large tree in center foreground and others in background; other greenery: large grassy area with scattered trees; shade on walkway: dappled shadows from trees on paved path; seating: bench visible on right side of path; active frontage: brick buildings with windows visible in background; view obstruction: large tree canopy obscures upper view. Absent: sidewalk gap, sidewalk obstruction, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, street light pole, sidewalk parking, curb ramp, accessibility barrier. Image issues: occlusion."
+    },
+    {
+     "image_id": "recording_2025-06-20_10-43-25_02857_back",
+     "similarity": 0.799,
+     "lat": 52.35974810186065,
+     "lon": 4.917231464175703,
+     "heading_deg": 225.0,
+     "buurt": "Oosterpark",
+     "observation_text": "Present: sidewalk (medium): paved path visible in the center of the image; street trees: multiple large trees lining the path and background; other greenery: grass verges and bushes visible along the path; shade on walkway: dappled shadows from trees on the paved path; seating: bench visible in the background on the right; street light pole: black lamp post visible on the right side. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    }
+   ]
+  },
+  {
+   "question": "Where do parked bicycles block the sidewalk?",
+   "answer": "",
+   "refused": true,
+   "reason": "1 sentence(s) of the reply cite no record, so it was withheld",
+   "citations": [],
+   "records": [
+    {
+     "image_id": "recording_2025-07-30_09-59-09_01230_left",
+     "similarity": 0.848,
+     "lat": 52.361412542128896,
+     "lon": 4.882167379918382,
+     "heading_deg": 335.3,
+     "buurt": "P.C. Hooftbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path with cobblestones visible in foreground; sidewalk obstruction (other): multiple parked bicycles blocking the walking path; pedestrian crossing (zebra marked): zebra crossing stripes visible in the background; intersection: street junction visible in the background with multiple roads; cycle infrastructure (shared lane marking): painted bicycle symbols on the road surface; street trees: large trees visible on the left side of the image; other greenery: trees and vegetation visible in the background; shade on walkway: shadows cast by trees on the sidewalk surface; street light pole: street lamp post visible in the background; active frontage: shops and buildings visible on the right side of the street; view obstruction: fence and trees partially block the view of the street. Absent: sidewalk gap, traffic calming, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter."
+    },
+    {
+     "image_id": "recording_2025-06-16_06-42-40_01115_back",
+     "similarity": 0.847,
+     "lat": 52.36497305878477,
+     "lon": 4.893098219272241,
+     "heading_deg": 282.4,
+     "buurt": "Vijzelstraatbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path along the street with buildings on left; sidewalk obstruction (other): parked bicycles blocking right side of path; intersection: street junction visible in background with multiple buildings; street trees: green trees visible in background and right side of street; other greenery: trees and greenery visible along street and in background; shade on walkway: shadows cast by buildings and trees on paved path; street light pole: tall pole with wires visible on right side of street; active frontage: building entrances and windows visible on left side of street; view obstruction: parked bicycles and foreground elements block partial view of street ahead. Absent: sidewalk gap, traffic calming, cycle infrastructure, seating, sidewalk parking, accessibility barrier, surface damage, litter. Not visible: pedestrian crossing, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-07-31_12-19-21_01262_right",
+     "similarity": 0.847,
+     "lat": 52.3701347989613,
+     "lon": 4.858923960738241,
+     "heading_deg": 172.5,
+     "buurt": "Filips van Almondekwartier",
+     "observation_text": "Present: sidewalk (medium): paved path along the street edge; sidewalk obstruction (other): bicycles parked on sidewalk; intersection: street junction visible in background with cross street; cycle infrastructure (painted lane): blue bicycle sign on pole and painted lane markings; street trees: green trees visible along the street in background; other greenery: trees and vegetation along the street; shade on walkway: dappled shadows from trees on sidewalk; sidewalk parking: cars parked along the curb on the right side; active frontage: ground floor windows and building facade visible; view obstruction: parked cars and bicycles block view of street ahead. Absent: sidewalk gap, traffic calming, seating, street light pole, accessibility barrier, surface damage, litter. Not visible: pedestrian crossing, curb ramp. Image issues: partial view."
+    },
+    {
+     "image_id": "recording_2025-07-30_09-27-21_00810_right",
+     "similarity": 0.845,
+     "lat": 52.353192745751976,
+     "lon": 4.884857780103589,
+     "heading_deg": 359.3,
+     "buurt": "Duivelseiland",
+     "observation_text": "Present: sidewalk (medium): paved path along the street with bicycles parked on it; sidewalk obstruction (other): multiple bicycles parked on the sidewalk; intersection: street junction visible in the background with multiple buildings; cycle infrastructure (shared lane marking): blue bicycle sign on pole and bicycle symbols on road surface; street trees: large tree on the right sidewalk and smaller trees along the street; other greenery: planters and small bushes along the sidewalk edge; shade on walkway: dappled shadows from trees and building overhangs on the sidewalk; sidewalk parking: cars parked along the street curb on the left side; active frontage: ground floor windows and entrance visible on the right building; view obstruction: large tree on the right and parked cars on the left block parts of the view. Absent: sidewalk gap, traffic calming, seating, street light pole, accessibility barrier, surface damage, litter. Not visible: pedestrian crossing, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-07-31_08-46-40_00043_right",
+     "similarity": 0.844,
+     "lat": 52.361483465947224,
+     "lon": 4.867416614438987,
+     "heading_deg": 159.6,
+     "buurt": "Cremerbuurt-Oost",
+     "observation_text": "Present: sidewalk (narrow): paved path along the street edge; sidewalk obstruction (other): many parked bicycles blocking the path; intersection: street continues into distance with visible junction ahead; street trees: tree branches visible in upper right corner; other greenery: some greenery visible near building on left; active frontage: ground floor windows and doors visible on buildings; view obstruction: dense bicycle parking blocks view of sidewalk ahead. Absent: sidewalk gap, traffic calming, cycle infrastructure, shade on walkway, seating, street light pole, sidewalk parking, accessibility barrier, surface damage, litter. Not visible: pedestrian crossing, curb ramp. Image issues: occlusion."
+    },
+    {
+     "image_id": "recording_2025-06-26_09-25-50_01039_front",
+     "similarity": 0.843,
+     "lat": 52.338255428522324,
+     "lon": 4.920513246469944,
+     "heading_deg": 16.0,
+     "buurt": "Amstelkwartier-Noord",
+     "observation_text": "Present: sidewalk (medium): paved sidewalk area visible in foreground; sidewalk obstruction (other): row of parked bicycles blocking path; street trees: tree branches visible in upper left corner; other greenery: tree branches visible in upper left corner; shade on walkway: some shadow visible on sidewalk from tree branches; street light pole: tall pole visible near bicycle parking area. Absent: sidewalk gap, sidewalk parking, surface damage, litter, active frontage. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, curb ramp, accessibility barrier, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-06-16_06-42-40_00159_left",
+     "similarity": 0.841,
+     "lat": 52.36591070236351,
+     "lon": 4.884619080928595,
+     "heading_deg": 47.6,
+     "buurt": "Leidsegracht-Zuid",
+     "observation_text": "Present: sidewalk (medium): brick pavement visible in foreground; sidewalk obstruction (other): multiple bicycles parked on sidewalk; street light pole: black lamp post mounted on building facade visible; active frontage: ground-floor windows and doors visible on buildings; view obstruction: bicycles in foreground block view of street surface and road. Absent: sidewalk gap, street trees, other greenery, shade on walkway, seating, sidewalk parking, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-06-20_10-43-25_00181_left",
+     "similarity": 0.841,
+     "lat": 52.35581276108656,
+     "lon": 4.912166445074938,
+     "heading_deg": 129.4,
+     "buurt": "Oosterparkbuurt-Zuidwest",
+     "observation_text": "Present: sidewalk (medium): paved path along the building and into the parking area; sidewalk obstruction (other): cluster of parked bicycles blocking the sidewalk in the foreground; intersection: street continues into the background with parked cars and trees; cycle infrastructure (other): bicycle symbol on the red and white sign on the pole; street trees: large trees with green leaves line both sides of the street; other greenery: trees and foliage visible along the sidewalk and in the background; shade on walkway: dappled shadows from trees fall across the sidewalk and parking area; active frontage: ground-floor shop with windows and entrance visible on the building; view obstruction: large cluster of bicycles in the foreground blocks part of the sidewalk view. Absent: sidewalk gap, traffic calming, seating, street light pole, sidewalk parking, accessibility barrier, surface damage, litter. Not visible: pedestrian crossing, curb ramp."
+    }
+   ]
+  },
+  {
+   "question": "Which streets have a separated red cycle track?",
+   "answer": "The streets with a separated red cycle track are located in the Dijkgraafpleinbuurt, G-buurt-West, Holendrecht-Zuid, Amstel III deel C/D-Zuid, Linnaeusparkbuurt, Sloterweg e.o., Gein 4, and Kelbergen [recording_2025-09-09_06-44-43_05726_back] [recording_2025-09-08_06-43-18_00181_front] [recording_2025-09-11_07-44-05_01939_left] [recording_2025-09-01_06-33-45_07095_front] [recording_2025-06-20_08-09-45_02155_front] [recording_2025-07-17_10-56-39_02290_front] [recording_2025-09-12_08-17-10_03070_back] [recording_2025-09-01_11-37-05_05574_front].",
+   "refused": false,
+   "reason": "generated from retrieved records",
+   "citations": [
+    "recording_2025-09-09_06-44-43_05726_back",
+    "recording_2025-09-08_06-43-18_00181_front",
+    "recording_2025-09-11_07-44-05_01939_left",
+    "recording_2025-09-01_06-33-45_07095_front",
+    "recording_2025-06-20_08-09-45_02155_front",
+    "recording_2025-07-17_10-56-39_02290_front",
+    "recording_2025-09-12_08-17-10_03070_back",
+    "recording_2025-09-01_11-37-05_05574_front"
+   ],
+   "records": [
+    {
+     "image_id": "recording_2025-09-09_06-44-43_05726_back",
+     "similarity": 0.814,
+     "lat": 52.357354903991876,
+     "lon": 4.789562705850203,
+     "heading_deg": 160.7,
+     "buurt": "Dijkgraafpleinbuurt",
+     "observation_text": "Present: cycle infrastructure (separated track): Red asphalt cycle path with white lane markings; street trees: Large trees line both sides of the path; other greenery: Grass verge and bushes on the left side. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, shade on walkway, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-08_06-43-18_00181_front",
+     "similarity": 0.813,
+     "lat": 52.322286641831965,
+     "lon": 4.962978556067569,
+     "heading_deg": 338.1,
+     "buurt": "G-buurt-West",
+     "observation_text": "Present: cycle infrastructure (separated track): Dedicated cycle path with red asphalt and white markings; street trees: Multiple large trees lining the left side of the path; other greenery: Grass verges and trees visible along the path; street light pole: Black lamp post visible on the right side of the path. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-11_07-44-05_01939_left",
+     "similarity": 0.813,
+     "lat": 52.29645134829883,
+     "lon": 4.971769039509222,
+     "heading_deg": 81.3,
+     "buurt": "Holendrecht-Zuid",
+     "observation_text": "Present: cycle infrastructure (separated track): Red asphalt cycle path with white lane markings; street trees: Multiple trees line the path and verge; other greenery: Grass verge and trees visible along the path. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, shade on walkway, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-01_06-33-45_07095_front",
+     "similarity": 0.812,
+     "lat": 52.296999674004624,
+     "lon": 4.949005261471723,
+     "heading_deg": 151.2,
+     "buurt": "Amstel III deel C/D-Zuid",
+     "observation_text": "Present: cycle infrastructure (separated track): Dedicated cycle path with red asphalt and white markings; street trees: Row of mature trees lining the left side of the path; other greenery: Grass verge and trees on the left, grass on the right; shade on walkway: Shade cast by the row of trees on the left; street light pole: A tall street light pole stands on the right side of the path. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-06-20_08-09-45_02155_front",
+     "similarity": 0.811,
+     "lat": 52.357075167292635,
+     "lon": 4.935746930201305,
+     "heading_deg": 255.1,
+     "buurt": "Linnaeusparkbuurt",
+     "observation_text": "Present: cycle infrastructure (separated track): Red asphalt cycle path with white markings visible; street trees: Large trees line both sides of the street; other greenery: Grass verges and vegetation visible along the path; shade on walkway: Shade from trees visible on the cycle path; street light pole: Street light poles visible along the path; active frontage: Buildings with windows visible on the left side. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-07-17_10-56-39_02290_front",
+     "similarity": 0.81,
+     "lat": 52.340228941851585,
+     "lon": 4.811867868882898,
+     "heading_deg": 163.8,
+     "buurt": "Sloterweg e.o.",
+     "observation_text": "Present: cycle infrastructure (separated track): Red asphalt cycle path with white line marking; street trees: Multiple tall trees lining both sides of the path; other greenery: Grass verges and vegetation along the path edges; shade on walkway: Dappled shadows from trees on the path surface. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-12_08-17-10_03070_back",
+     "similarity": 0.81,
+     "lat": 52.292120519379594,
+     "lon": 4.991592250415688,
+     "heading_deg": 8.8,
+     "buurt": "Gein 4",
+     "observation_text": "Present: cycle infrastructure (separated track): A dedicated cycle path with red asphalt and white dashed markings is visible; street trees: Large trees line both sides of the cycle path; other greenery: Grass verges and hedges are visible along the path; shade on walkway: Shade is cast on the path by the large trees; street light pole: A modern street lamp post is visible on the right side of the path. Absent: surface damage, litter, view obstruction. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, seating, sidewalk parking, curb ramp, accessibility barrier, active frontage."
+    },
+    {
+     "image_id": "recording_2025-09-01_11-37-05_05574_front",
+     "similarity": 0.81,
+     "lat": 52.313719700198774,
+     "lon": 4.97570677915611,
+     "heading_deg": 2.8,
+     "buurt": "Kelbergen",
+     "observation_text": "Present: sidewalk (medium): paved path on the right side of the red cycle track; intersection: road junction visible in the background with multiple paths meeting; cycle infrastructure (separated track): red asphalt cycle track with white markings; street trees: trees lining the left side and background area; other greenery: grass verges and bushes along the path edges; street light pole: lamp post visible on the right side of the path. Absent: sidewalk gap, sidewalk obstruction, traffic calming, shade on walkway, seating, sidewalk parking, accessibility barrier, surface damage, litter, active frontage, view obstruction. Not visible: pedestrian crossing, curb ramp."
+    }
+   ]
+  },
+  {
+   "question": "Where is a junction visible without a marked pedestrian crossing?",
+   "answer": "A junction without a marked pedestrian crossing is visible in the Amerikahaven buurt [recording_2025-06-16_13-30-58_01132_front]. Another such junction is visible in the Vogelbuurt-Noord buurt [recording_2025-10-01_11-37-25_00182_right].",
+   "refused": false,
+   "reason": "generated from retrieved records",
+   "citations": [
+    "recording_2025-06-16_13-30-58_01132_front",
+    "recording_2025-10-01_11-37-25_00182_right"
+   ],
+   "records": [
+    {
+     "image_id": "recording_2025-09-03_12-26-13_01746_back",
+     "similarity": 0.826,
+     "lat": 52.419277512235396,
+     "lon": 4.877765471590175,
+     "heading_deg": 276.5,
+     "buurt": "Melkweg/Oostzanerwerf",
+     "observation_text": "Present: intersection: Road junction with multiple lanes visible; street trees: Dense line of trees visible along the road in the background; other greenery: Grass verges and vegetation visible along the road edges; street light pole: Tall street light pole visible on the right side of the road. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, traffic calming, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-07-01_07-45-37_02873_left",
+     "similarity": 0.826,
+     "lat": 52.384636743836175,
+     "lon": 4.818876239360321,
+     "heading_deg": 270.7,
+     "buurt": "Arondeusbuurt",
+     "observation_text": "Present: pedestrian crossing (unmarked): White painted crosswalk markings are visible on the road surface; intersection: Multiple road lanes and traffic signs indicate a junction; street trees: Trees are visible along the left side of the road and in the background; other greenery: Bushes and grass are visible in the traffic island and background; street light pole: A tall street light pole is visible on the right side of the road. Absent: traffic calming, surface damage, litter, view obstruction. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier, active frontage."
+    },
+    {
+     "image_id": "recording_2025-09-02_13-14-23_00395_front",
+     "similarity": 0.825,
+     "lat": 52.384582184227064,
+     "lon": 4.818939070891298,
+     "heading_deg": 268.7,
+     "buurt": "Arondeusbuurt",
+     "observation_text": "Present: pedestrian crossing (unmarked): white painted crosswalk markings visible at intersection; intersection: multiple road lanes meeting at a junction with traffic lights; street trees: large trees visible on left side of road and background; other greenery: grass verges and vegetation visible along roadside; street light pole: tall metal pole with lamp head visible on right side. Absent: traffic calming, surface damage, litter, active frontage, view obstruction. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-09-18_12-17-40_00695_front",
+     "similarity": 0.825,
+     "lat": 52.30282496029853,
+     "lon": 5.025980252002419,
+     "heading_deg": 178.2,
+     "buurt": "Bedrijventerrein Van Houten",
+     "observation_text": "Present: pedestrian crossing (unmarked): White painted crosswalk markings visible on road surface; intersection: Multiple road arms meeting at a junction with traffic lights; street trees: Large trees visible on the right side of the image; other greenery: Grass verges and field vegetation visible beyond the road; street light pole: Traffic light poles visible, though not standard street lights. Absent: traffic calming, surface damage, litter, active frontage, view obstruction. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-06-16_13-30-58_01132_front",
+     "similarity": 0.824,
+     "lat": 52.39865876404925,
+     "lon": 4.772096541252143,
+     "heading_deg": 296.6,
+     "buurt": "Amerikahaven",
+     "observation_text": "Present: intersection: Traffic lights and road junction visible ahead; street trees: Trees visible along left grass verge and right side; other greenery: Grass verges and trees visible along roadside; street light pole: Traffic light poles and street lamps visible along road. Absent: traffic calming, surface damage, litter, active frontage, view obstruction. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-10-01_11-37-25_00182_right",
+     "similarity": 0.824,
+     "lat": 52.38953864805316,
+     "lon": 4.919185442737693,
+     "heading_deg": 347.7,
+     "buurt": "Vogelbuurt-Noord",
+     "observation_text": "Present: intersection: Multiple road lanes and traffic signals indicate a junction; street trees: A line of trees is visible along the background of the road; other greenery: Grass verges and vegetation are visible along the roadside; street light pole: A tall street light pole is visible on the left side of the road. Absent: traffic calming, surface damage, litter, active frontage, view obstruction. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-06-18_06-04-52_01721_back",
+     "similarity": 0.823,
+     "lat": 52.41925171627434,
+     "lon": 4.738052620144213,
+     "heading_deg": 171.0,
+     "buurt": "Afrikahaven",
+     "observation_text": "Present: pedestrian crossing (unmarked): white painted crosswalk markings visible at intersection; intersection: road junction with traffic lights and crosswalks visible; street trees: trees visible along the grassy verge on the right side; other greenery: grass verges and trees visible along the roadside; street light pole: tall street light poles visible along the road on both sides. Absent: traffic calming, surface damage, litter, active frontage, view obstruction. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-06-18_06-42-25_00284_front",
+     "similarity": 0.823,
+     "lat": 52.4062352756898,
+     "lon": 4.758199432833385,
+     "heading_deg": 313.0,
+     "buurt": "Amerikahaven",
+     "observation_text": "Present: intersection: road junction with multiple lanes and traffic lights visible; street trees: trees visible on grass verges along the road; other greenery: grass verges and trees visible along the road; street light pole: tall street light poles visible along the road. Absent: traffic calming, surface damage, litter, view obstruction. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier, active frontage."
+    }
+   ]
+  },
+  {
+   "question": "Which streets have shade from trees on the sidewalk?",
+   "answer": "",
+   "refused": true,
+   "reason": "1 sentence(s) of the reply cite no record, so it was withheld",
+   "citations": [],
+   "records": [
+    {
+     "image_id": "recording_2025-06-20_08-09-45_02393_front",
+     "similarity": 0.809,
+     "lat": 52.35557188095205,
+     "lon": 4.930106914092624,
+     "heading_deg": 137.5,
+     "buurt": "Linnaeusparkbuurt",
+     "observation_text": "Present: sidewalk (narrow): paved path along the left side of the street; street trees: large tree trunk and canopy on the left side of the street; other greenery: bushes and smaller trees along the sidewalk edge; shade on walkway: dappled shadows from trees fall across the sidewalk surface; active frontage: brick buildings with windows and doors face the street on the right. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-06-20_09-22-37_00447_left",
+     "similarity": 0.808,
+     "lat": 52.35903300451172,
+     "lon": 4.921395577828862,
+     "heading_deg": 338.4,
+     "buurt": "Oosterparkbuurt-Zuidoost",
+     "observation_text": "Present: sidewalk (medium): paved path visible between cars and trees; street trees: large mature trees line the background; other greenery: dense tree canopy and foliage visible; shade on walkway: trees cast shadows on the sidewalk area; street light pole: ornate lamp post visible on the sidewalk; view obstruction: dense trees and parked cars block view of street beyond. Absent: sidewalk gap, sidewalk obstruction, traffic calming, sidewalk parking, accessibility barrier, surface damage, litter, active frontage. Not visible: pedestrian crossing, intersection, cycle infrastructure, seating, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-07-14_06-43-08_00761_left",
+     "similarity": 0.807,
+     "lat": 52.36141247566663,
+     "lon": 4.88422062635278,
+     "heading_deg": 39.2,
+     "buurt": "P.C. Hooftbuurt",
+     "observation_text": "Present: sidewalk (wide): paved path along the street with trees; street trees: multiple large trees lining the sidewalk; other greenery: trees and hedges visible along the street; shade on walkway: dappled shadows from trees on pavement; street light pole: pole with sign visible on left. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-06-19_07-14-50_01910_front",
+     "similarity": 0.807,
+     "lat": 52.37353085495673,
+     "lon": 4.91985839331661,
+     "heading_deg": 47.1,
+     "buurt": "Marine-Etablissement",
+     "observation_text": "Present: sidewalk (medium): paved path along the right side of the road; street trees: large trees line both sides of the street; other greenery: dense tree canopy and green foliage visible; shade on walkway: dappled shadows from trees fall on the sidewalk and road; street light pole: white pole visible on the left side of the street. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-07-14_05-10-02_00512_back",
+     "similarity": 0.806,
+     "lat": 52.35773962076288,
+     "lon": 4.897639639994198,
+     "heading_deg": 95.3,
+     "buurt": "Gerard Doubuurt",
+     "observation_text": "Present: sidewalk (narrow): paved path along the street with parked cars; sidewalk obstruction (other): parked cars blocking the walking path; intersection: visible junction with multiple buildings and parked cars; street trees: large trees lining the street with dense foliage; other greenery: dense tree canopy and greenery along the sidewalk; shade on walkway: dappled sunlight and shadows from trees on the walkway; sidewalk parking: cars parked along the curb on the sidewalk area; active frontage: buildings with storefronts visible along the street; view obstruction: large tree branches and leaves block part of the view. Absent: sidewalk gap. Not visible: pedestrian crossing, traffic calming, cycle infrastructure, seating, street light pole, curb ramp, accessibility barrier, surface damage, litter. Image issues: overexposure, partial view."
+    },
+    {
+     "image_id": "recording_2025-06-30_05-16-46_00621_back",
+     "similarity": 0.805,
+     "lat": 52.37008008126043,
+     "lon": 4.88230413918038,
+     "heading_deg": 250.5,
+     "buurt": "Elandsgrachtbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path along the street on both sides; sidewalk obstruction (other): bicycles parked on the sidewalk on the right; cycle infrastructure (painted lane): painted lane markings on the road surface; street trees: large trees lining the street on both sides; other greenery: bushes and plants along the sidewalk edge; shade on walkway: dappled shadows from trees on the sidewalk; seating: outdoor chairs and tables visible on the left sidewalk; street light pole: tall pole with lamp visible on the left side; active frontage: shops and cafes with windows facing the street on the left; view obstruction: large tree branches and leaves obscure the upper portion of the view. Absent: sidewalk gap, sidewalk parking, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, curb ramp, accessibility barrier. Image issues: occlusion."
+    },
+    {
+     "image_id": "recording_2025-07-15_09-44-59_02068_front",
+     "similarity": 0.804,
+     "lat": 52.35413253971059,
+     "lon": 4.898675910283393,
+     "heading_deg": 251.2,
+     "buurt": "Sarphatiparkbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path along the street edge; street trees: large trees lining both sides of the street with dense foliage; other greenery: dense tree canopy and green vegetation along the street edges; shade on walkway: dappled shadows from trees covering the sidewalk and road surface; street light pole: tall metal pole visible on the right side of the street; active frontage: building facades with windows visible along the left side of the street. Absent: sidewalk gap, sidewalk obstruction, traffic calming, cycle infrastructure, seating, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction. Not visible: pedestrian crossing, intersection, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-07-15_11-16-59_00972_back",
+     "similarity": 0.803,
+     "lat": 52.34514931398164,
+     "lon": 4.877675365170648,
+     "heading_deg": 357.0,
+     "buurt": "Diepenbrockbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path along the left side of the street; street trees: mature trees lining both sides of the street; other greenery: bushes and plants visible near buildings and along sidewalk; shade on walkway: dappled shadows from trees on the sidewalk surface; active frontage: ground floor windows and doors visible on buildings facing street. Absent: sidewalk gap, sidewalk obstruction, traffic calming, cycle infrastructure, seating, street light pole, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction. Not visible: pedestrian crossing, intersection, curb ramp."
+    }
+   ]
+  },
+  {
+   "question": "Where is construction or scaffolding blocking the sidewalk?",
+   "answer": "Construction or scaffolding blocks the sidewalk in the Weesperbuurt [recording_2025-06-19_04-38-42_00273_left], Olympisch Stadion e.o. [recording_2025-07-30_05-50-45_00201_left], Staatsliedenbuurt-Noordoost [recording_2025-06-18_07-44-47_01728_right], Burgwallen-Oost [recording_2025-06-30_05-16-46_01732_right], Markengouw-Midden [recording_2025-09-24_06-58-53_01125_left], and Utrechtsebuurt-Zuid [recording_2025-06-16_06-42-40_01378_right].",
+   "refused": false,
+   "reason": "generated from retrieved records",
+   "citations": [
+    "recording_2025-06-19_04-38-42_00273_left",
+    "recording_2025-07-30_05-50-45_00201_left",
+    "recording_2025-06-18_07-44-47_01728_right",
+    "recording_2025-06-30_05-16-46_01732_right",
+    "recording_2025-09-24_06-58-53_01125_left",
+    "recording_2025-06-16_06-42-40_01378_right"
+   ],
+   "records": [
+    {
+     "image_id": "recording_2025-06-19_04-38-42_00273_left",
+     "similarity": 0.853,
+     "lat": 52.362499458237025,
+     "lon": 4.903675330337464,
+     "heading_deg": 73.1,
+     "buurt": "Weesperbuurt",
+     "observation_text": "Present: sidewalk (narrow): paved surface visible on the right side of the image; sidewalk obstruction (construction): metal scaffolding structure blocking the sidewalk area; active frontage: building entrance and windows visible on the right side; view obstruction: metal scaffolding structure blocks part of the view. Absent: sidewalk gap, street trees, other greenery, shade on walkway, seating, street light pole, sidewalk parking, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, curb ramp, accessibility barrier. Image issues: occlusion."
+    },
+    {
+     "image_id": "recording_2025-07-30_05-50-45_00201_left",
+     "similarity": 0.853,
+     "lat": 52.34582374853868,
+     "lon": 4.854245763163046,
+     "heading_deg": 160.8,
+     "buurt": "Olympisch Stadion e.o.",
+     "observation_text": "Present: sidewalk (medium): paved sidewalk visible in foreground; sidewalk obstruction (construction): metal fencing blocking sidewalk; street trees: tree visible on left side of image; other greenery: small plants visible at building base; sidewalk parking: car parked on sidewalk in foreground; accessibility barrier (other): metal fencing blocks sidewalk access; view obstruction: scaffolding and fencing block view of street. Absent: sidewalk gap, shade on walkway, surface damage, litter, active frontage. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, street light pole, curb ramp. Image issues: occlusion, partial view."
+    },
+    {
+     "image_id": "recording_2025-06-18_07-44-47_01728_right",
+     "similarity": 0.853,
+     "lat": 52.384340307294806,
+     "lon": 4.87526725431007,
+     "heading_deg": 88.0,
+     "buurt": "Staatsliedenbuurt-Noordoost",
+     "observation_text": "Present: sidewalk obstruction (construction): Construction materials, scaffolding, and metal fencing block the sidewalk area; street trees: A tree is visible on the left side of the image; other greenery: A tree is visible on the left side of the image; active frontage: Storefront windows are visible behind the scaffolding; view obstruction: Large scaffolding and construction materials block most of the view. Not visible: sidewalk, sidewalk gap, pedestrian crossing, intersection, traffic calming, cycle infrastructure, shade on walkway, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter. Image issues: occlusion, partial view."
+    },
+    {
+     "image_id": "recording_2025-06-30_05-16-46_01732_right",
+     "similarity": 0.853,
+     "lat": 52.37281776236683,
+     "lon": 4.897288059486834,
+     "heading_deg": 128.9,
+     "buurt": "Burgwallen-Oost",
+     "observation_text": "Present: view obstruction: Scaffolding completely obscures the street level and sidewalk area. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, street trees, other greenery, shade on walkway, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage. Image issues: occlusion, partial view."
+    },
+    {
+     "image_id": "recording_2025-09-24_06-58-53_01125_left",
+     "similarity": 0.853,
+     "lat": 52.39558372647021,
+     "lon": 4.95916514924766,
+     "heading_deg": 233.0,
+     "buurt": "Markengouw-Midden",
+     "observation_text": "Present: sidewalk (medium): paved concrete surface in foreground; sidewalk obstruction (construction): metal scaffolding structure blocks view; street trees: tree visible in background on right side; other greenery: tree visible in background on right side; shade on walkway: dappled shadows from tree on pavement; active frontage: building entrance and windows visible on ground floor; view obstruction: large metal scaffolding structure blocks view of street. Absent: sidewalk gap, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier. Image issues: occlusion, partial view."
+    },
+    {
+     "image_id": "recording_2025-09-24_12-05-52_01579_right",
+     "similarity": 0.851,
+     "lat": 52.39281013673639,
+     "lon": 4.951763514364253,
+     "heading_deg": 293.4,
+     "buurt": "Werengouw-Midden",
+     "observation_text": "Present: sidewalk (medium): paved path in foreground with tactile paving; sidewalk obstruction (street furniture): metal bollard on left sidewalk; street trees: large trees visible on right side of image; other greenery: hedge along sidewalk edge and small tree in front of scaffolding; shade on walkway: dappled shadows from trees on sidewalk surface; view obstruction: large scaffolding structure blocks most of the street view. Absent: sidewalk gap, surface damage, litter, active frontage. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier. Image issues: occlusion, partial view."
+    },
+    {
+     "image_id": "recording_2025-07-29_10-56-07_02125_right",
+     "similarity": 0.849,
+     "lat": 52.34504759328343,
+     "lon": 4.872919558670361,
+     "heading_deg": 86.9,
+     "buurt": "Minervabuurt-Zuid",
+     "observation_text": "Present: sidewalk (medium): paved path visible in foreground; sidewalk obstruction (other): bicycles parked on left side; street trees: tree visible on left side of frame; other greenery: greenery visible behind scaffolding; shade on walkway: tree canopy casting shadow on pavement; sidewalk parking: car parked on right side of frame; view obstruction: scaffolding and building facade block view of street. Absent: sidewalk gap, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, street light pole, curb ramp, accessibility barrier, active frontage. Image issues: occlusion."
+    },
+    {
+     "image_id": "recording_2025-06-16_06-42-40_01378_right",
+     "similarity": 0.849,
+     "lat": 52.36190636091083,
+     "lon": 4.898714933176755,
+     "heading_deg": 161.9,
+     "buurt": "Utrechtsebuurt-Zuid",
+     "observation_text": "Present: sidewalk obstruction (construction): Scaffolding and construction materials block the view of the street level; view obstruction: Scaffolding and construction materials block the view of the street level. Not visible: sidewalk, sidewalk gap, pedestrian crossing, intersection, traffic calming, cycle infrastructure, street trees, other greenery, shade on walkway, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage. Image issues: occlusion, partial view."
+    }
+   ]
+  },
+  {
+   "question": "Which streets have shops with ground-floor windows and benches?",
+   "answer": "The streets in the Cornelis Troostbuurt, Bloemgrachtbuurt, Anjeliersbuurt-Zuid, Spiegelbuurt, Oude Kerk e.o., Lizzy Ansinghbuurt, Vijzelstraatbuurt, and Leidsebuurt-Noordoost all feature shops with ground-floor windows and benches [recording_2025-07-15_12-19-22_01420_back] [recording_2025-07-03_08-35-58_00064_left] [recording_2025-07-03_07-31-54_01177_back] [recording_2025-06-16_06-42-40_00178_back] [recording_2025-06-16_06-42-40_01834_front] [recording_2025-09-29_06-46-33_00370_front] [recording_2025-06-16_06-42-40_01108_back] [recording_2025-07-14_05-25-22_01525_front].",
+   "refused": false,
+   "reason": "generated from retrieved records",
+   "citations": [
+    "recording_2025-07-15_12-19-22_01420_back",
+    "recording_2025-07-03_08-35-58_00064_left",
+    "recording_2025-07-03_07-31-54_01177_back",
+    "recording_2025-06-16_06-42-40_00178_back",
+    "recording_2025-06-16_06-42-40_01834_front",
+    "recording_2025-09-29_06-46-33_00370_front",
+    "recording_2025-06-16_06-42-40_01108_back",
+    "recording_2025-07-14_05-25-22_01525_front"
+   ],
+   "records": [
+    {
+     "image_id": "recording_2025-07-15_12-19-22_01420_back",
+     "similarity": 0.809,
+     "lat": 52.350667500593524,
+     "lon": 4.888764947762727,
+     "heading_deg": 35.2,
+     "buurt": "Cornelis Troostbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path along the left side of the street; sidewalk obstruction (street furniture): wooden bench on the sidewalk; street trees: large green tree on the right side of the street; other greenery: small plants visible near the building on the left; shade on walkway: tree canopy provides shade on the right sidewalk area; seating: wooden bench visible on the left sidewalk; active frontage: ground-floor windows and storefronts visible on the right side. Absent: sidewalk gap, traffic calming, cycle infrastructure, street light pole, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction. Not visible: pedestrian crossing, intersection, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-07-03_08-35-58_00064_left",
+     "similarity": 0.807,
+     "lat": 52.37547880502619,
+     "lon": 4.881664019707258,
+     "heading_deg": 161.2,
+     "buurt": "Bloemgrachtbuurt",
+     "observation_text": "Present: sidewalk (narrow): paved area in front of shops with benches; sidewalk obstruction (vegetation): potted plants and flowers on the sidewalk; other greenery: potted plants and flowers on the sidewalk in front of shops; seating: white bench in front of the shop and wooden bench on the right; active frontage: ground-floor shops with large windows and entrances face the street. Absent: sidewalk gap, street trees, shade on walkway, sidewalk parking, surface damage, litter, view obstruction. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, street light pole, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-07-03_07-31-54_01177_back",
+     "similarity": 0.805,
+     "lat": 52.37675785803459,
+     "lon": 4.882094390761745,
+     "heading_deg": 340.3,
+     "buurt": "Anjeliersbuurt-Zuid",
+     "observation_text": "Present: sidewalk (medium): paved path along the street on both sides; sidewalk obstruction (street furniture): black bench on the left sidewalk; other greenery: small potted plants and greenery near the shop front on the left; shade on walkway: shadows cast by buildings and awnings on the sidewalk; seating: black bench on the left sidewalk and outdoor tables on the right; street light pole: black lamp post hanging from the building on the left; active frontage: shop windows and storefronts line both sides of the street. Absent: sidewalk gap, cycle infrastructure, street trees, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction. Not visible: pedestrian crossing, intersection, traffic calming, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-06-16_06-42-40_00178_back",
+     "similarity": 0.802,
+     "lat": 52.365306718429075,
+     "lon": 4.885604610975035,
+     "heading_deg": 315.5,
+     "buurt": "Spiegelbuurt",
+     "observation_text": "Present: sidewalk (medium): paved brick path along the street; sidewalk obstruction (other): parked bicycles and scooter on sidewalk; other greenery: planters with small plants on sidewalk; seating: wooden bench on right sidewalk; sidewalk parking: scooter and bicycles parked on sidewalk; active frontage: shops with windows and signs on both sides. Absent: sidewalk gap, cycle infrastructure, street trees, shade on walkway, street light pole, accessibility barrier, surface damage, litter, view obstruction. Not visible: pedestrian crossing, intersection, traffic calming, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-06-16_06-42-40_01834_front",
+     "similarity": 0.799,
+     "lat": 52.373495352004596,
+     "lon": 4.893711970688182,
+     "heading_deg": 40.0,
+     "buurt": "Oude Kerk e.o.",
+     "observation_text": "Present: sidewalk (medium): paved path along the street edge; sidewalk obstruction (street furniture): bench and trash bin on right sidewalk; intersection: street continues straight with buildings on both sides; cycle infrastructure (painted lane): painted white line marking cycle lane; street trees: tree visible in distance on right side; other greenery: small tree visible in distance; seating: bench visible on right sidewalk; active frontage: shop windows and storefronts visible on both sides. Absent: sidewalk gap, traffic calming, shade on walkway, street light pole, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction. Not visible: pedestrian crossing, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-09-29_06-46-33_00370_front",
+     "similarity": 0.799,
+     "lat": 52.35243267434383,
+     "lon": 4.893902735986269,
+     "heading_deg": 77.6,
+     "buurt": "Lizzy Ansinghbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path along the street edge; sidewalk obstruction (other): parked bicycles and potted plants on the right sidewalk; street trees: large trees lining the right side of the street; other greenery: potted plants and small shrubs on the sidewalk; shade on walkway: dappled shadows from trees on the sidewalk and road; seating: wooden bench on the right sidewalk near the tree; street light pole: street lamp visible in the upper center of the image; active frontage: ground-floor windows and shop fronts visible on both sides. Absent: sidewalk gap, sidewalk parking, surface damage, litter, view obstruction. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-06-16_06-42-40_01108_back",
+     "similarity": 0.797,
+     "lat": 52.36485014764135,
+     "lon": 4.892739897479026,
+     "heading_deg": 195.4,
+     "buurt": "Vijzelstraatbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path along the street edge; sidewalk obstruction (other): parked bicycles on the right sidewalk; cycle infrastructure (painted lane): painted bicycle symbol on the road surface; seating: wooden bench visible on the right sidewalk; sidewalk parking: white car parked on the left sidewalk area; active frontage: ground-floor shops and windows visible on both sides of the street. Absent: sidewalk gap, traffic calming, street trees, other greenery, shade on walkway, street light pole, accessibility barrier, surface damage, litter, view obstruction. Not visible: pedestrian crossing, intersection, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-07-14_05-25-22_01525_front",
+     "similarity": 0.797,
+     "lat": 52.36231597952727,
+     "lon": 4.88607361089465,
+     "heading_deg": 323.0,
+     "buurt": "Leidsebuurt-Noordoost",
+     "observation_text": "Present: sidewalk (medium): paved path along the street edge; sidewalk obstruction (other): bicycle parked on the sidewalk; intersection: street continues straight with buildings on both sides; other greenery: small potted plant on the right sidewalk; shade on walkway: green awning provides shade on the left sidewalk; seating: bench visible under the awning on the left; active frontage: shops and cafes with awnings and windows face the street. Absent: sidewalk gap, pedestrian crossing, traffic calming, cycle infrastructure, street trees, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    }
+   ]
+  },
+  {
+   "question": "Where are canal-side streets with railings and benches?",
+   "answer": "Canal-side streets with both railings and benches are located in the Sarphatistrook, Linnaeusparkbuurt, Weteringbuurt, and Fannius Scholtenbuurt neighborhoods [recording_2025-06-19_04-38-42_02839_left] [recording_2025-06-20_08-09-45_01896_left] [recording_2025-06-16_06-42-40_00256_back] [recording_2025-06-18_07-44-47_02454_left].",
+   "refused": false,
+   "reason": "generated from retrieved records",
+   "citations": [
+    "recording_2025-06-19_04-38-42_02839_left",
+    "recording_2025-06-20_08-09-45_01896_left",
+    "recording_2025-06-16_06-42-40_00256_back",
+    "recording_2025-06-18_07-44-47_02454_left"
+   ],
+   "records": [
+    {
+     "image_id": "recording_2025-06-19_04-38-42_02839_left",
+     "similarity": 0.835,
+     "lat": 52.36062669045157,
+     "lon": 4.904645503803321,
+     "heading_deg": 248.1,
+     "buurt": "Sarphatistrook",
+     "observation_text": "Present: sidewalk (medium): paved path along the canal edge; sidewalk obstruction (other): bicycles parked along the railing; street trees: trees visible in background and right foreground; other greenery: trees and foliage visible in background and right foreground; shade on walkway: dappled shadows from trees on paved path; seating: wooden bench visible on right side; street light pole: tall pole with lamp fixture visible in foreground; active frontage: buildings with windows and doors visible in background; view obstruction: large pole and bench in foreground block view. Absent: sidewalk gap, sidewalk parking, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-06-20_08-09-45_01896_left",
+     "similarity": 0.833,
+     "lat": 52.35746942680122,
+     "lon": 4.936406133209153,
+     "heading_deg": 252.9,
+     "buurt": "Linnaeusparkbuurt",
+     "observation_text": "Present: sidewalk (medium): brick-paved path in foreground and along canal edge; sidewalk obstruction (street furniture): metal railing and sign block path in foreground; street trees: large trees on left and along canal edge; other greenery: trees and vegetation along canal edge; shade on walkway: trees on left cast shadows on path; seating: benches visible on right side near buildings; active frontage: shops and buildings with windows face the canal; view obstruction: metal railing in foreground blocks view of path beyond. Absent: sidewalk gap, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, street light pole, sidewalk parking, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-07-03_08-35-58_01849_left",
+     "similarity": 0.828,
+     "lat": 52.366610579532875,
+     "lon": 4.880016810404541,
+     "heading_deg": 305.5,
+     "buurt": "Marnixbuurt-Zuid",
+     "observation_text": "Present: sidewalk (medium): paved path along the canal edge; sidewalk obstruction (street furniture): metal railing with planters blocks the path; intersection: street junction visible in the background with multiple buildings; street trees: multiple trees lining the canal and street in the background; other greenery: planters with greenery on the railing and trees along the canal; street light pole: ornate lamp post visible on the left side of the street; active frontage: ground-floor windows and entrances visible on buildings along the street; view obstruction: metal railing with planters partially blocks the view of the canal and street. Absent: sidewalk gap, traffic calming, shade on walkway, seating, sidewalk parking, surface damage, litter. Not visible: pedestrian crossing, cycle infrastructure, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-06-16_06-42-40_02883_left",
+     "similarity": 0.824,
+     "lat": 52.37743998116512,
+     "lon": 4.898213532933529,
+     "heading_deg": 4.3,
+     "buurt": "Nieuwendijk-Noord",
+     "observation_text": "Present: sidewalk (medium): paved walkway along the canal edge; sidewalk obstruction (street furniture): metal railing and bollards along the canal edge; street trees: trees visible in background along canal bank; other greenery: trees and vegetation along canal bank; street light pole: tall metal pole with wires in foreground; view obstruction: metal railing and bollards block view of canal edge. Absent: sidewalk gap, shade on walkway, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, sidewalk parking, curb ramp, accessibility barrier, active frontage."
+    },
+    {
+     "image_id": "recording_2025-06-20_10-16-42_00603_left",
+     "similarity": 0.819,
+     "lat": 52.35621501322633,
+     "lon": 4.906446468901764,
+     "heading_deg": 344.9,
+     "buurt": "Weesperzijde-Noord",
+     "observation_text": "Present: sidewalk (medium): paved path along the bridge railing; intersection: bridge structure with road continuing beyond; cycle infrastructure (painted lane): red painted lane on road surface; street trees: trees visible along canal bank in background; other greenery: trees and vegetation along canal edge; street light pole: lamp post visible on bridge railing; active frontage: buildings with windows visible along canal. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, traffic calming, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-06-16_06-42-40_00256_back",
+     "similarity": 0.818,
+     "lat": 52.3626692700851,
+     "lon": 4.887971341288611,
+     "heading_deg": 28.3,
+     "buurt": "Weteringbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path along the canal with railings; sidewalk obstruction (other): bicycle parked on the right side of the path; intersection: street continues into the distance with buildings on both sides; street trees: large trees lining the canal and street sides; other greenery: flower boxes on the railing and trees in planters; shade on walkway: dappled shadows from trees on the paved path; seating: wooden bench visible on the right side of the path; active frontage: ground floor windows and doors visible on buildings along the street; view obstruction: large blurred area obscures the center of the path and some background details. Absent: sidewalk gap, sidewalk parking, surface damage, litter. Not visible: pedestrian crossing, traffic calming, cycle infrastructure, street light pole, curb ramp, accessibility barrier. Image issues: blur, overexposure."
+    },
+    {
+     "image_id": "recording_2025-06-18_07-44-47_02454_left",
+     "similarity": 0.817,
+     "lat": 52.38118228629019,
+     "lon": 4.87353546702408,
+     "heading_deg": 140.5,
+     "buurt": "Fannius Scholtenbuurt",
+     "observation_text": "Present: sidewalk (medium): paved brick walkway along the canal edge; sidewalk obstruction (other): bicycles parked along the railing; street trees: large tree on left and trees in background; other greenery: grass and bushes along canal edge; shade on walkway: shadows cast by trees on walkway; seating: bench visible on bridge structure; street light pole: lamp post visible on right side; active frontage: building windows visible on left side. Absent: sidewalk gap, pedestrian crossing, intersection, traffic calming, cycle infrastructure, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-06-16_06-42-40_01736_back",
+     "similarity": 0.816,
+     "lat": 52.369253467893515,
+     "lon": 4.892164171024853,
+     "heading_deg": 194.1,
+     "buurt": "Nes e.o.",
+     "observation_text": "Present: sidewalk (medium): paved path along the canal on the left; sidewalk obstruction (street furniture): grey bollards and barriers along the canal edge; intersection: street junction visible in the background with multiple buildings; cycle infrastructure (painted lane): painted white lane markings on the road surface; street trees: trees visible along the canal on the left side; other greenery: greenery along the canal edge and in front gardens; street light pole: tall pole with lights visible on the left side; active frontage: shops and buildings with ground-floor windows facing the street; view obstruction: large grey blur in the foreground obscures part of the view. Absent: sidewalk gap, pedestrian crossing, traffic calming, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter. Image issues: blur."
+    }
+   ]
+  },
+  {
+   "question": "Where are streets with no trees or greenery?",
+   "answer": "",
+   "refused": true,
+   "reason": "1 sentence(s) of the reply cite no record, so it was withheld",
+   "citations": [],
+   "records": [
+    {
+     "image_id": "recording_2025-07-17_09-02-08_00286_back",
+     "similarity": 0.779,
+     "lat": 52.34287603587626,
+     "lon": 4.805470274610088,
+     "heading_deg": 269.2,
+     "buurt": "Nieuw-Sloten-Zuidwest",
+     "observation_text": "Present: street trees: Multiple mature trees with green leaves line both sides of the street; other greenery: Low hedges and shrubs are visible in planters or along the curb; active frontage: Ground-floor windows and garage doors are visible on the buildings. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, shade on walkway, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-07-28_13-40-42_02162_back",
+     "similarity": 0.778,
+     "lat": 52.33076285124705,
+     "lon": 4.860707003965079,
+     "heading_deg": 92.7,
+     "buurt": "Buitenveldert-West-Midden",
+     "observation_text": "Present: street trees: Multiple mature trees line both sides of the road; other greenery: Bushes and hedges line the road edges and front of buildings; street light pole: A tall street lamp post is visible on the right side; active frontage: Ground-floor windows and doors of buildings face the road. Absent: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, surface damage, litter, view obstruction. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, shade on walkway, sidewalk parking, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-09-02_09-49-29_02018_front",
+     "similarity": 0.778,
+     "lat": 52.416231724216814,
+     "lon": 4.898649119072296,
+     "heading_deg": 52.7,
+     "buurt": "Kadoelen",
+     "observation_text": "Present: street trees: A large tree is visible on the right side of the street, and smaller trees/bushes are present on the left; other greenery: Hedges and bushes are visible in front of the houses on the left side; street light pole: A tall metal pole is visible on the right side of the image, likely a street light pole. Absent: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, surface damage, litter, active frontage, view obstruction. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, shade on walkway, sidewalk parking, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-09-18_14-49-27_00073_front",
+     "similarity": 0.778,
+     "lat": 52.309681034280224,
+     "lon": 5.041267504913066,
+     "heading_deg": 20.8,
+     "buurt": "Herensingelkwartier",
+     "observation_text": "Present: street trees: Large trees with green foliage line the right side of the street; other greenery: Bushes and hedges line the left side and right side of the street. Absent: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, street light pole, sidewalk parking, surface damage, litter, active frontage, view obstruction. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, shade on walkway, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-07-29_10-56-07_01694_back",
+     "similarity": 0.777,
+     "lat": 52.34184372356414,
+     "lon": 4.870658169959832,
+     "heading_deg": 357.4,
+     "buurt": "Prinses Irenebuurt",
+     "observation_text": "Present: sidewalk (narrow): concrete path along the left side of the road; street trees: large evergreen trees on the left and deciduous trees on the right; other greenery: hedges and bushes along the right side of the street; shade on walkway: dappled shadows from trees on the left sidewalk; street light pole: white lamp post visible on the right side of the street; active frontage: residential buildings with windows and doors facing the street. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-07-16_11-54-38_00394_back",
+     "similarity": 0.777,
+     "lat": 52.34923532042685,
+     "lon": 4.812794660780231,
+     "heading_deg": 178.5,
+     "buurt": "Nieuw-Sloten-Noordoost",
+     "observation_text": "Present: sidewalk (narrow): paved path along the street edge; street trees: rows of trees line both sides of the street; other greenery: small garden beds and shrubs visible near buildings; shade on walkway: dappled shadows from trees fall on the sidewalk and road; active frontage: ground floor windows and doors visible on buildings facing the street. Absent: sidewalk gap, sidewalk obstruction, traffic calming, cycle infrastructure, seating, street light pole, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction. Not visible: pedestrian crossing, intersection, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-09-02_09-49-29_01985_back",
+     "similarity": 0.776,
+     "lat": 52.41607029248398,
+     "lon": 4.899828583690455,
+     "heading_deg": 36.3,
+     "buurt": "Kadoelen",
+     "observation_text": "Present: sidewalk (narrow): paved path on the left side of the road; sidewalk obstruction (vegetation): large weeping willow tree and decorative stone posts on the left; street trees: large weeping willow and other trees lining the left side of the street; other greenery: grass verges and decorative stone posts on the left sidewalk; shade on walkway: large weeping willow tree casts shade on the left sidewalk; street light pole: street lamp post visible in the distance on the right side; active frontage: ground-floor windows and doors of residential buildings face the street. Absent: sidewalk gap, traffic calming, cycle infrastructure, seating, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction. Not visible: pedestrian crossing, intersection, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-09-15_13-54-42_01264_front",
+     "similarity": 0.776,
+     "lat": 52.412242123663546,
+     "lon": 4.883373112669735,
+     "heading_deg": 127.7,
+     "buurt": "Tuindorp Oostzaan-Oost",
+     "observation_text": "Present: sidewalk (medium): paved path on the left side of the street; street trees: large weeping willow tree on the right and other trees on the left; other greenery: hedge along the sidewalk and grass verges on both sides; shade on walkway: dappled shadows from trees on the sidewalk and road surface; seating: bench visible on the left sidewalk near the hedge; street light pole: tall lamp post visible on the right side of the street; active frontage: residential buildings with windows visible on the left side. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    }
+   ]
+  },
+  {
+   "question": "Where are curb ramps visible at crossings?",
+   "answer": "Curb ramps are visible at crossings in the Gooise Kant, Rietlanden, Frederik Hendrikbuurt-Noord, De Kameleon e.o., Gelderlandpleinbuurt, and Hemonybuurt [recording_2025-09-23_12-54-33_00102_left] [recording_2025-06-16_08-26-12_00607_left] [recording_2025-06-17_11-17-15_01315_left] [recording_2025-09-08_11-47-40_00187_back] [recording_2025-07-29_08-47-49_00327_right] [recording_2025-06-19_04-38-42_03777_left] [recording_2025-06-16_10-53-53_00563_right].",
+   "refused": false,
+   "reason": "generated from retrieved records",
+   "citations": [
+    "recording_2025-09-23_12-54-33_00102_left",
+    "recording_2025-06-16_08-26-12_00607_left",
+    "recording_2025-06-17_11-17-15_01315_left",
+    "recording_2025-09-08_11-47-40_00187_back",
+    "recording_2025-07-29_08-47-49_00327_right",
+    "recording_2025-06-19_04-38-42_03777_left",
+    "recording_2025-06-16_10-53-53_00563_right"
+   ],
+   "records": [
+    {
+     "image_id": "recording_2025-09-23_12-54-33_00102_left",
+     "similarity": 0.793,
+     "lat": 52.31244074192378,
+     "lon": 4.967971405767262,
+     "heading_deg": 208.9,
+     "buurt": "Gooise Kant",
+     "observation_text": "Present: sidewalk (narrow): brick-paved path visible in foreground; pedestrian crossing (unmarked): white dashed lines across road; intersection: road junction with multiple lanes; street trees: trees visible on left hillside; other greenery: grass verges and bushes on hillsides; street light pole: tall pole with lamp visible on right; curb ramp: curb cut visible at intersection corner. Absent: sidewalk gap, sidewalk obstruction, traffic calming, cycle infrastructure, shade on walkway, seating, sidewalk parking, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-06-16_08-26-12_00607_left",
+     "similarity": 0.792,
+     "lat": 52.37263968777738,
+     "lon": 4.933398382708597,
+     "heading_deg": 63.9,
+     "buurt": "Rietlanden",
+     "observation_text": "Present: sidewalk (medium): paved path along the road edge; pedestrian crossing (zebra marked): white striped markings across the road; intersection: crossing point of multiple roads visible; street trees: trees lining the street in background; other greenery: trees and grass verges visible; street light pole: tall pole with lamp visible on left; curb ramp: curb ramp at crossing point visible; active frontage: buildings with windows face the street. Absent: sidewalk gap, sidewalk obstruction, traffic calming, cycle infrastructure, shade on walkway, seating, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-06-17_11-17-15_01315_left",
+     "similarity": 0.79,
+     "lat": 52.38143413103739,
+     "lon": 4.879068640996938,
+     "heading_deg": 85.1,
+     "buurt": "Frederik Hendrikbuurt-Noord",
+     "observation_text": "Present: sidewalk (medium): paved area along the road edge; pedestrian crossing (zebra marked): white stripes across the road; intersection: crossing point of multiple road sections; street trees: large green trees in background; other greenery: trees and vegetation along street; street light pole: tall pole with lamp visible on right; curb ramp: curved ramp at crossing point; active frontage: buildings with windows visible in background. Absent: sidewalk gap, sidewalk obstruction, traffic calming, cycle infrastructure, shade on walkway, seating, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-08_11-47-40_00187_back",
+     "similarity": 0.79,
+     "lat": 52.31659587011454,
+     "lon": 4.980323048774897,
+     "heading_deg": 196.9,
+     "buurt": "De Kameleon e.o.",
+     "observation_text": "Present: sidewalk (medium): paved path along the right side of the road; pedestrian crossing (zebra marked): white striped markings on the road surface; intersection: multiple road lanes meeting at a junction; street trees: trees visible in the background and along the road edge; other greenery: grass verges and trees visible in background; street light pole: tall pole with lamp visible on the left side; curb ramp: curved curb transition visible at the intersection corner. Absent: sidewalk gap, sidewalk obstruction, traffic calming, cycle infrastructure, shade on walkway, seating, sidewalk parking, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-07-29_08-47-49_00327_right",
+     "similarity": 0.789,
+     "lat": 52.33203162423749,
+     "lon": 4.869038776203345,
+     "heading_deg": 234.4,
+     "buurt": "Gelderlandpleinbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path visible on the right side of the road; pedestrian crossing (zebra marked): white zebra stripes painted on the road surface; intersection: crossing point of multiple roadways visible; street trees: green trees lining the background and sides of the street; other greenery: trees and vegetation visible along the street; street light pole: tall pole with lamp visible in the background; curb ramp: curved curb ramp visible at the traffic island. Absent: sidewalk gap, sidewalk obstruction, traffic calming, cycle infrastructure, shade on walkway, seating, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-04_10-07-13_00001_left",
+     "similarity": 0.788,
+     "lat": 52.397475810812686,
+     "lon": 5.028575023977545,
+     "heading_deg": 100.0,
+     "buurt": "Holysloot",
+     "observation_text": "Present: other greenery: Grassy slope and small bushes visible in the foreground. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, street trees, shade on walkway, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction. Image issues: partial view."
+    },
+    {
+     "image_id": "recording_2025-06-19_04-38-42_03777_left",
+     "similarity": 0.787,
+     "lat": 52.35895161984719,
+     "lon": 4.904574642042397,
+     "heading_deg": 162.8,
+     "buurt": "Hemonybuurt",
+     "observation_text": "Present: sidewalk (medium): Concrete sidewalk visible along the road edge; pedestrian crossing (unmarked): White painted crosswalk markings on the road; intersection: Road junction visible with multiple lanes and markings; street trees: Trees visible along the far side of the road and in the background; other greenery: Trees and vegetation visible along the waterfront area; street light pole: Tall street light pole visible in the foreground; curb ramp: Curb ramp visible at the pedestrian crossing area. Absent: sidewalk gap, sidewalk obstruction, traffic calming, cycle infrastructure, shade on walkway, seating, sidewalk parking, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-06-16_10-53-53_00563_right",
+     "similarity": 0.787,
+     "lat": 52.37129696021897,
+     "lon": 4.934134539808439,
+     "heading_deg": 268.1,
+     "buurt": "Rietlanden",
+     "observation_text": "Present: sidewalk (medium): paved path along the road edge; pedestrian crossing (zebra marked): white stripes across the road; intersection: crossing point with multiple roads visible; cycle infrastructure (painted lane): painted lane markings on the road; street trees: tall tree on the right side; other greenery: grass and vegetation along the path; street light pole: tall pole with lamp visible on left; curb ramp: curved ramp at the crossing corner. Absent: sidewalk gap, sidewalk obstruction, traffic calming, shade on walkway, seating, sidewalk parking, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    }
+   ]
+  },
+  {
+   "question": "Where is litter or rubbish on the pavement?",
+   "answer": "Litter and rubbish are present on the pavement in the Spuistraat-Zuid, Banne-Zuidwest, Venserpolder-West, Gelderlandpleinbuurt, and G-buurt-West areas [recording_2025-06-30_05-16-46_00865_left] [recording_2025-09-15_09-23-53_00072_back] [recording_2025-09-01_06-33-45_08592_right] [recording_2025-07-29_09-16-01_00747_right] [recording_2025-09-08_06-55-18_00109_back].",
+   "refused": false,
+   "reason": "generated from retrieved records",
+   "citations": [
+    "recording_2025-06-30_05-16-46_00865_left",
+    "recording_2025-09-15_09-23-53_00072_back",
+    "recording_2025-09-01_06-33-45_08592_right",
+    "recording_2025-07-29_09-16-01_00747_right",
+    "recording_2025-09-08_06-55-18_00109_back"
+   ],
+   "records": [
+    {
+     "image_id": "recording_2025-07-02_06-56-10_01071_right",
+     "similarity": 0.825,
+     "lat": 52.37697060021188,
+     "lon": 4.811994063292974,
+     "heading_deg": 152.5,
+     "buurt": "Lodewijk van Deysselbuurt",
+     "observation_text": "Present: street light pole: A white street light pole is visible on the left side of the image; litter: A red and black bin is visible on the left side of the image. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, street trees, other greenery, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-15_09-23-53_00283_right",
+     "similarity": 0.823,
+     "lat": 52.404420019908095,
+     "lon": 4.910663458446233,
+     "heading_deg": 212.0,
+     "buurt": "Banne-Zuidwest",
+     "observation_text": "Present: litter: A small white piece of litter is visible on the street surface in the foreground; active frontage: Ground-floor garage doors and windows face the street. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, street trees, other greenery, shade on walkway, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, view obstruction. Image issues: partial view."
+    },
+    {
+     "image_id": "recording_2025-06-30_05-16-46_00865_left",
+     "similarity": 0.819,
+     "lat": 52.371609838408965,
+     "lon": 4.890412831099195,
+     "heading_deg": 143.9,
+     "buurt": "Spuistraat-Zuid",
+     "observation_text": "Present: sidewalk (medium): paved path visible in foreground and right side; sidewalk obstruction (waste): trash bin and scattered litter on the path; street trees: multiple trees lining the path and background; other greenery: bushes and plants in landscaped areas along the path; shade on walkway: dappled shadows from trees on the paved path; street light pole: ornate lamp post visible on the right side of the path; litter: trash and debris scattered on the path near the bin. Absent: sidewalk gap, sidewalk parking. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, curb ramp, accessibility barrier, surface damage, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-15_09-23-53_00072_back",
+     "similarity": 0.817,
+     "lat": 52.40499758823809,
+     "lon": 4.912397151658613,
+     "heading_deg": 129.7,
+     "buurt": "Banne-Zuidwest",
+     "observation_text": "Present: sidewalk (medium): paved brick path along the right side of the street; sidewalk obstruction (waste): blue plastic bag and scattered leaves on the path; street trees: trees visible on the left side of the street and in the distance; other greenery: trees and fallen leaves on the sidewalk path; street light pole: white lamp post visible in the foreground on the right side; litter: blue plastic bag and scattered leaves on the sidewalk path. Absent: sidewalk gap, pedestrian crossing, intersection, traffic calming, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-08_12-51-15_01586_front",
+     "similarity": 0.815,
+     "lat": 52.314201003574496,
+     "lon": 4.975722105245625,
+     "heading_deg": 330.7,
+     "buurt": "De Kameleon e.o.",
+     "observation_text": "Present: street trees: Several trees are visible along the left side of the parking lot; other greenery: Grass verges and trees are visible in the background; street light pole: A street light pole is visible on the left side of the image; litter: A pile of trash or debris is visible on the ground near the trees on the left. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-01_06-33-45_08592_right",
+     "similarity": 0.815,
+     "lat": 52.31886755082588,
+     "lon": 4.94732018084241,
+     "heading_deg": 266.6,
+     "buurt": "Venserpolder-West",
+     "observation_text": "Present: sidewalk (medium): paved brick walkway along the street; sidewalk obstruction (waste): trash bags and debris on the sidewalk; street trees: trees lining the left side of the street; other greenery: grass patches near the building base; street light pole: lamp hanging from wire overhead; sidewalk parking: cars parked along the curb on left; litter: trash bags and debris on sidewalk. Absent: sidewalk gap, shade on walkway, active frontage. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, curb ramp, accessibility barrier, surface damage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-07-29_09-16-01_00747_right",
+     "similarity": 0.812,
+     "lat": 52.334861537203345,
+     "lon": 4.871643433918503,
+     "heading_deg": 180.0,
+     "buurt": "Gelderlandpleinbuurt",
+     "observation_text": "Present: sidewalk (medium): paved ground surface in foreground; sidewalk obstruction (waste): blue bin on the pavement; litter: blue bin on the pavement; active frontage: ground floor windows and doors visible. Absent: sidewalk gap. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, street trees, other greenery, shade on walkway, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-08_06-55-18_00109_back",
+     "similarity": 0.811,
+     "lat": 52.3222213399317,
+     "lon": 4.963699480604561,
+     "heading_deg": 47.0,
+     "buurt": "G-buurt-West",
+     "observation_text": "Present: sidewalk (narrow): paved path along the left side of the street; sidewalk obstruction (other): parked cars and debris blocking the path; street trees: trees visible along the sidewalk and near buildings; other greenery: small bushes and plants near the parked cars; street light pole: tall black pole with two lamps visible in the center; sidewalk parking: cars parked along the curb on the left side; litter: trash bags and debris visible near the parked cars; view obstruction: parked cars and buildings block the view of the street ahead. Absent: sidewalk gap, shade on walkway, active frontage. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, curb ramp, accessibility barrier, surface damage. Image issues: overexposure, partial view."
+    }
+   ]
+  },
+  {
+   "question": "Where are speed bumps or other traffic calming on residential streets?",
+   "answer": "Speed bumps or other traffic calming measures are present in the Noorder IJplas, Gein 2, G-buurt-West, Oostpoort, De Aker-West, Vogelbuurt-Zuid, Kadoelen, and Lanenrijk neighborhoods [recording_2025-09-03_12-26-13_00978_front] [recording_2025-09-11_13-45-30_00559_front] [recording_2025-09-01_11-37-05_03508_back] [recording_2025-06-20_08-09-45_02042_front] [recording_2025-07-02_04-34-16_04583_front] [recording_2025-09-04_07-46-10_01512_front] [recording_2025-09-02_09-49-29_01769_back] [recording_2025-09-19_09-18-46_00040_back].",
+   "refused": false,
+   "reason": "generated from retrieved records",
+   "citations": [
+    "recording_2025-09-03_12-26-13_00978_front",
+    "recording_2025-09-11_13-45-30_00559_front",
+    "recording_2025-09-01_11-37-05_03508_back",
+    "recording_2025-06-20_08-09-45_02042_front",
+    "recording_2025-07-02_04-34-16_04583_front",
+    "recording_2025-09-04_07-46-10_01512_front",
+    "recording_2025-09-02_09-49-29_01769_back",
+    "recording_2025-09-19_09-18-46_00040_back"
+   ],
+   "records": [
+    {
+     "image_id": "recording_2025-09-03_12-26-13_00978_front",
+     "similarity": 0.808,
+     "lat": 52.42328887233067,
+     "lon": 4.858805734477936,
+     "heading_deg": 154.0,
+     "buurt": "Noorder IJplas",
+     "observation_text": "Present: traffic calming (speed bump): White striped speed bump visible in road center; street trees: Large trees line both sides of the road in foreground and background; other greenery: Grass verges and bushes visible along road edges. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, cycle infrastructure, shade on walkway, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-11_13-45-30_00559_front",
+     "similarity": 0.794,
+     "lat": 52.29554138920922,
+     "lon": 4.988044623394682,
+     "heading_deg": 179.4,
+     "buurt": "Gein 2",
+     "observation_text": "Present: traffic calming (raised table): White painted markings on the ground resembling a speed table or raised table; street trees: Large trees are visible on the left side of the image; other greenery: Hedges and small trees are visible in the background; street light pole: A tall street light pole is visible on the right side of the image. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-01_11-37-05_03508_back",
+     "similarity": 0.79,
+     "lat": 52.319488868480356,
+     "lon": 4.96889543727642,
+     "heading_deg": 63.0,
+     "buurt": "G-buurt-West",
+     "observation_text": "Present: sidewalk (medium): paved path along the right side of the road; traffic calming (speed bump): speed bump visible in the middle of the road; street trees: large trees lining both sides of the street; other greenery: grass verges and small plants along the sidewalk edges; shade on walkway: dappled shadows from trees on the sidewalk surface; street light pole: lamp post visible on the left side of the street; active frontage: ground-floor windows and doors visible on the buildings. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, cycle infrastructure, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-06-20_08-09-45_02042_front",
+     "similarity": 0.789,
+     "lat": 52.357320541660435,
+     "lon": 4.933541890284469,
+     "heading_deg": 251.6,
+     "buurt": "Oostpoort",
+     "observation_text": "Present: traffic calming (speed bump): A yellow speed bump is visible in the middle of the road; other greenery: Bushes and small trees are visible in planters and along the walls. Absent: pedestrian crossing, intersection, cycle infrastructure, street trees, seating, street light pole, surface damage, litter, active frontage, view obstruction. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, shade on walkway, sidewalk parking, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-07-02_04-34-16_04583_front",
+     "similarity": 0.784,
+     "lat": 52.34996566384127,
+     "lon": 4.775071568371573,
+     "heading_deg": 213.8,
+     "buurt": "De Aker-West",
+     "observation_text": "Present: sidewalk (medium): paved path along the right side of the street; traffic calming (speed bump): white striped speed bump visible in the foreground; street trees: trees visible along the right side of the street; other greenery: hedges and bushes visible along the sidewalk; shade on walkway: shadows cast by trees and buildings on the sidewalk; street light pole: lamp post visible on the left side of the street; active frontage: ground-floor windows and doors visible on buildings. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, cycle infrastructure, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-04_07-46-10_01512_front",
+     "similarity": 0.784,
+     "lat": 52.386731637043,
+     "lon": 4.91834661022847,
+     "heading_deg": 323.5,
+     "buurt": "Vogelbuurt-Zuid",
+     "observation_text": "Present: traffic calming (raised table): Yellow painted markings on the ground indicating a speed table or similar traffic calming measure; street trees: Several large green trees are visible on the right side of the image; other greenery: Greenery is visible in the form of trees and possibly some bushes; active frontage: Ground-floor windows and entrances are visible on the buildings on the left. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, cycle infrastructure, shade on walkway, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-02_09-49-29_01769_back",
+     "similarity": 0.782,
+     "lat": 52.417765054030525,
+     "lon": 4.903868451582404,
+     "heading_deg": 290.0,
+     "buurt": "Kadoelen",
+     "observation_text": "Present: traffic calming (raised table): A raised table or speed table is visible in the middle of the road; street trees: Trees and bushes are visible along both sides of the street; other greenery: Dense vegetation and bushes line the right side of the street; active frontage: Ground-floor windows and doors of houses are visible on the left side. Not visible: sidewalk, sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, cycle infrastructure, shade on walkway, seating, street light pole, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-19_09-18-46_00040_back",
+     "similarity": 0.782,
+     "lat": 52.32064370121371,
+     "lon": 5.041360022633952,
+     "heading_deg": 199.8,
+     "buurt": "Lanenrijk",
+     "observation_text": "Present: sidewalk (narrow): paved path along the street edge; pedestrian crossing (zebra marked): zebra crossing markings visible in the distance; traffic calming (speed bump): speed bump visible in the middle of the road; street trees: small trees planted along the sidewalk on both sides; other greenery: hedges and small bushes along the property lines; shade on walkway: shadows cast by trees and buildings on the sidewalk; sidewalk parking: cars parked along the curb on both sides of the street; active frontage: ground-floor windows and doors visible on residential buildings. Absent: sidewalk gap, sidewalk obstruction, intersection, cycle infrastructure, seating, street light pole, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    }
+   ]
+  },
+  {
+   "question": "Where are narrow sidewalks next to parked cars?",
+   "answer": "Narrow sidewalks next to parked cars are located in the Diamantbuurt, Klaprozenbuurt, Hemonybuurt, Frederikspleinbuurt, Venserpolder-West, Cremerbuurt-West, Sarphatiparkbuurt, and Hondecoeterbuurt [recording_2025-07-14_08-27-06_01356_back] [recording_2025-09-15_12-05-19_00167_front] [recording_2025-07-14_08-27-06_00220_back] [recording_2025-07-14_07-34-51_01152_back] [recording_2025-09-01_08-24-31_00435_left] [recording_2025-07-31_07-49-05_00607_front] [recording_2025-09-29_09-14-27_01805_back] [recording_2025-07-30_11-08-35_02153_right].",
+   "refused": false,
+   "reason": "generated from retrieved records",
+   "citations": [
+    "recording_2025-07-14_08-27-06_01356_back",
+    "recording_2025-09-15_12-05-19_00167_front",
+    "recording_2025-07-14_08-27-06_00220_back",
+    "recording_2025-07-14_07-34-51_01152_back",
+    "recording_2025-09-01_08-24-31_00435_left",
+    "recording_2025-07-31_07-49-05_00607_front",
+    "recording_2025-09-29_09-14-27_01805_back",
+    "recording_2025-07-30_11-08-35_02153_right"
+   ],
+   "records": [
+    {
+     "image_id": "recording_2025-07-14_08-27-06_01356_back",
+     "similarity": 0.811,
+     "lat": 52.35016431136419,
+     "lon": 4.906564726140998,
+     "heading_deg": 265.0,
+     "buurt": "Diamantbuurt",
+     "observation_text": "Present: sidewalk (narrow): paved path along the right side of the street; sidewalk obstruction (other): parked cars on the right sidewalk; street trees: tall tree visible in the distance at the end of the street; other greenery: small bushes and plants visible near the building on the left; sidewalk parking: cars parked along the right side of the street on the sidewalk area. Absent: sidewalk gap, shade on walkway, active frontage. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, street light pole, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-15_12-05-19_00167_front",
+     "similarity": 0.81,
+     "lat": 52.40185559468463,
+     "lon": 4.902731136851782,
+     "heading_deg": 58.1,
+     "buurt": "Klaprozenbuurt",
+     "observation_text": "Present: sidewalk (narrow): paved path visible on the right side of the image; sidewalk obstruction (other): parked cars are adjacent to the paved path; street trees: multiple large trees visible in the background and along the right side; other greenery: grass and vegetation visible behind the parked cars; street light pole: a tall metal pole with a lamp head is visible on the right; view obstruction: parked cars and trees block the view of the street beyond. Absent: sidewalk gap, pedestrian crossing, intersection, traffic calming, cycle infrastructure, shade on walkway, seating, sidewalk parking, surface damage, litter, active frontage. Not visible: curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-07-14_08-27-06_00220_back",
+     "similarity": 0.808,
+     "lat": 52.35726105916874,
+     "lon": 4.904251689674604,
+     "heading_deg": 247.5,
+     "buurt": "Hemonybuurt",
+     "observation_text": "Present: sidewalk (narrow): paved path along the street edge; sidewalk obstruction (other): parked cars on the sidewalk; street trees: trees visible along the street in the distance; other greenery: small plants and bushes near building entrances; street light pole: street lamp visible in the distance; sidewalk parking: cars parked along the curb on both sides; active frontage: ground floor windows and doors visible on buildings. Absent: sidewalk gap, traffic calming, cycle infrastructure, shade on walkway, seating, accessibility barrier, surface damage, litter, view obstruction. Not visible: pedestrian crossing, intersection, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-07-14_07-34-51_01152_back",
+     "similarity": 0.807,
+     "lat": 52.35885113411114,
+     "lon": 4.897324737303391,
+     "heading_deg": 180.2,
+     "buurt": "Frederikspleinbuurt",
+     "observation_text": "Present: sidewalk (narrow): paved path along the street edge; sidewalk obstruction (other): parked cars on sidewalk edge; pedestrian crossing (zebra marked): zebra crossing markings visible in distance; intersection: street junction visible in background; traffic calming (narrowing or chicane): narrowing of street by parked cars; street trees: trees visible in background and planters on left building; other greenery: planters with greenery on left building facade; street light pole: lamp post visible on right side of street; sidewalk parking: cars parked along sidewalk edge on both sides; active frontage: ground floor windows and doors visible on buildings. Absent: sidewalk gap, cycle infrastructure, shade on walkway, seating, accessibility barrier, surface damage, litter, view obstruction. Not visible: curb ramp."
+    },
+    {
+     "image_id": "recording_2025-09-01_08-24-31_00435_left",
+     "similarity": 0.806,
+     "lat": 52.31808864547727,
+     "lon": 4.943168122141291,
+     "heading_deg": 240.3,
+     "buurt": "Venserpolder-West",
+     "observation_text": "Present: sidewalk (narrow): paved area with cars parked on it; sidewalk obstruction (other): cars parked on the paved area; street trees: multiple large trees visible in the background and foreground; other greenery: grass and bushes visible behind the parked cars; shade on walkway: trees casting shadows on the paved area; street light pole: tall pole visible on the right side of the image; sidewalk parking: cars parked on the paved area; view obstruction: trees and parked cars block view of the street beyond. Absent: sidewalk gap. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, curb ramp, accessibility barrier, surface damage, litter, active frontage. Image issues: occlusion, partial view."
+    },
+    {
+     "image_id": "recording_2025-07-31_07-49-05_00607_front",
+     "similarity": 0.805,
+     "lat": 52.361244599078056,
+     "lon": 4.859518106235707,
+     "heading_deg": 248.0,
+     "buurt": "Cremerbuurt-West",
+     "observation_text": "Present: sidewalk (narrow): paved path along the street edge; sidewalk obstruction (other): parked cars on the left sidewalk; intersection: street junction visible in distance; street trees: tree visible in distance center; other greenery: small plants near building base; shade on walkway: shadows from buildings on sidewalk; street light pole: lamp post visible on left building; sidewalk parking: cars parked along left curb; active frontage: ground floor windows and doors visible. Absent: sidewalk gap, traffic calming, surface damage, litter, view obstruction. Not visible: pedestrian crossing, cycle infrastructure, seating, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-09-29_09-14-27_01805_back",
+     "similarity": 0.804,
+     "lat": 52.35615379981801,
+     "lon": 4.893970261691579,
+     "heading_deg": 250.7,
+     "buurt": "Sarphatiparkbuurt",
+     "observation_text": "Present: sidewalk (narrow): paved path along the street edge; sidewalk obstruction (other): parked car on the left sidewalk; traffic calming (narrowing or chicane): narrowing of street by trees and parked cars; street trees: large trees lining both sides of the street; other greenery: flowering plants and bushes in planters along the sidewalk; shade on walkway: dappled shadows from trees on the paved walkway; sidewalk parking: silver car parked on the left sidewalk area; active frontage: ground floor windows and entrance visible on left building; view obstruction: large trees and parked cars block view of street beyond. Absent: sidewalk gap, surface damage, litter. Not visible: pedestrian crossing, intersection, cycle infrastructure, seating, street light pole, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-07-30_11-08-35_02153_right",
+     "similarity": 0.804,
+     "lat": 52.35573730897788,
+     "lon": 4.879460145614917,
+     "heading_deg": 154.4,
+     "buurt": "Hondecoeterbuurt",
+     "observation_text": "Present: sidewalk (narrow): paved path between cars and building; sidewalk obstruction (other): cars parked on the sidewalk; street light pole: pole visible on the right edge; sidewalk parking: cars parked on the sidewalk; active frontage: windows and doors face the street; view obstruction: cars block view of street. Absent: sidewalk gap, street trees, other greenery, shade on walkway, seating, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, curb ramp, accessibility barrier."
+    }
+   ]
+  },
+  {
+   "question": "Where are tram stops with shelters?",
+   "answer": "Tram stops with shelters are located in De Aker-West [recording_2025-07-02_04-34-16_01205_left], Stationsplein e.o. [recording_2025-06-16_06-42-40_02811_front] [recording_2025-06-16_06-42-40_02698_front] [recording_2025-06-16_06-42-40_02698_back], and Sarphatistrook [recording_2025-06-19_04-38-42_03098_right].",
+   "refused": false,
+   "reason": "generated from retrieved records",
+   "citations": [
+    "recording_2025-07-02_04-34-16_01205_left",
+    "recording_2025-06-16_06-42-40_02811_front",
+    "recording_2025-06-16_06-42-40_02698_front",
+    "recording_2025-06-16_06-42-40_02698_back",
+    "recording_2025-06-19_04-38-42_03098_right"
+   ],
+   "records": [
+    {
+     "image_id": "recording_2025-07-02_04-34-16_01205_left",
+     "similarity": 0.791,
+     "lat": 52.35398790395662,
+     "lon": 4.774211917779698,
+     "heading_deg": 323.1,
+     "buurt": "De Aker-West",
+     "observation_text": "Present: sidewalk (medium): paved area next to tram tracks; intersection: tram tracks curve and meet at a junction; street trees: trees visible on the right side of the image; other greenery: grass and vegetation along the tram tracks; seating: bench visible under the tram shelter; street light pole: tall pole with street lights on the left. Absent: sidewalk gap, sidewalk obstruction, traffic calming, shade on walkway, sidewalk parking, accessibility barrier, surface damage, litter, active frontage, view obstruction. Not visible: pedestrian crossing, cycle infrastructure, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-06-16_06-42-40_02811_front",
+     "similarity": 0.777,
+     "lat": 52.37821457030657,
+     "lon": 4.899441062334192,
+     "heading_deg": 344.6,
+     "buurt": "Stationsplein e.o.",
+     "observation_text": "Present: sidewalk (medium): paved area alongside tram tracks; intersection: tram tracks curve and meet at a junction; street trees: large tree on the left side of the image; other greenery: small bushes near the tram stop shelter; shade on walkway: tree canopy provides shade on the left sidewalk; seating: bench visible at the tram stop shelter; street light pole: tall metal pole with lamp head on the right; active frontage: large brick building with windows faces the street; view obstruction: tram tracks and overhead wires block part of the view. Absent: sidewalk gap, sidewalk obstruction, traffic calming, sidewalk parking, surface damage, litter. Not visible: pedestrian crossing, cycle infrastructure, curb ramp, accessibility barrier."
+    },
+    {
+     "image_id": "recording_2025-06-19_04-38-42_03098_right",
+     "similarity": 0.775,
+     "lat": 52.36125665240696,
+     "lon": 4.908427228692266,
+     "heading_deg": 160.8,
+     "buurt": "Sarphatistrook",
+     "observation_text": "Present: sidewalk (medium): paved path visible under the shelter structure; sidewalk obstruction (other): bicycles parked on the left sidewalk; pedestrian crossing (zebra marked): zebra crossing markings visible in the background; intersection: street junction visible in the background; cycle infrastructure (painted lane): painted bicycle lane markings on the road surface; street trees: trees visible in the background near the intersection; other greenery: greenery visible in the background near the intersection; shade on walkway: shelter structure providing shade over the walkway; street light pole: street light pole visible in the background on the right; curb ramp: curb ramp visible at the entrance to the shelter structure; active frontage: building with windows and doors visible on the left side; view obstruction: large shelter structure in the foreground blocks part of the view. Absent: sidewalk gap, traffic calming, seating, sidewalk parking, accessibility barrier, surface damage, litter. Image issues: occlusion."
+    },
+    {
+     "image_id": "recording_2025-06-16_06-42-40_02698_front",
+     "similarity": 0.772,
+     "lat": 52.37777279107632,
+     "lon": 4.900533751472029,
+     "heading_deg": 104.9,
+     "buurt": "Stationsplein e.o.",
+     "observation_text": "Present: sidewalk (medium): paved walkway visible on both sides of the tram tracks; intersection: tram tracks curve and intersect with the building area in the background; street trees: small trees visible in the background near the tram tracks; other greenery: some greenery visible behind the tram shelter structure; seating: bench visible under the tram shelter on the left; street light pole: tall pole with street light fixture visible on the right side; active frontage: building with windows and entrance visible on the right side; view obstruction: tram shelter and pole partially block the view of the street ahead. Absent: sidewalk gap, sidewalk obstruction, traffic calming, cycle infrastructure, shade on walkway, sidewalk parking, accessibility barrier, surface damage, litter. Not visible: pedestrian crossing, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-09-26_09-39-19_01353_back",
+     "similarity": 0.769,
+     "lat": 52.360438609527236,
+     "lon": 4.925073550048729,
+     "heading_deg": 156.1,
+     "buurt": "Dapperbuurt-Zuid",
+     "observation_text": "Present: sidewalk (medium): paved path along the left side of the street; sidewalk obstruction (other): bicycle parked near the bus stop shelter; pedestrian crossing (zebra marked): zebra crossing markings visible in the distance; intersection: street junction visible in the background; cycle infrastructure (separated track): dedicated cycle lane with red asphalt on the left; street trees: trees lining both sides of the street; other greenery: vegetation along the sidewalk and bus stop area; shade on walkway: dappled shadows from trees on the sidewalk; seating: bench visible at the bus stop shelter; street light pole: tall curved street lamp pole in the foreground; active frontage: shops and buildings with ground-floor windows visible on both sides. Absent: sidewalk gap, traffic calming, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction. Not visible: curb ramp."
+    },
+    {
+     "image_id": "recording_2025-07-16_11-08-20_01134_left",
+     "similarity": 0.768,
+     "lat": 52.346622060249395,
+     "lon": 4.824500511379461,
+     "heading_deg": 354.4,
+     "buurt": "Medisch Centrum Slotervaart",
+     "observation_text": "Present: sidewalk (medium): paved path along the tram tracks; sidewalk obstruction (street furniture): bus shelter and trash bin on sidewalk; street trees: row of mature trees behind fence; other greenery: grass and vegetation behind fence; street light pole: tall pole with lamp visible behind bus shelter; view obstruction: fence and bus shelter block view of street beyond. Absent: sidewalk gap, pedestrian crossing, traffic calming, cycle infrastructure, shade on walkway, seating, sidewalk parking, accessibility barrier, surface damage, litter, active frontage. Not visible: intersection, curb ramp. Image issues: partial view."
+    },
+    {
+     "image_id": "recording_2025-06-16_06-42-40_02698_back",
+     "similarity": 0.768,
+     "lat": 52.37777279107632,
+     "lon": 4.900533751472029,
+     "heading_deg": 284.9,
+     "buurt": "Stationsplein e.o.",
+     "observation_text": "Present: sidewalk (wide): paved pedestrian area on both sides of tracks; sidewalk obstruction (street furniture): metal bollards and barriers along the left sidewalk; intersection: visible junction with tram tracks and buildings in background; street trees: large tree on left sidewalk and smaller trees in background; other greenery: smaller trees and shrubs visible in background and near buildings; shade on walkway: dappled shadows from trees on left sidewalk; seating: bench visible at tram stop shelter on right; street light pole: tall metal pole with traffic lights on left side; active frontage: building facades with windows and doors visible on both sides. Absent: sidewalk gap, traffic calming, cycle infrastructure, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction. Not visible: pedestrian crossing, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-10-01_10-41-06_00279_right",
+     "similarity": 0.765,
+     "lat": 52.40231335360728,
+     "lon": 4.931928055225685,
+     "heading_deg": 18.6,
+     "buurt": "Elzenhagen-Zuid",
+     "observation_text": "Present: sidewalk (medium): concrete paved area under the shelter; sidewalk obstruction (street furniture): metal bollards blocking the path; street trees: trees visible in background behind shelter; other greenery: trees and vegetation visible in background; shade on walkway: large overhead shelter providing shade; street light pole: tall pole visible in background right; accessibility barrier (other): metal bollards blocking pedestrian path; active frontage: building with windows visible in background left; view obstruction: large shelter structure dominates foreground view. Absent: sidewalk gap, traffic calming, sidewalk parking, surface damage, litter. Not visible: pedestrian crossing, intersection, cycle infrastructure, seating, curb ramp. Image issues: occlusion."
+    }
+   ]
+  },
+  {
+   "question": "Is this street safe for children to walk alone?",
+   "answer": "The records do not contain information regarding the safety of the street for children to walk alone [recording_2025-09-01_10-03-07_04050_left] [recording_2025-09-22_11-45-45_00489_back] [recording_2025-07-14_09-44-02_01925_back] [recording_2025-06-18_12-42-11_02353_back] [recording_2025-07-15_05-51-37_01338_front] [recording_2025-09-02_12-37-27_00118_front] [recording_2025-10-02_08-33-49_01005_front] [recording_2025-09-11_07-44-05_01866_right].",
+   "refused": false,
+   "reason": "generated from retrieved records",
+   "citations": [
+    "recording_2025-09-01_10-03-07_04050_left",
+    "recording_2025-09-22_11-45-45_00489_back",
+    "recording_2025-07-14_09-44-02_01925_back",
+    "recording_2025-06-18_12-42-11_02353_back",
+    "recording_2025-07-15_05-51-37_01338_front",
+    "recording_2025-09-02_12-37-27_00118_front",
+    "recording_2025-10-02_08-33-49_01005_front",
+    "recording_2025-09-11_07-44-05_01866_right"
+   ],
+   "records": [
+    {
+     "image_id": "recording_2025-09-01_10-03-07_04050_left",
+     "similarity": 0.774,
+     "lat": 52.30378879348452,
+     "lon": 4.965429638907671,
+     "heading_deg": 242.5,
+     "buurt": "Holendrecht-Oost",
+     "observation_text": "Present: sidewalk (medium): paved path along the street; pedestrian crossing (signalized): blue sign with walking figures; street trees: trees lining the street on both sides; other greenery: hedges and bushes along the sidewalk; shade on walkway: dappled shadows from trees on pavement; active frontage: ground floor windows and doors visible. Absent: sidewalk gap, sidewalk obstruction, traffic calming, cycle infrastructure, seating, street light pole, sidewalk parking, accessibility barrier, surface damage, litter, view obstruction. Not visible: intersection, curb ramp."
+    },
+    {
+     "image_id": "recording_2025-09-22_11-45-45_00489_back",
+     "similarity": 0.773,
+     "lat": 52.39278864802018,
+     "lon": 4.926202731200991,
+     "heading_deg": 218.9,
+     "buurt": "Blauwe Zand",
+     "observation_text": "Present: sidewalk (medium): paved path along the right side of the street; street trees: trees visible in the background and along the right side; other greenery: bushes and trees visible near the buildings and playground; street light pole: tall metal pole with lamp visible on the right side. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, active frontage, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-07-14_09-44-02_01925_back",
+     "similarity": 0.77,
+     "lat": 52.33676675442977,
+     "lon": 4.904833381608202,
+     "heading_deg": 301.9,
+     "buurt": "Rijnbuurt-Midden",
+     "observation_text": "Present: sidewalk (narrow): paved path running along the right side of the road; sidewalk obstruction (other): motorcycle parked on the sidewalk near the blue car; street trees: large trees lining the right side of the street and in the background; other greenery: hedges along the sidewalk and grassy area on the right; shade on walkway: dappled shadows from trees fall on the paved path; sidewalk parking: multiple cars parked along the left curb on the sidewalk area; active frontage: brick houses with windows and doors face the street on the left. Absent: sidewalk gap, cycle infrastructure, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, seating, street light pole, curb ramp, accessibility barrier, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-06-18_12-42-11_02353_back",
+     "similarity": 0.77,
+     "lat": 52.38344203271344,
+     "lon": 4.820639684130917,
+     "heading_deg": 90.8,
+     "buurt": "Arondeusbuurt",
+     "observation_text": "Present: sidewalk (medium): paved path along the left side of the road; intersection: road junction visible in the distance with multiple lanes; traffic calming (other): white dashed lines and 'SCHOOL ZONE' marking on road surface; street trees: tall tree visible on the right side of the street; other greenery: grass verge and small trees on the left side; street light pole: street lamp post visible on the left side of the road; active frontage: ground-floor windows and building entrances visible on both sides. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, cycle infrastructure, shade on walkway, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-07-15_05-51-37_01338_front",
+     "similarity": 0.769,
+     "lat": 52.37970871862703,
+     "lon": 4.795186220974563,
+     "heading_deg": 11.2,
+     "buurt": "Van Tijenbuurt",
+     "observation_text": "Present: sidewalk (narrow): paved path along the left side of the street; street trees: multiple trees lining the right side of the street and near the building on the left; other greenery: bushes and plants visible along the sidewalk and near the playground area; shade on walkway: dappled shadows from trees visible on the sidewalk and road surface; street light pole: tall pole with lamp visible on the left side of the street; active frontage: ground-floor windows and doors visible on the building on the left. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-02_12-37-27_00118_front",
+     "similarity": 0.767,
+     "lat": 52.40969306238717,
+     "lon": 4.900028915900116,
+     "heading_deg": 14.6,
+     "buurt": "Terrasdorp",
+     "observation_text": "Present: sidewalk (narrow): paved path on the right side of the road; cycle infrastructure (painted lane): white painted lane markings on the road surface; street trees: large trees on both sides of the street; other greenery: grass verges and trees lining the street; shade on walkway: dappled shadows from trees on the grass and sidewalk; street light pole: white lamp post visible on the right sidewalk; active frontage: ground-floor windows and doors visible on the buildings. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-10-02_08-33-49_01005_front",
+     "similarity": 0.767,
+     "lat": 52.382948090244504,
+     "lon": 4.836811317878138,
+     "heading_deg": 103.0,
+     "buurt": "Coronelbuurt",
+     "observation_text": "Present: sidewalk (narrow): paved path along the left side of the road; sidewalk obstruction (street furniture): yellow fence and playground equipment on the left sidewalk; street trees: trees visible in the background and along the right side of the street; other greenery: playground area with green and blue surfacing on the left; active frontage: ground-floor windows and doors visible on the building on the right. Absent: sidewalk gap, shade on walkway, sidewalk parking, surface damage, litter. Not visible: pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, street light pole, curb ramp, accessibility barrier, view obstruction."
+    },
+    {
+     "image_id": "recording_2025-09-11_07-44-05_01866_right",
+     "similarity": 0.767,
+     "lat": 52.29941451230977,
+     "lon": 4.969582919722242,
+     "heading_deg": 243.5,
+     "buurt": "Holendrecht-Oost",
+     "observation_text": "Present: sidewalk (medium): paved path along the street; street trees: trees visible along the left side of the street; other greenery: bushes and plants in front gardens; shade on walkway: dappled shadows from trees on pavement; street light pole: lamp post with blue sign in foreground; active frontage: ground floor windows and doors visible on buildings. Absent: sidewalk gap, sidewalk obstruction, pedestrian crossing, intersection, traffic calming, cycle infrastructure, seating, sidewalk parking, curb ramp, accessibility barrier, surface damage, litter, view obstruction."
+    }
+   ]
+  }
+ ]
+}

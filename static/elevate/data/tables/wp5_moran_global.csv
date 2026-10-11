@@ -1,0 +1,16 @@
+variable,moran_I,expected_I,p_sim,z_sim
+green_view,0.3789,-0.0028,0.001,12.979
+street_trees,0.1794,-0.0028,0.001,6.807
+sidewalk,-0.0009,-0.0028,0.037,2.0533
+pedestrian_crossing,0.3798,-0.0028,0.001,13.5827
+seating,0.3182,-0.0028,0.001,11.3215
+shade_on_walkway,0.2774,-0.0028,0.001,10.6369
+street_light_pole,0.2074,-0.0028,0.001,7.3563
+cycle_infrastructure,0.3333,-0.0028,0.001,11.7029
+perceived_beautiful,0.3664,-0.0028,0.001,12.7357
+perceived_safe,0.2605,-0.0028,0.001,9.0817
+perceived_lively,0.5643,-0.0028,0.001,19.7957
+sample_coverage,0.2559,-0.0028,0.001,9.1668
+archive_coverage,0.2559,-0.0028,0.001,8.6967
+low_income_households,0.1435,-0.0028,0.001,5.3868
+low40_households,0.2029,-0.0028,0.001,7.3849

@@ -1,0 +1,31 @@
+{
+ "panoramas": 24775,
+ "panoramas_without_usable_view": 17,
+ "panoramas_without_perception_view": 32,
+ "segments_observed": 19410,
+ "segments_total": 115569,
+ "observed_km": 526.6,
+ "buurten_with_observations": 493,
+ "buurten_total": 519,
+ "panorama_present_share": {
+  "sidewalk": 0.927,
+  "sidewalk_gap": 0.003,
+  "sidewalk_obstruction": 0.679,
+  "pedestrian_crossing": 0.314,
+  "intersection": 0.589,
+  "traffic_calming": 0.169,
+  "cycle_infrastructure": 0.602,
+  "street_trees": 0.985,
+  "other_greenery": 0.995,
+  "shade_on_walkway": 0.805,
+  "seating": 0.157,
+  "street_light_pole": 0.925,
+  "sidewalk_parking": 0.37,
+  "curb_ramp": 0.15,
+  "accessibility_barrier": 0.024,
+  "surface_damage": 0.018,
+  "litter": 0.043,
+  "active_frontage": 0.723,
+  "view_obstruction": 0.667
+ }
+}

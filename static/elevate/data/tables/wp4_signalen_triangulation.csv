@@ -1,0 +1,8 @@
+report_group,subcategories,reports_jun_oct_2025,model_indicator,spearman_with_model,ci_lo,ci_hi,partial_given_address_density,spearman_with_low_income,ci_lo_income,ci_hi_income,n_buurten
+litter,Veeg- / zwerfvuil; Grof afval; Container bijplaatsing; Huisafval; Gedumpt gevaarlijk afval; Puin- / sloopafval; Bruin- en witgoed,72788,audit_litter_state__present_share,0.1328,0.0271,0.2411,0.234,0.3836,0.2876,0.4729,360
+obstruction,Hinderlijk geplaatst object; Fietswrak; Auto- / scooter- / bromfiets(wrak); Deelscooters en -(bak)fietsen,12375,audit_sidewalk_obstruction_state__present_share,0.793,0.746,0.8295,0.53,0.1614,0.0654,0.2709,360
+parking,Parkeeroverlast,18762,audit_sidewalk_parking_state__present_share,0.4326,0.3421,0.5153,0.2663,0.1754,0.0704,0.2834,360
+pavement,"Onderhoud stoep, rijweg en parkeerplaats; Onderhoud fietspad",10154,audit_surface_damage_state__present_share,-0.3764,-0.4639,-0.2792,-0.1718,0.1654,0.0601,0.2691,360
+trees,Boom - ontbreekt; Boom - dood; Boom - overig; Boom - gevaarlijke situatie; Boom - verzoek inspectie,2500,vegetation_pixel_fraction__mean,0.0966,-0.0084,0.1934,0.1892,-0.0726,-0.1808,0.0332,360
+street_furniture,Straatmeubilair,1218,audit_seating_state__present_share,0.3136,0.2128,0.4125,0.157,0.0327,-0.0727,0.133,360
+street_lighting,Straatverlichting,9010,audit_street_light_pole_state__present_share,-0.0181,-0.1264,0.0875,0.0012,0.1358,0.0322,0.2407,360

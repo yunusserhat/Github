@@ -1,0 +1,40 @@
+indicator,label,income_measure,spearman,ci_lo,ci_hi,n_buurten
+green_view,green view (vegetation share of the view),low40_households,0.0498,-0.0597,0.1527,360
+green_view,green view (vegetation share of the view),low_income_households,0.0073,-0.0967,0.1164,360
+green_view,green view (vegetation share of the view),mean_income_per_inhabitant,-0.328,-0.4158,-0.2401,359
+street_trees,street trees reported (A),low40_households,0.0434,-0.0662,0.1546,360
+street_trees,street trees reported (A),low_income_households,0.0627,-0.0404,0.1681,360
+street_trees,street trees reported (A),mean_income_per_inhabitant,-0.0911,-0.1863,0.0097,359
+sidewalk,sidewalk reported (A),low40_households,0.0846,0.081,0.1652,360
+sidewalk,sidewalk reported (A),low_income_households,0.0782,0.0736,0.1486,360
+sidewalk,sidewalk reported (A),mean_income_per_inhabitant,-0.0576,-0.111,-0.0505,359
+pedestrian_crossing,pedestrian crossing reported (A),low40_households,0.0248,-0.0793,0.1291,360
+pedestrian_crossing,pedestrian crossing reported (A),low_income_households,0.0425,-0.0676,0.1464,360
+pedestrian_crossing,pedestrian crossing reported (A),mean_income_per_inhabitant,0.3219,0.2327,0.4136,359
+seating,seating reported (A),low40_households,-0.0607,-0.1602,0.0474,360
+seating,seating reported (A),low_income_households,-0.0398,-0.1448,0.0693,360
+seating,seating reported (A),mean_income_per_inhabitant,0.347,0.2508,0.4424,359
+shade_on_walkway,shade on walkway reported (A),low40_households,0.034,-0.0751,0.1513,360
+shade_on_walkway,shade on walkway reported (A),low_income_households,0.1135,0.0087,0.2188,360
+shade_on_walkway,shade on walkway reported (A),mean_income_per_inhabitant,0.1418,0.0468,0.2353,359
+street_light_pole,street light reported (A),low40_households,0.0787,-0.0226,0.1794,360
+street_light_pole,street light reported (A),low_income_households,0.0483,-0.0538,0.1505,360
+street_light_pole,street light reported (A),mean_income_per_inhabitant,-0.1422,-0.239,-0.0423,359
+cycle_infrastructure,cycle infrastructure reported (B),low40_households,0.0935,-0.0118,0.1919,360
+cycle_infrastructure,cycle infrastructure reported (B),low_income_households,0.1027,0.0005,0.2037,360
+cycle_infrastructure,cycle infrastructure reported (B),mean_income_per_inhabitant,0.1983,0.11,0.2873,359
+perceived_beautiful,perceived beautiful (Place Pulse model),low40_households,-0.0962,-0.2047,0.0071,360
+perceived_beautiful,perceived beautiful (Place Pulse model),low_income_households,-0.0834,-0.1891,0.019,360
+perceived_beautiful,perceived beautiful (Place Pulse model),mean_income_per_inhabitant,-0.1825,-0.2775,-0.0869,359
+perceived_safe,perceived safe (Place Pulse model),low40_households,-0.0541,-0.1655,0.0472,360
+perceived_safe,perceived safe (Place Pulse model),low_income_households,0.029,-0.0828,0.1372,360
+perceived_safe,perceived safe (Place Pulse model),mean_income_per_inhabitant,0.182,0.0785,0.2804,359
+perceived_lively,perceived lively (Place Pulse model),low40_households,0.0188,-0.0947,0.1307,360
+perceived_lively,perceived lively (Place Pulse model),low_income_households,0.1345,0.0238,0.2423,360
+perceived_lively,perceived lively (Place Pulse model),mean_income_per_inhabitant,0.4333,0.3476,0.5159,359
+sample_coverage,network share observed in the sample,low40_households,-0.0572,-0.1608,0.0432,360
+sample_coverage,network share observed in the sample,low_income_households,-0.0123,-0.1215,0.0875,360
+sample_coverage,network share observed in the sample,mean_income_per_inhabitant,0.0897,-0.0102,0.1987,359
+archive_coverage,network share covered by the 2025 archive,low40_households,-0.0168,-0.1246,0.0928,360
+archive_coverage,network share covered by the 2025 archive,low_income_households,0.0546,-0.0486,0.1646,360
+archive_coverage,network share covered by the 2025 archive,mean_income_per_inhabitant,0.2149,0.1162,0.311,359

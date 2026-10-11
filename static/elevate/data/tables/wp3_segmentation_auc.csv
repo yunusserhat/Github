@@ -1,0 +1,9 @@
+item,class,n_present,n_absent,median_present,median_absent,auc
+street_trees,vegetation,88505,6821,0.2614,0.005,0.9561
+other_greenery,vegetation+terrain,94701,2389,0.3072,0.0001,0.9829
+sidewalk,sidewalk,69508,1,0.0244,0.0,0.9693
+sidewalk_parking,car,13641,49766,0.0592,0.0054,0.8004
+cycle_infrastructure,bicycle,28790,23466,0.0,0.0,0.5045
+street_light_pole,pole,57111,10656,0.0067,0.0015,0.8098
+active_frontage,building,49237,22704,0.2172,0.0673,0.7077
+shade_on_walkway,vegetation,49451,21440,0.3169,0.0674,0.8777

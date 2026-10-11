@@ -1,0 +1,44 @@
+{
+ "SYNTHETIC": true,
+ "fixes": {
+  "raw": 663809,
+  "after_accuracy": 166104,
+  "after_speed": 165757
+ },
+ "fixes_after_gap_filling": 185340,
+ "interpolated": 19583,
+ "spike_recall": 0.788,
+ "non_spike_dropped_by_speed_rule": 0.0005,
+ "mode_confusion_rows_true": {
+  "bike": {
+   "bike": 0.954,
+   "stay": 0.024,
+   "vehicle": 0.012,
+   "walk": 0.009
+  },
+  "stay": {
+   "bike": 0.014,
+   "stay": 0.967,
+   "vehicle": 0.009,
+   "walk": 0.01
+  },
+  "vehicle": {
+   "bike": 0.152,
+   "stay": 0.008,
+   "vehicle": 0.804,
+   "walk": 0.036
+  },
+  "walk": {
+   "bike": 0.097,
+   "stay": 0.138,
+   "vehicle": 0.083,
+   "walk": 0.681
+  }
+ },
+ "valid_person_days": 1253,
+ "valid_persons": 200,
+ "halfhours_valid": 30072,
+ "halfhours_with_observed_exposure": 4920,
+ "active_fixes_with_exposure_share": 0.743,
+ "observed_vs_true_halfhour_green_view_r": 0.958
+}

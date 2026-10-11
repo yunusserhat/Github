@@ -1,0 +1,1 @@
+[{"Estimate":0.0896953634,"Std. Error":0.0209486033,"z value":4.2816870549,"Pr(>|z|)":0.0000185482,"term":"z_green"},{"Estimate":0.0717500379,"Std. Error":0.0295751139,"z value":2.4260274397,"Pr(>|z|)":0.0152651161,"term":"z_green:stratummiddle"},{"Estimate":0.091636107,"Std. Error":0.0290982545,"z value":3.1491960138,"Pr(>|z|)":0.0016372034,"term":"z_green:stratumlow"}]

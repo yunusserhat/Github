@@ -1,0 +1,29 @@
+{
+ "views_front_back_usable": 49398,
+ "gap_views": {
+  "crossing": 7487,
+  "trees": 1989,
+  "seating": 18613,
+  "greenery": 5308,
+  "cycle": 2123
+ },
+ "gap_share": {
+  "crossing": 0.1516,
+  "trees": 0.0403,
+  "seating": 0.3768,
+  "greenery": 0.1075,
+  "cycle": 0.043
+ },
+ "segments_with_any_gap": 14186,
+ "candidates": {
+  "crossing": 35,
+  "trees": 32,
+  "seating": 22,
+  "greenery": 20,
+  "cycle": 15
+ },
+ "candidates_by_priority": {
+  "2": 124
+ },
+ "candidate_buurten": 20
+}

@@ -1,0 +1,57 @@
+{
+ "edits": 47,
+ "success_4b": 1.0,
+ "success_27b": 1.0,
+ "other_items_changed_4b_mean": 2.55,
+ "other_items_expected_by_instability": 0.68,
+ "pixels_changed_median": 0.07,
+ "pixels_unexpected_median": 0.016,
+ "pixels_unexpected_p90": 0.099,
+ "by_gap": [
+  {
+   "gap_type": "crossing",
+   "n": 11,
+   "success_4b": 1.0,
+   "success_27b": 1.0,
+   "other_items_changed_4b": 1.818,
+   "pixels_changed": 0.027,
+   "pixels_unexpected": 0.014
+  },
+  {
+   "gap_type": "cycle",
+   "n": 6,
+   "success_4b": 1.0,
+   "success_27b": 1.0,
+   "other_items_changed_4b": 4.0,
+   "pixels_changed": 0.043,
+   "pixels_unexpected": 0.025
+  },
+  {
+   "gap_type": "greenery",
+   "n": 8,
+   "success_4b": 1.0,
+   "success_27b": 1.0,
+   "other_items_changed_4b": 1.875,
+   "pixels_changed": 0.112,
+   "pixels_unexpected": 0.02
+  },
+  {
+   "gap_type": "seating",
+   "n": 9,
+   "success_4b": 1.0,
+   "success_27b": 1.0,
+   "other_items_changed_4b": 1.778,
+   "pixels_changed": 0.046,
+   "pixels_unexpected": 0.01
+  },
+  {
+   "gap_type": "trees",
+   "n": 13,
+   "success_4b": 1.0,
+   "success_27b": 1.0,
+   "other_items_changed_4b": 3.462,
+   "pixels_changed": 0.216,
+   "pixels_unexpected": 0.014
+  }
+ ]
+}

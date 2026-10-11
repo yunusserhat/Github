@@ -1,0 +1,55 @@
+{
+ "built": "2026-10-11T20:22+02:00",
+ "imagery": {
+  "source": "Gemeente Amsterdam, Kernregistratie Panoramabeelden, 2025 recordings",
+  "licence": "CC BY 4.0",
+  "panoramas": 24775,
+  "views": 99100
+ },
+ "audit": {
+  "model": "Qwen/Qwen3.5-4B",
+  "revision": [
+   "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
+  ],
+  "template": "active_mobility_audit_v2",
+  "processing_id": [
+   "9fa2547ea019"
+  ],
+  "package": "GeoAI-VLM"
+ },
+ "reference": {
+  "model": "Qwen/Qwen3.8-27B-FP8",
+  "use": "agreement checks, WP6 candidate confirmation and edit checks"
+ },
+ "segmentation": "nvidia/segformer-b5-finetuned-cityscapes-1024-1024",
+ "perception": {
+  "primary": "Jiani11/human-perception-place-pulse@402164b5",
+  "second": "seshing/placepulse@1d7f85c4",
+  "note": "stand-in for ELEVATE's own perception model"
+ },
+ "embedding": {
+  "embedding_model": "google/embeddinggemma-2",
+  "model_revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+  "truncate_dim": 256,
+  "embedded": "image+text",
+  "document_prompt": "document",
+  "text": "obs_text_v1",
+  "text_source": "GeoAI-VLM active_mobility_audit_v2, Qwen/Qwen3.5-4B (processing_id 9fa2547ea019)",
+  "images": "Gemeente Amsterdam panoramas 2025, CC BY 4.0; perspective views 768x576",
+  "note": "Observation text is model output, not a measurement.",
+  "built": "2026-10-11",
+  "n": 99100
+ },
+ "image_edits": {
+  "model": "Qwen/Qwen-Image-2.1-Turbo@d65dbc9a",
+  "licence": "Qwen Research Licence (non-commercial)",
+  "label": "AI-generated visualisation, not a design proposal"
+ },
+ "income": "CBS StatLine 85618NED (2023), CC BY 4.0",
+ "reports": "Meldingen openbare ruimte Amsterdam (SIA open dataset), CC BY",
+ "network": "OpenStreetMap contributors, ODbL",
+ "aerial_3d": "PDOK Luchtfoto 2025 orthoHR (Beeldmateriaal Nederland), CC BY 4.0, home page 3D view",
+ "buildings_3d": "3DBAG v20250903 LoD2.2 3D Tiles (TU Delft 3D geoinformation and 3DGI), CC BY 4.0, recoloured and lowered 43 m to the ellipsoid",
+ "synthetic": "WP2 persons, GPS and steps are synthetic (docs/wp2_synthetic_design.md)",
+ "missing_at_build": []
+}

@@ -1,0 +1,19 @@
+{
+ "source": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-03_08-35-58_00239/equirectangular/panorama_4000.jpg",
+ "original_size": [
+  4000,
+  2000
+ ],
+ "left_edge_heading_deg": 204.6,
+ "quarters": [
+  "front",
+  "right",
+  "back",
+  "left"
+ ],
+ "view_band": {
+  "top": 0.25,
+  "bottom": 0.6476
+ },
+ "credit": "Panorama: Gemeente Amsterdam, CC BY 4.0 (rolled and resized here)"
+}

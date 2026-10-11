@@ -1,0 +1,16 @@
+label,draft_rank,indicator,source,presence_kappa_or_check,what_it_cannot_show
+"DRAFT order for workshop ranking, not stakeholder priorities",1,pedestrian crossing at intersections,audit (tier A),0.83,protocol Fig. 2 example; detects marked crossings only
+"DRAFT order for workshop ranking, not stakeholder priorities",2,green view (vegetation share),segmentation,AUC 0.96 vs street trees,seasonal; leaf-on images only (June-October)
+"DRAFT order for workshop ranking, not stakeholder priorities",3,shade on walkway,audit (tier A),0.73,depends on time of capture and sun
+"DRAFT order for workshop ranking, not stakeholder priorities",4,seating,audit (tier A),0.84,street seating only; park benches rarely seen
+"DRAFT order for workshop ranking, not stakeholder priorities",5,sidewalk present,audit (tier A),0.81,present on almost all observed streets; little contrast between buurten
+"DRAFT order for workshop ranking, not stakeholder priorities",6,street lighting (pole present),audit (tier A),0.74,"daytime images: presence, not light levels"
+"DRAFT order for workshop ranking, not stakeholder priorities",7,intersection density (from images),audit (tier A),0.75,better from the street network
+"DRAFT order for workshop ranking, not stakeholder priorities",8,cycle infrastructure,audit (tier B),0.59,over-reported; check against the city's cycle network
+"DRAFT order for workshop ranking, not stakeholder priorities",9,sidewalk obstruction,audit (tier B),0.54,"transient (bins, bikes); single capture date"
+"DRAFT order for workshop ranking, not stakeholder priorities",10,active frontage,audit (tier B),0.53,over-reported in side views
+"DRAFT order for workshop ranking, not stakeholder priorities",11,perceived beauty / safety / liveliness,Place Pulse model (stand-in),"two models agree, Spearman 0.15-0.74","global crowd, not Amsterdam residents; to be replaced by ELEVATE's own model"
+"DRAFT order for workshop ranking, not stakeholder priorities",12,sidewalk parking,audit (tier C),0.15,not used: over-reported four-fold
+"DRAFT order for workshop ranking, not stakeholder priorities",13,accessibility barrier,audit (tier C),0.04,not used: almost never reported by the small model
+"DRAFT order for workshop ranking, not stakeholder priorities",14,litter,audit (tier C),0.18,not used: too few cases
+"DRAFT order for workshop ranking, not stakeholder priorities",15,"surface damage, traffic calming, sidewalk gap",audit (rare),-,not assessable from 500 views; too rare

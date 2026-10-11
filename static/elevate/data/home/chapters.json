@@ -1,0 +1,33 @@
+{
+ "wp3": {
+  "lat": 52.37480874849054,
+  "lon": 4.880794248175867,
+  "pano_id": "recording_2025-07-03_08-35-58_00239",
+  "buurt": "Bloemgrachtbuurt",
+  "front_heading_deg": 249.6
+ },
+ "wp4": {
+  "buurtcode": "BU0363AJ01",
+  "buurt": "Weesperbuurt",
+  "lat": 52.36482,
+  "lon": 4.906754,
+  "obstruction_reports_per_km": 12.3,
+  "model_obstruction_share": 1.0,
+  "rule": "highest of min(percentile of obstruction reports per km, percentile of the model's obstructed-sidewalk share)"
+ },
+ "wp5": {
+  "lat": 52.380029,
+  "lon": 4.900808,
+  "priority_buurten": 21
+ },
+ "wp6": {
+  "image_id": "recording_2025-06-17_11-17-15_00661_front",
+  "gap_type": "trees",
+  "buurt": "Westelijke eilanden",
+  "street": "Prinseneiland",
+  "lat": 52.386282,
+  "lon": 4.887825,
+  "heading_deg": 4.3,
+  "rule": "confirmed street-tree edit with the smallest share of unexpected pixel changes"
+ }
+}
