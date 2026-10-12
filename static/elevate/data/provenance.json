@@ -1,5 +1,5 @@
 {
- "built": "2026-10-11T20:22+02:00",
+ "built": "2026-10-12T08:52+02:00",
  "imagery": {
   "source": "Gemeente Amsterdam, Kernregistratie Panoramabeelden, 2025 recordings",
   "licence": "CC BY 4.0",
@@ -23,9 +23,10 @@
  },
  "segmentation": "nvidia/segformer-b5-finetuned-cityscapes-1024-1024",
  "perception": {
+  "elevate": "Spatial-Data-Science-and-GEO-AI-Lab/svi_percept@d0c666d6 (GPL-3.0); CLIP ViT-H-14-378-quickgelu/dfn5b@01b771ed (apple/DFN5B-CLIP-ViT-H-14-378, Apple ML research licence)",
   "primary": "Jiani11/human-perception-place-pulse@402164b5",
   "second": "seshing/placepulse@1d7f85c4",
-  "note": "stand-in for ELEVATE's own perception model"
+  "note": "the ELEVATE team's own Amsterdam model (Percept survey; Danish et al. 2025); the two Place Pulse models are cross-checks"
  },
  "embedding": {
   "embedding_model": "google/embeddinggemma-2",

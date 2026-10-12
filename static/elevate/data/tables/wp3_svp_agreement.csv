@@ -1,0 +1,9 @@
+quality,compared_with,measure,per_view,per_panorama,n_views
+safety,Place Pulse safety (cross-check),spearman,0.516,0.591,49398
+pleasantness,Place Pulse beautiful (cross-check),spearman,0.509,0.563,49398
+walkability,Place Pulse lively (cross-check),spearman,0.458,0.509,49398
+greenness,"green view (segmentation, vegetation share)",spearman,0.593,0.598,49398
+walkability,audit: sidewalk present vs absent,auc,0.939,,41452
+bikeability,audit: cycle infrastructure present vs absent,auc,0.586,,38864
+greenness,audit: street trees present vs absent,auc,0.811,,48943
+safety,audit: street light pole present vs absent,auc,0.422,,42528
