@@ -1,35 +1,26 @@
 ---
-title: "12. Hafta: Pivot Tablolar (Özet Tablo) ve Veri Analitiği"
-linkTitle: "12. Hafta - Pivot Tablolar"
-date: "2026-09-01"
+title: "12. Hafta: PowerPoint’te kısa sunu"
+linkTitle: "12. Hafta — PowerPoint’te kısa sunu"
+summary: "Etkinliği dört okunaklı slaytta anlatın."
+date: "2026-09-28"
 type: book
 weight: 130
-draft: true
 ---
 
-## 📑 Pivot Tablo Nedir ve Neden Kullanılır?
+## Hedef
 
-Pivot Tablo (Özet Tablo), binlerce satırdan oluşan ham veri kümelerini tek bir formül yazmadan birkaç saniye içinde özetleyen, çaprazlayan ve analiz eden en güçlü iş zekası aracıdır.
+Web için PowerPoint’te bir sununun temel yapısını kuracaksınız. Her slayt tek bir fikri taşımalı; uzun paragrafları slayta kopyalamayın.
 
-<!--more-->
+## Laboratuvar görevi
 
-### Dört Temel Alan
-1. **Satırlar (Rows):** Dikey olarak listelenmek istenen kategoriler (örn. Satış Temsilcileri).
-2. **Sütunlar (Columns):** Yatay olarak karşılaştırılmak istenen boyutlar (örn. Yıllar, Çeyrekler).
-3. **Değerler (Values):** Toplanacak, sayılacak veya ortalaması alınacak sayısal metrikler (örn. Toplam Satış Tutarı).
-4. **Filtreler (Filters):** Raporun tamamına uygulanacak üst filtreler (örn. Bölge: Marmara).
+1. OneDrive’daki `05_Sunu` klasöründe `Etkinlik_Ozeti.pptx` adlı yeni sunu oluşturun.
+2. Dört slayt ekleyin: **Başlık**, **Amaç**, **Program**, **Bütçe özeti**.
+3. Aynı temayı kullanın. Başlıkları kısa, metni okunaklı tutun; slayt başına en fazla üç kısa madde yazın.
+4. Program slaydına iki oturum ve saatleri ekleyin. Bütçe slaydında Excel’de bulduğunuz **1.920 TL** toplamı ve en büyük kalemi yazın.
+5. Kullanılan görselin ne anlattığını kısa bir metinle belirtin; dekoratif görsel yüzünden metin okunmaz hâle gelmesin.
 
----
+## Kontrol
 
-## 🎛️ Dilimleyiciler (Slicers) ve Zaman Çizelgeleri
+Sunuyu uzaktan görüntülediğinizde başlık ve rakamlar okunuyor mu? Slaytlar sıralı mı? Dosya OneDrive’da yeniden açılabiliyor mu?
 
-- **Dilimleyici:** Kullanıcıların tıklayarak raporu filtrelemesini sağlayan modern, görsel butonlar.
-- **Tarih Gruplandırma:** Günlük verileri otomatik olarak Ay, Çeyrek ve Yıl bazında kümeleme.
-
----
-
-## 🛠️ Laboratuvar Uygulaması
-
-1. 1000 satırlık örnek e-ticaret satış verisini içe aktarınız.
-2. Departman ve ürün bazında toplam ciroyu gösteren bir Pivot Tablo oluşturunuz.
-3. Rapor üzerine iki adet Dilimleyici (Şehir ve Ödeme Yöntemi) ekleyerek interaktif veri keşfi yapınız.
+**Ürün:** Dört slaytlık taslak. [Web için PowerPoint yardımı](https://support.microsoft.com/tr-tr/powerpoint/training/create-a-presentation-in-powerpoint-for-the-web).

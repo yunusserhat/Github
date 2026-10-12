@@ -1,29 +1,26 @@
 ---
-title: "7. Hafta: Kelime İşlemciler ve Profesyonel Doküman Tasarımı"
-linkTitle: "7. Hafta - Kelime İşlemciler"
-date: "2026-09-01"
+title: "7. Hafta: Excel’de koşul, filtre ve grafik"
+linkTitle: "7. Hafta — Excel’de koşul, filtre ve grafik"
+summary: "Bütçe kalemlerini sınıflandırın ve tek grafikle anlatın."
+date: "2026-09-28"
 type: book
 weight: 80
-draft: true
 ---
 
-## 📄 Profesyonel Doküman Hiyerarşisi (Google Docs & MS Word)
+## Hedef
 
-Kurumsal raporlar, dilekçeler ve resmi yazışmalar belirli tipografi ve biçimlendirme standartlarına uymalıdır.
+Bu hafta aynı bütçe tablosunda basit koşul, sayma, sıralama, filtre ve grafik kullanacaksınız. Karmaşık rapor üretmeniz beklenmiyor.
 
-<!--more-->
+## Laboratuvar görevi
 
-### Temel Düzenleme İlkeleri
-- **Stiller ve Başlık Hiyerarşisi (Styles):** Başlık 1 (H1), Başlık 2 (H2) ve Normal Metin ayrımı yapılmadan içindekiler tablosu oluşturulamaz.
-- **Otomatik İçindekiler Tablosu (Table of Contents):** Sayfa numaraları ve başlıkların otomatik güncellenmesi.
-- **Üstbilgi, Altbilgi ve Sayfa Numaralandırma:** İlk sayfayı farklı yapma, Roma rakamları (I, II, III) ve normal rakamlar (1, 2, 3) geçişleri (Bölüm Sonu - Section Break).
-- **Tablolar, Şekiller ve Çapraz Başvurular:** Resim ve tabloların otomatik numaralandırılması.
+1. `F` sütununa `Kontrol` başlığı yazın. `F2` hücresinde `=EĞER(E2>300;"Kontrol et";"Uygun")` formülünü deneyin ve aşağı kopyalayın. Bölge ayarınız virgül kullanıyorsa Excel’in gösterdiği ayırıcıyı seçin.
+2. Ayrı bir hücrede `=EĞERSAY(B2:B9;"İkram")` ile ikram kalemi sayısını bulun. Örnek sonuç **2**’dir.
+3. Tablo başlıklarından filtre açın; yalnızca `İkram` satırlarını gösterin, ardından filtreyi temizleyin.
+4. `Kalem` ve `Tutar_TL` sütunlarından basit sütun grafiği ekleyin. Başlığı `Etkinlik bütçesi (TL)` olsun.
+5. Grafiğin altına en yüksek tutarlı kalemi anlatan tek cümle yazın.
 
----
+## Kontrol
 
-## 🛠️ Laboratuvar Uygulaması
+Filtre temizlenince yeniden sekiz satır görünüyor mu? Grafik ekseninde kalemler, değerlerde TL tutarları var mı? `F` sütunundaki iki `Kontrol et` sonucu doğru mu?
 
-1. Google Docs / Word üzerinde 5 sayfalık bir **Kurumsal Faaliyet Raporu** şablonu hazırlayınız.
-2. Başlık stillerini (Heading 1, Heading 2) kullanarak hiyerarşik yapı kurunuz.
-3. Otomatik İçindekiler Tablosu ekleyiniz.
-4. İlk sayfada sayfa numarası görünmeyecek şekilde Bölüm Sonu (Section Break) uygulayınız.
+**Ürün:** Filtrelenebilir tablo ve tek grafik. 8. hafta ara sınavında Word ile birlikte bu Excel düzeyi ölçülecek.

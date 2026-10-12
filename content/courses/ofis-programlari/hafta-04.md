@@ -1,29 +1,31 @@
 ---
-title: "4. Hafta: Çevrim İçi İletişim ve Toplantı Araçları"
-linkTitle: "4. Hafta - Çevrim İçi Toplantılar"
-date: "2026-09-01"
+title: "4. Hafta: Word’de iş yazısı ve toplantı tutanağı"
+linkTitle: "4. Hafta — Word’de iş yazısı ve toplantı tutanağı"
+summary: "İş yazısı ve tutanağı tamamlayıp PDF çıktısı alın."
+date: "2026-09-28"
 type: book
 weight: 50
-draft: true
 ---
 
-## 🎥 Video Konferans Sistemleri: Google Meet, Zoom ve MS Teams
+## Hedef
 
-Hibrit çalışma düzeninde video konferans araçları ofis içi ve kurumlar arası toplantıların temel aracı haline gelmiştir.
+İki kısa ofis belgesi hazırlayacaksınız: bir bilgilendirme yazısı ve bir toplantı tutanağı. Bu haftanın dosyaları ilk notlandırılan laboratuvar ürünüdür.
 
-<!--more-->
+## Belge içeriği
 
-### Video Konferans Protokolleri ve Adabı (Netiquette)
-- **Toplantı Öncesi:** Ses ve kamera donanım testlerinin yapılması, aydınlatma ve arka plan düzeni.
-- **Toplantı Esnası:** Konuşulmadığı zamanlarda mikrofonun sessize (mute) alınması, söz hakkı için sanal el kaldırma, sohbet (chat) kutusunun amacına uygun kullanımı.
-- **Ekran Paylaşımı:** Tüm ekran yerine yalnızca ilgili pencerenin veya sekmenin paylaşılması (kişisel bildirim ve mesajların ekrana yansımasını önlemek için).
-- **Toplantı Kaydı ve Gizlilik:** KVKK ve gizlilik gereği kayıt başlatılmadan önce katılımcılardan sözlü veya yazılı onay alınması.
+**İş yazısı:** konu, hitap, etkinlik hakkında kısa bilgi, istenen işlem, kapanış ve imza alanı.
 
----
+**Toplantı tutanağı:** toplantı tarihi, yer, katılanlar ve numaralı üç karar maddesi. Gerçek kişi adı yerine `Katılımcı A` gibi kurgusal adlar yazın.
 
-## 🛠️ Laboratuvar Uygulaması
+## Laboratuvar görevi
 
-1. Google Meet üzerinde bir anlık toplantı başlatınız.
-2. Toplantıya sınıf arkadaşınızı davet edip **Ekran Paylaşımı (Sekme / Pencere)** yapınız.
-3. Toplantı içi **Beyaz Tahta (Jamboard / Miro)** aracını açarak eş zamanlı bir beyin fırtınası şablonu oluşturunuz.
-4. Toplantı notlarını ortak Google Docs belgesinde tutarak katılımcılarla paylaşınız.
+1. `02_Word/Etkinlik_Is_Yazisi.docx` dosyasını oluşturun; bir önceki hafta kullandığınız başlık ve paragraf düzenini koruyun.
+2. Yeni dosyada `Toplanti_Tutanagi.docx` hazırlayın. Tarih ve kararları tabloya veya numaralı listeye yerleştirin.
+3. Bir belgeyi **PDF** olarak dışa aktarın: `Toplanti_Tutanagi.pdf`. PDF’yi açıp Türkçe karakterleri ve satır sonlarını kontrol edin.
+4. İki dosyayı doğru klasöre koyun ve öğretim elemanıyla paylaşın.
+
+## Puanlama: laboratuvar ürünü 1
+
+İçeriğin tamlığı **40**, okunabilir düzen **30**, doğru ad/klasör **15**, PDF ve doğru paylaşım **15** puan. Tamamlanmamış bir belgeyi teslim etmeden önce kontrol listesini yeniden okuyun.
+
+**Ürün:** İş yazısı ve PDF tutanak. [Word’de PDF oluşturma](https://support.microsoft.com/tr-tr/word).

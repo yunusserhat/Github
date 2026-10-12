@@ -1,27 +1,31 @@
 ---
-title: "8. Hafta: Ara Sınav (Vize) & Uygulama Değerlendirmesi"
-linkTitle: "8. Hafta - Ara Sınav (Vize)"
-date: "2026-09-01"
+title: "8. Hafta: Ara sınav ve geri bildirim"
+linkTitle: "8. Hafta — Ara sınav ve geri bildirim"
+summary: "Word ve Excel’in temel işlemlerini uygulamalı ara sınavda gösterin."
+date: "2026-09-28"
 type: book
 weight: 90
-draft: true
 ---
 
-## 🎯 Ara Sınav Kapsamı ve Uygulama Formatı
+## Sınav haftası
 
-Bu hafta bilgisayar laboratuvarında 1. ile 7. haftalar arasında işlenen tüm konuları kapsayan pratik uygulama sınavı gerçekleştirilmektedir.
+[Marmara 2026–2027 akademik takvimine](https://takvim.marmara.edu.tr/year/2026/summary) göre güz ara sınav dönemi **16–22 Kasım 2026** tarihleri arasındadır. Kesin gün, saat ve salon ilanını ÖBYS’den takip edin.
 
-<!--more-->
+## Sınav kapsamı
 
-### Sınavda Ölçülen Beceriler
-1. **Bulut Dosya ve Klasör Yönetimi:** İstenen klasör hiyerarşisinin eksiksiz oluşturulması ve doğru paylaşım izinlerinin atanması.
-2. **Kurumsal İletişim Senaryosu:** Şablon, filtre kuralı ve imza tasarımı.
-3. **Takvim & Randevu Senaryosu:** Randevu slotu oluşturma ve toplantı daveti gönderme.
-4. **Dokümantasyon:** Verilen ham metni kurumsal stiller, başlık hiyerarşisi ve içindekiler tablosu ile profesyonel bir rapora dönüştürme.
+1. **Word (50 puan):** Verilen kısa metinden tek sayfalık duyuru oluşturma; başlık stili, paragraf düzeni, küçük tablo ve uygun dosya adı.
+2. **Excel (50 puan):** Verilen altı satırlık bütçede tutar formülü, genel toplam, filtre ve basit biçimlendirme.
 
----
+İlk yedi haftada yapılmayan ileri işlevler sorulmaz. Sınav başlangıç dosyaları herkes için aynıdır; gerçek kişi verisi kullanılmaz.
 
-## 💡 Vize Öncesi Hatırlatmalar ve İpuçları
-- Laboratuvar bilgisayarında oturum açma bilgilerinizi önceden kontrol ediniz.
-- Zaman yönetimine dikkat ediniz (toplam sınav süresi 60 dakikadır).
-- Dosyalarınızı belirlenen bulut teslim klasörüne yüklemeyi unutmayınız.
+## Sınav öncesi kontrol
+
+- Microsoft hesabınıza girebildiğinizi ve `Ofis_Programlari` klasörünü açabildiğinizi önceden deneyin.
+- Word’de başlık stili uygulamayı, Excel’de `=C2*D2` ve `=TOPLA(...)` yazmayı tekrar edin.
+- Dosyalarınızın adını ve teslim klasörünü sınav yönergesine göre kontrol edin.
+
+## Sınavdan sonra
+
+Öğretim elemanı en çok hata yapılan iki işlemi sınıfta yeniden gösterecek. Kendi dosyanızdaki hatayı düzeltip doğru yöntemi not alın.
+
+**Değerlendirme:** Ara sınavın başarı notuna önerilen katkısı **%20**’dir; yarıyıl içi toplamı **%40**’tır.

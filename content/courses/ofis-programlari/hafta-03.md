@@ -1,37 +1,35 @@
 ---
-title: "3. Hafta: Takvim, Randevu ve Zaman Yönetimi"
-linkTitle: "3. Hafta - Takvim & Randevu"
-date: "2026-09-01"
+title: "3. Hafta: Word’de görsel düzen, stiller ve sayfa tasarımı"
+linkTitle: "3. Hafta — Görsel düzen ve stiller"
+summary: "Görsel ekleme, metin kaydırma, stiller hiyerarşisi ve kurumsal sayfa tasarımı."
+date: "2026-10-12"
 type: book
 weight: 40
-draft: true
 ---
 
-## 📅 Bulut Takvim Sistemleri (Google Calendar & Outlook)
+## Hedef
 
-Modern yöneticilerin ve ekiplerin zaman yönetimi, dijital ve senkronize takvimler üzerinden yürütülür. Randevu çakışmalarının önlenmesi ve ekip müsaitliğinin anlık izlenmesi esastır.
+Word’de kurumsal bir etkinlik duyurusunu görseller, şekiller, metin kaydırma teknikleri ve stiller hiyerarşisi kullanarak profesyonel bir tasarıma dönüştüreceksiniz.
 
-<!--more-->
+## Bilmeniz gerekenler
 
-### Çoklu Takvim Mimarisi
-- **Kişisel Takvim:** Bireysel görev ve hatırlatıcılar.
-- **Yönetici Takvimi:** Yöneticinin resmi randevu ve görüşmeleri (Asistan tam yetkili düzenleyicidir).
-- **Kurumsal / Birim Takvimi:** Tüm ofisin görebildiği resmi tatiller, son teslim tarihleri ve etkinlikler.
-- **Ders & Toplantı Takvimi:** Akademik takvim ve sınav programları.
+- **Metin Kaydırma (Wrap Text):** Görsel eklendiğinde varsayılan ayar metinle aynı hizada olabilir. Görseli rahatça konumlandırmak için *Kare*, *Sıkı* veya *Metnin Üstüne/Altına* seçeneklerini kullanın.
+- **Stiller ve Belge Gezintisi:** *Başlık 1* ve *Başlık 2* stillerini tutarlı kullanmak, `Görünüm → Gezinti Bölmesi` (*Ctrl + F*) üzerinde belgenin içindekiler haritasını otomatik oluşturur.
+- **Sayfa Sonu (Page Break):** Yeni bir sayfaya geçmek için art arda Enter tuşuna basmak yerine `Ctrl + Enter` (veya `Ekle → Sayfa Sonu`) kullanılır.
 
----
+## Laboratuvar görevi: Gelişmiş Etkinlik Duyurusu
 
-## ⏰ Randevu Planlama ve Çakışma Yönetimi
+1. Geçen hafta hazırladığınız `Etkinlik_Duyurusu_v1.docx` dosyasını açın ve `Etkinlik_Duyurusu_v2.docx` adıyla kaydedin.
+2. Belgenin üst kısmına kurumsal bir etkinlik logosu veya afiş görseli ekleyin; görsel boyutunu oranını bozmadan ayarlayın ve metin kaydırmasını düzenleyin.
+3. Ana başlığı **Başlık 1**, alt bölümleri (*Etkinlik Amacı*, *Gündem*, *Program Akışı*, *Kayıt ve İletişim*) **Başlık 2** stilleriyle yapılandırın.
+4. Önemli bir hatırlatma (örn. *"Katılım ücretsizdir, kayıt zorunludur."*) için sayfaya kenarlıklı ve hafif dolgulu bir **Metin Kutusu** veya vurgu şekli ekleyin.
+5. Tablo, görsel ve metin bloklarının aralıklarını gözden geçirerek belgenin tek sayfada kusursuz okunmasını sağlayın.
+6. Güncellenen belgeyi kaydedin ve Google Drive'daki `02_Word/` klasörüne yükleyin.
 
-- **Müsaitlik Arama (Find a Time):** Davet edilecek kişilerin takvimlerindeki boş saatleri otomatik tarayarak optimum toplantı saatini belirleme.
-- **Randevu Slotları (Appointment Schedules):** Öğrencilerin veya danışanların yöneticinin takvimindeki boş saatlerden kendilerine randevu alabilmesini sağlayan self-servis rezervasyon bağlantısı.
-- **Konuk İzinleri:** Davetlilerin toplantı saatini değiştirebilme veya başkalarını davet edebilme izinlerinin sınırlandırılması.
+## Kontrol
 
----
+- Görsel metinleri bozmadan düzgün hizalanmış mı?
+- Gezinti bölmesinde başlık hiyerarşisi net bir şekilde görünüyor mu?
+- Belge taşma yapmadan tek sayfada dengeli bir görsel düzene kavuştu mu?
 
-## 🛠️ Laboratuvar Uygulaması
-
-1. Google Takvim üzerinde `Ofis_Randevulari` adında yeni bir ikincil takvim oluşturunuz.
-2. Sıradaki hafta için 3 farklı sınıf arkadaşınıza Google Meet bağlantısı içeren **Toplantı Daveti** gönderiniz.
-3. Davete ek olarak toplantı gündem maddelerini ve bir doküman ekini (Google Docs linki) davet detaylarına ekleyiniz.
-4. 15 dakikalık zaman aralıkları olan bir **Randevu Programı (Appointment Schedule)** linki oluşturarak test ediniz.
+**Ürün:** `02_Word/Etkinlik_Duyurusu_v2.docx`. [Word yardımı](https://support.microsoft.com/tr-tr/word).

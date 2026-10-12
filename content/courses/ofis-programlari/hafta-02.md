@@ -1,42 +1,45 @@
 ---
-title: "2. Hafta: Kurumsal E-posta ve Mesajlaşma Yönetimi"
-linkTitle: "2. Hafta - E-posta Yönetimi"
-date: "2026-09-01"
+title: "2. Hafta: Word’de belge düzeni, tablolar ve PDF çıktısı"
+linkTitle: "2. Hafta — Belge düzeni, tablolar ve PDF"
+summary: "Paragraf ve satır aralıkları, sayfa yapısı, madde imleri, tablo tasarımı ve PDF çıktısı alma."
+date: "2026-10-05"
 type: book
 weight: 30
-draft: true
 ---
 
-## ✉️ Kurumsal İletişimde E-posta Standartları
+## Hedef
 
-Elektronik posta, kurumsal iş yaşamında yasal bağlayıcılığı olan, resmi ve yazılı iletişimin omurgasıdır. Yönetici asistanları ve ofis yöneticileri için gelen kutusu (Inbox) yönetimi kritik bir verimlilik parametresidir.
+Metinleri kurumsal standartlara uygun olarak yapılandırmayı (paragraf/satır aralıkları, cetvel ve girintiler), bilgi sunumunda tabloları etkin kullanmayı ve hazırlanan belgeyi PDF formatında dışa aktarıp Google Drive üzerinde teslim etmeyi öğreneceksiniz.
 
-<!--more-->
+## Bilmeniz gerekenler
 
-### Etkili E-posta Yapısı
-1. **Konu Başlığı (Subject Line):** Kısa, net, aranabilir ve içeriği özetleyen ifade (örn. `[Toplantı Talebi] 2026 Güz Dönemi Müfredat Komisyonu`).
-2. **Hitap:** Muhatabın unvanına ve kurumsal kültüre uygun selamlama (`Sayın Hocam`, `Değerli İş Ortağımız`, `Merhaba Ahmet Bey`).
-3. **Giriş ve Bağlam:** İletişimin sebebi ilk 2 cümlede açıklanmalıdır.
-4. **Gövde (Body):** Maddeler halinde, okunması kolay ve net talepler.
-5. **Eylem Çağrısı (Call to Action - CTA):** Muhataptan beklenen somut adım ve tarih (`Lütfen ekteki tabloyu 28 Ekim Cuma gününe kadar onaylayınız`).
-6. **Kapanış ve Kurumsal İmza:** Saygılarımızla, ad-soyad, unvan, birim, telefon ve kurumsal logo.
+- **Enter Tuşu Tuzağı:** Paragraflar arasına art arda `Enter` basarak boşluk bırakılmaz. Bunun yerine **Paragraf** ayarlarından *Önce/Sonra* boşluk (örn. 6 nk veya 12 nk) ve *Satır Aralığı* (1.15 veya 1.5) kullanılır.
+- **Gizli Biçimlendirmeleri Görme:** Giriş sekmesindeki **Tümünü Göster (`¶`)** simgesi gereksiz boşlukları, sekme vuruşlarını ve satır sonlarını denetlemenizi sağlar.
+- **Cetvel ve Girintiler:** `Görünüm → Cetvel` onay kutusunu açın. Cetvel üzerinden *İlk Satır Girintisi* (paragraf başı) ve *Sol Girinti* bloklarını ayarlayın.
+- **Tablo Yönetimi:** Görev listeleri, toplantı kararları ve program verileri gibi düzenli bilgiler için boşluk tuşu yerine mutlaka tablo kullanılmalıdır.
+- **Stiller (Styles):** Başlık metinlerini sadece punto büyüterek biçimlendirmek yerine **Başlık 1** ve **Başlık 2** stilleriyle tanımlamak belgenin yapısal haritasını oluşturur.
 
----
+## Laboratuvar görevi: Etkinlik Programı ve Görev Tablosu
 
-## 🏷️ Gelen Kutusu Optimizasyonu: Etiketler ve Filtreler
+1. Word'de yeni ve boş bir belge açın: `Etkinlik_Duyurusu_v1.docx`.
+2. **Sayfa Yapısı:** `Düzen → Kenar Boşlukları → Normal (2,5 cm)` ve yönlendirmeyi `Dikey` olarak belirleyin.
+3. **Üstbilgi ve Altbilgi:** `Ekle → Üstbilgi` alanına "Marmara Üniversitesi — Ofis Becerileri Koordinasyonu" yazın. `Ekle → Altbilgi` ile sayfa numarası ekleyin.
+4. **Başlık:** Belge başlığını **Başlık 1** stilini kullanarak `KAMPÜS OFİS BECERİLERİ GÜNÜ DUYURUSU` olarak yazın.
+5. **Açıklama Paragrafı:** Etkinliğin amacını açıklayan iki cümlelik bir metin yazın. Satır aralığını `1.15`, paragraf sonrası boşluğunu `6 nk` olarak ayarlayın.
+6. **Gündem Maddeleri:** Numaralandırılmış liste (`1.`, `2.`, `3.`) kullanarak etkinliğin 3 temel gündem maddesini yazın.
+7. **Program ve Görev Tablosu:** `Ekle → Tablo` adımıyla 4 sütunlu ve 5 satırlı bir tablo oluşturun:
+   - Sütun Başlıkları: `No` | `Saat / Oturum` | `Sorumlu Birim` | `Durum`
+   - Tablonun ilk başlık satırını kalın yapın ve hafif bir arka plan gölgelendirmesi (dolgu rengi) uygulayın.
+   - Hücre içi metinleri dikey ve yatay olarak ortalayın.
+8. **PDF Olarak Dışa Aktarma:**
+   - Belgeyi `.docx` olarak yerel diske kaydedin.
+   - Ardından `Dosya → Dışa Aktar → PDF/XPS Oluştur` (veya `Farklı Kaydet → PDF`) adımıyla `Etkinlik_Duyurusu_v1.pdf` oluşturun.
+9. **Teslim:** Hem `.docx` hem de `.pdf` dosyasını Google Drive'daki `Ofis_Programlari/02_Word/` klasörüne yükleyin ve öğretim elemanıyla paylaşın.
 
-Günde yüzlerce e-posta alan bir ofiste "Inbox Zero" (Sıfır Gelen Kutusu) felsefesi uygulanmalıdır:
+## Kontrol
 
-- **Etiketler (Labels / Folders):** E-postaları projeye, birime veya aciliyetine göre renklendirerek sınıflandırma (`🔴 Acil`, `🟡 Beklemede`, `🟢 Tamamlandı`, `📁 Rektörlük`).
-- **Filtre Kuralları (Automation Rules):** Belirli göndericilerden veya anahtar kelimelerden gelen mailleri otomatik olarak etiketleme, arşivleme ya da yıldızlama.
-- **Şablonlar (Templates / Quick Parts):** Sıkça yazılan resmi cevaplar için önceden hazırlanmış metin blokları.
+- `¶` simgesi açıldığında belgede ardışık gereksiz boşluklar veya fazladan enter satırları bulunmuyor mu?
+- Tablo hücre hizalamaları ve başlık satırı okunaklı mı?
+- PDF çıktısı alındığında sayfa düzeni, yazı tipleri ve Türkçe karakterler korunmuş mu?
 
----
-
-## 🛠️ Laboratuvar Uygulaması
-
-1. Gmail / Outlook üzerinde kurumsal standartlara uygun HTML zengin metin içeren bir **Kurumsal İmza** tasarlayınız.
-2. Sınıf arkadaşınızın e-posta adresini hedefleyen otomatik bir **Filtre Kuralı** tanımlayınız:
-   - Gelen e-posta otomatik olarak `Ofis_Uygulamalari` etiketi alsın.
-   - Gelen kutusunu atlamadan yıldızlı olarak işaretlensin.
-3. Bir resmi toplantı daveti şablonu oluşturarak e-posta şablonlarına kaydediniz.
+**Ürün:** `Ofis_Programlari/02_Word/Etkinlik_Duyurusu_v1.docx` ve `.pdf` formatı.

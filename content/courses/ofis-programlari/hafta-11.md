@@ -1,43 +1,38 @@
 ---
-title: "11. Hafta: İleri Arama ve Başvuru Fonksiyonları"
-linkTitle: "11. Hafta - DÜŞEYARA & ÇAPRAZARA"
-date: "2026-09-01"
+title: "11. Hafta: PostgreSQL’de basit sorgular"
+linkTitle: "11. Hafta — PostgreSQL’de basit sorgular"
+summary: "Kayıtları seçin, filtreleyin, sıralayın ve sayın."
+date: "2026-09-28"
 type: book
 weight: 120
-draft: true
 ---
 
-## 🔍 Veri Tabanı İlişkileri ve Arama Fonksiyonları
+## Hedef
 
-Büyük veri tablolarında bir anahtar değere (örn. TC Kimlik No, Ürün Kodu, Öğrenci No) göre başka bir tablodan ilgili bilgiyi çekmek için arama fonksiyonları kullanılır.
+Veritabanındaki sekiz örnek kayıttan ihtiyaç duyduğunuz bilgiyi `SELECT` ile alacaksınız. Sorgu yazmak, tabloyu değiştirmek anlamına gelmez.
 
-<!--more-->
+## Sorgu kartı
 
-### DÜŞEYARA (VLOOKUP) Mimarisi
-```excel
-=DÜŞEYARA(Aranan_Değer; Tablo_Dizisi; Sütun_İndis_Sayısı; [Aralık_Bak])
-=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])
+```sql
+SELECT katilimci_kodu, oturum
+FROM etkinlik_kayitlari
+WHERE durum = 'Onaylandı'
+ORDER BY katilimci_kodu;
 ```
-- **Kritik Kural:** Aranan değer, arama tablosunun en sol sütununda olmalıdır.
-- **Tam Eşleşme:** Dördüncü parametre mutlaka `YANLIŞ` veya `0` (FALSE) olmalıdır.
 
----
+`SELECT` sütunları, `FROM` tabloyu, `WHERE` koşulu, `ORDER BY` sıralamayı belirtir. Metin değerleri tek tırnak içinde yazılır; komut `;` ile biter.
 
-## 🚀 Yeni Nesil Fonksiyon: ÇAPRAZARA (XLOOKUP)
+## Laboratuvar ürünü 2
 
-Modern Excel ve Google Sheets sürümlerinde `DÜŞEYARA`'nın sınırlılıklarını kaldıran süper fonksiyon:
+Kendi veritabanınızda şu dört soruyu ayrı sorgularla cevaplayın:
 
-```excel
-=ÇAPRAZARA(Aranan_Değer; Arama_Dizisi; Döndürülen_Dizi; [Bulunamazsa]; [Eşleşme_Modu])
-=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode])
-```
-- Sol veya sağ fark etmeksizin her yönde arama yapar.
-- Değer bulunamazsa hata mesajı (`#YOK`) yerine özel mesaj yazdırabilir.
+1. Tüm kayıtları katılımcı koduna göre sırala. **8 satır** beklenir.
+2. Yalnızca `Onaylandı` durumundaki kayıtları göster. **5 satır** beklenir.
+3. `Excel` oturumuna kayıtlı ve onaylı olanları göster. **2 satır** beklenir.
+4. Üçüncü grubun sayısını `COUNT(*)` ile bul. Sonuç **2** olmalıdır.
 
----
+Sorgularınızı `04_Veritabani/etkinlik_sorgulari.sql` dosyasına kaydedin. Sonuçların yanına birer cümleyle ne bulduğunuzu yazın; ekran görüntüsü tek başına sorgu yerine geçmez.
 
-## 🛠️ Laboratuvar Uygulaması
+## Puanlama
 
-1. İki farklı sayfa oluşturunuz: `1. Sayfa: Siparişler`, `2. Sayfa: Ürün Kataloğu (Fiyat Listesi)`.
-2. Siparişler sayfasındaki Ürün Koduna göre Kataloğdaki ürün adını ve birim fiyatını `DÜŞEYARA` veya `ÇAPRAZARA` ile otomatik getiriniz.
-3. Hata kontrolü için `EĞERHATA (IFERROR)` fonksiyonunu ekleyiniz.
+Tablo ve sekiz kayıt **30**, iki doğru filtre **30**, sıralama **15**, `COUNT` **15**, sorgu dosyası ve açıklama **10** puan. Hata görürseniz veriyi tekrar eklemeden önce sütun adını, tırnağı ve noktalı virgülü kontrol edin.

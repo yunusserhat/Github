@@ -1,43 +1,36 @@
 ---
-title: "Derse Giriş & Laboratuvar Kuralları"
-linkTitle: "Giriş & Kurallar"
-date: "2026-09-01"
+title: "Derse giriş ve laboratuvar düzeni"
+linkTitle: "Giriş ve Kurallar"
+summary: "Dersin araçları, Google Drive dosya düzeni, laboratuvar kuralları ve ders işleyişi."
+date: "2026-09-28"
 type: book
 weight: 10
 ---
 
-## 📌 Derse Hoş Geldiniz
+## Nasıl çalışacağız?
 
-**Ofis Programları ve Veri Tabanlı Uygulamalar** dersi, büro ve ofis ortamlarında bilgi teknolojilerini en üst verimlilikle kullanabilmeniz amacıyla tasarlanmıştır. Bu derste teorik anlatımlardan ziyade pratik senaryolar, gerçek ofis iş akışları ve veri odaklı uygulamalar üzerine çalışılacaktır.
+Bu ortak materyal **BSP2007, BYS2011 ve OTV1007** için hazırlanmıştır. Bilgisayar laboratuvarında kısa gösterimden sonra aynı işlemi kendi dosyanızda yapacaksınız. Her hafta bir küçük ürün teslim edilir; ileri düzey yazılım bilgisi beklenmez.
 
-<!--more-->
+Dönem boyunca kurgusal **Kampüs Ofis Becerileri Günü** etkinliğini işleyeceğiz: Word’de resmi dilekçe ve duyuru, Excel’de bütçe, Forms’ta katılım formu, PostgreSQL’de kayıt sorgusu ve PowerPoint’te sonuç sunusu.
 
----
+## İlk ders için gerekenler
 
-## 💻 Laboratuvar Düzeni ve Donanım Kuralları
+1. Dosya yönetimi, yedekleme ve ödev teslimleri için bir **Google Drive** hesabı kullanacağız. Oturum bilgilerinizi hazır bulundurun.
+2. Uygulamalar laboratuvar bilgisayarlarında doğrudan yüklü olan **Microsoft Office (Word, Excel, PowerPoint)** masaüstü sürümleri üzerinden yürütülecektir.
+3. [BYS](https://bys.marmara.edu.tr/) giriş bilgilerinizi hazır bulundurun. Duyurular ve resmî notlandırma ÖBYS üzerinden takip edilecektir.
 
-1. **Laboratuvar Girişi:** Dersler bilgisayar laboratuvarında yapılmaktadır. Ders saatinden 5 dakika önce sınıfta bulunmanız beklenir.
-2. **Kişisel Hesap Güvenliği:** Laboratuvar bilgisayarlarında açtığınız Google Workspace, Microsoft ya da e-posta oturumlarınızı ders bitiminde mutlaka kapatınız (**Sign Out**).
-3. **Çalışma Dosyaları:** Laboratuvar bilgisayarlarındaki yerel diskler (Masaüstü, İndirilenler vb.) periyodik olarak temizlenmektedir. Tüm çalışmalarınızı kişisel bulut sürücünüzde (`Google Drive` veya `OneDrive`) belirlenen ders klasöründe saklayınız.
-4. **Yiyecek ve İçecek:** Laboratuvardaki donanımların güvenliği için bilgisayar masalarında açık içecek ve yiyecek bulundurulması yasaktır.
+## Dosya düzeni
 
----
+Google Drive’da `Ofis_Programlari` adlı ana klasör ve şu alt klasörleri açın: `01_Giris_ve_Dilekce`, `02_Word`, `03_Excel`, `04_Veritabani`, `05_Sunu`. Ortak dersteki tüm öğrenciler aynı dosya adlandırma standartlarını kullanacaktır. Dosya adları kısa, Türkçe karakter ve boşluk içermeyen, açıklayıcı isimler olmalıdır: `Dilekce_Ornegi.docx`, `Etkinlik_Butcesi.xlsx` gibi.
 
-## ☁️ Zorunlu Bulut Hesapları ve Kurulumlar
+## Laboratuvar kuralları
 
-Ders süresince aşağıdaki platformlar aktif olarak kullanılacaktır:
+- Parolanızı sınıf arkadaşınızla veya öğretim elemanıyla paylaşmayın; projeksiyonda göstermeyin.
+- Çalışmalar için gerçek öğrenci, çalışan veya ziyaretçi verisi kullanmayın; verilen kurgusal kod ve bilgilerle ilerleyin.
+- Dosyayı öğretim elemanıyla paylaşırken **belirli kişi** ve uygun izin (Görüntüleyen / Düzenleyen) düzeyini seçin. Bağlantının çalıştığını kontrol edin.
+- Ortak laboratuvar bilgisayarında tarayıcıya parolayı kaydetmeyin. Ders bitiminde Google ve e-posta oturumlarından mutlaka çıkış yapın; yerel bilgisayarda geçici kişisel dosya bırakmayın.
+- PostgreSQL erişimi için öğretim elemanının verdiği **size ayrılmış** uygulama veritabanını kullanın.
 
-- **Marmara Üniversitesi Öğrenci E-postası:** Resmi duyurular ve üniversite bulut alanı için.
-- **Google Hesabı:** Google Docs, Google Sheets, Google Forms, Google Drive ve Google Meet uygulamaları için.
-- **Microsoft 365 (Eğitim Hesabı):** Excel, Word ve OneDrive uygulamaları için.
+## Notlandırma
 
----
-
-## 📋 Değerlendirme ve Devam Politikası
-
-- **Devam Durumu:** Yükseköğretim mevzuatı uyarınca uygulamalı derslerde %80 devam zorunluluğu bulunmaktadır.
-- **Sınavlar:** Ara sınav (vize) ve yarıyıl sonu sınavı (final), bilgisayar laboratuvarında uygulamalı olarak gerçekleştirilir.
-- **Ödevler ve Mini Görevler:** Her hafta derste işlenen konunun ardından laboratuvar pekiştirme görevi verilir.
-
-> ℹ️ **Ders Akışı Bilgilendirmesi:** 
-> 1. Hafta ve sonraki haftalık ders içerikleri, akademik takvime paralel olarak her hafta başında sırayla sol menüde erişime açılacaktır.
+Yarıyıl içi **%40**, final **%60**. Ortak uygulama planında ara sınav **%20**, iki laboratuvar ürünü birlikte **%20**’dir. Kodunuza ait resmî duyuru ve teslim tarihlerini ÖBYS’den kontrol edin. [Haftalık plana geçin →](../)

@@ -1,36 +1,30 @@
 ---
-title: "14. Hafta: Çevrim İçi Formlar ve Otomasyonlu Veri Toplama"
-linkTitle: "14. Hafta - Anket & Formlar"
-date: "2026-09-01"
+title: "14. Hafta: Bütünleşik uygulama ve final hazırlığı"
+linkTitle: "14. Hafta — Bütünleşik uygulama ve final hazırlığı"
+summary: "Word, Excel, PostgreSQL ve PowerPoint ürünlerini tek dosya düzeninde tamamlayın."
+date: "2026-09-28"
 type: book
 weight: 150
-draft: true
 ---
 
-## 📝 Çevrim İçi Veri Toplama: Google Forms & Microsoft Forms
+## Hedef
 
-Ofis süreçlerinde personel memnuniyeti, etkinlik kaydı, müşteri geri bildirimi ve sipariş toplama işlemleri dijital formlar ile otomatikleştirilir.
+Dönem boyunca öğrendiğiniz işlemleri aynı kurgusal ofis görevi üzerinde birleştireceksiniz. Bu hafta yeni araç öğrenmek yerine eksik adımları tamamlayın.
 
-<!--more-->
+## Senaryo
 
-### Dinamik Form Tasarım İlkeleri
-- **Soru Tipleri:** Çoktan seçmeli, onay kutuları, Likert ölçeği (Doğrusal ölçek), dosya yükleme.
-- **Koşullu Yönlendirme (Mantıksal Dallanma):** Kullanıcının bir soruya verdiği yanıta göre farklı bir bölüme veya soruya aktarılması (örn. "Mezun musunuz?" -> Evet ise mezuniyet yılı, Hayır ise sınıfı sorulsun).
-- **Zorunlu Sorular ve Veri Doğrulama:** E-posta, telefon ve sayısal alanlar için geçerlilik kuralları (Regex).
+“Kampüs Ofis Becerileri Günü” için bir duyuru hazırlanacak, örnek bütçe hesaplanacak, sekiz kayıtlık katılımcı tablosundan onaylı Excel oturumu sayısı bulunacak ve sonuçlar kısa bir sunuda anlatılacak.
 
----
+## Laboratuvar görevi
 
-## 🔄 Form Yanıtlarının Elektronik Tabloya Canlı Akışı
+1. `02_Word` klasöründeki duyuruyu açın; tarih, yer ve program tablosunu kontrol edin.
+2. `03_Excel` klasöründeki bütçede toplamın **1.920 TL** olduğunu ve formüllerin çalıştığını doğrulayın.
+3. `04_Veritabani` klasöründeki SQL sorgusunda onaylı Excel oturumu sayısının **2** olduğunu gösterin.
+4. `05_Sunu` klasöründeki sununun beş slaytını ve grafik yorumunu tamamlayın.
+5. Dosyaları öğretim elemanının belirttiği şekilde paylaşın; açılmayan bağlantı veya yanlış izin varsa düzeltin.
 
-Form gönderildiği anda yanıtların otomatik olarak Google Sheets veya Excel tablosuna yeni bir satır olarak eklenmesi:
-- Zaman Damgası (Timestamp) ile kayıt alma.
-- Form yanıt sayfası üzerine Pivot Tablo ve Dashboard bağlayarak anlık canlı raporlama oluşturma.
+## Akran kontrol listesi
 
----
+Arkadaşınız dosyaları bulabiliyor mu? Word okunuyor mu? Excel sonucu formülden mi geliyor? SQL sonucu doğru mu? Sunu iki dakikada anlatılabiliyor mu?
 
-## 🛠️ Laboratuvar Uygulaması & Dönem Sonu Projesi
-
-1. "2026 Güz Dönemi Öğrenci Memnuniyet Anketi" adında çok bölümlü bir Google Form hazırlayınız.
-2. En az bir soruya koşullu bölüme atlama mantığı ekleyiniz.
-3. Form yanıtlarını yeni bir e-tabloya bağlayınız.
-4. Gelen yanıtlar üzerine otomatik özet grafikler ve istatistik sayfası kurunuz.
+**Final:** Akademik takvimde ilan edilen **04–17 Ocak 2027** dönemindedir. Uygulama sınavı için başlangıç dosyaları ve kurgusal veriler verilir. Hazırlıkta temel işlemleri bağımsız tekrar edin; ileri Excel veya veritabanı yönetimi sorulmaz. [Akademik takvim](https://takvim.marmara.edu.tr/year/2026/summary).

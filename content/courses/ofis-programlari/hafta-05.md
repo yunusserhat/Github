@@ -1,38 +1,29 @@
 ---
-title: "5. Hafta: Bulut Dosya Yönetimi ve Paylaşım İzinleri"
-linkTitle: "5. Hafta - Dosya Paylaşım & İzinler"
-date: "2026-09-01"
+title: "5. Hafta: Excel’de hücreler ve bütçe tablosu"
+linkTitle: "5. Hafta — Excel’de hücreler ve bütçe tablosu"
+summary: "Küçük bir bütçe tablosunu doğru veri türleriyle kurun."
+date: "2026-09-28"
 type: book
 weight: 60
-draft: true
 ---
 
-## 🔒 Bulutta Erişim Seviyeleri ve Güvenlik Matrisi
+## Hedef
 
-Bulut ortamında saklanan belgelerin kimler tarafından görülebileceği, düzenlenebileceği veya paylaşılabileceği katı kurallara bağlanmalıdır.
+Excel web uygulamasında hücre, satır ve sütun kavramlarını kullanarak sekiz kalemlik kurgusal etkinlik bütçesi hazırlayacaksınız.
 
-<!--more-->
+## Örnek veriyi açma
 
-### Temel Yetki Rolleri
-1. **Görüntüleyen (Viewer):** Belgeyi sadece okuyabilir; değişiklik yapamaz, yorum ekleyemez (güvenli modda indirme, yazdırma ve kopyalama kısıtlanabilir).
-2. **Yorumcu (Commenter):** Belge içeriğini değiştiremez ancak kenar boşluklarına not, düzeltme ve geri bildirim ekleyebilir.
-3. **Düzenleyen (Editor):** Belge içeriğini silebilir, değiştirebilir ve yeni içerik ekleyebilir.
-4. **Sahip (Owner):** Belgenin tüm mülkiyetine sahiptir; yetkileri devredebilir veya belgeyi kalıcı olarak silebilir.
+[Örnek bütçe dosyasını](../ornek-butce.xlsx) indirip OneDrive’daki `03_Excel` klasörüne yükleyin. Dosyada `Kalem`, `Tur`, `Adet` ve `Birim_Fiyat_TL` sütunları vardır. `Tur` alanındaki değerler kategoridir; `Adet` ve `Birim_Fiyat_TL` sayıdır. Her veri bir hücrede, her bütçe kalemi ayrı satırda olmalıdır.
 
----
+## Laboratuvar görevi
 
-## 🔗 Bağlantı Paylaşımı ve Geçerlilik Süresi
+1. Dosyayı `Etkinlik_Butcesi.xlsx` olarak yeniden adlandırın.
+2. Beşinci sütuna `Tutar_TL` başlığını yazın. İlk veri satırına `=C2*D2` formülünü girin; sonucu aşağıdaki yedi satıra kopyalayın.
+3. `Adet` sütununu tam sayı, fiyat ve tutar sütunlarını para birimi olarak biçimlendirin.
+4. Bütün sekiz kalemin adını ve tutarını tek tek kontrol edin; boş veri satırı bırakmayın.
 
-- **Doğrudan Kişiyle Paylaşım:** En güvenli yöntemdir; sadece yetki verilen e-posta sahipleri erişebilir.
-- **Kurum İçi Paylaşım:** `marmara.edu.tr` uzantılı hesaba sahip olan herkes erişebilir.
-- **Bağlantıya Sahip Olan Herkes:** Kamuya açık belgeler için kullanılır; gizli veya kişisel veriler içeren dosyalarda kesinlikle kullanılmamalıdır.
-- **Süre Sınırı (Expiration Date):** Geçici çalışanlara veya stajyerlere verilen erişimlerin belirlenen tarihte otomatik sona ermesi.
+## Kontrol
 
----
+İlk satırın tutarı **300 TL** olmalı. `C2` değerini geçici olarak değiştirip `E2` sonucunun da değiştiğini görün; sonra eski değeri geri yazın. Bu, formülün çalıştığını gösterir.
 
-## 🛠️ Laboratuvar Uygulaması
-
-1. Google Drive üzerinde `Gizli_Mali_Rapor` adında bir e-tablo oluşturunuz.
-2. Bu dosyayı arkadaşınızla sadece **Görüntüleyen (Viewer)** yetkisiyle paylaşınız.
-3. Paylaşım gelişmiş ayarlarından "Görüntüleyenlerin indirme, yazdırma ve kopyalama seçeneğini devre dışı bırak" kutusunu işaretleyiniz.
-4. Dosya üzerinde yapılan bir değişikliği inceleyip **Sürüm Geçmişi (Version History)** panelinden dünkü haline geri dönünüz.
+**Ürün:** `03_Excel/Etkinlik_Butcesi.xlsx`.

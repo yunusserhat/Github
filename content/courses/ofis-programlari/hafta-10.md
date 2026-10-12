@@ -1,48 +1,30 @@
 ---
-title: "10. Hafta: Matematiksel ve Mantıksal Fonksiyonlar"
-linkTitle: "10. Hafta - Formüller & EĞER"
-date: "2026-09-01"
+title: "10. Hafta: PostgreSQL’de ilk tablo"
+linkTitle: "10. Hafta — PostgreSQL’de ilk tablo"
+summary: "Küçük bir uygulama veritabanında tablo oluşturup kayıt ekleyin."
+date: "2026-09-28"
 type: book
 weight: 110
-draft: true
 ---
 
-## 🔢 Temel Hesaplama ve İstatistik Fonksiyonları
+## Hedef
 
-Formüller her zaman `=` işaretiyle başlar:
+PostgreSQL’de tablo, satır, sütun, veri türü ve **birincil anahtar** kavramlarını göreceksiniz. Öğrenci hesabınız yalnızca size ayrılmış uygulama veritabanına bağlanmalıdır; yönetici hesabı kullanılmaz.
 
-<!--more-->
+## Başlamadan önce
 
-- `=TOPLA(A1:A10)` / `=SUM(A1:A10)`: Seçili aralığın toplamını alır.
-- `=ORTALAMA(B1:B10)` / `=AVERAGE(B1:B10)`: Aritmetik ortalamayı hesaplar.
-- `=MAK(C1:C10)` & `=MİN(C1:C10)`: En büyük ve en küçük değerleri bulur.
-- `=BAĞ_DEĞ_SAY(D1:D10)`: Sayı içeren hücreleri sayar.
+Öğretim elemanının verdiği bağlantı bilgileriyle pgAdmin’de kendi veritabanınızı açın. Yerel kurulum varsa bilgisayarınızdaki uygulama veritabanını seçin. [Örnek SQL dosyasını](../ornek-kayitlar.sql) indirin; `04_Veritabani` klasörünüzde saklayın. Dosyada gerçek kişi bilgisi yoktur.
 
----
+## Laboratuvar görevi
 
-## 🔀 Mantıksal Fonksiyonlar: EĞER (IF) Ailesi
+1. pgAdmin **Query Tool** penceresinde önce `CREATE TABLE` bölümünü **bir kez** çalıştırın.
+2. Ardından `INSERT INTO` bölümünü **bir kez** çalıştırın. Aynı ekleme komutunu tekrar çalıştırırsanız benzersiz kod hatası alırsınız; bu veri kuralının işe yaradığını gösterir.
+3. `SELECT * FROM etkinlik_kayitlari ORDER BY kayit_id;` komutunu çalıştırın. Sekiz satır görmelisiniz.
+4. `kayit_id` sütununu ve `katilimci_kodu` sütununu karşılaştırın. İlki veritabanının ürettiği birincil anahtar, ikincisi örnekte benzersiz bir iş kodudur.
+5. `durum` alanındaki izinli üç değeri bulun: `Onaylandı`, `Bekliyor`, `İptal`.
 
-Ofis otomasyonunda kararlar mantıksal koşullara göre verilir:
+## Kontrol
 
-### 1. Basit EĞER (IF)
-```excel
-=EĞER(Not>=50; "Geçti"; "Kaldı")
-=IF(B2>=50, "Passed", "Failed")
-```
+Sekiz satır görünmüyorsa önce doğru veritabanını seçtiğinizi, komut sonunda `;` olduğunu ve `INSERT` bölümünün çalıştığını kontrol edin. Tabloyu silmeyin; gelecek hafta aynı veriler kullanılacak.
 
-### 2. İç İçe EĞER (Nested IF)
-```excel
-=EĞER(B2>=85; "AA"; EĞER(B2>=70; "BB"; EĞER(B2>=50; "CC"; "FF")))
-```
-
-### 3. Koşullu Hesaplama Fonksiyonları
-- `=EĞERSAY(A1:A100; "Satış")`: Yalnızca belirtilen koşulu sağlayan hücreleri sayar.
-- `=ETOPLA(A1:A100; "Satış"; C1:C100)`: Belirtilen kritere uyan tutarları toplar.
-
----
-
-## 🛠️ Laboratuvar Uygulaması
-
-1. Bir öğrenci not çizelgesi üzerinde vize (%40) ve final (%60) ağırlıklı ortalamasını hesaplayınız.
-2. `EĞER` fonksiyonu kullanarak 60 ve üzeri not alanlara "Başarılı", altındakilere "Bütünleme" yazdırınız.
-3. Koşullu Biçimlendirme (Conditional Formatting) ile "Bütünleme" kalan satırları açık kırmızı ile renklendiriniz.
+**Ürün:** Sekiz kayıtlı `etkinlik_kayitlari` tablosu. [PostgreSQL SQL öğreticisi](https://www.postgresql.org/docs/current/tutorial-sql.html), [pgAdmin Query Tool](https://www.pgadmin.org/docs/pgadmin4/latest/query_tool.html).

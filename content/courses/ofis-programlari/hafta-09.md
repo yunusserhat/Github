@@ -1,36 +1,28 @@
 ---
-title: "9. Hafta: Elektronik Tablolara Giriş ve Veri Düzenleme"
-linkTitle: "9. Hafta - Elektronik Tablolara Giriş"
-date: "2026-09-01"
+title: "9. Hafta: Form ve düzenli veri"
+linkTitle: "9. Hafta — Form ve düzenli veri"
+summary: "Kayıt, alan ve benzersiz kodu küçük bir formda uygulayın."
+date: "2026-09-28"
 type: book
 weight: 100
-draft: true
 ---
 
-## 📊 Elektronik Tablo Mantığı (Google Sheets & MS Excel)
+## Hedef
 
-Elektronik tablolar, satır ve sütunlardan oluşan hücre ızgaralarında verileri depolamak, hesaplamak ve analiz etmek için kullanılan en yaygın veri aracıdır.
+Ofiste veri toplarken her soru bir **alan**, her yanıt bir **kayıt** oluşturur. Aynı kişiyi iki kez saymamak için benzersiz bir **katılımcı kodu** kullanılır. Bu hafta yalnızca kurgusal kodlarla çalışacağız.
 
-<!--more-->
+## Laboratuvar görevi
 
-### Hücre ve Veri Tipleri
-- **Metin (String):** Sola hizalı değerler (İsim, Şehir, Ürün Adı).
-- **Sayısal (Number):** Sağa hizalı değerler (Fiyat, Miktar, Yaş).
-- **Tarih ve Saat:** Sistem tarafından seri numarası olarak tutulan değerler (`GG.AA.YYYY`).
-- **Mantıksal (Boolean):** `DOĞRU` (TRUE) / `YANLIŞ` (FALSE).
+1. Microsoft 365 içinden **Forms** uygulamasını açın; `Etkinlik katılım isteği` adlı yeni form oluşturun.
+2. Üç soru ekleyin: `Katılımcı kodu`, `Birim` ve `Oturum tercihi`. Birim ve oturum için az sayıda seçenek verin. Ad, telefon, gerçek e-posta veya öğrenci numarası istemeyin.
+3. Önizlemede formu doldurun. Ardından `K001`–`K005` gibi beş kurgusal yanıt girin.
+4. Yanıtları **Excel’de aç** seçeneğiyle görüntüleyin. Soruların sütun, yanıtların satır hâline geldiğini işaretleyin.
+5. Öğretim elemanının verdiği yinelenen kodu bulun ve neden iki kez sayılmaması gerektiğini açıklayın.
 
----
+## Kontrol
 
-## ⚡ Veri Girişini Hızlandıran Teknikler
+Tabloda her satır tek bir yanıt mı? Aynı kod birden çok kez kullanılmış mı? Yanıt sayısı ile satır sayısı uyuşuyor mu?
 
-- **Otomatik Doldurma Tutamacı (Fill Handle):** Günler, aylar, sayılar ve tarihlerin örüntüye göre sürüklenerek doldurulması.
-- **Hücre Kilitleme / Mutlak Başvuru (`$` İşareti):** Formül kopyalanırken hücre koordinatının sabit tutulması (`$A$1`, `$A1`, `A$1`).
-- **Veri Doğrulama (Data Validation):** Hücreye hatalı veri girilmesini önlemek amacıyla açılır liste (dropdown) oluşturma.
+Forms hesabınızda görünmüyorsa öğretim elemanının verdiği kurgusal yanıt tablosunu Excel’de açıp 4–5. adımları yapın. [Microsoft Forms sonuç yardımı](https://support.microsoft.com/tr-tr/forms/view-results).
 
----
-
-## 🛠️ Laboratuvar Uygulaması
-
-1. 50 satırlık bir çalışan bordro tablosu oluşturunuz.
-2. Departman sütununa Veri Doğrulama ile açılır liste ekleyiniz (`Pazarlama`, `İnsan Kaynakları`, `BT`, `Satış`).
-3. Para birimi ve tarih hücrelerinin biçimlendirmesini yapınız.
+**Ürün:** Üç soruluk form ve örnek yanıt tablosu.

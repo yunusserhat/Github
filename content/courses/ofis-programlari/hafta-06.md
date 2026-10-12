@@ -1,27 +1,34 @@
 ---
-title: "6. Hafta: Kullanıcı Grupları ve Ekip Çalışması"
-linkTitle: "6. Hafta - Gruplar & Ekip Alanları"
-date: "2026-09-01"
+title: "6. Hafta: Excel’de temel formüller"
+linkTitle: "6. Hafta — Excel’de temel formüller"
+summary: "Toplam, ortalama, en küçük ve en büyük değeri hesaplayın."
+date: "2026-09-28"
 type: book
 weight: 70
-draft: true
 ---
 
-## 👥 Kurumsal E-posta Grupları (Google Groups & Dağıtım Listeleri)
+## Hedef
 
-Bir ofiste 50 kişilik bir departmana her duyuruda tek tek e-posta adresleri yazmak hem zaman kaybına hem de hata yapma riskine yol açar.
+Önceki haftanın bütçesini formüllerle özetleyeceksiniz. Hesap sonucunu elle yazmak yerine veriler değiştiğinde yenilenen bir formül kullanın.
 
-<!--more-->
+## Formül kartı
 
-### Grup Türleri ve Kullanım Senaryoları
-- **E-posta Listesi (Mailing List):** Gruba atılan bir e-postanın tüm grup üyelerine tek seferde iletilmesi (örn. `yonetim@kurum.edu.tr`).
-- **Ortak Gelen Kutusu (Collaborative Inbox):** Destek, bilgi veya randevu taleplerinin ekip üyelerine görev olarak atanabilmesi.
-- **Paylaşılan Sürücüler (Shared Drives):** Dosyaların bireysel kişilere değil, doğrudan departmana ait olduğu kurumsal depolama alanları (çalışan kurumdan ayrılsa dahi dosyalar silinmez).
+- `=C2*D2`: Adet × birim fiyat.
+- `=TOPLA(E2:E9)`: Sekiz tutarın toplamı.
+- `=ORTALAMA(E2:E9)`: Ortalama tutar.
+- `=MİN(E2:E9)` ve `=MAK(E2:E9)`: En küçük ve en büyük tutar.
 
----
+Excel’in dili veya bölge ayarı farklıysa işlev adları İngilizce (`SUM`, `AVERAGE`, `MIN`, `MAX`) görünebilir. Formüldeki hücre aralığını değiştirmeden uygulamanın önerdiği işlev adını kullanın.
 
-## 🛠️ Laboratuvar Uygulaması
+## Laboratuvar görevi
 
-1. Google Groups üzerinde `Ofis_Ekibi_Proje_Grubu` adında simüle edilmiş bir kullanıcı grubu oluşturunuz.
-2. Grup e-posta adresine izin verilen ve verilmeyen kullanıcı senaryolarını test ediniz.
-3. Google Drive üzerinde bir klasörü tek tek kişilere değil, doğrudan grup adresine yetkilendirerek tüm üyelerin erişim kazandığını doğrulayınız.
+1. `Etkinlik_Butcesi.xlsx` dosyasını açın; `E2:E9` aralığındaki formülleri kontrol edin.
+2. Tablonun altında toplam, ortalama, en küçük ve en büyük tutarı ayrı hücrelerde hesaplayın.
+3. Bir kalemin adedini değiştirin; toplamın yenilendiğini görün. Ardından örnek değere geri dönün.
+4. Sonuçları TL biçiminde gösterin ve öğretim elemanına dört formülden birini açıklayın.
+
+## Kontrol
+
+Örnek verinin toplamı **1.920 TL**, en küçük kalem **90 TL**, en büyük kalem **400 TL** olmalı. Sonuç farklıysa formül aralığını ve sayısal hücreleri kontrol edin.
+
+**Ürün:** Formülleri tamamlanmış bütçe. [Web için Excel yardımı](https://support.microsoft.com/tr-tr/excel).

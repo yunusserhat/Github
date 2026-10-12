@@ -1,7 +1,7 @@
 ---
 title: "Ofis Programları ve Veri Tabanlı Uygulamalar"
 linkTitle: "Ofis Programları"
-summary: "Bulut tabanlı modern ofis araçları, ileri elektronik tablo ve veri analizi, veri tabanlı form ve dokümantasyon uygulamaları."
+summary: "Google Drive ve masaüstü Microsoft Office uygulamalarıyla temel ofis işleri; PostgreSQL ile ilk veri tabanı sorguları."
 type: book
 course_codes:
   - "BSP2007"
@@ -12,88 +12,59 @@ faculty_name: "Marmara Üniversitesi Sosyal Bilimler Meslek Yüksekokulu"
 department: "Büro Yönetimi ve Yönetici Asistanlığı & Ofis Teknolojileri ve Veri Yönetimi"
 term: "Güz"
 archived: false
-multi_notice: "<strong>Birleşik Ders:</strong> <code>BSP2007</code>, <code>BYS2011</code> ve <code>OTV1007</code> kodlu dersler aynı saatlerde, ortak laboratuvar ve tek müfredatla işlenmektedir."
-slides_url: "https://bit.ly/sbmyo_ofis"
+multi_notice: "<strong>Ortak ders materyali:</strong> <code>BSP2007</code>, <code>BYS2011</code> ve <code>OTV1007</code> için aynı haftalık uygulamalar kullanılır. Kodunuza ait resmî ders saati, AKTS ve sınav duyurularını ÖBYS'den kontrol edin."
 weight: 10
-date: "2026-09-01"
+date: "2026-09-28"
 aliases:
   - "/courses/Ofis Programlari/"
   - "/courses/Ofis%20Programlari/"
 ---
 
-## 📌 Ders Künyesi ve Çapraz Kod Bilgisi
+Bu sayfa **BSP2007, BYS2011 ve OTV1007** öğrencileri için ortak laboratuvar materyalidir. Temel düzeyde başlayacağız: önce Google Drive ve bulut dosya düzeni, ardından masaüstü Word, Excel ve PowerPoint; sonrasında Forms ile veri toplama ve PostgreSQL’de kısa sorgular. Her hafta küçük bir dosya veya sorgu üreteceksiniz.
 
-> ℹ️ **Birleşik / Çapraz Kodlu Ders Notu:** Bu ders, Büro Yönetimi ve Yönetici Asistanlığı ile Ofis Teknolojileri ve Veri Yönetimi programlarında ortak saatlerde ve senkronize laboratuvar uygulamalarıyla yürütülmektedir. Tüm ders kodları için müfredat, sınavlar ve materyaller ortaktır.
+[**Önce giriş ve laboratuvar kurallarını okuyun →**](giris)
 
-| Özellik | Detay |
-| :--- | :--- |
-| **Ders Adı** | Ofis Programları ve Veri Tabanlı Uygulamalar |
-| **Ders Kodları** | `BSP2007` • `BYS2011` • `OTV1007` |
-| **Akademik Birim** | Sosyal Bilimler Meslek Yüksekokulu (SBMYO) |
-| **Bölümler** | Büro Yönetimi ve Yönetici Asistanlığı • Ofis Teknolojileri ve Veri Yönetimi |
-| **Dönem** | Güz Dönemi |
-| **Ders Dili / Türü** | Türkçe / Uygulamalı Laboratuvar Dersi |
-| **Öğretim Elemanı** | {{< mention "admin" >}} |
-| **Ders Sunumları** | [📑 Sunumlar & Dosyalar](https://bit.ly/sbmyo_ofis) |
-| **MEOBS Bilgisi** | [Marmara EOBS Ders Sayfası](https://meobs.marmara.edu.tr/Ders/ofis-programlari/bsp2007-69548-3819) |
+## Dersin sonunda yapabilecekleriniz
 
----
+- Google Drive üzerinde kurumsal klasör mimarisini kurmak ve dosyaları güvenli izinlerle paylaşmak.
+- Masaüstü Word’de standart resmi dilekçe, duyuru metni, iş yazısı ve tablolu toplantı tutanağı hazırlamak.
+- Excel’de bütçe tablosu kurmak, temel formüller kullanmak ve basit grafik oluşturmak.
+- Forms yanıtlarında kayıt ve alanı ayırt etmek; PostgreSQL’de tabloya örnek kayıt ekleyip `SELECT` ile sorgulamak.
+- PowerPoint’te okunaklı ve profesyonel bir sunu hazırlamak.
+- Hazırlanan belgeleri standart PDF formatında dışa aktarıp bulutta düzenli teslim etmek.
 
-## 🎯 Dersin Amacı
+## 2026–2027 güz dönemi akışı
 
-Bu dersin temel amacı; öğrencilerin kurumsal iş hayatında ve günlük çalışma ortamlarında karşılaşacakları elektronik posta, takvim, dokümantasyon, ileri elektronik tablo ve veri analizi, sunum tasarımı ve anket/veri tabanı yönetimi ihtiyaçlarını mekândan bağımsız bulut teknolojileri (Google Workspace & Microsoft 365) kullanarak profesyonel düzeyde çözebilecek yetkinliğe ulaşmalarını sağlamaktır.
+[Marmara akademik takvimine](https://takvim.marmara.edu.tr/year/2026/summary) göre dersler **28 Eylül 2026 – 3 Ocak 2027**, ara sınav dönemi **16–22 Kasım 2026**, final dönemi **4–17 Ocak 2027** tarihlerindedir. Kesin ders ve sınav saatlerini ÖBYS’den izleyin.
 
----
+| Hafta | Konu | Derste tamamlanacak ürün |
+| :---: | :--- | :--- |
+| 1 | [Google Drive ve Word’e giriş](hafta-01) | Drive’da ilk dilekçe belgesi |
+| 2 | [Word’de belge düzeni ve tablolar](hafta-02) | Tablolu duyuru belgesi ve PDF |
+| 3 | [Word’de görsel düzen ve stiller](hafta-03) | Gelişmiş etkinlik duyurusu |
+| 4 | [Word’de iş yazısı ve tutanak](hafta-04) | İlk laboratuvar ürünü |
+| 5 | [Excel’de bütçe tablosu](hafta-05) | Sekiz satırlık bütçe |
+| 6 | [Excel’de temel formüller](hafta-06) | Toplam ve özet değerler |
+| 7 | [Excel’de koşul, filtre ve grafik](hafta-07) | Filtrelenebilir tablo ve grafik |
+| 8 | [Ara sınav](hafta-08) | Word + Excel uygulaması |
+| 9 | [Forms ve düzenli veri](hafta-09) | Kurgusal katılım formu |
+| 10 | [PostgreSQL’de ilk tablo](hafta-10) | Sekiz kayıtlı örnek tablo |
+| 11 | [PostgreSQL’de basit sorgular](hafta-11) | İkinci laboratuvar ürünü |
+| 12 | [PowerPoint’te kısa sunu](hafta-12) | Dört slaytlık taslak |
+| 13 | [PowerPoint’te grafik ve paylaşım](hafta-13) | Beş slaytlık sunu |
+| 14 | [Bütünleşik uygulama ve tekrar](hafta-14) | Word, Excel, SQL ve sunu dosyaları |
 
-## 🚀 Öğrenme Çıktıları (Kazanımlar)
+## Ölçme ve değerlendirme
 
-- Bulut bilişim altyapısını ve modern SaaS ofis teknolojilerini kavrayarak çalışma ortamına entegre edebilme.
-- Kurumsal e-posta, çoklu takvim ve çevrim içi toplantı araçlarını etkin zaman yönetimi ilkeleriyle koordine edebilme.
-- İleri düzey kelime işlemci özellikleri (şablonlar, stiller, içindekiler tablosu, dipnotlar, çapraz başvurular) ile resmi dokümanlar hazırlayabilme.
-- Elektronik tablolarda ileri matematiksel, mantıksal ve arama fonksiyonlarını (`DÜŞEYARA / VLOOKUP`, `ÇAPRAZARA / XLOOKUP`, `EĞER / IF`) yetkinlikle kullanabilme.
-- Pivot Tablolar (Özet Tablo) ve dilimleyiciler aracılığıyla kurumsal verileri analiz edip mini dashboard'lar tasarlayabilme.
-- Çevrim içi anket ve form araçlarıyla dinamik veri toplayıp elektronik tablolara entegre edebilme.
+Yarıyıl içi çalışmaların başarı notuna katkısı **%40**, finalin katkısı **%60**’tır; bu oran [SBMYO için yayımlanan yönerge tablosunda](https://www.marmara.edu.tr/dosya/oidb/Mevzuat/2025/Sinav_ve_basari_degerlendirme_y%C3%B6nergesi_mu-04122025.pdf) yer alır. Bu materyalde yarıyıl içi için **ara sınav %20 + iki laboratuvar ürünü toplam %20** planlanmıştır. Kodunuza ait kesin araçlar ve teslim tarihleri ÖBYS’deki ders izleme programında duyurulur. Bütünleme, yapıldığı durumda finalin yerine geçer; finalle toplanmaz.
 
----
+## İndirilebilir uygulama dosyaları
 
-## 📚 Haftalık Ders İzlencesi (Syllabus)
+- [Excel için örnek etkinlik bütçesi](ornek-butce.xlsx) — kurgusal sekiz bütçe kalemi; beklenen toplam **1.920 TL**.
+- [PostgreSQL örnek tablo ve kayıtlar](ornek-kayitlar.sql) — sekiz kurgusal kayıt ve örnek `SELECT` sorguları.
 
-> ℹ️ **Haftalık Akış:** Ders izlencesi aşağıda özetlenmiştir. Her haftanın detaylı ders notları, uygulama adımları ve dosyaları ilgili hafta geldiğinde sırayla sol menüde erişime açılacaktır.
+## Resmî ve yardımcı kaynaklar
 
-| Hafta | Konu Başlığı | Odak Konular ve Beceriler | Durum |
-| :---: | :--- | :--- | :---: |
-| **Giriş** | [Derse Giriş & Laboratuvar Kuralları](giris) | Bulut Hesap Kurulumları, Laboratuvar Düzeni, Ders Politikası | 🟢 Açık |
-| **1** | Bulut Bilişim ve SaaS Ofis Teknolojilerine Giriş | Bulut Altyapısı, Google Drive & OneDrive Mimarisi, Güvenlik | ⏳ Hazırlanıyor |
-| **2** | Kurumsal E-posta ve Mesajlaşma Yönetimi | Etiketler, Filtre Kuralları, Şablonlar, Kurumsal İmza Tasarımı | ⏳ Hazırlanıyor |
-| **3** | Takvim, Randevu ve Zaman Yönetimi | Çoklu Takvimler, Randevu Slotları, Etkinlik Davetleri ve Hatırlatıcılar | ⏳ Hazırlanıyor |
-| **4** | Çevrim İçi İletişim ve Toplantı Araçları | Google Meet, MS Teams, Ekran Paylaşımı, Toplantı Kaydı ve Protokolleri | ⏳ Hazırlanıyor |
-| **5** | Bulut Dosya Yönetimi ve Paylaşım İzinleri | Ortak Sürücüler (Shared Drives), Erişim İzinleri, Sürüm Geçmişi | ⏳ Hazırlanıyor |
-| **6** | Kullanıcı Grupları ve Ekip Çalışması | Google Groups, Yetkilendirme Rolleri, Ortak Çalışma Alanları | ⏳ Hazırlanıyor |
-| **7** | Kelime İşlemciler ve Profesyonel Doküman Tasarımı | Başlık Hiyerarşisi, Stiller, İçindekiler Tablosu, Otomasyon | ⏳ Hazırlanıyor |
-| **8** | Ara Sınav (Vize) & Uygulama Değerlendirmesi | Laboratuvar Uygulama Sınavı ve Vize Değerlendirmesi | ⏳ Dönem İçi |
-| **9** | Elektronik Tablolara Giriş ve Veri Düzenleme | Hücre Tipleri, Otomatik Doldurma, Temel Formüller, Formatlama | ⏳ Hazırlanıyor |
-| **10** | Matematiksel ve Mantıksal Fonksiyonlar | `TOPLA`, `ORTALAMA`, `EĞER (IF)`, `ÇOKEĞERSAY`, Koşullu Biçimlendirme | ⏳ Hazırlanıyor |
-| **11** | İleri Arama ve Başvuru Fonksiyonları | `DÜŞEYARA (VLOOKUP)`, `ÇAPRAZARA (XLOOKUP)`, `İNDİS & KAÇINCI` | ⏳ Hazırlanıyor |
-| **12** | Pivot Tablolar (Özet Tablo) ve Veri Analitiği | Özet Tablo Oluşturma, Gruplandırma, Dilimleyiciler (Slicers) | ⏳ Hazırlanıyor |
-| **13** | Veri Görselleştirme ve Dashboard Tasarımı | Dinamik Grafikler, Mini KPI Göstergeleri, Veri Doğrulama Listeleri | ⏳ Hazırlanıyor |
-| **14** | Çevrim İçi Formlar ve Otomasyonlu Veri Toplama | Google Forms / MS Forms, Koşullu Sorular, E-Tablo Veri Entegrasyonu | ⏳ Hazırlanıyor |
-
----
-
-## ⚖️ Değerlendirme Kriterleri
-
-| Değerlendirme Türü | Katkı Oranı | Açıklama |
-| :--- | :---: | :--- |
-| **Ara Sınav (Laboratuvar Uygulama Vizesi)** | %40 | Bilgisayar laboratuvarında pratik senaryo çözümü |
-| **Yarıyıl Sonu Sınavı (Final)** | %60 | Kapsamlı laboratuvar uygulama ve veri analizi projesi |
-| **Toplam** | **%100** | |
-
----
-
-## 📖 Temel Başvuru Kaynakları
-
-- [Google Workspace Öğrenim Merkezi](https://workspace.google.com/intl/tr/)
-- [Microsoft 365 Eğitim Kaynakları](https://www.microsoft.com/tr-tr/education/products/office)
-- [Datalab Veri Tabanlı Araçlar ve Rehberler](https://datalab.cc/)
-
-{{< cta cta_text="📖 Derse Başla (Giriş & Kurallar)" cta_link="giris" >}}
+- [Google Drive Yardım](https://support.google.com/drive) · [Microsoft Word Desteği](https://support.microsoft.com/tr-tr/word) · [Marmara BYS](https://bys.marmara.edu.tr/)
+- [PostgreSQL: SQL öğreticisi](https://www.postgresql.org/docs/current/tutorial-sql.html)
+- [BSP2007 resmî ders sayfası](https://meobs.marmara.edu.tr/Ders/ofis-programlari/bsp2007-69548-3819) · [BYS2011 resmî ders sayfası](https://meobs.marmara.edu.tr/Ders/ofis-programlari/bys2011-93166-5859). OTV1007 bilgileri kendi güncel müfredat/ÖBYS kaydınızda gösterilir.
