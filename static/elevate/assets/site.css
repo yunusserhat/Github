@@ -101,6 +101,8 @@ button { font: inherit; }
 .seg button:hover { color: var(--accent); }
 .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 .seg button .sw { width: 0.6rem; height: 0.6rem; border-radius: 50%; }
+/* a control that wraps onto two lines gets rounded corners instead of a pill */
+.consent .seg, .tile .seg, .card .seg { border-radius: 14px; }
 .on-dark .seg { background: rgba(255, 255, 255, 0.06); border-color: var(--night-rule); box-shadow: none; }
 .on-dark .seg button { color: var(--night-muted); }
 .on-dark .seg button[aria-pressed="true"] { background: var(--glow); color: var(--night); }

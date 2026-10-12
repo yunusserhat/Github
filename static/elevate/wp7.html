@@ -40,7 +40,8 @@
       <div class="tile"><h3>Not shared, or only linked</h3><ul>
         <li>Street images load from the City's own server. Hosted here, with attribution: one example panorama with its four views (WP3), the 47 before/after pairs (WP6) and an aerial poster (home).</li>
         <li>No personal data: mobility is synthetic throughout; the City blurs people and plates before publishing panoramas.</li>
-        <li>No model weights are redistributed.</li></ul></div>
+        <li>No model weights are redistributed.</li>
+        <li>Survey answers (pilot): anonymous, in a PostgreSQL database (Supabase, EU) that visitors can only add to; published as totals only, never as rows.</li></ul></div>
     </div>
   </section>
 
@@ -58,7 +59,7 @@
       <li>Footways and paths are rarely recorded (8% of their length).</li>
       <li>View direction follows the estimated driving direction, which can be some degrees off on sharp turns.</li>
       <li>Model output is not measurement: each feature carries its agreement with a larger model, and three are not used (WP3).</li></ul></div></details>
-    <details class="more"><summary>Software</summary><div class="body"><p>FastAPI on a CPU; plain HTML, CSS and JavaScript; Leaflet (BSD-2-Clause) for maps; CesiumJS (Apache-2.0) for the 3D city, with no Cesium ion services. Fonts: Source Serif 4, Public Sans, JetBrains Mono (SIL Open Font Licence), served from this site.</p></div></details>
+    <details class="more"><summary>Software</summary><div class="body"><p>FastAPI on a CPU; plain HTML, CSS and JavaScript; Leaflet (BSD-2-Clause) for maps; CesiumJS (Apache-2.0) for the 3D city, with no Cesium ion services. Survey layer: PostgreSQL on Supabase with row-level security (insert only for visitors) and aggregate functions; the schema is <a href="data/survey/schema.sql">public</a>. Fonts: Source Serif 4, Public Sans, JetBrains Mono (SIL Open Font Licence), served from this site.</p></div></details>
   </section>
 </main>
 

@@ -34,8 +34,9 @@ function buildChrome() {
   top.innerHTML = `<div class="bar">
       <a class="mark" href="index.html"><span>ELEVATE<span class="in"> in Amsterdam</span>${isWP ? `<span class="sub"><span style="opacity:.5;margin:0 .5em">·</span>${info[1]} ${info[2]}</span>` : ""}</span></a>
       ${isWP ? `<a class="back" href="index.html#${info[1].toLowerCase()}" title="Back to the overview, at ${info[1]}">← <span class="t">Overview</span></a>`
-        : page === "ask.html" ? `<a class="back" href="index.html" title="Back to the overview">← <span class="t">Overview</span></a>` : ""}
+        : ["ask.html", "survey.html"].includes(page) ? `<a class="back" href="index.html" title="Back to the overview">← <span class="t">Overview</span></a>` : ""}
       <nav aria-label="Work packages">${PAGES.slice(1).map(([h, l, t]) => `<a href="${h}" title="${l}: ${t}"${h === page ? ' aria-current="page"' : ""}>${l}</a>`).join("")}
+        <a href="survey.html" title="Take part: a short pilot survey"${page === "survey.html" ? ' aria-current="page"' : ""}>Take part</a>
         <a class="asknav" href="ask.html"${page === "ask.html" ? ' aria-current="page"' : ""}><span class="t">Ask the images</span><span class="s">Ask</span></a></nav>
     </div>`;
   document.body.prepend(top);
@@ -46,7 +47,7 @@ function buildChrome() {
     tone(); addEventListener("scroll", tone, { passive: true });
   }
 
-  const next = page === "ask.html" ? PAGES[1] : PAGES[i + 1] || PAGES[1];
+  const next = ["ask.html", "survey.html"].includes(page) ? PAGES[1] : PAGES[i + 1] || PAGES[1];
   const foot = document.createElement("footer");
   foot.className = "foot";
   foot.innerHTML = `<div class="bar">
