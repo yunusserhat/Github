@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SokakPuan: okul çevresindeki sokak görüntülerinden üretilen algı tahminlerini üç boyutlu bina haritasında keşfedin.">
+  <title>SokakPuan — Okul Çevresi Algı Atlası</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23267669'/%3E%3Cpath d='M8 23V13l8-5 8 5v10h-6v-7h-4v7z' fill='%23faf7ee'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
+  <link rel="stylesheet" href="assets/app.css">
+  <script src="vendor/maplibre/maplibre-gl.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <div id="map" role="region" aria-label="Algı tahminleriyle renklendirilmiş etkileşimli bina haritası"></div>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="SokakPuan ana görünüm"><span class="brand-mark" aria-hidden="true">s<span>p</span></span>SokakPuan<span class="brand-divider"></span><span class="brand-sub">Okul çevresi algı atlası</span></a>
+    <div class="top-actions"><span class="draft-tag">VERİ LABORATUVARI · 01</span><button id="method-open" class="quiet-button" aria-haspopup="dialog">Veri ve yöntem <span aria-hidden="true">↗</span></button></div>
+  </header>
+
+  <main>
+    <section class="intro panel" aria-labelledby="main-title">
+      <p class="eyebrow"><span class="live-dot"></span> SOKAKLAR DÖNÜŞÜYOR</p>
+      <h1 id="main-title">Okul çevresi,<br>üç boyutta.</h1>
+      <p class="intro-text">Sokak görüntülerinden tahmin edilen algıyı, komşu binalarda görün.</p>
+      <div class="counts" aria-live="polite"><div><strong id="colored-count">—</strong><span>renkli bina</span></div><div><strong id="building-count">—</strong><span>bina tabanı</span></div><div><strong>3</strong><span>okul</span></div></div>
+      <p class="context-note">Renk, <strong>yakın sokak çevresinin</strong> model tahminidir. Bir binanın niteliği veya gerçek trafik güvenliği puanı değildir.</p>
+      <div class="metric-heading"><span class="eyebrow">HANGİ ALGI?</span><span id="metric-index">01 / 06</span></div>
+      <div id="dimensions" class="dimensions" role="group" aria-label="Algı boyutu"></div>
+      <div class="layer-options">
+        <label><input id="show-bins" type="checkbox" checked> Gözlem dilimleri</label>
+        <label><input id="only-colored" type="checkbox"> Yalnız renkli binalar</label>
+      </div>
+      <p class="capture-note">Çekim: <time datetime="2026-08-24">24 Ağustos 2026</time> · 06.46–07.26</p>
+    </section>
+
+    <nav id="schools" class="school-nav" aria-label="Okul çevresine odaklan">
+      <button class="school-button active" data-school="all" aria-pressed="true"><span class="school-number">↗</span><span>Genel görünüm</span></button>
+    </nav>
+
+    <aside id="detail" class="detail panel" aria-live="polite" hidden>
+      <button id="detail-close" class="icon-button close-detail" aria-label="Bina ayrıntısını kapat">×</button>
+      <p class="eyebrow">BİNA YAKININDAKİ SOKAK BAĞLAMI</p>
+      <h2 id="detail-title"></h2>
+      <p id="detail-id" class="small muted"></p>
+      <div class="detail-score"><strong id="detail-score">—</strong><span id="detail-metric"></span></div>
+      <p id="detail-status" class="status-note"></p>
+      <dl id="detail-facts" class="facts"></dl>
+      <div id="detail-metrics" class="mini-metrics"></div>
+      <div id="evidence" class="evidence"></div>
+      <a id="osm-link" class="source-link" target="_blank" rel="noopener">Bina kaydı · OpenStreetMap ↗</a>
+    </aside>
+
+    <div class="map-tools" role="group" aria-label="Harita görünümü">
+      <button id="view-3d" class="active" aria-pressed="true">3B</button><button id="view-2d" aria-pressed="false">2B</button><span></span><button id="zoom-in" aria-label="Yakınlaştır">+</button><button id="zoom-out" aria-label="Uzaklaştır">−</button><button id="reset-map" aria-label="Genel görünüme dön">↗</button>
+    </div>
+
+    <section class="legend panel" aria-label="Renk açıklaması">
+      <div class="legend-heading"><strong id="legend-title">Güvenli hissettirme</strong><span>MODEL TAHMİNİ</span></div>
+      <div id="legend-gradient" class="legend-gradient"></div>
+      <div class="legend-values"><span id="legend-min">—</span><span id="legend-max">—</span></div>
+      <p id="legend-description">Gözlenen renk aralığı</p>
+      <div class="legend-key"><span><i class="grey-key"></i>Eşleşme yok</span><span><i class="sparse-key"></i>Tek panorama</span><span><i class="line-key"></i>20 m dilim</span></div>
+    </section>
+    <p id="map-hint" class="map-hint">Bir binaya tıklayın · Sürükleyerek gezinin · Sağ tuşla eğin</p>
+    <div id="loading" class="loading" role="status"><span></span>Okul çevresi hazırlanıyor…</div>
+    <div id="error" class="error panel" role="alert" hidden></div>
+  </main>
+
+  <footer class="credits"><span>SokakPuan · Yunus Serhat Bıçakçı</span><span><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a><span id="overture-credit" hidden>, <a href="https://overturemaps.org/" target="_blank" rel="noopener">Overture Maps Foundation</a></span> · ODbL · <a href="https://www.mapillary.com/" target="_blank" rel="noopener">Mapillary</a></span></footer>
+
+  <dialog id="method-dialog" aria-labelledby="method-title">
+    <div class="dialog-top"><span class="eyebrow">SOKAKPUAN / VERİ NOTU</span><button id="method-close" class="icon-button" aria-label="Veri notunu kapat">×</button></div>
+    <h2 id="method-title">Rengin arkasındaki veri.</h2>
+    <p class="dialog-lead">Bir bina seçtiğinizde, yakınındaki sokak görüntülerinden üretilen algı tahminine ulaşırsınız.</p>
+    <div class="method-flow"><span>360° panorama</span><b>→</b><span>20 m sokak dilimi</span><b>→</b><span>Komşu bina</span></div>
+    <div id="method-data"></div>
+    <h3>Nasıl okunmalı?</h3>
+    <p>Her panoramanın dört yöndeki puanı ortalanır. Yakın karelerin aşırı ağırlık kazanmaması için puanlar önce çekim serisi ve 20 metrelik yol dilimi içinde özetlenir. Aynı dilimdeki iki serinin ortalamaları eşit ağırlık alır.</p>
+    <p>Önce binaya en yakın yol bulunur; ardından yalnız o yolun en yakın gözlem dilimi değerlendirilir. Yol eşleşmesi belirsizse veya 30 metre içinde uygun gözlem yoksa bina gri kalır. Böylece veri bulunmayan bir sokağa komşu sokaktan renk taşınmaz.</p>
+    <p>Renk, binanın cephesine ait bir ölçüm değildir. Öğrenci, veli veya öğretmen görüşü; kaza riski ve müdahale etkisi olarak yorumlanamaz. Çekim tek bir günün sabahına aittir.</p>
+    <h3>Binaların yüksekliği</h3>
+    <p id="height-note">OSM ve eşleşen Overture kayıtları değerlendirilir. Kat bilgisiyle hesaplanan tahminler ve veri bulunmadığında kullanılan gösterim yüksekliği bina kartında belirtilir.</p>
+    <section id="overture-section" hidden aria-labelledby="overture-title">
+      <h3 id="overture-title">Overture bina verisi</h3>
+      <p id="overture-note"></p><p id="overture-result"></p>
+    </section>
+    <h3>Kaynak ve tekrar üretim</h3>
+    <p>Algı modelleri: ZenSVI. Bina tabanları ve yollar: OpenStreetMap. Bina özniteliklerinin ek kaynağı: Overture Maps Foundation. Çekim görüntüleri: Mapillary. Harita, yerel veri dosyalarından çalışır.</p>
+    <div class="download-links"><a href="data/metadata.json" target="_blank">Veri ve yöntem kaydı ↗</a><a href="data/buildings.geojson" download>Bina GeoJSON ↓</a><a href="data/mappings.json" download>Kaynak eşleştirmeleri ↓</a><a href="LICENSE-DATA.txt" target="_blank">Veri lisansı ↗</a></div>
+  </dialog>
+</body>
+</html>

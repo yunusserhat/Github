@@ -1,0 +1,23 @@
+SokakPuan building and road database — source notices
+
+Contains information from OpenStreetMap contributors and Overture Maps Foundation.
+© OpenStreetMap contributors, Overture Maps Foundation
+
+The building and road geometry databases, including the enriched building
+database in data/buildings.geojson, are made available under the Open Database
+License (ODbL) 1.0:
+https://opendatacommons.org/licenses/odbl/1-0/
+
+Source information and the exact Overture release, extraction checksum and
+upstream source datasets are recorded in data/metadata.json. No building
+height is asserted to be a surveyed measurement solely because it is present
+in a source field. Model perception scores describe adjacent street context.
+
+OpenStreetMap copyright and attribution:
+https://www.openstreetmap.org/copyright
+
+Overture attribution and licensing:
+https://docs.overturemaps.org/attribution/
+
+Street imagery is linked to Mapillary; imagery files are not included.
+MapLibre and font software licenses are retained with their respective files.
