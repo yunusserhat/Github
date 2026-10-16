@@ -1,0 +1,248 @@
+{
+ "label": "Yapay zekâ görselleştirmesi, tasarım ya da uygulama projesi değildir",
+ "model_edit": "Qwen-Image-Edit-2511 ve Lightning 8 adım eki (Apache 2.0)",
+ "model_video": "Wan2.2-TI2V-5B (Apache 2.0)",
+ "source": "Mapillary sokak görüntüleri, CC BY-SA 4.0. Türev görseller aynı lisansla paylaşılır.",
+ "items": [
+  {
+   "slug": "sahil",
+   "title": "Palmiyeli sahil yolu",
+   "district": "Kartal",
+   "neighborhood": "Kordonboyu Mahallesi",
+   "lon": 29.168003797531128,
+   "lat": 40.89488640302017,
+   "heading": 218.5,
+   "mapillary_url": "https://www.mapillary.com/app/?pKey=896292126782826",
+   "src": "data/v3/prova/sahil__src.jpg",
+   "looks": [
+    {
+     "look": "golden",
+     "look_tr": "Altın saat",
+     "job": "prova__sahil__golden",
+     "img": "data/v3/prova/prova__sahil__golden.jpg",
+     "verified": true,
+     "video": {
+      "mp4": "data/v3/video/prova__sahil__golden.mp4",
+      "poster": "data/v3/video/prova__sahil__golden.jpg"
+     }
+    },
+    {
+     "look": "snow",
+     "look_tr": "Karlı sabah",
+     "job": "prova__sahil__snow",
+     "img": "data/v3/prova/prova__sahil__snow.jpg",
+     "verified": true,
+     "video": null
+    },
+    {
+     "look": "anim",
+     "look_tr": "Animasyon arka planı",
+     "job": "prova__sahil__anim",
+     "img": "data/v3/prova/prova__sahil__anim.jpg",
+     "verified": true,
+     "video": null
+    }
+   ]
+  },
+  {
+   "slug": "yokus",
+   "title": "Denize bakan yokuş",
+   "district": "Pendik",
+   "neighborhood": "Batı Mahallesi",
+   "lon": 29.227768778800964,
+   "lat": 40.873886139038746,
+   "heading": 241.9,
+   "mapillary_url": "https://www.mapillary.com/app/?pKey=608035682405295",
+   "src": "data/v3/prova/yokus__src.jpg",
+   "looks": [
+    {
+     "look": "golden",
+     "look_tr": "Altın saat",
+     "job": "prova__yokus__golden",
+     "img": "data/v3/prova/prova__yokus__golden.jpg",
+     "verified": true,
+     "video": null
+    },
+    {
+     "look": "watercolor",
+     "look_tr": "Suluboya illüstrasyon",
+     "job": "prova__yokus__watercolor",
+     "img": "data/v3/prova/prova__yokus__watercolor.jpg",
+     "verified": true,
+     "video": null
+    },
+    {
+     "look": "rain",
+     "look_tr": "Yağmurlu gece",
+     "job": "prova__yokus__rain",
+     "img": "data/v3/prova/prova__yokus__rain.jpg",
+     "verified": true,
+     "video": {
+      "mp4": "data/v3/video/prova__yokus__rain.mp4",
+      "poster": "data/v3/video/prova__yokus__rain.jpg"
+     }
+    }
+   ]
+  },
+  {
+   "slug": "meydan",
+   "title": "Fıskiyeli meydan",
+   "district": "Kartal",
+   "neighborhood": "Yukarı Mahallesi",
+   "lon": 29.18571710586548,
+   "lat": 40.89617183422757,
+   "heading": 48.3,
+   "mapillary_url": "https://www.mapillary.com/app/?pKey=1045077731239482",
+   "src": "data/v3/prova/meydan__src.jpg",
+   "looks": [
+    {
+     "look": "rain",
+     "look_tr": "Yağmurlu gece",
+     "job": "prova__meydan__rain",
+     "img": "data/v3/prova/prova__meydan__rain.jpg",
+     "verified": true,
+     "video": null
+    },
+    {
+     "look": "cinema",
+     "look_tr": "Açık hava sineması",
+     "job": "prova__meydan__cinema",
+     "img": "data/v3/prova/prova__meydan__cinema.jpg",
+     "verified": true,
+     "video": {
+      "mp4": "data/v3/video/prova__meydan__cinema.mp4",
+      "poster": "data/v3/video/prova__meydan__cinema.jpg"
+     }
+    },
+    {
+     "look": "watercolor",
+     "look_tr": "Suluboya illüstrasyon",
+     "job": "prova__meydan__watercolor",
+     "img": "data/v3/prova/prova__meydan__watercolor.jpg",
+     "verified": true,
+     "video": null
+    }
+   ]
+  },
+  {
+   "slug": "eski_ev",
+   "title": "Merdivenli eski ev",
+   "district": "Kartal",
+   "neighborhood": "Yunus Mahallesi",
+   "lon": 29.2134028673172,
+   "lat": 40.894164604199766,
+   "heading": 354.3,
+   "mapillary_url": "https://www.mapillary.com/app/?pKey=1219411923705446",
+   "src": "data/v3/prova/eski_ev__src.jpg",
+   "looks": [
+    {
+     "look": "watercolor",
+     "look_tr": "Suluboya illüstrasyon",
+     "job": "prova__eski_ev__watercolor",
+     "img": "data/v3/prova/prova__eski_ev__watercolor.jpg",
+     "verified": true,
+     "video": null
+    },
+    {
+     "look": "snow",
+     "look_tr": "Karlı sabah",
+     "job": "prova__eski_ev__snow",
+     "img": "data/v3/prova/prova__eski_ev__snow.jpg",
+     "verified": true,
+     "video": {
+      "mp4": "data/v3/video/prova__eski_ev__snow.mp4",
+      "poster": "data/v3/video/prova__eski_ev__snow.jpg"
+     }
+    },
+    {
+     "look": "anim",
+     "look_tr": "Animasyon arka planı",
+     "job": "prova__eski_ev__anim",
+     "img": "data/v3/prova/prova__eski_ev__anim.jpg",
+     "verified": true,
+     "video": null
+    }
+   ]
+  },
+  {
+   "slug": "carsi",
+   "title": "Eski çarşı sokağı",
+   "district": "Kartal",
+   "neighborhood": "Çavuşoğlu Mahallesi",
+   "lon": 29.200850129127502,
+   "lat": 40.89709230116502,
+   "heading": 116.0,
+   "mapillary_url": "https://www.mapillary.com/app/?pKey=1769721617739740",
+   "src": "data/v3/prova/carsi__src.jpg",
+   "looks": [
+    {
+     "look": "seventies",
+     "look_tr": "1970'ler dizi seti",
+     "job": "prova__carsi__seventies",
+     "img": "data/v3/prova/prova__carsi__seventies.jpg",
+     "verified": true,
+     "video": {
+      "mp4": "data/v3/video/prova__carsi__seventies.mp4",
+      "poster": "data/v3/video/prova__carsi__seventies.jpg"
+     }
+    },
+    {
+     "look": "rain",
+     "look_tr": "Yağmurlu gece",
+     "job": "prova__carsi__rain",
+     "img": "data/v3/prova/prova__carsi__rain.jpg",
+     "verified": true,
+     "video": null
+    },
+    {
+     "look": "golden",
+     "look_tr": "Altın saat",
+     "job": "prova__carsi__golden",
+     "img": "data/v3/prova/prova__carsi__golden.jpg",
+     "verified": true,
+     "video": null
+    }
+   ]
+  },
+  {
+   "slug": "kiyi_parki",
+   "title": "Kıyı parkında yol",
+   "district": "Pendik",
+   "neighborhood": "Kaynarca Mahallesi",
+   "lon": 29.248475432395935,
+   "lat": 40.871939079511364,
+   "heading": 201.4,
+   "mapillary_url": "https://www.mapillary.com/app/?pKey=2420850688346889",
+   "src": "data/v3/prova/kiyi_parki__src.jpg",
+   "looks": [
+    {
+     "look": "spring",
+     "look_tr": "İlkbahar",
+     "job": "prova__kiyi_parki__spring",
+     "img": "data/v3/prova/prova__kiyi_parki__spring.jpg",
+     "verified": true,
+     "video": {
+      "mp4": "data/v3/video/prova__kiyi_parki__spring.mp4",
+      "poster": "data/v3/video/prova__kiyi_parki__spring.jpg"
+     }
+    },
+    {
+     "look": "snow",
+     "look_tr": "Karlı sabah",
+     "job": "prova__kiyi_parki__snow",
+     "img": "data/v3/prova/prova__kiyi_parki__snow.jpg",
+     "verified": true,
+     "video": null
+    },
+    {
+     "look": "golden",
+     "look_tr": "Altın saat",
+     "job": "prova__kiyi_parki__golden",
+     "img": "data/v3/prova/prova__kiyi_parki__golden.jpg",
+     "verified": true,
+     "video": null
+    }
+   ]
+  }
+ ]
+}

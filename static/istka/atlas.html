@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sokak Atlası · Görünür İstanbul</title>
+<link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav class="topnav" aria-label="Ana menü"></nav>
+<div class="app wide">
+  <aside class="side">
+    <h1>Sokak Atlası</h1>
+    <p class="lead">İstanbul sokaklarından bir görsel kütüphane. İllüstratör referans, oyun ekibi ortam, yapım ekibi mekân arar. Sahne tarif et ya da süzgeçleri seç, beğendiğin yerleri kısa listeye ekle, sonra <a href="prova.html">Prova</a>'da başka bir hâlini üret.</p>
+    <form class="searchbar" data-form>
+      <input type="search" name="q" placeholder="ör. denize inen yokuş, akşam ışığı" aria-label="Sahne tarifi" autocomplete="off">
+      <button class="pill primary" type="submit">Bul</button>
+    </form>
+    <div data-filters></div>
+    <div class="status" data-status role="status"></div>
+    <div class="grid" data-results></div>
+    <div style="display:flex;gap:8px;margin-top:12px"><button class="pill" type="button" data-more hidden>Daha fazla</button></div>
+    <div class="seg-label">Kısa liste <span data-short-count></span></div>
+    <div class="grid" data-shortlist></div>
+    <p class="note" style="margin-top:16px">Sahne etiketleri modelin gözlemidir. Atlas çekim izni vermez, mekân dosyasında izin makamını gösterir.</p>
+  </aside>
+  <div class="mapwrap"><div id="map" role="img" aria-label="Atlas sonuçlarının haritası"></div></div>
+</div>
+<script src="vendor/maplibre/maplibre-gl.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/dossier.js"></script>
+<script>GI.nav("atlas");</script>
+<script src="assets/atlas.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{
+ "image_id": "1273514124891267",
+ "title": "Kordonboyu Mahallesi, Kartal",
+ "description": "Palmiyeler ve çim alanlı sahil şeridinde, yolda mavi bisiklet yolu işaretleri ve su kenarında park etmiş beyaz bir otobüs görülüyor.",
+ "pano_src": "data/img/showcase_pano.jpg",
+ "views": [
+  {
+   "direction": "front",
+   "src": "/views/1273514124891267_y000.jpg"
+  },
+  {
+   "direction": "right",
+   "src": "/views/1273514124891267_y090.jpg"
+  },
+  {
+   "direction": "back",
+   "src": "/views/1273514124891267_y180.jpg"
+  },
+  {
+   "direction": "left",
+   "src": "/views/1273514124891267_y270.jpg"
+  }
+ ],
+ "cam": {
+  "center": [
+   29.173808,
+   40.891395
+  ],
+  "zoom": 17.3,
+  "pitch": 68,
+  "bearing": 221.0
+ },
+ "atlas": [
+  {
+   "query": "deniz kenarında palmiyeli yol",
+   "src": "/views/3442275855941875_y270.jpg",
+   "view_id": "3442275855941875_y270",
+   "similarity": 0.8458999991
+  },
+  {
+   "query": "merdivenli dar sokak",
+   "src": "/views/1360888092819657_y090.jpg",
+   "view_id": "1360888092819657_y090",
+   "similarity": 0.8398000002
+  },
+  {
+   "query": "köprü altından geçen yol",
+   "src": "/views/2026599601571838_y270.jpg",
+   "view_id": "2026599601571838_y270",
+   "similarity": 0.83950001
+  }
+ ]
+}

@@ -1,0 +1,331 @@
+{
+ "panoramas_2025plus": 67142,
+ "area_km2": 40.0,
+ "panoramas_sample": 11143,
+ "views": 44572,
+ "coverage": {
+  "radius_m": 12.5,
+  "panoramas_2025plus": 67142,
+  "all": {
+   "total_km": 1142.201,
+   "covered_km": 322.699,
+   "covered_pct": 28.25
+  },
+  "by_class": {
+   "footway": {
+    "total_km": 161.903,
+    "covered_km": 8.785,
+    "covered_pct": 5.43
+   },
+   "local": {
+    "total_km": 659.023,
+    "covered_km": 187.53,
+    "covered_pct": 28.46
+   },
+   "main": {
+    "total_km": 320.92,
+    "covered_km": 126.315,
+    "covered_pct": 39.36
+   },
+   "other": {
+    "total_km": 0.354,
+    "covered_km": 0.069,
+    "covered_pct": 19.48
+   }
+  },
+  "coastal_parks": {
+   "n_polygons": 27,
+   "coast_distance_m": 350,
+   "total_km": 107.669,
+   "covered_km": 1.629,
+   "covered_pct": 1.51
+  },
+  "by_district": {
+   "Kartal": {
+    "total_km": 462.047,
+    "covered_km": 226.127,
+    "covered_pct": 48.94
+   },
+   "Maltepe": {
+    "total_km": 378.428,
+    "covered_km": 16.622,
+    "covered_pct": 4.39
+   },
+   "Pendik": {
+    "total_km": 299.186,
+    "covered_km": 79.353,
+    "covered_pct": 26.52
+   }
+  }
+ },
+ "items": {
+  "sidewalk": {
+   "present_pct": 75.4,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 77.3,
+    "Maltepe": 59.7,
+    "Pendik": 73.1
+   }
+  },
+  "sidewalk_obstruction": {
+   "present_pct": 68.5,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 70.8,
+    "Maltepe": 54.4,
+    "Pendik": 64.9
+   }
+  },
+  "pedestrian_crossing": {
+   "present_pct": 5.7,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 5.6,
+    "Maltepe": 9.1,
+    "Pendik": 5.2
+   }
+  },
+  "curb_ramp": {
+   "present_pct": 5.8,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 5.3,
+    "Maltepe": 7.4,
+    "Pendik": 6.9
+   }
+  },
+  "accessibility_barrier": {
+   "present_pct": 11.4,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 12.2,
+    "Maltepe": 4.8,
+    "Pendik": 10.3
+   }
+  },
+  "street_trees": {
+   "present_pct": 84.9,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 86.1,
+    "Maltepe": 72.8,
+    "Pendik": 83.7
+   }
+  },
+  "other_greenery": {
+   "present_pct": 86.3,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 87.3,
+    "Maltepe": 76.6,
+    "Pendik": 85.4
+   }
+  },
+  "shade_on_walkway": {
+   "present_pct": 46.2,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 48.6,
+    "Maltepe": 33.3,
+    "Pendik": 42.0
+   }
+  },
+  "seating": {
+   "present_pct": 2.6,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 2.0,
+    "Maltepe": 5.2,
+    "Pendik": 4.0
+   }
+  },
+  "street_light_pole": {
+   "present_pct": 43.2,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 40.6,
+    "Maltepe": 71.3,
+    "Pendik": 45.1
+   }
+  },
+  "play_or_exercise_equipment": {
+   "present_pct": 1.0,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 1.0,
+    "Maltepe": 0.0,
+    "Pendik": 1.0
+   }
+  },
+  "public_art": {
+   "present_pct": 2.4,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 2.4,
+    "Maltepe": 2.5,
+    "Pendik": 2.4
+   }
+  },
+  "drinking_fountain": {
+   "present_pct": 0.0,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 0.0,
+    "Maltepe": 0.0,
+    "Pendik": 0.0
+   }
+  },
+  "active_frontage": {
+   "present_pct": 44.7,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 42.5,
+    "Maltepe": 60.5,
+    "Pendik": 48.0
+   }
+  },
+  "commercial_outdoor_seating": {
+   "present_pct": 2.1,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 1.5,
+    "Maltepe": 5.6,
+    "Pendik": 3.2
+   }
+  },
+  "cycle_infrastructure": {
+   "present_pct": 0.3,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 0.4,
+    "Maltepe": 0.3,
+    "Pendik": 0.3
+   }
+  },
+  "waterfront": {
+   "present_pct": 0.3,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 0.2,
+    "Maltepe": 0.0,
+    "Pendik": 0.7
+   }
+  },
+  "litter": {
+   "present_pct": 8.6,
+   "unit": "view",
+   "by_district": {
+    "Kartal": 10.6,
+    "Maltepe": 2.7,
+    "Pendik": 3.9
+   }
+  }
+ },
+ "quality": {
+  "n_views": 200,
+  "agree_pct": 89.8,
+  "kappa": 0.68,
+  "source": "outputs/v2/audit/pilot200v4_compare.json"
+ },
+ "item_quality": {
+  "sidewalk": {
+   "kappa": null,
+   "n_both_decided": 129,
+   "level": "low"
+  },
+  "sidewalk_obstruction": {
+   "kappa": 0.0,
+   "n_both_decided": 115,
+   "level": "low"
+  },
+  "pedestrian_crossing": {
+   "kappa": 0.63,
+   "n_both_decided": 14,
+   "level": "low"
+  },
+  "curb_ramp": {
+   "kappa": null,
+   "n_both_decided": 5,
+   "level": "low"
+  },
+  "accessibility_barrier": {
+   "kappa": 0.32,
+   "n_both_decided": 14,
+   "level": "low"
+  },
+  "street_trees": {
+   "kappa": 0.78,
+   "n_both_decided": 181,
+   "level": "high"
+  },
+  "other_greenery": {
+   "kappa": 0.56,
+   "n_both_decided": 177,
+   "level": "medium"
+  },
+  "shade_on_walkway": {
+   "kappa": 0.37,
+   "n_both_decided": 85,
+   "level": "low"
+  },
+  "seating": {
+   "kappa": 0.43,
+   "n_both_decided": 13,
+   "level": "low"
+  },
+  "street_light_pole": {
+   "kappa": 0.56,
+   "n_both_decided": 84,
+   "level": "medium"
+  },
+  "play_or_exercise_equipment": {
+   "kappa": 0.63,
+   "n_both_decided": 14,
+   "level": "low"
+  },
+  "public_art": {
+   "kappa": 0.57,
+   "n_both_decided": 18,
+   "level": "low"
+  },
+  "drinking_fountain": {
+   "kappa": null,
+   "n_both_decided": 12,
+   "level": "low"
+  },
+  "active_frontage": {
+   "kappa": 0.67,
+   "n_both_decided": 119,
+   "level": "high"
+  },
+  "commercial_outdoor_seating": {
+   "kappa": 0.82,
+   "n_both_decided": 18,
+   "level": "low"
+  },
+  "cycle_infrastructure": {
+   "kappa": 0.0,
+   "n_both_decided": 14,
+   "level": "low"
+  },
+  "waterfront": {
+   "kappa": null,
+   "n_both_decided": 12,
+   "level": "low"
+  },
+  "litter": {
+   "kappa": 0.77,
+   "n_both_decided": 28,
+   "level": "high"
+  },
+  "view_obstruction": {
+   "kappa": 0.13,
+   "n_both_decided": 119,
+   "level": "low"
+  }
+ },
+ "showcase": {
+  "image_id": "1273514124891267"
+ }
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Prova · Görünür İstanbul</title>
+<meta name="description" content="Gerçek bir İstanbul sokağından sahne, illüstrasyon ve kısa klip. Laboratuvarın prototipleme ve prova hizmetinin gösterimi.">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav class="topnav" aria-label="Ana menü"></nav>
+<div class="app media-first">
+  <aside class="side">
+    <h1>Prova</h1>
+    <p class="lead">Gerçek bir İstanbul sokağı seç, aynı sokağın başka bir hâlini üret, birkaç saniyelik bir klibe dönüştür. Laboratuvarda yaratıcılar bunu konsept, illüstrasyon, animatik ve sunum için kullanır.</p>
+    <div class="seg-label">Sokak</div>
+    <div class="seg" role="group" aria-label="Sokak seç" data-src></div>
+    <div class="seg-label">Görünüm</div>
+    <div class="seg" role="group" aria-label="Görünüm seç" data-looks></div>
+    <p class="meta-line" data-meta></p>
+    <span class="label-ai">Yapay zekâ görselleştirmesi</span>
+    <details><summary>Nasıl üretildi</summary>
+      <p data-models></p>
+      <p>Kaynak görüntü, sokak panoramasının yüksek çözünürlüklü özgün sürümünden 1280×704 olarak çıkarıldı. Komutlar sahnenin kamera açısını, binalarını ve sokak dokusunu korumasını ister, metin, logo ve insan eklenmez. Küçük bir görsel dil modeli her görselde istenen değişikliğin görülüp görülmediğini ayrıca denetler.</p>
+      <p data-licence></p>
+    </details>
+  </aside>
+  <main class="stage">
+    <div class="frame">
+      <div data-media></div>
+      <div class="caption"><span data-cap></span><span data-check></span></div>
+    </div>
+  </main>
+</div>
+<script src="assets/config.js"></script>
+<script src="assets/common.js"></script>
+<script>GI.nav("prova");</script>
+<script src="assets/prova.js"></script>
+</body>
+</html>

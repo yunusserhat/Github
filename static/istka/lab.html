@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kent Atölyesi · Görünür İstanbul</title>
+<meta name="description" content="Yaratıcılar, sakinler ve belediye boş kamusal alanlar için birlikte öneri geliştirir, taşınabilir bir kent kiti öneriyi sahaya taşır.">
+<link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav class="topnav" aria-label="Ana menü"></nav>
+<div class="app wide">
+  <aside class="side">
+    <h1>Kent Atölyesi</h1>
+    <p class="lead">Yaratıcılar, sakinler, belediye ve mimarlar kamusal alanlar ve sokaklar için birlikte öneri geliştirir. Taşınabilir bir kent kiti öneriyi sahaya taşır.</p>
+    <div class="seg" role="group" aria-label="Bölüm" data-mode>
+      <button type="button" data-m="kit" class="on">Kent Kiti</button>
+      <button type="button" data-m="design">Sokak ve bina</button>
+      <button type="button" data-m="ideas">Fikir havuzu</button>
+      <button type="button" data-m="items">Kamusal mekân verisi</button>
+    </div>
+
+    <section data-panel="kit">
+      <div class="chain" aria-label="Süreç"><span class="on">1 · Yapay zekâ boş alanı bulur</span><span class="on">2 · Yaratıcılar öneri üretir</span><span>3 · Sakinler oylar</span><span>4 · Kit kurulur</span></div>
+      <div class="seg-label">Alan</div>
+      <div class="seg" role="group" aria-label="Alan seç" data-sites></div>
+      <div class="seg-label">Kit</div>
+      <div class="seg" role="group" aria-label="Kit seç" data-kits></div>
+      <div style="margin-top:12px" data-kit-media></div>
+      <p class="meta-line" data-kit-meta></p>
+      <span class="label-ai">Yapay zekâ görselleştirmesi, uygulama projesi değildir</span>
+      <p class="note" style="margin-top:10px">Kit gölge, oturma ve bir sergi ya da gösterim yüzeyinden oluşur. Taşınabilir olduğu için kalıcı yapı izni gerektirmez. Yüzeylerinde laboratuvarın üretim programından çıkan eserler sergilenir.</p>
+    </section>
+
+    <section data-panel="design" hidden>
+      <p class="note" style="margin-top:12px">Belediye bir sokağın onarılmış hâlini, kentsel tasarımcı ve sanatçı yeniden tasarımını, mimar yeni bir binayı gerçek sokağın içinde görür. Laboratuvar bunları sakinlere ve karar vericilere göstermek için hızlı bir taslak üretir.</p>
+      <div class="seg-label">Senaryo</div>
+      <div class="seg" role="group" aria-label="Senaryo seç" data-designs></div>
+      <div style="margin-top:12px" data-design-media></div>
+      <p class="meta-line" data-design-meta></p>
+      <span class="label-ai">Yapay zekâ görselleştirmesi. Tasarım, ruhsat ya da satış sunumu yerine geçmez</span>
+    </section>
+
+    <section data-panel="ideas" hidden>
+      <p class="note" style="margin-top:12px">Yapay zekâ bir sokakta eksik bir öğe buldu, daha büyük bir model eksiği doğruladı, açık bir model fikri aynı görüntüye çizdi.</p>
+      <div class="seg" role="group" aria-label="Fikir türü" data-idea-types></div>
+      <div class="grid" style="margin-top:12px" data-ideas></div>
+      <p class="note" data-ideas-note style="margin-top:10px"></p>
+    </section>
+
+    <section data-panel="items" hidden>
+      <p class="note" style="margin-top:12px">Her noktada görsel dil modeli o öğeyi dört yönün kaçında gördü. Kent Atölyesi müdahale edilecek alanları bu katmanlardan seçer.</p>
+      <div data-items></div>
+      <div data-trust style="margin-top:12px"></div>
+      <div class="legend"><span><i style="background:#4fd1c5"></i>3 ya da 4 yönde</span><span><i style="background:#9fe3db"></i>1 ya da 2 yönde</span><span><i style="background:#ff7a59"></i>hiçbir yönde</span><span><i style="background:#3b4a4f"></i>belirsiz</span></div>
+      <details><summary>Bu veriler nasıl üretildi</summary>
+        <p>Her panorama dört yöne bölündü. Bir görsel dil modeli (Qwen3.5-4B) her görünümde kamusal mekân öğelerini “görülüyor, görülmüyor, görünmüyor, belirsiz” diye işaretledi ve gördüğü ipucunu yazdı. Bunlar modelin gözlemidir, ölçüm değildir. Güven etiketi, küçük modelin daha büyük bir modelle uyumuna dayanır.</p>
+      </details>
+    </section>
+  </aside>
+  <div class="mapwrap"><div id="map" role="img" aria-label="Kent Atölyesi haritası"></div></div>
+</div>
+<script src="vendor/maplibre/maplibre-gl.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/dossier.js"></script>
+<script>GI.nav("kent");</script>
+<script src="assets/lab.js"></script>
+</body>
+</html>

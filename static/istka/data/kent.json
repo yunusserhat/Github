@@ -1,0 +1,104 @@
+{
+ "label": "Yapay zekâ görselleştirmesi, tasarım ya da uygulama projesi değildir",
+ "model_edit": "Qwen-Image-Edit-2511 ve Lightning 8 adım eki (Apache 2.0)",
+ "model_video": "Wan2.2-TI2V-5B (Apache 2.0)",
+ "source": "Mapillary sokak görüntüleri, CC BY-SA 4.0. Türev görseller aynı lisansla paylaşılır.",
+ "items": [
+  {
+   "slug": "kent_kiyi",
+   "title": "Sahil parkında çim alan",
+   "district": "Kartal",
+   "neighborhood": "Kordonboyu Mahallesi",
+   "lon": 29.170873761177063,
+   "lat": 40.89304539495093,
+   "heading": 214.0,
+   "mapillary_url": "https://www.mapillary.com/app/?pKey=2272271173298101",
+   "src": "data/v3/kent/kent_kiyi__src.jpg",
+   "looks": [
+    {
+     "look": "kit_golge",
+     "look_tr": "Gölgelik, oturma ve sanat paneli",
+     "job": "kent__kent_kiyi__kit_golge",
+     "img": "data/v3/kent/kent__kent_kiyi__kit_golge.jpg",
+     "verified": true,
+     "video": {
+      "mp4": "data/v3/video/kent__kent_kiyi__kit_golge.mp4",
+      "poster": "data/v3/video/kent__kent_kiyi__kit_golge.jpg"
+     }
+    },
+    {
+     "look": "kit_gosterim",
+     "look_tr": "Açık hava gösterim birimi",
+     "job": "kent__kent_kiyi__kit_gosterim",
+     "img": "data/v3/kent/kent__kent_kiyi__kit_gosterim.jpg",
+     "verified": true,
+     "video": null
+    }
+   ]
+  },
+  {
+   "slug": "kent_meydancik",
+   "title": "Bina önünde boş meydancık",
+   "district": "Kartal",
+   "neighborhood": "Çavuşoğlu Mahallesi",
+   "lon": 29.201708436012268,
+   "lat": 40.88952543956169,
+   "heading": 2.7,
+   "mapillary_url": "https://www.mapillary.com/app/?pKey=2358526837994598",
+   "src": "data/v3/kent/kent_meydancik__src.jpg",
+   "looks": [
+    {
+     "look": "kit_golge",
+     "look_tr": "Gölgelik, oturma ve sanat paneli",
+     "job": "kent__kent_meydancik__kit_golge",
+     "img": "data/v3/kent/kent__kent_meydancik__kit_golge.jpg",
+     "verified": true,
+     "video": null
+    },
+    {
+     "look": "kit_gosterim",
+     "look_tr": "Açık hava gösterim birimi",
+     "job": "kent__kent_meydancik__kit_gosterim",
+     "img": "data/v3/kent/kent__kent_meydancik__kit_gosterim.jpg",
+     "verified": true,
+     "video": {
+      "mp4": "data/v3/video/kent__kent_meydancik__kit_gosterim.mp4",
+      "poster": "data/v3/video/kent__kent_meydancik__kit_gosterim.jpg"
+     }
+    }
+   ]
+  },
+  {
+   "slug": "kent_cimen",
+   "title": "Mahalle arasında boş çimen",
+   "district": "Kartal",
+   "neighborhood": "Yunus Mahallesi",
+   "lon": 29.21492099761963,
+   "lat": 40.88745312018844,
+   "heading": 26.7,
+   "mapillary_url": "https://www.mapillary.com/app/?pKey=812628331109927",
+   "src": "data/v3/kent/kent_cimen__src.jpg",
+   "looks": [
+    {
+     "look": "kit_golge",
+     "look_tr": "Gölgelik, oturma ve sanat paneli",
+     "job": "kent__kent_cimen__kit_golge",
+     "img": "data/v3/kent/kent__kent_cimen__kit_golge.jpg",
+     "verified": true,
+     "video": {
+      "mp4": "data/v3/video/kent__kent_cimen__kit_golge.mp4",
+      "poster": "data/v3/video/kent__kent_cimen__kit_golge.jpg"
+     }
+    },
+    {
+     "look": "kit_gosterim",
+     "look_tr": "Açık hava gösterim birimi",
+     "job": "kent__kent_cimen__kit_gosterim",
+     "img": "data/v3/kent/kent__kent_cimen__kit_gosterim.jpg",
+     "verified": true,
+     "video": null
+    }
+   ]
+  }
+ ]
+}

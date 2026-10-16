@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Görünür İstanbul</title>
+<meta name="description" content="İstanbul'un sokak görüntülerini yaratıcıların ham maddesine dönüştüren laboratuvar. Ara, üret, prova et, kamusal mekâna taşı.">
+<link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav class="topnav" aria-label="Ana menü"></nav>
+<div id="map" role="img" aria-label="Maltepe, Kartal ve Pendik kıyısının üç boyutlu haritası"></div>
+<div class="stepnav" aria-label="Bölümler"></div>
+
+<main class="story">
+  <section class="step hero" id="giris" data-title="Giriş"
+    data-cam='{"center":[29.185,40.889],"zoom":14.1,"pitch":64,"bearing":205}' data-show="area">
+    <div class="card">
+      <div class="kicker">Görünür İstanbul Laboratuvarı · gösterim</div>
+      <h1>Görünür İstanbul</h1>
+      <p>İstanbul'un sokakları yaratıcıların ham maddesi. Sokak görüntülerini yapay zekâyla aranabilir kılıyoruz, onlardan sahne, illüstrasyon ve kısa film üretiyoruz, sonucu kamusal mekâna taşıyoruz.</p>
+      <div class="chain" aria-label="Laboratuvarın zinciri"><span>Keşfet</span><span>Ara</span><span>Üret</span><span>Prova et</span><span>Kamusal mekâna taşı</span></div>
+      <div class="ctas">
+        <a class="pill primary" href="prova.html">Prova</a>
+        <a class="pill" href="atlas.html">Sokak Atlası</a>
+        <a class="pill" href="lab.html">Kent Atölyesi</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="step right" id="sokaklar" data-title="Sokaklar"
+    data-cam='{"center":[29.19,40.893],"zoom":14.2,"pitch":55,"bearing":15}' data-show="area,panos">
+    <div class="card">
+      <div class="kicker">01 · Keşfet</div>
+      <h2>Sokaklar bir görsel kütüphane</h2>
+      <p>Kıyıdan mahalle içlerine 360° sokak görüntüleri. Her nokta bir panorama, her panorama dört bakış. Bir yaratıcı için bu, kentin kendisinden çekilmiş bir referans arşivi.</p>
+    </div>
+  </section>
+
+  <section class="step" id="bakis" data-title="Bir panorama"
+    data-cam="" data-show="showcase,panos">
+    <div class="card">
+      <div class="kicker">02 · Bir panorama, dört bakış</div>
+      <h2 data-showcase-title></h2>
+      <div class="pano-strip"><img data-showcase-pano alt="360 derece panorama"></div>
+      <div class="views4" data-showcase-views></div>
+      <p class="note" style="margin-top:10px" data-showcase-desc></p>
+    </div>
+  </section>
+
+  <section class="step right" id="ogeler" data-title="Yapay zekâ okur"
+    data-cam='{"center":[29.188,40.891],"zoom":14.9,"pitch":60,"bearing":-10}' data-show="items" data-item="shade_on_walkway">
+    <div class="card">
+      <div class="kicker">03 · Yapay zekâ sokağı okur</div>
+      <h2>Gölge nerede, oturacak yer nerede?</h2>
+      <p>Bir görsel dil modeli her bakışta gördüğünü işaretler. Kütüphane böylece aranabilir olur ve Kent Atölyesi müdahale edilecek yeri buradan seçer.</p>
+      <div class="seg" role="group" aria-label="Öğe seç" style="margin-top:14px">
+        <button type="button" data-item-btn="shade_on_walkway">Gölge</button>
+        <button type="button" data-item-btn="seating">Oturma yeri</button>
+        <button type="button" data-item-btn="street_trees">Ağaç</button>
+        <button type="button" data-item-btn="public_art">Kamusal sanat</button>
+        <button type="button" data-item-btn="active_frontage">Dükkân cephesi</button>
+        <button type="button" data-item-btn="waterfront">Deniz</button>
+      </div>
+      <div class="legend"><span><i style="background:#4fd1c5"></i>3 ya da 4 yönde</span><span><i style="background:#9fe3db"></i>1 ya da 2 yönde</span><span><i style="background:#ff7a59"></i>hiçbir yönde</span><span><i style="background:#3b4a4f"></i>belirsiz</span></div>
+    </div>
+  </section>
+
+  <section class="step" id="atlas" data-title="Ara"
+    data-cam='{"center":[29.205,40.885],"zoom":13.6,"pitch":50,"bearing":70}' data-show="panos">
+    <div class="card">
+      <div class="kicker">04 · Ara</div>
+      <h2>Cümleyle mekân ara</h2>
+      <p>İllüstratör referans, oyun ekibi ortam, yapım ekibi mekân arar. Bir cümle ya da bir fotoğraf yeter.</p>
+      <div class="grid" style="margin-top:14px" data-atlas-samples></div>
+      <a class="go" href="atlas.html">Sokak Atlası'nı aç →</a>
+    </div>
+  </section>
+
+  <section class="step right" id="prova" data-title="Üret ve prova et"
+    data-cam="" data-show="spot">
+    <div class="card wide">
+      <div class="kicker">05 · Üret ve prova et</div>
+      <h2 data-prova-title>Gerçek sokaktan sahneye</h2>
+      <p>Laboratuvardaki açık modellerle aynı sokağın akşamını, yağmurunu ya da bir animasyon filmindeki hâlini üret. Sonra birkaç saniyelik bir klibe dönüştür.</p>
+      <div class="seg" role="group" aria-label="Görünüm seç" data-prova-looks style="margin-top:14px"></div>
+      <div style="margin-top:10px" data-prova-media></div>
+      <span class="label-ai">Yapay zekâ görselleştirmesi</span>
+      <a class="go" href="prova.html">Prova'yı aç →</a>
+    </div>
+  </section>
+
+  <section class="step" id="kentatolyesi" data-title="Kamusal mekâna taşı"
+    data-cam="" data-show="spot">
+    <div class="card wide">
+      <div class="kicker">06 · Kamusal mekâna taşı</div>
+      <h2>Boş alana bir sahne</h2>
+      <p>Yaratıcılar ve sakinler birlikte tasarlar. Taşınabilir bir kent kiti gölge, oturma ve bir sergi yüzeyi getirir, akşamları açık hava gösterimine dönüşür. Aynı araçla belediye bir sokağın onarımını, mimar yeni bir binayı gerçek sokağın içinde görür.</p>
+      <div style="margin-top:14px" data-kent-media></div>
+      <span class="label-ai">Yapay zekâ görselleştirmesi, uygulama projesi değildir</span>
+      <a class="go" href="lab.html">Kent Atölyesi'ni aç →</a>
+    </div>
+  </section>
+
+  <section class="step right" id="kent" data-title="Kentin geneli"
+    data-cam='{"center":[28.98,41.03],"zoom":9.4,"pitch":35,"bearing":0}' data-show="istanbul,area">
+    <div class="card">
+      <div class="kicker">07 · Sonraki adım</div>
+      <h2>Bu kıyıdan bütün İstanbul'a</h2>
+      <p>Laboratuvar fakültede açılır. Yaratıcılar üretim programına katılır, prototiplerini Prova Günleri'nde yapımcılara ve yatırımcılara sunar, işlerini kentin kamusal mekânlarına taşır.</p>
+      <div class="ctas"><a class="pill primary" href="prova.html">Prova</a><a class="pill" href="veri.html">Veri ve yöntem</a></div>
+    </div>
+  </section>
+</main>
+
+<script src="vendor/maplibre/maplibre-gl.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/common.js"></script>
+<script>GI.nav("story");</script>
+<script src="assets/story.js"></script>
+<script src="assets/showcase.js"></script>
+</body>
+</html>

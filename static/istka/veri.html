@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Veri ve yöntem · Görünür İstanbul</title>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .doc { max-width: 880px; margin: 0 auto; padding: 88px 20px 60px; }
+  .doc h1 { font-size: 40px; letter-spacing: -0.02em; margin: 0 0 8px; }
+  .doc h2 { font-size: 20px; margin: 34px 0 10px; }
+  .doc p, .doc li { color: var(--ink-2); line-height: 1.6; font-size: 15px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  td, th { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); color: var(--ink-2); }
+  th { color: var(--ink); font-weight: 600; }
+</style>
+</head>
+<body>
+<nav class="topnav" aria-label="Ana menü"></nav>
+<main class="doc">
+  <h1>Veri ve yöntem</h1>
+  <p>Bu sayfa gösterimin hangi verilerle, hangi modellerle ve nasıl yapıldığını, sınırlarıyla birlikte anlatır. Gösterim, İstanbul Kalkınma Ajansı'na hazırlanan bir proje önerisinin ön çalışmasıdır.</p>
+
+  <h2>Kaynaklar</h2>
+  <table>
+    <tr><th>Veri</th><th>Lisans</th><th>Kullanım</th></tr>
+    <tr><td>Mapillary 360° sokak panoramaları, 2025 ve 2026</td><td>CC BY-SA 4.0</td><td>Görsel kütüphane, sokak okuması, arama, Prova ve Kent Atölyesi kaynak görüntüleri</td></tr>
+    <tr><td>OpenStreetMap (yollar, binalar, sınırlar)</td><td>ODbL</td><td>3B harita</td></tr>
+    <tr><td>OpenFreeMap vektör karoları</td><td>OSM verisi, ODbL</td><td>Harita altlığı</td></tr>
+    <tr><td>Mapzen arazi karoları (AWS)</td><td>Açık, kaynak gösterilerek</td><td>3B arazi ve sokak eğimi</td></tr>
+    <tr><td>İBB Açık Veri Portalı</td><td>İBB Açık Veri Lisansı</td><td>Park ve yeşil alan sınırları</td></tr>
+  </table>
+
+  <h2>Modeller</h2>
+  <table>
+    <tr><th>Model</th><th>Lisans</th><th>Görev</th></tr>
+    <tr><td>Qwen3.5-4B</td><td>Apache 2.0</td><td>Her bakışta kamusal mekân öğelerini ve sahneyi okur, İngilizce betimler, üretilen görselleri denetler</td></tr>
+    <tr><td>Qwen3.8-27B</td><td>Apache 2.0</td><td>Betimlemeleri Türkçeye çevirir, küçük modelin kararlarını karşılaştırır</td></tr>
+    <tr><td>EmbeddingGemma 2</td><td>Apache 2.0</td><td>Görüntü ve metni tek bir vektöre çevirir, metinle ve fotoğrafla aramayı sağlar</td></tr>
+    <tr><td>Qwen-Image-Edit-2511 ve Lightning 8 adım eki</td><td>Apache 2.0</td><td>Prova görünümleri, Kent Kiti ve fikir görselleri</td></tr>
+    <tr><td>Wan2.2-TI2V-5B</td><td>Apache 2.0</td><td>Görselden yaklaşık 5 saniyelik klip</td></tr>
+  </table>
+  <p class="note" style="margin-top:8px">Bütün modeller ticari kullanıma izin veren açık lisanslı modellerdir ve tek bir sunucuda, verinin dışarı gönderilmediği bir ortamda çalışır.</p>
+
+  <h2>Yöntem</h2>
+  <ol>
+    <li>Alan, Maltepe, Kartal ve Pendik'te D100 ile kıyı arasındaki şerittir.</li>
+    <li>2025 sonrası panoramalardan her 25 metrelik kareye en yeni olanı seçildi ve her biri ön, sağ, arka ve sol olmak üzere dört bakışa bölündü.</li>
+    <li>Görsel dil modeli her bakışta kamusal mekân öğelerini işaretledi, sekiz sahne alanını seçti ve kısa bir betimleme yazdı. Her işaretin yanında modelin gördüğü ipucu saklanır.</li>
+    <li>Arama için her bakışın görüntüsü ve gözlem metni tek bir vektöre dönüştürüldü.</li>
+    <li>Prova ve Kent Atölyesi için seçilen sokakların yüksek çözünürlüklü özgün panoramalarından 1280×704 görüntüler çıkarıldı. Açık modeller bu görüntülerden yeni görünümler ve klipler üretti. Küçük model her görselde istenen değişikliğin görülüp görülmediğini denetledi.</li>
+  </ol>
+
+  <h2>Güvenilirlik</h2>
+  <p data-quality></p>
+
+  <h2>Sınırlar</h2>
+  <ul>
+    <li>Model çıktıları gözlemdir, ölçüm değildir. Güvenlik, sağlık ya da yürünebilirlik puanı üretilmedi.</li>
+    <li>Üretilen görseller ve klipler yapay zekâ görselleştirmesidir. Tasarım ya da uygulama projesi değildir.</li>
+    <li>Görüntüler gündüz çekildi. Panoramaların büyük kısmı tek bir katkıcıdan geliyor ve 2025 Aralık ile 2026 Eylül arasına ait.</li>
+    <li>Sokak Atlası çekim izni vermez, yalnızca izin makamını gösterir.</li>
+    <li>Görüntülerdeki yüzler ve plakalar Mapillary tarafından bulanıklaştırılmıştır. Katkıcı kullanıcı adları sitede yer almaz. Her görüntünün Mapillary sayfasına bağlantı verilir. Mapillary görüntülerinden türetilen görseller aynı lisansla (CC BY-SA 4.0) paylaşılır.</li>
+  </ul>
+</main>
+<script src="assets/config.js"></script>
+<script src="assets/common.js"></script>
+<script>
+GI.nav("data");
+GI.json("data/site_stats.json").then(s => {
+  const q = s.quality;
+  if (q) document.querySelector("[data-quality]").textContent =
+    `${GI.fmt(q.n_views)} görünümlük bir örneklemde küçük model, daha büyük bir modelle karşılaştırıldı. İki modelin de karar verdiği durumlarda öğelerin ${GI.pct(q.agree_pct, 1)} kadarında aynı sonuca vardılar (kappa ${String(q.kappa).replace(".", ",")}). Büyük model doğruluğun kendisi değildir. Elle etiketlenmiş bir kontrol örneklemi projenin ilk işlerinden biridir.`;
+});
+</script>
+</body>
+</html>

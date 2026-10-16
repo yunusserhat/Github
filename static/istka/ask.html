@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Görüntülere Sor · Görünür İstanbul</title>
+<link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav class="topnav" aria-label="Ana menü"></nav>
+<div class="app wide">
+  <aside class="side">
+    <h1>Görüntülere Sor</h1>
+    <p class="lead">Ne aradığını yaz ya da bir fotoğraf yükle. Kıyıdan mahalle içlerine sokak görüntüleri arasından en yakın sahneler gelir.</p>
+    <form class="searchbar" data-form>
+      <input type="search" name="q" placeholder="ör. deniz gören oturma yeri, ağaç gölgesi" aria-label="Arama" autocomplete="off" required minlength="2">
+      <button class="pill primary" type="submit">Ara</button>
+    </form>
+    <div class="chips" data-chips>
+      <button type="button">deniz kenarında oturma yeri</button>
+      <button type="button">merdivenli dar sokak</button>
+      <button type="button">çay bahçesi</button>
+      <button type="button">köprü altı yaya geçidi</button>
+      <button type="button">ağaçlı geniş kaldırım</button>
+      <button type="button">çocuk oyun alanı</button>
+      <button type="button">kaldırıma park etmiş araba</button>
+      <button type="button">duvar resmi</button>
+    </div>
+    <div style="margin-top:10px">
+      <label class="pill" style="display:inline-flex">Fotoğrafla ara<input type="file" accept="image/*" data-upload hidden></label>
+    </div>
+    <div class="status" data-status role="status"></div>
+    <div class="grid" data-results></div>
+    <p class="note" style="margin-top:16px">Sonuçlar gerçek görüntülerdir, hiçbiri üretilmedi. Sıralama görüntünün ve modelin gözlem metninin sorguya benzerliğine göre yapılır. Yüklediğin fotoğraf saklanmaz.</p>
+  </aside>
+  <div class="mapwrap"><div id="map" role="img" aria-label="Sonuçların haritası"></div></div>
+</div>
+<script src="vendor/maplibre/maplibre-gl.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/dossier.js"></script>
+<script>GI.nav("ask");</script>
+<script src="assets/ask.js"></script>
+</body>
+</html>
