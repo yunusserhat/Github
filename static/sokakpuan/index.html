@@ -3,26 +3,41 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SokakPuan: okul çevresindeki bir sokağı seçin, 360° görüntülerini ve sokak algısı tahminlerini birlikte keşfedin.">
+  <meta name="description" content="SokakPuan: Ziya Gökalp Caddesi dönüşmeden önce, okul çevresindeki sokakların 360° görüntüleri ve sokak algısı tahminleri.">
   <title>SokakPuan — Okul Çevresi Algı Atlası</title>
+  <link rel="canonical" href="https://www.yunusserhat.com/sokakpuan/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="SokakPuan">
+  <meta property="og:title" content="SokakPuan — Okul yolu nasıl hissettiriyor?">
+  <meta property="og:description" content="Ataşehir, Ziya Gökalp Caddesi: dönüşümden önce okul çevresindeki sokakların 360° görüntüleri ve algı tahminleri.">
+  <meta property="og:url" content="https://www.yunusserhat.com/sokakpuan/">
+  <meta property="og:image" content="https://www.yunusserhat.com/sokakpuan/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Esatpaşa'da okul çevresindeki binaların sokak algısına göre renklendirildiği 3B harita">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23267669'/%3E%3Cpath d='M8 23V13l8-5 8 5v10h-6v-7h-4v7z' fill='%23faf7ee'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/app.css?v=2">
+  <link rel="stylesheet" href="assets/app.css?v=3">
   <script src="vendor/maplibre/maplibre-gl.js" defer></script>
-  <script src="assets/app.js?v=2" defer></script>
+  <script src="assets/app.js?v=3" defer></script>
 </head>
 <body>
   <div id="map" role="region" aria-label="Sokak algısı haritası" aria-describedby="map-hint"></div>
   <header class="topbar">
     <a class="brand" href="./" aria-label="SokakPuan ana görünüm"><span class="brand-mark" aria-hidden="true">s<span>p</span></span>SokakPuan<span class="brand-divider"></span><span class="brand-sub">Sokaklar Dönüşüyor</span></a>
-    <button id="method-open" class="quiet-button" aria-haspopup="dialog">Veri ve yöntem <span aria-hidden="true">↗</span></button>
+    <div class="topbar-actions">
+      <button id="present-open" class="present-button" aria-label="Sunumu başlat"><span aria-hidden="true">▶</span> Sunum</button>
+      <button id="method-open" class="quiet-button" aria-haspopup="dialog">Veri ve yöntem</button>
+    </div>
   </header>
 
   <main>
     <section id="intro" class="intro panel" aria-labelledby="main-title">
-      <p class="eyebrow">OKUL ÇEVRESİNİ KEŞFET</p>
+      <p class="eyebrow">ATAŞEHİR · ESATPAŞA</p>
       <h1 id="main-title">Okul yolu nasıl hissettiriyor?</h1>
-      <p class="intro-text">Bir sokağı seçin; görüntülerini ve algı tahminlerini birlikte inceleyin.</p>
+      <p class="intro-text">Ziya Gökalp Caddesi dönüşmeden önceki kayıt. Bir sokağı seçin; görüntüsünü ve algı tahminini birlikte görün.</p>
       <p id="coverage" class="coverage">3 okul çevresi</p>
       <button id="controls-toggle" class="controls-toggle" aria-expanded="false" aria-controls="map-controls"><span id="current-dimension">Güvenli hissettirme</span><span>Algıyı değiştir <span aria-hidden="true">⌄</span></span></button>
       <div id="map-controls" class="map-controls">
@@ -37,13 +52,14 @@
       <p class="context-note">Renkler sokak görüntülerinden üretilen model tahminlerini gösterir.</p>
     </section>
 
-    <nav id="schools" class="school-nav" aria-label="Okul çevresine odaklan">
-      <button class="school-button active" data-school="all" aria-pressed="true"><span class="school-number" aria-hidden="true">↗</span><span>Genel görünüm</span></button>
+    <nav id="schools" class="school-nav" aria-label="Haritada odaklan">
+      <button class="school-button active" data-school="all" aria-pressed="true"><span class="school-number" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><span>Genel görünüm</span></button>
+      <button class="school-button transform-button" data-school="donusum" aria-pressed="false" title="Ziya Gökalp Caddesi, Mehmet Rauf Anadolu Lisesi önü"><span class="school-number transform-dot" aria-hidden="true"></span><span>Dönüşüm alanı</span></button>
     </nav>
 
     <aside id="detail" class="detail panel" aria-labelledby="detail-title" hidden>
       <button id="detail-close" class="icon-button close-detail" aria-label="Sokak görünümünü kapat">×</button>
-      <p class="eyebrow">SEÇİLİ SOKAK</p>
+      <p class="eyebrow" id="detail-eyebrow">SEÇİLİ SOKAK</p>
       <h2 id="detail-title"></h2>
       <p id="detail-subtitle" class="detail-subtitle"></p>
 
@@ -57,17 +73,19 @@
           </div>
           <a id="mapillary-link" target="_blank" rel="noopener">Mapillary’de aç ↗</a>
         </div>
-        <p class="imagery-note">Görüntü açılmazsa Mapillary bağlantısını kullanın. Panorama içinde ilerlemek aşağıdaki puanı değiştirmez.</p>
+        <p class="imagery-note">Görüntü açılmazsa Mapillary bağlantısını kullanın. Panorama içinde ilerlemek aşağıdaki değerlendirmeyi değiştirmez.</p>
       </section>
 
       <div class="detail-score">
-        <strong id="detail-score">—</strong>
-        <div><span id="detail-metric"></span><span id="score-support"></span></div>
+        <i id="score-chip" class="score-chip" aria-hidden="true"></i>
+        <div><span id="detail-metric"></span><strong id="detail-score">—</strong></div>
       </div>
+      <p id="detail-sentence" class="detail-sentence"></p>
+      <p id="score-support" class="score-support"></p>
       <p id="detail-status" class="status-note" role="status" hidden></p>
 
       <details id="all-scores" class="disclosure">
-        <summary>Tüm algı puanları</summary>
+        <summary>Tüm algılar</summary>
         <div id="detail-metrics" class="mini-metrics"></div>
       </details>
       <details id="selection-details" class="disclosure">
@@ -78,41 +96,57 @@
     </aside>
 
     <div class="map-tools" role="group" aria-label="Harita görünümü">
-      <button id="view-3d" class="active" aria-pressed="true">3B</button><button id="view-2d" aria-pressed="false">2B</button><span></span><button id="zoom-in" aria-label="Yakınlaştır">+</button><button id="zoom-out" aria-label="Uzaklaştır">−</button><button id="reset-map" aria-label="Genel görünüme dön">↗</button>
+      <button id="view-3d" class="active" aria-pressed="true">3B</button><button id="view-2d" aria-pressed="false">2B</button><span></span><button id="zoom-in" aria-label="Yakınlaştır">+</button><button id="zoom-out" aria-label="Uzaklaştır">−</button><button id="reset-map" aria-label="Genel görünüme dön"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
     </div>
 
     <section class="legend panel" aria-label="Renk açıklaması">
       <div class="legend-heading"><strong id="legend-title">Güvenli hissettirme</strong><span>ALGI TAHMİNİ</span></div>
-      <div id="legend-gradient" class="legend-gradient"></div>
-      <div class="legend-values"><span id="legend-min"></span><span id="legend-max"></span></div>
+      <div id="legend-scale" class="legend-scale" aria-hidden="true"></div>
+      <div class="legend-values"><span id="legend-min"></span><span>Ortalama</span><span id="legend-max"></span></div>
+      <p id="legend-note" class="legend-note">Her renk, bölgedeki sokak kesimlerinin beşte biri.</p>
       <p id="legend-description"></p>
-      <div class="legend-key"><span><i class="grey-key"></i>Veri yok</span><span><i class="sparse-key"></i>Tek panorama</span><span><i class="line-key"></i>Sokak kesimi</span></div>
+      <div class="legend-key"><span><i class="grey-key"></i>Veri yok</span><span><i class="sparse-key"></i>Tek panorama</span><span><i class="school-key"></i>Okul binası</span></div>
     </section>
     <p id="map-hint" class="map-hint">Bir sokak veya bina seçin · Sürükleyerek gezin · Sağ tuşla eğin</p>
+
+    <section id="presenter" class="presenter panel" aria-live="polite" aria-labelledby="presenter-title" hidden>
+      <div class="presenter-top"><span id="presenter-count" class="eyebrow"></span><button id="presenter-close" class="icon-button" aria-label="Sunumdan çık">×</button></div>
+      <p id="presenter-eyebrow" class="eyebrow presenter-eyebrow"></p>
+      <h2 id="presenter-title"></h2>
+      <div id="presenter-body" class="presenter-body"></div>
+      <div class="presenter-nav">
+        <button id="presenter-prev" aria-label="Önceki adım">←</button>
+        <div id="presenter-dots" class="presenter-dots" aria-hidden="true"></div>
+        <button id="presenter-next" aria-label="Sonraki adım">→</button>
+      </div>
+    </section>
+    <figure id="presenter-photo" class="presenter-photo" hidden><img id="presenter-photo-img" alt=""><figcaption id="presenter-photo-caption"></figcaption></figure>
+
     <div id="loading" class="loading" role="status"><span></span>Okul çevresi hazırlanıyor…</div>
     <div id="error" class="error panel" role="alert" hidden><p>Harita yüklenemedi. Bağlantınızı kontrol edip yeniden deneyin.</p><button id="retry" class="explore-button">Sayfayı yenile ↻</button></div>
   </main>
 
-  <footer class="credits"><span>SokakPuan ekibi</span><span><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a><span id="overture-credit" hidden>, <a href="https://overturemaps.org/" target="_blank" rel="noopener">Overture Maps Foundation</a></span> · <a href="LICENSE-DATA.txt" target="_blank" rel="noopener">ODbL</a> · <a href="https://www.mapillary.com/" target="_blank" rel="noopener">Mapillary</a></span></footer>
+  <footer class="credits"><span>SokakPuan · Yunus Serhat Bıçakçı · Orkut Murat Yılmaz · <a href="mailto:yunus.serhat@marmara.edu.tr">yunus.serhat@marmara.edu.tr</a></span><span><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a><span id="overture-credit" hidden>, <a href="https://overturemaps.org/" target="_blank" rel="noopener">Overture Maps Foundation</a></span> · <a href="LICENSE-DATA.txt" target="_blank" rel="noopener">ODbL</a> · <a href="https://www.mapillary.com/" target="_blank" rel="noopener">Mapillary</a></span></footer>
 
   <dialog id="method-dialog" aria-labelledby="method-title">
     <div class="dialog-top"><span class="eyebrow">SOKAKPUAN</span><button id="method-close" class="icon-button" aria-label="Veri ve yöntem penceresini kapat">×</button></div>
     <h2 id="method-title">Veri ve yöntem.</h2>
-    <p class="dialog-lead">Üç okul çevresinin sokak görüntüleri, altı algı boyutunda değerlendirildi.</p>
-    <p>Çekim: <strong>24 Ağustos 2026 · 06.46–07.26</strong> (Türkiye saati).</p>
+    <p class="dialog-lead">Ziya Gökalp Caddesi ve çevresindeki üç okulun sokak görüntüleri, altı algı boyutunda değerlendirildi.</p>
+    <p>Çekim: <strong>24 Ağustos 2026 · 06.46–07.26</strong> (Türkiye saati). Çekim yaz tatilinde ve sabah erken yapıldı; okul giriş-çıkış saatlerindeki yoğunluğu yansıtmaz.</p>
     <div id="method-data"></div>
-    <p>Binalar, yakınlarındaki sokak kesiminin rengini taşır. Sonuçlar öğrenci veya veli anketi, kaza riski ya da dönüşümün önce–sonra etkisi olarak yorumlanamaz.</p>
+    <p>Binalar, yakınlarındaki sokak kesiminin rengini taşır; okul binaları renklendirilmez. Sonuçlar öğrenci veya veli anketi, kaza riski ya da dönüşümün önce–sonra etkisi olarak yorumlanamaz.</p>
 
     <details class="disclosure">
-      <summary>Puanlar nasıl hesaplandı?</summary>
+      <summary>Değerlendirmeler nasıl hesaplandı?</summary>
       <p>Her panoramanın dört yöndeki puanı ortalanır. Yakın kareler aşırı ağırlık kazanmasın diye sonuçlar önce çekim serisi ve 20 metrelik sokak kesimi içinde özetlenir; aynı kesimdeki serilerin ortalamaları eşit ağırlık alır.</p>
       <p>Bir binaya önce en yakın yol, ardından o yol üzerindeki en yakın gözlem kesimi eşleştirilir. Eşleşme belirsizse veya 30 metre içinde uygun gözlem yoksa bina gri kalır. Başka sokaktan puan taşınmaz. Tek panoramalı kesimler soluk gösterilir.</p>
-      <p>Renk aralığı her algının gözlenen %5–%95 dağılımını kullanır. Kartta ham model puanı gösterilir; bu puan yüzde veya doğrulanmış bir 0–10 ölçeği değildir. Sıkıcılık ve bunaltıcılıkta yüksek puan daha olumsuz algıyı ifade eder.</p>
+      <p>Renkler, haritadaki sokak kesimlerini her algıda beş eşit gruba ayırır; her renk kesimlerin beşte birini gösterir. “Ortalamanın altında” gibi ifadeler bu sıralamaya dayanır. 1–9 aralığındaki ham model puanı kaynak ayrıntılarında yer alır. Sıkıcılık ve bunaltıcılıkta yüksek değer daha olumsuz algıyı ifade eder.</p>
+      <p>Algı modelleri, uluslararası Place Pulse 2.0 verisiyle eğitilmiş hazır modellerdir. Bu bölgede sokağı kullananların görüşüyle doğrulanmadı.</p>
     </details>
     <details class="disclosure">
       <summary>360° görüntüler ve sokak seçimi</summary>
-      <p>Sokak seçildiğinde, o kesimin puanına kaynak olan panoramalar Mapillary’den açılır. İlk panorama tıkladığınız konuma göre seçilir; kartın okları aynı kesimin kaynakları arasında geçer.</p>
-      <p>Mapillary görüntüsünün içindeki gezinme okları başka konumlara götürebilir. Haritadaki seçim ve algı puanı sabit kalır. Görüntüler için internet bağlantısı gerekir.</p>
+      <p>Sokak seçildiğinde, o kesimin değerlendirmesine kaynak olan panoramalar Mapillary’den açılır. İlk panorama tıkladığınız konuma göre seçilir; kartın okları aynı kesimin kaynakları arasında geçer.</p>
+      <p>Mapillary görüntüsünün içindeki gezinme okları başka konumlara götürebilir. Haritadaki seçim ve değerlendirme sabit kalır. Görüntüler için internet bağlantısı gerekir.</p>
     </details>
     <details class="disclosure">
       <summary>3B yükseklikler ve bina verisi</summary>
@@ -120,8 +154,9 @@
       <section id="overture-section" hidden><p id="overture-note"></p><p id="overture-result"></p></section>
     </details>
     <details class="disclosure">
-      <summary>Kaynaklar ve indirilebilir veriler</summary>
+      <summary>Kaynaklar, ekip ve indirilebilir veriler</summary>
       <p>Algı modelleri: ZenSVI. Bina tabanları ve yollar: OpenStreetMap. Ek bina öznitelikleri: Overture Maps Foundation. Sokak görüntüleri: Mapillary. Harita çizimi: MapLibre GL JS.</p>
+      <p>SokakPuan: Yunus Serhat Bıçakçı, Orkut Murat Yılmaz. İletişim: <a href="mailto:yunus.serhat@marmara.edu.tr">yunus.serhat@marmara.edu.tr</a></p>
       <div class="download-links"><a href="data/metadata.json" target="_blank" rel="noopener">Yöntem ve kaynak kaydı ↗</a><a href="data/buildings.geojson" download>Bina verisi ↓</a><a href="data/mappings.json" download>Görüntü eşleştirmeleri ↓</a><a href="LICENSE-DATA.txt" target="_blank" rel="noopener">Veri lisansı ↗</a></div>
     </details>
   </dialog>
