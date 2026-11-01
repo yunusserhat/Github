@@ -49,12 +49,12 @@ Bu ders, bilgisayar bilimleri ve yapay zeka mühendisliğinin temel taşı olan 
 
 > ℹ️ **Haftalık Akış:** Ders izlencesi aşağıda özetlenmiştir. Her haftanın detaylı teorik anlatımları, kodları ve uygulama materyalleri ilgili hafta geldiğinde sırayla sol menüde erişime açılacaktır.
 
-| Hafta | Konu Başlığı | Odak Konular ve Algoritmik Beceriler | Durum |
+| Hafta | Konu Başlığı | Odak Konular ve Algoritmik Beceriler | Durum / Materyal |
 | :---: | :--- | :--- | :---: |
 | **Giriş** | [Derse Giriş & Algoritmik Düşünme](giris) | Ders Kuralları, Bellek Modeli, Geliştirme Ortamı (VS Code / Python / C++) | 🟢 Açık |
-| **1** | Veri Yapılarına Giriş ve Algoritma Analizi | Asimptotik Notasyonlar (Big O, $\Omega$, $\Theta$), Zaman ve Bellek Karmaşıklığı | ⏳ Hazırlanıyor |
-| **2** | Diziler (Arrays) ve Dinamik Diziler | Bellek Yerleşimi, Sabit ve Dinamik Diziler, Amortized Zaman Analizi | ⏳ Hazırlanıyor |
-| **3** | Bağlı Listeler I: Tek Yönlü Bağlı Liste | Düğüm (Node) Yapısı, Başa/Sona/Araya Ekleme, Silme ve Arama | ⏳ Hazırlanıyor |
+| **1** | [Veri Yapılarına Giriş ve Algoritma Analizi](hafta-01) | Asimptotik Notasyonlar (Big O, $\Omega$, $\Theta$), Zaman ve Bellek Karmaşıklığı | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-01-slayt.pdf) |
+| **2** | [Diziler (Arrays) ve Dinamik Diziler](hafta-02) | Bellek Yerleşimi, Sabit ve Dinamik Diziler, Amortized Zaman Analizi | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-02-slayt.pdf) |
+| **3** | [Bağlı Listeler I: Tek Yönlü Bağlı Liste](hafta-03) | Düğüm (Node) Yapısı, Başa/Sona/Araya Ekleme, Silme ve Arama | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-03-slayt.pdf) |
 | **4** | Bağlı Listeler II: Çift Yönlü ve Dairesel Listeler | Doubly Linked List, Dairesel Liste Mimarisi, Sentinel Düğümler | ⏳ Hazırlanıyor |
 | **5** | Yığınlar (Stacks) ve LIFO Mimarisi | LIFO Mantığı, Dizi ve Bağlı Liste İle Yığın Gerçekleme, Parantez Doğrulama | ⏳ Hazırlanıyor |
 | **6** | Kuyruklar (Queues) ve Çift Uçlu Kuyruk (Deque) | FIFO Mantığı, Dairesel Kuyruk (Circular Queue), Deque ve İş Akışları | ⏳ Hazırlanıyor |

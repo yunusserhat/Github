@@ -36,3 +36,5 @@ Ders kapsamındaki örnekler ve laboratuvar uygulamaları iki ana dil ekseninde 
 
 > ℹ️ **Ders Akışı Bilgilendirmesi:** 
 > 1. Hafta ve sonraki haftalık ders içerikleri, akademik takvime paralel olarak her hafta başında sırayla sol menüde erişime açılacaktır.
+
+{{< cta cta_text="🚀 1. Haftaya Geç: Veri Yapılarına Giriş ve Algoritma Analizi" cta_link="/courses/veri-yapilari/hafta-01/" >}}

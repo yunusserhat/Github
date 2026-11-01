@@ -4,7 +4,19 @@ linkTitle: "1. Hafta - Algoritma Analizi"
 date: "2026-09-01"
 type: book
 weight: 20
-draft: true
+draft: false
+---
+
+## 📊 Ders Sunumu ve Slaytlar
+
+Ders sunumunu tarayıcıda doğrudan inceleyebilir veya sunum dosyasını indirebilirsiniz.
+
+{{< cta cta_text="📄 1. Hafta Slaytları (PDF)" cta_link="/courses/veri-yapilari/hafta-01-slayt.pdf" cta_new_tab="true" >}}
+{{< cta cta_text="📥 PowerPoint Sunumu (PPTX)" cta_link="/courses/veri-yapilari/hafta-01-slayt.pptx" >}}
+
+1. [1. Hafta Slaytları (PDF olarak aç ve incele)](/courses/veri-yapilari/hafta-01-slayt.pdf)
+2. [1. Hafta Sunum Dosyası (PowerPoint - PPTX indir)](/courses/veri-yapilari/hafta-01-slayt.pptx)
+
 ---
 
 ## ⏱️ Neden Algoritma Analizi?
@@ -64,3 +76,7 @@ def print_all_pairs(arr):
         for j in range(n):
             print(arr[i], arr[j])
 ```
+
+---
+
+{{< cta cta_text="➡️ 2. Haftaya Geç: Diziler ve Dinamik Diziler" cta_link="/courses/veri-yapilari/hafta-02/" >}}

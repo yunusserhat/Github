@@ -4,7 +4,19 @@ linkTitle: "2. Hafta - Diziler"
 date: "2026-09-01"
 type: book
 weight: 30
-draft: true
+draft: false
+---
+
+## 📊 Ders Sunumu ve Slaytlar
+
+Ders sunumunu tarayıcıda doğrudan inceleyebilir veya sunum dosyasını indirebilirsiniz.
+
+{{< cta cta_text="📄 2. Hafta Slaytları (PDF)" cta_link="/courses/veri-yapilari/hafta-02-slayt.pdf" cta_new_tab="true" >}}
+{{< cta cta_text="📥 PowerPoint Sunumu (PPTX)" cta_link="/courses/veri-yapilari/hafta-02-slayt.pptx" >}}
+
+1. [2. Hafta Slaytları (PDF olarak aç ve incele)](/courses/veri-yapilari/hafta-02-slayt.pdf)
+2. [2. Hafta Sunum Dosyası (PowerPoint - PPTX indir)](/courses/veri-yapilari/hafta-02-slayt.pptx)
+
 ---
 
 ## 🧱 Dizilerin Bellek Modeli (Contiguous Memory)
@@ -42,3 +54,7 @@ Bu kopyalama seyrek gerçekleştiği için $n$ adet ekleme işleminin ortalama m
 - **Sona Ekleme (Append):** $O(1)$ amortized
 - **Araya / Başa Ekleme:** $O(n)$ (elemanların sağa ötelenmesi gerekir)
 - **Aradan / Baştan Silme:** $O(n)$ (elemanların sola kaydırılması gerekir)
+
+---
+
+{{< cta cta_text="➡️ 3. Haftaya Geç: Bağlı Listeler" cta_link="/courses/veri-yapilari/hafta-03/" >}}
