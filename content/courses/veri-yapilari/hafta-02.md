@@ -12,10 +12,8 @@ draft: false
 Ders sunumunu tarayıcıda doğrudan inceleyebilir veya sunum dosyasını indirebilirsiniz.
 
 {{< cta cta_text="📄 2. Hafta Slaytları (PDF)" cta_link="/courses/veri-yapilari/hafta-02-slayt.pdf" cta_new_tab="true" >}}
-{{< cta cta_text="📥 PowerPoint Sunumu (PPTX)" cta_link="/courses/veri-yapilari/hafta-02-slayt.pptx" >}}
 
 1. [2. Hafta Slaytları (PDF olarak aç ve incele)](/courses/veri-yapilari/hafta-02-slayt.pdf)
-2. [2. Hafta Sunum Dosyası (PowerPoint - PPTX indir)](/courses/veri-yapilari/hafta-02-slayt.pptx)
 
 ---
 

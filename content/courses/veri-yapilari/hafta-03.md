@@ -12,10 +12,8 @@ draft: false
 Ders sunumunu tarayıcıda doğrudan inceleyebilir veya sunum dosyasını indirebilirsiniz.
 
 {{< cta cta_text="📄 3. Hafta Slaytları (PDF)" cta_link="/courses/veri-yapilari/hafta-03-slayt.pdf" cta_new_tab="true" >}}
-{{< cta cta_text="📥 PowerPoint Sunumu (PPTX)" cta_link="/courses/veri-yapilari/hafta-03-slayt.pptx" >}}
 
 1. [3. Hafta Slaytları (PDF olarak aç ve incele)](/courses/veri-yapilari/hafta-03-slayt.pdf)
-2. [3. Hafta Sunum Dosyası (PowerPoint - PPTX indir)](/courses/veri-yapilari/hafta-03-slayt.pptx)
 
 ---
 
@@ -65,3 +63,7 @@ class SinglyLinkedList:
             current = current.next
         print(" -> ".join(elements) + " -> None")
 ```
+
+---
+
+{{< cta cta_text="➡️ 4. Haftaya Geç: Yığınlar ve LIFO Mimarisi" cta_link="/courses/veri-yapilari/hafta-04/" >}}

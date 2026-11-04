@@ -1,53 +1,38 @@
 ---
-title: "5. Hafta: Yığınlar (Stacks) ve LIFO Mimarisi"
-linkTitle: "5. Hafta - Yığınlar (Stacks)"
+title: "5. Hafta: Kuyruklar (Queues) ve Çift Uçlu Kuyruk (Deque)"
+linkTitle: "5. Hafta - Kuyruklar"
 date: "2026-09-01"
 type: book
 weight: 60
 draft: true
 ---
 
-## 🥞 Yığın (Stack) Mantığı: LIFO
+## 🚶 Kuyruk (Queue) Mantığı: FIFO
 
-Yığın, eleman ekleme ve çıkarma işlemlerinin yalnızca tek bir uçtan (**Top - Tepe**) yapıldığı doğrusal bir veri yapısıdır. **LIFO (Last In, First Out - Son Giren İlk Çıkar)** ilkesine dayanır.
+Kuyruk, elemanların arka uçtan (**Rear / Back**) eklendiği ve ön uçtan (**Front**) çıkarıldığı veri yapısıdır. **FIFO (First In, First Out - İlk Giren İlk Çıkar)** ilkesine dayanır.
 
 <!--more-->
 
 ### Temel İşlemler
-- `push(item)`: Tepeye yeni eleman ekler ($O(1)$).
-- `pop()`: Tepedeki elemanı yığından çıkarır ve döndürür ($O(1)$).
-- `peek()` / `top()`: Tepedeki elemanı çıkarmadan değerini okur ($O(1)$).
-- `is_empty()`: Yığının boş olup olmadığını kontrol eder ($O(1)$).
+- `enqueue(item)`: Kuyruğun sonuna eleman ekler ($O(1)$).
+- `dequeue()`: Kuyruğun başındaki elemanı çıkarır ($O(1)$).
+- `front()`: En öndeki elemanı okur ($O(1)$).
 
 ---
 
-## 🛠️ Gerçekleme: Python ile Stack Sınıfı
+## ⭕ Dairesel Kuyruk (Circular Queue)
 
-```python
-class Stack:
-    def __init__(self):
-        self._items = []
+Dizilerle kuyruk gerçeklenirken baştan çıkarılan elemanlar bellekte boşluk oluşturur ve indeksler sağa doğru kayar. Dairesel kuyruk yapısında modulo ($%$) aritmetiği kullanılarak son indekse ulaşıldığında dizi başına dönülür:
 
-    def push(self, item):
-        self._items.append(item)
-
-    def pop(self):
-        if self.is_empty():
-            raise IndexError("Stack boş!")
-        return self._items.pop()
-
-    def peek(self):
-        if self.is_empty():
-            raise IndexError("Stack boş!")
-        return self._items[-1]
-
-    def is_empty(self):
-        return len(self._items) == 0
-```
+$$\text{next\_index} = (\text{index} + 1) \% \text{Kapasite}$$
 
 ---
 
-## 💡 Pratik Uygulamalar
-1. **Geri Al (Undo / Redo):** Metin düzenleyicilerinde Ctrl+Z geçmişi.
-2. **Çağrı Yığını (Call Stack):** Fonksiyon çağrıları ve yerel değişkenlerin yönetimi.
-3. **Dengeli Parantez Eşleme (Balanced Parentheses):** Derleyicilerin sözdizimi kontrolü (`{[()]}`).
+## ↔️ Çift Uçlu Kuyruk (Double-ended Queue - Deque)
+
+Hem baştan hem sondan $O(1)$ sürede eleman ekleme ve çıkarma işlemlerini destekleyen genel yapıdır (Python `collections.deque`).
+
+### Kullanım Alanları
+- Yazıcı kuyrukları (Printer Spooling).
+- İşletim sistemlerinde süreç zamanlama (CPU Scheduling).
+- Graf algoritmalarında Genişlik Öncelikli Arama (BFS - Breadth-First Search).

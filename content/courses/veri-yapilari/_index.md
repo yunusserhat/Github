@@ -55,16 +55,16 @@ Bu ders, bilgisayar bilimleri ve yapay zeka mühendisliğinin temel taşı olan 
 | **1** | [Veri Yapılarına Giriş ve Algoritma Analizi](hafta-01) | Asimptotik Notasyonlar (Big O, $\Omega$, $\Theta$), Zaman ve Bellek Karmaşıklığı | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-01-slayt.pdf) |
 | **2** | [Diziler (Arrays) ve Dinamik Diziler](hafta-02) | Bellek Yerleşimi, Sabit ve Dinamik Diziler, Amortized Zaman Analizi | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-02-slayt.pdf) |
 | **3** | [Bağlı Listeler I: Tek Yönlü Bağlı Liste](hafta-03) | Düğüm (Node) Yapısı, Başa/Sona/Araya Ekleme, Silme ve Arama | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-03-slayt.pdf) |
-| **4** | Bağlı Listeler II: Çift Yönlü ve Dairesel Listeler | Doubly Linked List, Dairesel Liste Mimarisi, Sentinel Düğümler | ⏳ Hazırlanıyor |
-| **5** | Yığınlar (Stacks) ve LIFO Mimarisi | LIFO Mantığı, Dizi ve Bağlı Liste İle Yığın Gerçekleme, Parantez Doğrulama | ⏳ Hazırlanıyor |
-| **6** | Kuyruklar (Queues) ve Çift Uçlu Kuyruk (Deque) | FIFO Mantığı, Dairesel Kuyruk (Circular Queue), Deque ve İş Akışları | ⏳ Hazırlanıyor |
-| **7** | Özyineleme (Recursion) ve Böl-Yönet | Rekürsif Fonksiyonlar, Base Case, Çağrı Yığını, Master Teoremi | ⏳ Hazırlanıyor |
+| **4** | [Yığınlar (Stacks) ve LIFO Mimarisi](hafta-04) | LIFO Mantığı, Dizi ve Bağlı Liste İle Yığın Gerçekleme, Parantez Doğrulama | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-04-slayt.pdf) |
+| **5** | Kuyruklar (Queues) ve Çift Uçlu Kuyruk (Deque) | FIFO Mantığı, Dairesel Kuyruk (Circular Queue), Deque ve İş Akışları | ⏳ Hazırlanıyor |
+| **6** | Özyineleme (Recursion) ve Böl-Yönet | Rekürsif Fonksiyonlar, Base Case, Çağrı Yığını, Master Teoremi | ⏳ Hazırlanıyor |
+| **7** | Arama ve Basit Sıralama | Doğrusal ve İkili Arama, Seçerek/Eklemeli Sıralama, $O(n^2)$ Sıralamalar | ⏳ Hazırlanıyor |
 | **8** | Ara Sınav (Vize) & Algoritmik Değerlendirme | Dönem İçi Değerlendirme ve Karmaşıklık Analizi Sınavı | ⏳ Dönem İçi |
-| **9** | Ağaçlar (Trees) ve İkili Ağaç Mimarisi | Ağaç Terminolojisi, İkili Ağaçlar, Ağaç Gezinmeleri (Pre/In/Postorder) | ⏳ Hazırlanıyor |
-| **10** | İkili Arama Ağaçları (Binary Search Trees - BST) | BST Özelliği, Arama, Ekleme, Düğüm Silme ($O(h)$ Karmaşıklık) | ⏳ Hazırlanıyor |
-| **11** | Dengeli Ağaçlar (Balanced Trees: AVL) | Denge Faktörü, Sol/Sağ Rotasyonlar, $O(\log n)$ Arama Garantisi | ⏳ Hazırlanıyor |
-| **12** | Yığınlar (Heaps) ve Öncelikli Kuyruklar | Max-Heap, Min-Heap, Heapify İşlemi, Priority Queue ve Heapsort | ⏳ Hazırlanıyor |
-| **13** | Karma Tabloları (Hash Tables) ve Çakışma Yönetimi | Hashing Prensipleri, Çakışma Çözümü (Chaining & Open Addressing) | ⏳ Hazırlanıyor |
+| **9** | Böl ve Yönet ile Sıralama | Birleştirmeli (Merge) ve Hızlı (Quick) Sıralama, $O(n \log n)$ Karmaşıklık | ⏳ Hazırlanıyor |
+| **10** | Karma Tabloları (Hash Tables) ve Çakışma Yönetimi | Hashing Prensipleri, Çakışma Çözümü (Chaining & Open Addressing) | ⏳ Hazırlanıyor |
+| **11** | Ağaçlar (Trees) ve İkili Ağaç Mimarisi | Ağaç Terminolojisi, İkili Ağaçlar, Ağaç Gezinmeleri (Pre/In/Postorder) | ⏳ Hazırlanıyor |
+| **12** | İkili Arama Ağaçları (Binary Search Trees - BST) | BST Özelliği, Arama, Ekleme, Düğüm Silme ($O(h)$ Karmaşıklık) | ⏳ Hazırlanıyor |
+| **13** | Yığınlar (Heaps) ve Öncelikli Kuyruklar | Max-Heap, Min-Heap, Heapify İşlemi, Priority Queue ve Heapsort | ⏳ Hazırlanıyor |
 | **14** | Çizgelere Giriş (Graphs) ve Temel Gezinmeler | Graf Gösterimleri (Adjacency Matrix/List), BFS ve DFS Algoritmaları | ⏳ Hazırlanıyor |
 
 ---
