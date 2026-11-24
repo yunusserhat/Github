@@ -1,7 +1,9 @@
 ---
 title: "Kariyer Planlama"
+title_en: "Career Planning"
 linkTitle: "Kariyer Planlama"
 summary: "T.C. Cumhurbaşkanlığı İnsan Kaynakları Ofisi Kariyer Planlama Dersi Yönergesi ve Platform Kılavuzuna uygun haftalık ders izlencesi, zorunlu video takvimi, öz farkındalık, sektör tanıtımları ve kariyer yönetimi rehberi."
+summary_en: "First-year career development syllabus guiding AI and Machine Learning undergraduates through academic pathways, industry perspectives and portfolio planning."
 type: book
 course_codes:
   - "KPD1001"
@@ -9,7 +11,9 @@ course_codes:
 faculty: "UBF"
 faculty_name: "Marmara Üniversitesi Uygulamalı Bilimler Fakültesi"
 department: "Yapay Zeka ve Makine Öğrenmesi"
+department_en: "Department of Artificial Intelligence and Machine Learning"
 term: "Güz / Bahar"
+term_en: "Autumn / Spring"
 archived: false
 multi_notice: false
 weight: 40

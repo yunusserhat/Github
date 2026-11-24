@@ -16,23 +16,25 @@ Yapay Zeka ve Makine Öğrenmesi alanında modellerin eğitimi, vektör uzaylar�
 
 ---
 
-## 🛠️ Geliştirme Ortamı ve Programlama Dili Tercihi
+## 🛠️ Geliştirme Ortamı ve Ders Akışı
 
-Ders kapsamındaki örnekler ve laboratuvar uygulamaları iki ana dil ekseninde sunulacaktır:
-1. **Python:** Hızlı prototipleme, nesne yönelimli gerçeklemeler ve okunabilirlik için.
-2. **C++ (Opsiyonel / İleri Seviye):** Bellek işaretçileri (pointers), referanslar ve doğrudan bellek yönetimini derinlemesine kavramak için.
+Dersin tamamı **Python 3** (ek kütüphane gerektirmeden yalnızca standart kütüphane) ve **Jupyter Notebook** üzerinde yürütülür. Her hafta dört temel materyal paylaşılır.
+
+1. **Haftalık okuma metni.** Kavram anlatımı, yaygın kavram yanılgıları, çözümlü alıştırmalar ve Türkçe-İngilizce terim sözlüğü.
+2. **Ders slaytları.** Bellek şemaları ve görsel açıklamalar.
+3. **Canlı ders notebook'u.** Çıktıları kaydedilmiş biçimde paylaşılan etkileşimli Python kodları.
+4. **Tahmin ve uygulama alıştırması.** Öğrencilerin kodu çalıştırmadan önce sonucu tahmin edip ardından incelediği PRIMM (Predict, Run, Investigate, Modify, Make) etkinlikleri.
 
 ### Tavsiye Edilen Araçlar
-- **Editör:** Visual Studio Code (Python ve C/C++ eklentileriyle).
-- **Sürüm Kontrolü:** Git & GitHub (tüm laboratuvar ödevleri GitHub Classroom üzerinden teslim edilecektir).
-- **Görselleştirme Aracı:** VisuAlgo ve Python Tutor (bellek ve işaretçi animasyonları için).
+- **Çalışma ortamı.** Visual Studio Code (Python ve Jupyter eklentileri) veya yerel kurulum gerektirmeden tarayıcıda çalışan **Google Colab**.
+- **Görselleştirme.** Bellek ve işaretçi adımlarını izlemek için Python Tutor ve VisuAlgo.
 
 ---
 
-## 📋 Akademik Dürüstlük ve Kurallar
+## 📋 Akademik Dürüstlük ve Yapay Zeka Kullanımı
 
-- Kod ödevlerinde intihal (başka bir öğrenciden doğrudan kod kopyalama veya birebir paylaşma) kesinlikle kabul edilmez.
-- Yapay zeka araçları (ChatGPT, GitHub Copilot) birer öğrenme ve kavramı anlama yardımcısı olarak kullanılabilir; ancak teslim edilen kodun her bir satırını öğrencinin sınavda veya sözlüde açıklayabilmesi zorunludur.
+- Başka bir öğrenciden doğrudan kod kopyalama veya birebir paylaşma kabul edilmez.
+- Yapay zeka araçları (örneğin ChatGPT veya GitHub Copilot) kavramları derinleştirmek, alternatif yaklaşımları incelemek ve öğrenmeyi hızlandırmak için yapıcı biçimde kullanılabilir. Bununla birlikte öğrencinin yazdığı ya da teslim ettiği her kodun mantığını ve karmaşıklık gerekçesini sınavda ve sınıf içi tartışmada açıklayabilmesi beklenir.
 
 > ℹ️ **Ders Akışı Bilgilendirmesi:** 
 > 1. Hafta ve sonraki haftalık ders içerikleri, akademik takvime paralel olarak her hafta başında sırayla sol menüde erişime açılacaktır.

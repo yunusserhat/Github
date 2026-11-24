@@ -1,14 +1,18 @@
 ---
 title: "Yönetim Bilişim Sistemleri"
+title_en: "Management Information Systems"
 linkTitle: "Yönetim Bilişim Sistemleri"
 summary: "İşletmelerde bilgi sistemleri, kurumsal kaynak planlama (ERP), veri tabanları, karar destek sistemleri ve dijital dönüşüm."
+summary_en: "Organisational information systems, databases, decision support systems and digital workflows for social-science cohorts."
 type: book
 course_codes:
   - "YBS2001"
 faculty: "SBMYO"
 faculty_name: "Marmara Üniversitesi Sosyal Bilimler Meslek Yüksekokulu"
 department: "Büro Yönetimi ve Yönetici Asistanlığı"
+department_en: "Vocational School of Social Sciences"
 term: "Geçmiş Dönem (Arşiv)"
+term_en: "Past Term (Archived)"
 archived: true
 weight: 120
 date: "2022-10-04"

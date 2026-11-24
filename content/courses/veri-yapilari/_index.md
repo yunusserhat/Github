@@ -1,47 +1,55 @@
 ---
 title: "Veri Yapıları (Data Structures)"
+title_en: "Data Structures in Python"
 linkTitle: "Veri Yapıları"
-summary: "Algoritmik analiz (Big O), temel ve doğrusal olmayan veri yapıları (bağlı listeler, yığınlar, kuyruklar, ağaçlar, heap'ler, hash tabloları ve graflar)."
+summary: "Python ile algoritma analizi (Big O), PRIMM aktif öğrenme notebook'ları ve temel veri yapıları (diziler, bağlı listeler, yığınlar, kuyruklar, hash tabloları, ağaçlar, heap'ler ve graflar)."
+summary_en: "14-week undergraduate course designed from scratch with seven learning outcomes, PRIMM active-learning notebooks, Big O analysis and core data structures implemented in Python."
 type: book
 course_codes:
   - "YZM2005"
 faculty: "UBF"
 faculty_name: "Marmara Üniversitesi Uygulamalı Bilimler Fakültesi"
 department: "Yapay Zeka ve Makine Öğrenmesi"
+department_en: "Department of Artificial Intelligence and Machine Learning"
 term: "Güz"
+term_en: "Autumn"
 archived: false
 weight: 30
 date: "2026-09-01"
 ---
 
+> **English overview.** YZM2005 Data Structures in Python is a 14-week undergraduate course designed from scratch for Marmara University's new Department of Artificial Intelligence and Machine Learning. Taught in Turkish with bilingual technical terminology, it uses seven learning outcomes, weekly conceptual readings, live Jupyter notebooks and PRIMM (predict, run, investigate, modify, make) exercises. Topics progress from Big O cost analysis and dynamic arrays to linked lists, stacks, queues, recursion, sorting, hash tables, binary search trees, heaps and graphs, with assessment prioritising algorithmic reasoning alongside working Python code.
+
 ## 📌 Ders Künyesi ve Bilgileri
 
 | Özellik | Detay |
 | :--- | :--- |
-| **Ders Adı** | Veri Yapıları (Data Structures) |
+| **Ders Adı** | Veri Yapıları (Data Structures in Python) |
 | **Ders Kodu** | `YZM2005` |
 | **Akademik Birim** | Uygulamalı Bilimler Fakültesi (UBF) |
 | **Bölüm** | Yapay Zeka ve Makine Öğrenmesi Bölümü |
 | **Dönem** | Güz Dönemi |
-| **Ders Dili / Kredi** | Türkçe (Teknik Terimler İngilizce) / 3 Teori + 1 Uygulama |
-| **Ön Koşul** | Temel Programlama (Python / C++ / Java) |
+| **Ders Dili / Kredi** | Türkçe (İngilizce teknik terim eşleştirmeli) / 3 Teori + 1 Uygulama |
+| **Programlama Dili** | Python 3 (standart kütüphane ve Jupyter Notebook) |
 | **Öğretim Elemanı** | {{< mention "admin" >}} |
 
 ---
 
 ## 🎯 Dersin Amacı ve Kapsamı
 
-Bu ders, bilgisayar bilimleri ve yapay zeka mühendisliğinin temel taşı olan verilerin bellekte organize edilmesi, saklanması ve işlenmesi prensiplerini öğretmeyi amaçlar. Öğrenciler farklı algoritmaların zaman ve bellek karmaşıklıklarını matematiksel olarak analiz etmeyi, probleme en uygun veri yapısını seçmeyi ve bunu nesne yönelimli programlama ilkeleriyle sıfırdan kodlamayı öğrenirler.
+Bu ders temel veri yapılarını ve bu yapılar üzerinde çalışan temel algoritmaları Python ile öğretir. Öğrenciler her yapının bellekte nasıl durduğunu görselleştirerek öğrenir, işlemlerinin neden hızlı ya da yavaş olduğunu Big O gösterimiyle açıklar ve bir problem için uygun yapıyı seçip gerekçelendirir. Her ders gerçek hayattan bir soruyla açılır, canlı Jupyter notebook uygulamaları ve PRIMM (tahmin et, çalıştır, incele, değiştir, üret) alıştırmalarıyla ilerler.
 
 ---
 
 ## 🚀 Öğrenme Çıktıları (Kazanımlar)
 
-- Asimptotik notasyonları ($O, \Omega, \Theta$) kullanarak algoritmaların zaman ve bellek karmaşıklığını teorik ve deneysel olarak analiz edebilme.
-- Doğrusal veri yapılarını (Diziler, Tek/Çift Yönlü Bağlı Listeler, Yığınlar, Kuyruklar) sıfırdan tasarlayabilme ve uygulama alanlarına entegre edebilme.
-- Hiyerarşik ve doğrusal olmayan veri yapılarını (İkili Ağaçlar, BST, AVL Ağaçları, Heap, Hash Tabloları, Graf) kavrama ve verimli arama/ekleme algoritmalarını kodlayabilme.
-- Rekürsif (özyinelemeli) algoritmaları analiz edebilme ve çağrı yığını (call stack) işleyişini modelleyebilme.
-- Yapay zeka ve büyük veri problemlerinde hesaplama maliyetini minimize eden optimum veri yapısını seçebilme yetkinliği.
+- Bir algoritmanın zaman ve bellek maliyetini Big O gösterimiyle ifade edebilme ve kısa Python kodlarının Big O sınıfını belirleyebilme.
+- Dizinin ve bağlı listenin bellekte nasıl durduğunu açıklayabilme, okuma, ekleme ve silme maliyetlerini karşılaştırabilme.
+- Yığın, kuyruk ve öncelik kuyruğunu Python ile gerçekleştirebilme ve uygun problemlerde kullanabilme.
+- Özyinelemeli fonksiyonlar yazabilme ve bir özyinelemeli çağrının adımlarını izleyebilme.
+- Temel arama ve sıralama algoritmalarını uygulayabilme ve maliyetlerine göre karşılaştırabilme.
+- Hash tablosu, ikili arama ağacı, heap ve graf yapılarının çalışma mantığını açıklayabilme ve temel işlemlerini Python ile yazabilme.
+- Bir problemde sık yapılan işlemlere bakarak uygun veri yapısını seçebilme ve seçimini gerekçelendirebilme.
 
 ---
 
@@ -51,7 +59,7 @@ Bu ders, bilgisayar bilimleri ve yapay zeka mühendisliğinin temel taşı olan 
 
 | Hafta | Konu Başlığı | Odak Konular ve Algoritmik Beceriler | Durum / Materyal |
 | :---: | :--- | :--- | :---: |
-| **Giriş** | [Derse Giriş & Algoritmik Düşünme](giris) | Ders Kuralları, Bellek Modeli, Geliştirme Ortamı (VS Code / Python / C++) | 🟢 Açık |
+| **Giriş** | [Derse Giriş & Algoritmik Düşünme](giris) | Ders Akışı, PRIMM Yöntemi, Bellek Modeli ve Python / Jupyter Ortamı | 🟢 Açık |
 | **1** | [Veri Yapılarına Giriş ve Algoritma Analizi](hafta-01) | Asimptotik Notasyonlar (Big O, $\Omega$, $\Theta$), Zaman ve Bellek Karmaşıklığı | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-01-slayt.pdf) |
 | **2** | [Diziler (Arrays) ve Dinamik Diziler](hafta-02) | Bellek Yerleşimi, Sabit ve Dinamik Diziler, Amortized Zaman Analizi | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-02-slayt.pdf) |
 | **3** | [Bağlı Listeler I: Tek Yönlü Bağlı Liste](hafta-03) | Düğüm (Node) Yapısı, Başa/Sona/Araya Ekleme, Silme ve Arama | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-03-slayt.pdf) |

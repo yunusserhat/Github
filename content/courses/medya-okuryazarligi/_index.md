@@ -1,7 +1,9 @@
 ---
 title: "Medya Okuryazarlığı"
+title_en: "Media Literacy"
 linkTitle: "Medya Okuryazarlığı"
 summary: "Kitle iletişim araçları, dezenformasyon, yeni medya dinamikleri ve dijital çağda eleştirel analiz becerileri."
+summary_en: "Critical media analysis, digital information ecosystems, disinformation detection and algorithmic media dynamics for social-science students."
 type: book
 course_codes:
   - "ILT2005"
@@ -10,7 +12,9 @@ course_codes:
 faculty: "SBMYO"
 faculty_name: "Marmara Üniversitesi Sosyal Bilimler Meslek Yüksekokulu"
 department: "Büro Yönetimi ve Yönetici Asistanlığı & Ofis Teknolojileri ve Veri Yönetimi"
+department_en: "Vocational School of Social Sciences (Office Technologies and Data Management)"
 term: "Güz"
+term_en: "Autumn"
 archived: false
 multi_notice: "<strong>Birleşik Ders:</strong> <code>ILT2005</code>, <code>BYS2020</code> ve <code>OTV2029</code> kodlu dersler aynı saatlerde ve tek müfredatla işlenmektedir."
 slides_url: "https://bit.ly/medya_okuryazarligi"

@@ -1,7 +1,9 @@
 ---
 title: "Ofis Programları ve Veri Tabanlı Uygulamalar"
+title_en: "Office Software and Database Applications"
 linkTitle: "Ofis Programları"
 summary: "Google Drive ve masaüstü Microsoft Office uygulamalarıyla temel ofis işleri, Google Forms ile veri toplama ve SQLite ile veritabanı sorguları."
+summary_en: "14-week applied course for social-science students covering structured document design, spreadsheet budgeting, Google Forms data collection and relational SQL queries in open-source SQLite."
 type: book
 course_codes:
   - "BSP2007"
@@ -10,7 +12,9 @@ course_codes:
 faculty: "SBMYO"
 faculty_name: "Marmara Üniversitesi Sosyal Bilimler Meslek Yüksekokulu"
 department: "Büro Yönetimi ve Yönetici Asistanlığı & Ofis Teknolojileri ve Veri Yönetimi"
+department_en: "Vocational School of Social Sciences (Office Technologies and Data Management)"
 term: "Güz"
+term_en: "Autumn"
 archived: false
 multi_notice: "<strong>Ortak ders materyali.</strong> <code>BSP2007</code>, <code>BYS2011</code> ve <code>OTV1007</code> için aynı haftalık uygulamalar kullanılır. Kodunuza ait resmi ders saati, AKTS ve sınav duyurularını ÖBYS'den kontrol edin."
 weight: 10
@@ -19,6 +23,8 @@ aliases:
   - "/courses/Ofis Programlari/"
   - "/courses/Ofis%20Programlari/"
 ---
+
+> **English overview.** Taught in Turkish for non-technical social-science students across three cross-listed sections (BSP2007, BYS2011, OTV1007), this 14-week open course book builds practical digital and data literacy around a single campus event scenario. Weekly portfolio tasks progress from document formatting and formula-driven Excel budgets to structured Google Forms data collection and relational database queries (`SELECT`, `WHERE`, `GROUP BY`, `INNER JOIN`) in open-source SQLite.
 
 Bu sayfa **BSP2007, BYS2011 ve OTV1007** öğrencileri için ortak laboratuvar materyalidir. İlk yarıda Google Drive klasör düzeni ile masaüstü Word ve Excel uygulamalarını tamamladık. İkinci yarıda masaüstü PowerPoint sunuları, Google Forms ile yapılandırılmış veri toplama ve açık kaynak SQLite (DB Browser for SQLite) ile veritabanı uygulamaları yapacağız. Her hafta ürettiğiniz dosyaları Google Drive klasörünüzde düzenli biçimde saklayacaksınız.
 

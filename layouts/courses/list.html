@@ -1,17 +1,46 @@
 {{- define "main" -}}
 
-<div class="courses-portal-wrapper">
+<style>
+.courses-hero-top-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.75rem; }
+.courses-lang-switch { display: inline-flex; border: 1px solid var(--course-card-border); border-radius: 999px; padding: 0.2rem; background: var(--course-card-bg); }
+.lang-switch-btn { border: 0; background: transparent; color: var(--course-text-muted); font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.8rem; border-radius: 999px; cursor: pointer; transition: background 0.15s ease, color 0.15s ease; }
+.lang-switch-btn.active { background: #1c394e; color: #ffffff; }
+.courses-en-banner { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 0.75rem; border: 1px solid var(--course-card-border); background: var(--course-card-bg); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; font-size: 0.88rem; color: var(--course-text-muted); }
+.courses-en-banner-link { display: inline-flex; align-items: center; gap: 0.45rem; font-weight: 600; color: #1c394e !important; text-decoration: none !important; white-space: nowrap; }
+body.dark .courses-en-banner-link { color: #93c5fd !important; }
+body.dark .lang-switch-btn.active { background: #3b82f6; color: #ffffff; }
+</style>
+
+<div class="courses-portal-wrapper" id="courses-portal-root" data-lang="tr">
   <div class="container py-4">
     
     <!-- Portal Hero Header -->
     <header class="courses-hero">
-      <div class="courses-hero-pill">
-        <span class="hero-dot"></span> Marmara Üniversitesi • Akademik Eğitim Portalı
+      <div class="courses-hero-top-bar">
+        <div class="courses-hero-pill">
+          <span class="hero-dot"></span>
+          <span data-tr="Marmara Üniversitesi • Akademik Eğitim Portalı" data-en="Marmara University • Open Course Books &amp; Syllabi">Marmara Üniversitesi • Akademik Eğitim Portalı</span>
+        </div>
+        <div class="courses-lang-switch" role="group" aria-label="Language selection">
+          <button type="button" class="lang-switch-btn active" data-set-lang="tr" aria-pressed="true">Türkçe</button>
+          <button type="button" class="lang-switch-btn" data-set-lang="en" aria-pressed="false">English</button>
+        </div>
       </div>
-      <h1 class="courses-hero-title">Ders Kataloğu & Ders İzlenceleri</h1>
-      <p class="courses-hero-subtitle">
-        Sosyal Bilimler Meslek Yüksekokulu ve Uygulamalı Bilimler Fakültesi ders izlenceleri, haftalık müfredat planları, kitaplar ve uygulama materyalleri.
+
+      <h1 class="courses-hero-title" data-tr="Ders Kataloğu &amp; Ders İzlenceleri" data-en="Courses, Open Course Books &amp; Syllabi">Ders Kataloğu &amp; Ders İzlenceleri</h1>
+      <p class="courses-hero-subtitle" data-tr="Sosyal Bilimler Meslek Yüksekokulu ve Uygulamalı Bilimler Fakültesi ders izlenceleri, haftalık müfredat planları, açık çevrim içi ders kitapları ve uygulama materyalleri." data-en="Open course books, weekly syllabi and practical materials for undergraduate courses taught in Turkish at Marmara University, alongside English Earth observation and GIS practicals.">
+        Sosyal Bilimler Meslek Yüksekokulu ve Uygulamalı Bilimler Fakültesi ders izlenceleri, haftalık müfredat planları, açık çevrim içi ders kitapları ve uygulama materyalleri.
       </p>
+
+      <div class="courses-en-banner">
+        <span data-tr="İngilizce açık jeo-uzamsal laboratuvarlar ve ders özetleri için English görünümüne geçebilir ya da doğrudan GitHub deposunu inceleyebilirsiniz." data-en="Marmara University courses below are delivered in Turkish with open weekly web books. English Colab-ready geospatial labs with instructor notes and rubrics are hosted on GitHub.">
+          İngilizce açık jeo-uzamsal laboratuvarlar ve ders özetleri için English görünümüne geçebilir ya da doğrudan GitHub deposunu inceleyebilirsiniz.
+        </span>
+        <a href="https://github.com/yunusserhat/eo-gis-practicals" target="_blank" rel="noopener noreferrer" class="courses-en-banner-link">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span data-tr="Earth Observation &amp; GIS Practicals (EN)" data-en="Open EO &amp; GIS Practicals (GitHub)">Earth Observation &amp; GIS Practicals (EN)</span>
+        </a>
+      </div>
     </header>
 
     <!-- Toolbar: Faculty Filters & Live Search -->
@@ -19,17 +48,17 @@
       <div class="courses-filter-tabs" role="group" aria-label="Birim Filtreleme">
         <button type="button" class="course-filter-btn active" data-filter="all" id="filter-all" aria-pressed="true">
           <span class="btn-emoji" aria-hidden="true">🌟</span>
-          <span class="btn-label">Tümü</span>
+          <span class="btn-label" data-tr="Tümü" data-en="All">Tümü</span>
           <span class="filter-count" id="count-all">4</span>
         </button>
         <button type="button" class="course-filter-btn" data-filter="sbmyo" id="filter-sbmyo" aria-pressed="false">
           <span class="btn-emoji" aria-hidden="true">🏢</span>
-          <span class="btn-label">SBMYO - Sosyal Bilimler MYO</span>
+          <span class="btn-label" data-tr="SBMYO - Sosyal Bilimler MYO" data-en="Vocational School of Social Sciences">SBMYO - Sosyal Bilimler MYO</span>
           <span class="filter-count" id="count-sbmyo">2</span>
         </button>
         <button type="button" class="course-filter-btn" data-filter="ubf" id="filter-ubf" aria-pressed="false">
           <span class="btn-emoji" aria-hidden="true">🎓</span>
-          <span class="btn-label">UBF - Uygulamalı Bilimler Fakültesi</span>
+          <span class="btn-label" data-tr="UBF - Uygulamalı Bilimler Fakültesi" data-en="Faculty of Applied Sciences (AI &amp; ML)">UBF - Uygulamalı Bilimler Fakültesi</span>
           <span class="filter-count" id="count-ubf">2</span>
         </button>
       </div>
@@ -42,6 +71,8 @@
             id="course-live-search" 
             class="course-search-field" 
             placeholder="Ders kodu (YZM2005, BSP, ILT...) veya ders adı yazın..." 
+            data-placeholder-tr="Ders kodu (YZM2005, BSP, ILT...) veya ders adı yazın..."
+            data-placeholder-en="Search by course code (YZM2005, BSP...) or topic..."
             aria-label="Ders Arama"
             aria-controls="active-courses-grid"
             aria-describedby="courses-counter-display"
@@ -61,18 +92,18 @@
         <span class="counter-number">4</span> aktif ders listeleniyor
       </div>
       <div class="courses-faculty-legend">
-        <span class="legend-chip chip-sbmyo"><span class="chip-color"></span> SBMYO (Meslek Yüksekokulu)</span>
-        <span class="legend-chip chip-ubf"><span class="chip-color"></span> UBF (Uygulamalı Bilimler Fak.)</span>
+        <span class="legend-chip chip-sbmyo"><span class="chip-color"></span> <span data-tr="SBMYO (Meslek Yüksekokulu)" data-en="Social Sciences (SBMYO)">SBMYO (Meslek Yüksekokulu)</span></span>
+        <span class="legend-chip chip-ubf"><span class="chip-color"></span> <span data-tr="UBF (Uygulamalı Bilimler Fak.)" data-en="Applied Sciences, AI &amp; ML (UBF)">UBF (Uygulamalı Bilimler Fak.)</span></span>
       </div>
     </div>
 
     <!-- Empty State -->
     <div id="no-courses-found" class="courses-empty-alert" style="display: none;">
       <div class="empty-icon-box" aria-hidden="true">🔍</div>
-      <h3 class="empty-title">Aradığınız kriterlere uygun ders bulunamadı</h3>
-      <p class="empty-desc">Farklı bir ders kodu veya anahtar kelime deneyebilir ya da filtreleri temizleyebilirsiniz.</p>
+      <h3 class="empty-title" data-tr="Aradığınız kriterlere uygun ders bulunamadı" data-en="No courses match your filter">Aradığınız kriterlere uygun ders bulunamadı</h3>
+      <p class="empty-desc" data-tr="Farklı bir ders kodu veya anahtar kelime deneyebilir ya da filtreleri temizleyebilirsiniz." data-en="Try a different course code or keyword, or reset the filters.">Farklı bir ders kodu veya anahtar kelime deneyebilir ya da filtreleri temizleyebilirsiniz.</p>
       <button type="button" id="reset-courses-btn" class="btn-reset-filters">
-        <i class="fas fa-sync-alt mr-1" aria-hidden="true"></i> Tüm Dersleri Göster
+        <i class="fas fa-sync-alt mr-1" aria-hidden="true"></i> <span data-tr="Tüm Dersleri Göster" data-en="Show All Courses">Tüm Dersleri Göster</span>
       </button>
     </div>
 
@@ -84,14 +115,18 @@
         {{ $codes_str := delimit $codes " " }}
         {{ $faculty := lower (.Params.faculty | default "sbmyo") }}
         {{ $is_multi := gt (len $codes) 1 }}
+        {{ $title_en := .Params.title_en | default .Title }}
+        {{ $dept_en := .Params.department_en | default .Params.department }}
+        {{ $summary_en := .Params.summary_en | default .Params.summary }}
+        {{ $term_en := .Params.term_en | default .Params.term }}
         
         <article 
           class="course-card faculty-card-{{ $faculty }}" 
           data-faculty="{{ $faculty }}" 
           data-codes="{{ $codes_str | lower }}" 
-          data-title="{{ .Title | lower }}"
-          data-department="{{ .Params.department | default "" | lower }}"
-          data-summary="{{ .Params.summary | default "" | lower }}"
+          data-title="{{ .Title | lower }} {{ $title_en | lower }}"
+          data-department="{{ .Params.department | default "" | lower }} {{ $dept_en | default "" | lower }}"
+          data-summary="{{ .Params.summary | default "" | lower }} {{ $summary_en | default "" | lower }}"
         >
           <!-- Card Header & Badges -->
           <div class="course-card-header">
@@ -101,21 +136,21 @@
               </span>
               {{ with .Params.term }}
               <span class="term-tag">
-                <i class="far fa-calendar-alt"></i> {{ . }}
+                <i class="far fa-calendar-alt"></i> <span data-tr="{{ . }}" data-en="{{ $term_en }}">{{ . }}</span>
               </span>
               {{ end }}
             </div>
 
             {{ if and $is_multi (ne .Params.multi_notice false) }}
             <span class="multi-code-tag" title="{{ with .Params.multi_tag_title }}{{ . }}{{ else }}Farklı programlar için ortak müfredat ve eş zamanlı ders uygulaması{{ end }}">
-              <i class="fas fa-layer-group"></i> Çapraz Kodlu
+              <i class="fas fa-layer-group"></i> <span data-tr="Çapraz Kodlu" data-en="Cross-listed">Çapraz Kodlu</span>
             </span>
             {{ end }}
           </div>
 
           <!-- Course Codes Pill Row -->
           <div class="course-codes-container">
-            <span class="codes-label">Ders Kodu:</span>
+            <span class="codes-label" data-tr="Ders Kodu:" data-en="Code:">Ders Kodu:</span>
             <div class="codes-pill-group">
               {{ range $code := $codes }}
                 <span class="code-badge">{{ $code }}</span>
@@ -125,16 +160,16 @@
 
           <!-- Course Title -->
           <h2 class="course-title">
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <a href="{{ .RelPermalink }}" data-tr="{{ .Title }}" data-en="{{ $title_en }}">{{ .Title }}</a>
           </h2>
 
           <!-- Department -->
           <div class="course-dept">
-            <i class="fas fa-graduation-cap"></i> {{ .Params.department }}
+            <i class="fas fa-graduation-cap"></i> <span data-tr="{{ .Params.department }}" data-en="{{ $dept_en }}">{{ .Params.department }}</span>
           </div>
 
           <!-- Summary / Description -->
-          <p class="course-summary">
+          <p class="course-summary" data-tr="{{ .Params.summary }}" data-en="{{ $summary_en }}">
             {{ .Params.summary }}
           </p>
 
@@ -142,7 +177,7 @@
           {{ if ne .Params.multi_notice false }}
           <div class="course-multi-notice">
             <i class="fas fa-info-circle"></i>
-            <span>
+            <span class="notice-tr">
               {{ with .Params.multi_notice }}
                 {{ . | safeHTML }}
               {{ else }}
@@ -153,6 +188,9 @@
                 {{ range $idx, $code := $codes }}<code>{{ $code }}</code>{{ if lt $idx $second_last_idx }}, {{ else if eq $idx $second_last_idx }} ve {{ end }}{{ end }} kodlu dersler aynı saatlerde, ortak program ve tek müfredatla işlenmektedir.
               {{ end }}
             </span>
+            <span class="notice-en" style="display: none;">
+              <strong>Shared syllabus.</strong> Taught with shared weekly materials across {{ range $idx, $code := $codes }}{{ if gt $idx 0 }}, {{ end }}<code>{{ $code }}</code>{{ end }}.
+            </span>
           </div>
           {{ end }}
           {{ end }}
@@ -160,12 +198,12 @@
           <!-- Card Actions -->
           <div class="course-card-footer">
             <a href="{{ .RelPermalink }}" class="btn-action-primary">
-              <span class="btn-text">📖 Ders İçeriği & Haftalık Konular</span>
+              <span class="btn-text" data-tr="📖 Ders İçeriği &amp; Haftalık Konular" data-en="📖 Syllabus &amp; Weekly Course Book (TR)">📖 Ders İçeriği &amp; Haftalık Konular</span>
               <i class="fas fa-chevron-right" aria-hidden="true"></i>
             </a>
             {{ with .Params.slides_url }}
             <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="btn-action-secondary" title="Ders Slaytlarını Yeni Sekmede Aç">
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Slaytlar
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> <span data-tr="Slaytlar" data-en="Slides">Slaytlar</span>
             </a>
             {{ end }}
           </div>
@@ -180,40 +218,43 @@
       <div class="archived-section-header">
         <div class="archived-header-text">
           <h2 class="archived-heading">
-            <span class="archived-icon" aria-hidden="true">🏛️</span> Arşiv / Geçmiş Dönem Dersleri
+            <span class="archived-icon" aria-hidden="true">🏛️</span> <span data-tr="Arşiv / Geçmiş Dönem Dersleri" data-en="Archived Courses (Previous Terms)">Arşiv / Geçmiş Dönem Dersleri</span>
           </h2>
-          <p class="archived-subheading">
+          <p class="archived-subheading" data-tr="Önceki akademik yıllarda verilmiş ve referans amacıyla erişime açık tutulan dersler." data-en="Open self-paced course books from previous academic years kept online for student reference.">
             Önceki akademik yıllarda verilmiş ve referans amacıyla erişime açık tutulan dersler.
           </p>
         </div>
-        <span class="archived-counter-badge">{{ len $archived_courses }} Ders</span>
+        <span class="archived-counter-badge" data-tr="{{ len $archived_courses }} Ders" data-en="{{ len $archived_courses }} Courses">{{ len $archived_courses }} Ders</span>
       </div>
 
       <div class="archived-cards-grid">
         {{ range $archived_courses.ByWeight }}
           {{ $codes := .Params.course_codes | default slice }}
+          {{ $title_en := .Params.title_en | default .Title }}
+          {{ $summary_en := .Params.summary_en | default .Params.summary }}
+          {{ $term_en := .Params.term_en | default .Params.term }}
           <div 
             class="archived-single-card"
             data-codes="{{ delimit $codes " " | lower }}"
-            data-title="{{ .Title | lower }}"
-            data-summary="{{ .Params.summary | default "" | lower }}"
+            data-title="{{ .Title | lower }} {{ $title_en | lower }}"
+            data-summary="{{ .Params.summary | default "" | lower }} {{ $summary_en | default "" | lower }}"
           >
             <div class="archived-card-top">
-              <span class="archived-status-pill">Arşiv</span>
+              <span class="archived-status-pill" data-tr="Arşiv" data-en="Archived">Arşiv</span>
               {{ with index $codes 0 }}
               <span class="archived-code-pill">{{ . }}</span>
               {{ end }}
               {{ with .Params.term }}
-              <span class="archived-term-text">{{ . }}</span>
+              <span class="archived-term-text" data-tr="{{ . }}" data-en="{{ $term_en }}">{{ . }}</span>
               {{ end }}
             </div>
             <h3 class="archived-course-title">
-              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              <a href="{{ .RelPermalink }}" data-tr="{{ .Title }}" data-en="{{ $title_en }}">{{ .Title }}</a>
             </h3>
-            <p class="archived-course-summary">{{ .Params.summary }}</p>
+            <p class="archived-course-summary" data-tr="{{ .Params.summary }}" data-en="{{ $summary_en }}">{{ .Params.summary }}</p>
             <div class="archived-card-bottom">
               <a href="{{ .RelPermalink }}" class="archived-link-btn">
-                <span>Ders İzlencesi ve Bölümleri</span>
+                <span data-tr="Ders İzlencesi ve Bölümleri" data-en="Course Book &amp; Chapters (TR)">Ders İzlencesi ve Bölümleri</span>
                 <i class="fas fa-arrow-right" aria-hidden="true"></i>
               </a>
             </div>
@@ -226,10 +267,12 @@
   </div>
 </div>
 
-<!-- Live Search and Filter Logic Script -->
+<!-- Live Search, Filter and Bilingual Toggle Script -->
 <script>
 (function() {
   function initCourseFilters() {
+    const portalRoot = document.getElementById('courses-portal-root');
+    const langButtons = document.querySelectorAll('.lang-switch-btn');
     const filterButtons = document.querySelectorAll('.course-filter-btn');
     const searchInput = document.getElementById('course-live-search');
     const clearBtn = document.getElementById('clear-search-btn');
@@ -244,6 +287,31 @@
     if (!filterButtons.length || !searchInput) return;
 
     let activeFilter = 'all';
+    let currentLang = 'tr';
+
+    function setLanguage(lang) {
+      currentLang = (lang === 'en') ? 'en' : 'tr';
+      if (portalRoot) portalRoot.setAttribute('data-lang', currentLang);
+      langButtons.forEach(btn => {
+        const isSelected = btn.getAttribute('data-set-lang') === currentLang;
+        btn.classList.toggle('active', isSelected);
+        btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+      });
+      document.querySelectorAll('[data-tr][data-en]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + currentLang);
+      });
+      document.querySelectorAll('.notice-tr').forEach(el => {
+        el.style.display = currentLang === 'tr' ? '' : 'none';
+      });
+      document.querySelectorAll('.notice-en').forEach(el => {
+        el.style.display = currentLang === 'en' ? '' : 'none';
+      });
+      if (searchInput) {
+        const ph = searchInput.getAttribute('data-placeholder-' + currentLang);
+        if (ph) searchInput.setAttribute('placeholder', ph);
+      }
+      applyFilters();
+    }
 
     function normalizeTurkish(text) {
       if (!text) return '';
@@ -294,7 +362,6 @@
         }
       });
 
-      // Also filter archived cards if searching
       if (archivedCards.length) {
         let visibleArchivedCount = 0;
         archivedCards.forEach(card => {
@@ -322,16 +389,18 @@
         }
       }
 
-      // Update counter
       if (counterDisplay) {
-        if (visibleActiveCount === 0) {
-          counterDisplay.innerHTML = '<span class="counter-number">0</span> ders bulundu';
+        if (currentLang === 'en') {
+          counterDisplay.innerHTML = visibleActiveCount === 0
+            ? '<span class="counter-number">0</span> courses found'
+            : '<span class="counter-number">' + visibleActiveCount + '</span> active courses listed';
         } else {
-          counterDisplay.innerHTML = '<span class="counter-number">' + visibleActiveCount + '</span> aktif ders listeleniyor';
+          counterDisplay.innerHTML = visibleActiveCount === 0
+            ? '<span class="counter-number">0</span> ders bulundu'
+            : '<span class="counter-number">' + visibleActiveCount + '</span> aktif ders listeleniyor';
         }
       }
 
-      // Empty state
       if (emptyState && activeGrid) {
         if (visibleActiveCount === 0) {
           emptyState.style.display = 'block';
@@ -343,7 +412,12 @@
       }
     }
 
-    // Filter button clicks
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        setLanguage(this.getAttribute('data-set-lang'));
+      });
+    });
+
     filterButtons.forEach(btn => {
       btn.addEventListener('click', function() {
         filterButtons.forEach(b => {
@@ -356,10 +430,8 @@
       });
     });
 
-    // Search input
     searchInput.addEventListener('input', applyFilters);
 
-    // Clear search button
     if (clearBtn) {
       clearBtn.addEventListener('click', function() {
         searchInput.value = '';
@@ -368,7 +440,6 @@
       });
     }
 
-    // Reset button
     if (resetBtn) {
       resetBtn.addEventListener('click', function() {
         searchInput.value = '';
@@ -386,7 +457,6 @@
       });
     }
 
-    // Count badges initial calculation
     let totalSbmyo = 0;
     let totalUbf = 0;
     courseCards.forEach(c => {
@@ -400,6 +470,11 @@
     if (countAllEl) countAllEl.textContent = courseCards.length;
     if (countSbmyoEl) countSbmyoEl.textContent = totalSbmyo;
     if (countUbfEl) countUbfEl.textContent = totalUbf;
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('lang') === 'en') {
+      setLanguage('en');
+    }
   }
 
   if (document.readyState === 'loading') {

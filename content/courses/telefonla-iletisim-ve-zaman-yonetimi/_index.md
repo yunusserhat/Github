@@ -1,14 +1,18 @@
 ---
 title: "Telefonla İletişim ve Zaman Yönetimi"
+title_en: "Telephone Communication and Time Management"
 linkTitle: "Telefonla İletişim ve Zaman Yönetimi"
 summary: "Telefonla profesyonel iletişim teknikleri, zaman yönetimi stratejileri ve kurumsal iş akışlarında verimlilik."
+summary_en: "Professional workplace communication, time management methods and organisational workflow planning."
 type: book
 course_codes:
   - "TIZ1002"
 faculty: "SBMYO"
 faculty_name: "Marmara Üniversitesi Sosyal Bilimler Meslek Yüksekokulu"
 department: "Büro Yönetimi ve Yönetici Asistanlığı"
+department_en: "Vocational School of Social Sciences"
 term: "Geçmiş Dönem (Arşiv)"
+term_en: "Past Term (Archived)"
 archived: true
 weight: 110
 date: "2022-10-04"

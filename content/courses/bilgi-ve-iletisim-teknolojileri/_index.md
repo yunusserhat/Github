@@ -1,14 +1,18 @@
 ---
 title: "Bilgi ve İletişim Teknolojileri"
+title_en: "Information and Communication Technologies"
 linkTitle: "Bilgi ve İletişim Teknolojileri"
 summary: "Temel bilgisayar ve bilişim altyapısı, ofis teknolojileri, dijital iletişim kanalları ve donanım prensipleri."
+summary_en: "Foundational computing concepts, digital communication systems and everyday productivity tools for social-science students."
 type: book
 course_codes:
   - "BIT1001"
 faculty: "SBMYO"
 faculty_name: "Marmara Üniversitesi Sosyal Bilimler Meslek Yüksekokulu"
 department: "Büro Yönetimi ve Yönetici Asistanlığı"
+department_en: "Vocational School of Social Sciences"
 term: "Geçmiş Dönem (Arşiv)"
+term_en: "Past Term (Archived)"
 archived: true
 weight: 100
 date: "2022-01-01"
