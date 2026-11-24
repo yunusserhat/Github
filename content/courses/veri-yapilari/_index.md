@@ -56,7 +56,7 @@ Bu ders, bilgisayar bilimleri ve yapay zeka mühendisliğinin temel taşı olan 
 | **2** | [Diziler (Arrays) ve Dinamik Diziler](hafta-02) | Bellek Yerleşimi, Sabit ve Dinamik Diziler, Amortized Zaman Analizi | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-02-slayt.pdf) |
 | **3** | [Bağlı Listeler I: Tek Yönlü Bağlı Liste](hafta-03) | Düğüm (Node) Yapısı, Başa/Sona/Araya Ekleme, Silme ve Arama | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-03-slayt.pdf) |
 | **4** | [Yığınlar (Stacks) ve LIFO Mimarisi](hafta-04) | LIFO Mantığı, Dizi ve Bağlı Liste İle Yığın Gerçekleme, Parantez Doğrulama | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-04-slayt.pdf) |
-| **5** | Kuyruklar (Queues) ve Çift Uçlu Kuyruk (Deque) | FIFO Mantığı, Dairesel Kuyruk (Circular Queue), Deque ve İş Akışları | ⏳ Hazırlanıyor |
+| **5** | [Kuyruklar (Queues) ve Çift Uçlu Kuyruk (Deque)](hafta-05) | FIFO Mantığı, Dairesel Kuyruk (Circular Queue), Deque ve İş Akışları | 🟢 Açık · [Slayt (PDF)](/courses/veri-yapilari/hafta-05-slayt.pdf) |
 | **6** | Özyineleme (Recursion) ve Böl-Yönet | Rekürsif Fonksiyonlar, Base Case, Çağrı Yığını, Master Teoremi | ⏳ Hazırlanıyor |
 | **7** | Arama ve Basit Sıralama | Doğrusal ve İkili Arama, Seçerek/Eklemeli Sıralama, $O(n^2)$ Sıralamalar | ⏳ Hazırlanıyor |
 | **8** | Ara Sınav (Vize) & Algoritmik Değerlendirme | Dönem İçi Değerlendirme ve Karmaşıklık Analizi Sınavı | ⏳ Dönem İçi |

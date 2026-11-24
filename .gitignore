@@ -29,3 +29,6 @@ skills-lock.json
 
 # Local modernization recovery notes
 .site-modernization-progress.md
+
+# Local exam questions, answer keys and grading plans
+static/docs/
